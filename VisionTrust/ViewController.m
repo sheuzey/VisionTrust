@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+
 @end
 
 @implementation ViewController
@@ -16,6 +17,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.navigationController.navigationBarHidden = YES;
     
     //Fill background color..
@@ -23,8 +25,11 @@
                                                   green:0.1
                                                    blue:0.2
                                                   alpha:1.0]];
-    sleep(2);
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    sleep(3);
     [self performSegueWithIdentifier:@"GoToLogin" sender:self];
 }
 
