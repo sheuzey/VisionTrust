@@ -10,6 +10,9 @@
 		DC65348C17178F0400785378 /* VisionTrustLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC65348B17178F0400785378 /* VisionTrustLogo.jpg */; };
 		DC65349817179CF900785378 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC65349717179CF900785378 /* ViewController.m */; };
 		DC65349B17179F0800785378 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC65349A17179F0800785378 /* LoginViewController.m */; };
+		DC6534AD1718600200785378 /* LoginModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC6534AB1718600200785378 /* LoginModel.xcdatamodeld */; };
+		DC6534B01718604C00785378 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534AF1718604C00785378 /* User.m */; };
+		DC6534B31718607B00785378 /* User+SetupUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534B21718607B00785378 /* User+SetupUser.m */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
 		DCE80B6A171784E700A0FE35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B69171784E700A0FE35 /* CoreGraphics.framework */; };
@@ -29,6 +32,11 @@
 		DC65349717179CF900785378 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		DC65349917179F0800785378 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DC65349A17179F0800785378 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		DC6534AC1718600200785378 /* LoginModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LoginModel.xcdatamodel; sourceTree = "<group>"; };
+		DC6534AE1718604C00785378 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		DC6534AF1718604C00785378 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		DC6534B11718607B00785378 /* User+SetupUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+SetupUser.h"; sourceTree = "<group>"; };
+		DC6534B21718607B00785378 /* User+SetupUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+SetupUser.m"; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE80B65171784E700A0FE35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCE80B67171784E700A0FE35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -69,6 +77,18 @@
 			name = Storyboards;
 			sourceTree = "<group>";
 		};
+		DC6534B4171867CE00785378 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				DC6534B11718607B00785378 /* User+SetupUser.h */,
+				DC6534B21718607B00785378 /* User+SetupUser.m */,
+				DC6534AB1718600200785378 /* LoginModel.xcdatamodeld */,
+				DC6534AE1718604C00785378 /* User.h */,
+				DC6534AF1718604C00785378 /* User.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		DCE80B59171784E700A0FE35 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +119,7 @@
 		DCE80B6B171784E700A0FE35 /* VisionTrust */ = {
 			isa = PBXGroup;
 			children = (
+				DC6534B4171867CE00785378 /* Core Data */,
 				DC65348A17178EA800785378 /* Storyboards */,
 				DC65349617179CF900785378 /* ViewController.h */,
 				DC65349717179CF900785378 /* ViewController.m */,
@@ -198,6 +219,9 @@
 				DCE80B76171784E700A0FE35 /* AppDelegate.m in Sources */,
 				DC65349817179CF900785378 /* ViewController.m in Sources */,
 				DC65349B17179F0800785378 /* LoginViewController.m in Sources */,
+				DC6534AD1718600200785378 /* LoginModel.xcdatamodeld in Sources */,
+				DC6534B01718604C00785378 /* User.m in Sources */,
+				DC6534B31718607B00785378 /* User+SetupUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +357,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		DC6534AB1718600200785378 /* LoginModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				DC6534AC1718600200785378 /* LoginModel.xcdatamodel */,
+			);
+			currentVersion = DC6534AC1718600200785378 /* LoginModel.xcdatamodel */;
+			path = LoginModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = DCE80B5A171784E700A0FE35 /* Project object */;
 }

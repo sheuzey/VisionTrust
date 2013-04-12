@@ -10,4 +10,6 @@
 
 @interface LoginViewController : UIViewController
 
+@property (nonatomic, strong) UIManagedDocument *loginDatabase;
+
 @end
