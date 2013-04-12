@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DC65348C17178F0400785378 /* VisionTrustLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC65348B17178F0400785378 /* VisionTrustLogo.jpg */; };
+		DC65348F171794B300785378 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC65348E171794B300785378 /* LoginViewController.m */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
 		DCE80B6A171784E700A0FE35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B69171784E700A0FE35 /* CoreGraphics.framework */; };
@@ -24,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		DC65348B17178F0400785378 /* VisionTrustLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = VisionTrustLogo.jpg; sourceTree = "<group>"; };
+		DC65348D171794B300785378 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		DC65348E171794B300785378 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE80B65171784E700A0FE35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCE80B67171784E700A0FE35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				DC65348A17178EA800785378 /* Storyboards */,
-				DCE80B74171784E700A0FE35 /* AppDelegate.h */,
-				DCE80B75171784E700A0FE35 /* AppDelegate.m */,
+				DC65348D171794B300785378 /* LoginViewController.h */,
+				DC65348E171794B300785378 /* LoginViewController.m */,
 				DCE80B83171784E700A0FE35 /* ViewController.h */,
 				DCE80B84171784E700A0FE35 /* ViewController.m */,
 				DCE80B6C171784E700A0FE35 /* Supporting Files */,
@@ -109,6 +112,8 @@
 		DCE80B6C171784E700A0FE35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DCE80B74171784E700A0FE35 /* AppDelegate.h */,
+				DCE80B75171784E700A0FE35 /* AppDelegate.m */,
 				DC65348B17178F0400785378 /* VisionTrustLogo.jpg */,
 				DCE80B6D171784E700A0FE35 /* VisionTrust-Info.plist */,
 				DCE80B6E171784E700A0FE35 /* InfoPlist.strings */,
@@ -192,6 +197,7 @@
 				DCE80B72171784E700A0FE35 /* main.m in Sources */,
 				DCE80B76171784E700A0FE35 /* AppDelegate.m in Sources */,
 				DCE80B85171784E700A0FE35 /* ViewController.m in Sources */,
+				DC65348F171794B300785378 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

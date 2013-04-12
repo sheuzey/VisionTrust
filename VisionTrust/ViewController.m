@@ -9,7 +9,6 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
@@ -17,7 +16,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.navigationController.navigationBarHidden = YES;
+    
+    //Fill background color..
+    [self.view setBackgroundColor:[UIColor colorWithRed:0.0
+                                                  green:0.1
+                                                   blue:0.2
+                                                  alpha:1.0]];
+    sleep(2);
+    
+    [self performSegueWithIdentifier:@"GoToLogin" sender:self];
 }
 
 - (void)didReceiveMemoryWarning
