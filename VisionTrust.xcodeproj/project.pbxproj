@@ -13,6 +13,7 @@
 		DC6534AD1718600200785378 /* LoginModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC6534AB1718600200785378 /* LoginModel.xcdatamodeld */; };
 		DC6534B01718604C00785378 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534AF1718604C00785378 /* User.m */; };
 		DC6534B31718607B00785378 /* User+SetupUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534B21718607B00785378 /* User+SetupUser.m */; };
+		DC6534B6171868DB00785378 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6534B5171868DB00785378 /* CoreData.framework */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
 		DCE80B6A171784E700A0FE35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B69171784E700A0FE35 /* CoreGraphics.framework */; };
@@ -37,6 +38,7 @@
 		DC6534AF1718604C00785378 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		DC6534B11718607B00785378 /* User+SetupUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+SetupUser.h"; sourceTree = "<group>"; };
 		DC6534B21718607B00785378 /* User+SetupUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+SetupUser.m"; sourceTree = "<group>"; };
+		DC6534B5171868DB00785378 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE80B65171784E700A0FE35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCE80B67171784E700A0FE35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC6534B6171868DB00785378 /* CoreData.framework in Frameworks */,
 				DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */,
 				DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */,
 				DCE80B6A171784E700A0FE35 /* CoreGraphics.framework in Frameworks */,
@@ -109,6 +112,7 @@
 		DCE80B64171784E700A0FE35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC6534B5171868DB00785378 /* CoreData.framework */,
 				DCE80B65171784E700A0FE35 /* UIKit.framework */,
 				DCE80B67171784E700A0FE35 /* Foundation.framework */,
 				DCE80B69171784E700A0FE35 /* CoreGraphics.framework */,
