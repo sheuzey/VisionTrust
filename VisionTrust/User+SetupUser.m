@@ -15,10 +15,20 @@
     inManagedObjectContext:(NSManagedObjectContext *)context
 {
     User *user = nil;
-    user = [NSEntityDescription insertNewObjectForEntityForName:@"User"
-                                         inManagedObjectContext:context];
-    user.username = username;
-    user.password = password;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    request.predicate = [NSPredicate predicateWithFormat:@"username = %@", username];
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    
+    if([matches count] == 0) {
+        user = [NSEntityDescription insertNewObjectForEntityForName:@"User"
+                                             inManagedObjectContext:context];
+        user.username = username;
+        user.password = password;
+    } else if([matches count] == 1) {
+        user = [matches lastObject];
+    }
     return user;
 }
 
