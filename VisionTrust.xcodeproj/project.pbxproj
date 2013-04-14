@@ -19,6 +19,7 @@
 		DC6534C9171B08E900785378 /* profile.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534C8171B08E900785378 /* profile.jpeg */; };
 		DC6534CB171B0C5B00785378 /* update.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534CA171B0C5B00785378 /* update.jpeg */; };
 		DC6534CD171B0D5300785378 /* departure.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534CC171B0D5300785378 /* departure.jpeg */; };
+		DC6534D0171B168400785378 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534CF171B168400785378 /* CustomCellBackground.m */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
 		DCE80B6A171784E700A0FE35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B69171784E700A0FE35 /* CoreGraphics.framework */; };
@@ -50,6 +51,8 @@
 		DC6534C8171B08E900785378 /* profile.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profile.jpeg; sourceTree = "<group>"; };
 		DC6534CA171B0C5B00785378 /* update.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = update.jpeg; sourceTree = "<group>"; };
 		DC6534CC171B0D5300785378 /* departure.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = departure.jpeg; sourceTree = "<group>"; };
+		DC6534CE171B168400785378 /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
+		DC6534CF171B168400785378 /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackground.m; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE80B65171784E700A0FE35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCE80B67171784E700A0FE35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,6 +141,8 @@
 				DC65348A17178EA800785378 /* Storyboards */,
 				DC6534C5171B04F700785378 /* Cell.h */,
 				DC6534C6171B04F800785378 /* Cell.m */,
+				DC6534CE171B168400785378 /* CustomCellBackground.h */,
+				DC6534CF171B168400785378 /* CustomCellBackground.m */,
 				DC65349617179CF900785378 /* ViewController.h */,
 				DC65349717179CF900785378 /* ViewController.m */,
 				DC6534B71719D2CA00785378 /* HomeViewController.h */,
@@ -248,6 +253,7 @@
 				DC6534BF171A3C5000785378 /* LoginModel.xcdatamodeld in Sources */,
 				DC6534C2171A3D1200785378 /* User.m in Sources */,
 				DC6534C7171B04F800785378 /* Cell.m in Sources */,
+				DC6534D0171B168400785378 /* CustomCellBackground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

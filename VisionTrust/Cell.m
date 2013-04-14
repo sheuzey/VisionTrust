@@ -7,14 +7,17 @@
 //
 
 #import "Cell.h"
+#import "CustomCellBackground.h"
 
 @implementation Cell
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
+    self = [super initWithCoder:aDecoder];
+    if (self)
+    {
+        CustomCellBackground *backView = [[CustomCellBackground alloc] initWithFrame:CGRectZero];
+        self.selectedBackgroundView = backView;
     }
     return self;
 }
