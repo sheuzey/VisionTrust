@@ -14,6 +14,11 @@
 		DC6534B91719D2CA00785378 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534B81719D2CA00785378 /* HomeViewController.m */; };
 		DC6534BF171A3C5000785378 /* LoginModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC6534BD171A3C5000785378 /* LoginModel.xcdatamodeld */; };
 		DC6534C2171A3D1200785378 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534C1171A3D1200785378 /* User.m */; };
+		DC6534C4171A6ACD00785378 /* signup.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534C3171A6ACD00785378 /* signup.jpeg */; };
+		DC6534C7171B04F800785378 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534C6171B04F800785378 /* Cell.m */; };
+		DC6534C9171B08E900785378 /* profile.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534C8171B08E900785378 /* profile.jpeg */; };
+		DC6534CB171B0C5B00785378 /* update.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534CA171B0C5B00785378 /* update.jpeg */; };
+		DC6534CD171B0D5300785378 /* departure.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534CC171B0D5300785378 /* departure.jpeg */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
 		DCE80B6A171784E700A0FE35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B69171784E700A0FE35 /* CoreGraphics.framework */; };
@@ -39,6 +44,12 @@
 		DC6534BE171A3C5000785378 /* LoginModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LoginModel.xcdatamodel; sourceTree = "<group>"; };
 		DC6534C0171A3D1200785378 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		DC6534C1171A3D1200785378 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		DC6534C3171A6ACD00785378 /* signup.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = signup.jpeg; sourceTree = "<group>"; };
+		DC6534C5171B04F700785378 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
+		DC6534C6171B04F800785378 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
+		DC6534C8171B08E900785378 /* profile.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profile.jpeg; sourceTree = "<group>"; };
+		DC6534CA171B0C5B00785378 /* update.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = update.jpeg; sourceTree = "<group>"; };
+		DC6534CC171B0D5300785378 /* departure.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = departure.jpeg; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE80B65171784E700A0FE35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCE80B67171784E700A0FE35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -125,6 +136,8 @@
 			children = (
 				DC6534B4171867CE00785378 /* Core Data */,
 				DC65348A17178EA800785378 /* Storyboards */,
+				DC6534C5171B04F700785378 /* Cell.h */,
+				DC6534C6171B04F800785378 /* Cell.m */,
 				DC65349617179CF900785378 /* ViewController.h */,
 				DC65349717179CF900785378 /* ViewController.m */,
 				DC6534B71719D2CA00785378 /* HomeViewController.h */,
@@ -137,6 +150,10 @@
 		DCE80B6C171784E700A0FE35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DC6534CC171B0D5300785378 /* departure.jpeg */,
+				DC6534C3171A6ACD00785378 /* signup.jpeg */,
+				DC6534C8171B08E900785378 /* profile.jpeg */,
+				DC6534CA171B0C5B00785378 /* update.jpeg */,
 				DCE80B74171784E700A0FE35 /* AppDelegate.h */,
 				DCE80B75171784E700A0FE35 /* AppDelegate.m */,
 				DC65348B17178F0400785378 /* VisionTrustLogo.jpg */,
@@ -209,6 +226,10 @@
 				DCE80B7F171784E700A0FE35 /* MainStoryboard_iPhone.storyboard in Resources */,
 				DCE80B82171784E700A0FE35 /* MainStoryboard_iPad.storyboard in Resources */,
 				DC65348C17178F0400785378 /* VisionTrustLogo.jpg in Resources */,
+				DC6534C4171A6ACD00785378 /* signup.jpeg in Resources */,
+				DC6534C9171B08E900785378 /* profile.jpeg in Resources */,
+				DC6534CB171B0C5B00785378 /* update.jpeg in Resources */,
+				DC6534CD171B0D5300785378 /* departure.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +247,7 @@
 				DC6534B91719D2CA00785378 /* HomeViewController.m in Sources */,
 				DC6534BF171A3C5000785378 /* LoginModel.xcdatamodeld in Sources */,
 				DC6534C2171A3D1200785378 /* User.m in Sources */,
+				DC6534C7171B04F800785378 /* Cell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

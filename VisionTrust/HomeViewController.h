@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *label;
-@property (strong, nonatomic) NSString *labelText;
+@interface HomeViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) IBOutlet UICollectionView *menuCollection;
 @end

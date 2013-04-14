@@ -22,9 +22,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    //Hide Navigation Bar..
-    self.navigationController.navigationBarHidden = YES;
     
     //Add logo to view..
     UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VisionTrustLogo.jpg"]];
@@ -86,6 +83,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    //Hide Navigation Bar..
+    self.navigationController.navigationBarHidden = YES;
     
     //If database is nil, create it..
     if(!self.loginDatabase){
@@ -175,7 +175,7 @@
     if([segue.identifier isEqualToString:@"GoToMainPage"])
     {
         HomeViewController *hvc = (HomeViewController *)segue.destinationViewController;
-        hvc.labelText = self.fullName;
+        hvc.firstName = self.fullName;
     }
 }
 
