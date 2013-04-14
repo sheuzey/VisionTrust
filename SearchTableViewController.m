@@ -27,6 +27,8 @@
 {
     [super viewDidLoad];
     
+    self.title = @"Search";
+    
     self.dataSource = [[NSArray alloc] initWithObjects:
                        @"One", @"Two", @"Three", @"Four", @"Five",
                        @"Six", @"Seven", @"Eight", @"Nine", @"Ten", @"Eleven", nil];

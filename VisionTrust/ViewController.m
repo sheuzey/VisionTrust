@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "HomeViewController.h"
 #import "User+SetupUser.h"
+#import "Child+SetupChild.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -46,6 +47,7 @@
         //Add sample users to database to test authentication..
         [User userWithUsername:@"steve" andPassword:@"pwd" andFirstName:@"Stephen" andLastName:@"Heuzey" inManagedObjectContext:self.loginDatabase.managedObjectContext];
         [User userWithUsername:@"adam" andPassword:@"pwd" andFirstName:@"Adam" andLastName:@"Oakley" inManagedObjectContext:self.loginDatabase.managedObjectContext];
+        
     }];
 }
 
