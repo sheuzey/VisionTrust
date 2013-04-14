@@ -122,11 +122,27 @@
                     <connections>
                         <outlet property="menuCollection" destination="TQR-9E-Sh6" id="gcC-VC-mkO"/>
                         <outlet property="welcomeLabel" destination="tkn-OW-9sY" id="Rbi-Pi-PSH"/>
+                        <segue destination="7MP-OO-NSI" kind="push" identifier="GoSearch" id="pnL-Vx-rn1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQE-5w-4S9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1236" y="-39"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="DKZ-N5-T68">
+            <objects>
+                <viewController id="7MP-OO-NSI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UlN-AB-0Z2">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6IM-s8-wRP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36v-2Z-car" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1712" y="-39"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="f5b-qf-Oee">
@@ -158,6 +174,7 @@
         <class className="HomeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="logoutButtonPressed:"/>
                 <relationship kind="outlet" name="menuCollection" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
             </relationships>
@@ -170,6 +187,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>

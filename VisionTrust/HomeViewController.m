@@ -25,6 +25,7 @@
     
     //Set welcome label..
     self.welcomeLabel.text = self.firstName;
+    self.title = @"Main Menu";
     
     //Change background color of collection view..
     self.menuCollection.backgroundColor = [UIColor clearColor];
@@ -63,6 +64,12 @@
             break;
     }
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"GoSearch" sender:self];
+    [self.menuCollection deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 
