@@ -68,7 +68,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"GoSearch" sender:self];
+    if ([indexPath row] == 0 || [indexPath row] == 2 || [indexPath row] == 3) {
+        [self performSegueWithIdentifier:@"GoToSearch" sender:self];
+    } else if([indexPath row] == 1) {
+        [self performSegueWithIdentifier:@"GoToPersonal" sender:self];
+    }
     [self.menuCollection deselectItemAtIndexPath:indexPath animated:YES];
 }
 
