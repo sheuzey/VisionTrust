@@ -12,6 +12,8 @@
 
 + (User *)userWithUsername:(NSString *)username
                andPassword:(NSString *)password
+              andFirstName:(NSString *)firstName
+               andLastName:(NSString *)lastName
     inManagedObjectContext:(NSManagedObjectContext *)context
 {
     User *user = nil;
@@ -26,6 +28,9 @@
                                              inManagedObjectContext:context];
         user.username = username;
         user.password = password;
+        user.firstName = firstName;
+        user.lastName = lastName;
+        
     } else if([matches count] == 1) {
         user = [matches lastObject];
     }

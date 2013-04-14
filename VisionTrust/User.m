@@ -13,5 +13,7 @@
 
 @dynamic password;
 @dynamic username;
+@dynamic firstName;
+@dynamic lastName;
 
 @end

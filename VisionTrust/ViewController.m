@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSString *fullName;
 @end
 
 @implementation ViewController
@@ -46,8 +47,8 @@
     [self.loginDatabase.managedObjectContext performBlock:^{
         
         //Add sample users to database to test authentication..
-        [User userWithUsername:@"steve" andPassword:@"heuzey" inManagedObjectContext:self.loginDatabase.managedObjectContext];
-        [User userWithUsername:@"adam" andPassword:@"oakley" inManagedObjectContext:self.loginDatabase.managedObjectContext];
+        [User userWithUsername:@"steve" andPassword:@"pwd" andFirstName:@"Stephen" andLastName:@"Heuzey" inManagedObjectContext:self.loginDatabase.managedObjectContext];
+        [User userWithUsername:@"adam" andPassword:@"pwd" andFirstName:@"Adam" andLastName:@"Oakley" inManagedObjectContext:self.loginDatabase.managedObjectContext];
     }];
 }
 
@@ -142,11 +143,12 @@
         UITextField *passwordField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]] viewWithTag:200];
         
         //If provided password is correct, segue to home controller..
-        if (passwordField.text == user.password) {
+        if ([passwordField.text isEqualToString:user.password]) {
             [self.loginDatabase saveToURL:self.loginDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
                 if(success)
                     NSLog(@"IT SAVED!");
             }];
+            self.fullName = [NSString stringWithFormat:@"Welcome %@", user.firstName];
             [self performSegueWithIdentifier:@"GoToMainPage" sender:self];
         } else {
             
@@ -172,7 +174,8 @@
 {
     if([segue.identifier isEqualToString:@"GoToMainPage"])
     {
-        
+        HomeViewController *hvc = (HomeViewController *)segue.destinationViewController;
+        hvc.labelText = self.fullName;
     }
 }
 

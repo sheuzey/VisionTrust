@@ -12,6 +12,8 @@
 
 + (User *)userWithUsername:(NSString *)username
                andPassword:(NSString *)password
+              andFirstName:(NSString *)firstName
+               andLastName:(NSString *)lastName
     inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
