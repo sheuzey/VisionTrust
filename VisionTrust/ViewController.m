@@ -131,7 +131,7 @@
     UITextField *usernameField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:100];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-    request.predicate = [NSPredicate predicateWithFormat:@"username = %@", usernameField.text];
+    request.predicate = [NSPredicate predicateWithFormat:@"username = %@", [usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     
     NSError *error = nil;
     NSArray *userArray = [self.loginDatabase.managedObjectContext executeFetchRequest:request error:&error];
@@ -205,6 +205,8 @@
         {
             case 0:
                 inputField.placeholder = @"Username";
+                [inputField setAutocorrectionType:UITextAutocorrectionTypeNo];
+                [inputField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
                 
                 //Arbitrary tag value..
                 inputField.tag = 100;
