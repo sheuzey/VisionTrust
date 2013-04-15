@@ -20,12 +20,11 @@
                          city:(NSString *)city
                       picture:(NSString *)picture
                      isActive:(NSNumber *)active
-                           ts:(NSString *)ts
                     inContext:(NSManagedObjectContext *)context
 {
     Child *child = nil;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
-    request.predicate = [NSPredicate predicateWithFormat:@"uniqueID = %d", ID];
+    request.predicate = [NSPredicate predicateWithFormat:@"unique = %d", ID];
     
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];

@@ -10,12 +10,14 @@
 #import "HomeViewController.h"
 #import "User+SetupUser.h"
 #import "Child+SetupChild.h"
+#import "SearchTableViewController.h"
 
 @interface ViewController ()
+
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
-@property (strong, nonatomic) NSString *fullName;
+@property (strong, nonatomic) NSString *labelForHomePage;
 @end
 
 @implementation ViewController
@@ -47,7 +49,13 @@
         //Add sample users to database to test authentication..
         [User userWithUsername:@"steve" andPassword:@"pwd" andFirstName:@"Stephen" andLastName:@"Heuzey" inManagedObjectContext:self.loginDatabase.managedObjectContext];
         [User userWithUsername:@"adam" andPassword:@"pwd" andFirstName:@"Adam" andLastName:@"Oakley" inManagedObjectContext:self.loginDatabase.managedObjectContext];
-        
+        [Child childWithFirstName:@"Julio" LastName:@"Gonzalas" uniqueID:[NSNumber numberWithInteger:1] gender:@"Male" dob:@"4/1/2000" country:@"Mexico" address:@"1 main avenue" city:@"Mexico City" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
+        [Child childWithFirstName:@"Hugo" LastName:@"Chavez" uniqueID:[NSNumber numberWithInteger:2] gender:@"Male" dob:@"7/28/1954" country:@"Venezuala" address:@"5 mansion place" city:@"Major City" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
+        [Child childWithFirstName:@"Kim Jong" LastName:@"Un" uniqueID:[NSNumber numberWithInteger:3] gender:@"Male" dob:@"1/1/1985" country:@"North Korea" address:@"255 Charlie Place" city:@"PyongYang" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
+        [Child childWithFirstName:@"Katie" LastName:@"Smith" uniqueID:[NSNumber numberWithInteger:4] gender:@"Female" dob:@"9/30/2005" country:@"Germany" address:@"2 3rd street" city:@"Berlin" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:0] inContext:self.loginDatabase.managedObjectContext];
+        [Child childWithFirstName:@"Vladimir" LastName:@"Putin" uniqueID:[NSNumber numberWithInteger:5] gender:@"Male" dob:@"10/7/1952" country:@"Russia" address:@"33 Communal Drive" city:@"St. Petersburg" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:0] inContext:self.loginDatabase.managedObjectContext];
+        [Child childWithFirstName:@"William" LastName:@"Brown" uniqueID:[NSNumber numberWithInteger:6] gender:@"Male" dob:@"2/1/1965" country:@"US" address:@"10 cedar road" city:@"Orlando, Florida" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
+        [Child childWithFirstName:@"Stefani" LastName:@"Germanotta" uniqueID:[NSNumber numberWithInteger:7] gender:@"Female" dob:@"3/28/1986" country:@"US" address:@"50 Crazy blvd." city:@"New York City" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
     }];
 }
 
@@ -150,7 +158,7 @@
                 if(success)
                     NSLog(@"IT SAVED!");
             }];
-            self.fullName = [NSString stringWithFormat:@"Welcome %@", user.firstName];
+            self.labelForHomePage = [NSString stringWithFormat:@"Welcome %@", user.firstName];
             [self performSegueWithIdentifier:@"GoToMainPage" sender:self];
         } else {
             
@@ -177,7 +185,8 @@
     if([segue.identifier isEqualToString:@"GoToMainPage"])
     {
         HomeViewController *hvc = (HomeViewController *)segue.destinationViewController;
-        hvc.firstName = self.fullName;
+        hvc.firstName = self.labelForHomePage;
+        hvc.children = [self getArrayOfChildren];
     }
 }
 
@@ -225,6 +234,13 @@
         }
     }
     return cell;
+}
+
+- (NSArray *)getArrayOfChildren
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
+    NSError *error = nil;
+    return [self.loginDatabase.managedObjectContext executeFetchRequest:request error:&error];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

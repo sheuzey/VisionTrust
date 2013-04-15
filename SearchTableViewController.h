@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Child.h"
 
-@interface SearchTableViewController : UITableViewController <UISearchBarDelegate, UISearchDisplayDelegate>
+@interface SearchTableViewController : UITableViewController <UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
-@property (strong, nonatomic) NSArray *dataSource;              //All data..
 @property (strong, nonatomic) NSMutableArray *searchData;       //Data from search..
+@property (strong, nonatomic) NSArray *children;                //Children from database..
 
 @end

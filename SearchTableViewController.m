@@ -7,6 +7,8 @@
 //
 
 #import "SearchTableViewController.h"
+#import "Child.h"
+#import "CustomSearchCell.h"
 
 @interface SearchTableViewController ()
 
@@ -14,25 +16,15 @@
 
 @implementation SearchTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (void)viewWillAppear:(BOOL)animated
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+    [super viewWillAppear:animated];
     
     self.title = @"Search";
     
-    self.dataSource = [[NSArray alloc] initWithObjects:
-                       @"One", @"Two", @"Three", @"Four", @"Five",
-                       @"Six", @"Seven", @"Eight", @"Nine", @"Ten", @"Eleven", nil];
-    self.searchData = [[NSMutableArray alloc] initWithArray:self.dataSource];
+    self.searchData = [[NSMutableArray alloc] initWithArray:self.children];
+    
+    NSLog(@"%d", [self.children count]);
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -41,14 +33,15 @@
         
         //Remove all objects, so as to prevent duplicate data from previous search
         [self.searchData removeAllObjects];
-        [self.searchData addObjectsFromArray:self.dataSource];
+        [self.searchData addObjectsFromArray:self.children];
     } else {
         
         [self.searchData removeAllObjects];
-        for (NSString *string in self.dataSource) {
-            NSRange range = [string rangeOfString:searchText options:NSCaseInsensitiveSearch];
+        for (Child *child in self.children) {
+            NSString *nameString = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
+            NSRange range = [nameString rangeOfString:searchText options:NSCaseInsensitiveSearch];
             if (range.location != NSNotFound) {
-                [self.searchData addObject:string];
+                [self.searchData addObject:child];
             }
         }
     }
@@ -60,12 +53,6 @@
     [self.searchBar resignFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.searchData count];
@@ -74,16 +61,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    CustomSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CustomSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.text = [self.searchData objectAtIndex:indexPath.row];
+    
+    Child *child = [self.searchData objectAtIndex:indexPath.row];
+    cell.image.image = [UIImage imageNamed:child.pictureURL];
+    cell.fullName.text = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
+    cell.cityCountry.text = [NSString stringWithFormat:@"%@, %@", child.city, child.country];
+    
     return cell;
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

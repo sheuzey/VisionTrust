@@ -21,6 +21,6 @@
     </entity>
     <elements>
         <element name="User" positionX="-45" positionY="0" width="128" height="103"/>
-        <element name="Child" positionX="160" positionY="192" width="128" height="210"/>
+        <element name="Child" positionX="142" positionY="-0" width="128" height="210"/>
     </elements>
 </model>

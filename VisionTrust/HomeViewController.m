@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "Cell.h"
+#import "SearchTableViewController.h"
 
 @interface HomeViewController ()
 @end
@@ -76,6 +77,13 @@
     [self.menuCollection deselectItemAtIndexPath:indexPath animated:YES];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"GoToSearch"]) {
+        SearchTableViewController *stvc = (SearchTableViewController *)segue.destinationViewController;
+        stvc.children = self.children;
+    }
+}
 
 - (void)didReceiveMemoryWarning
 {

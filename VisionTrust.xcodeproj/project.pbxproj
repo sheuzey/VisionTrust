@@ -24,6 +24,8 @@
 		DC6534D9171B4BF500785378 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534D8171B4BF500785378 /* SearchTableViewController.m */; };
 		DC6534DC171B62A700785378 /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534DB171B62A700785378 /* Child.m */; };
 		DC6534DF171B63B100785378 /* Child+SetupChild.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534DE171B63B000785378 /* Child+SetupChild.m */; };
+		DC6534E1171B68B500785378 /* child.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534E0171B68B500785378 /* child.jpeg */; };
+		DC6534E7171B8DAC00785378 /* CustomSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534E6171B8DAB00785378 /* CustomSearchCell.m */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
 		DCE80B6A171784E700A0FE35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B69171784E700A0FE35 /* CoreGraphics.framework */; };
@@ -65,6 +67,9 @@
 		DC6534DB171B62A700785378 /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
 		DC6534DD171B63B000785378 /* Child+SetupChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Child+SetupChild.h"; sourceTree = "<group>"; };
 		DC6534DE171B63B000785378 /* Child+SetupChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Child+SetupChild.m"; sourceTree = "<group>"; };
+		DC6534E0171B68B500785378 /* child.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = child.jpeg; sourceTree = "<group>"; };
+		DC6534E5171B8DAB00785378 /* CustomSearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchCell.h; sourceTree = "<group>"; };
+		DC6534E6171B8DAB00785378 /* CustomSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchCell.m; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE80B65171784E700A0FE35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCE80B67171784E700A0FE35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,15 +114,15 @@
 		DC6534B4171867CE00785378 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				DC6534B11718607B00785378 /* User+SetupUser.h */,
-				DC6534B21718607B00785378 /* User+SetupUser.m */,
-				DC6534BD171A3C5000785378 /* LoginModel.xcdatamodeld */,
 				DC6534DA171B62A700785378 /* Child.h */,
 				DC6534DB171B62A700785378 /* Child.m */,
 				DC6534DD171B63B000785378 /* Child+SetupChild.h */,
 				DC6534DE171B63B000785378 /* Child+SetupChild.m */,
+				DC6534BD171A3C5000785378 /* LoginModel.xcdatamodeld */,
 				DC6534C0171A3D1200785378 /* User.h */,
 				DC6534C1171A3D1200785378 /* User.m */,
+				DC6534B11718607B00785378 /* User+SetupUser.h */,
+				DC6534B21718607B00785378 /* User+SetupUser.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -157,6 +162,8 @@
 				DC65348A17178EA800785378 /* Storyboards */,
 				DC6534C5171B04F700785378 /* Cell.h */,
 				DC6534C6171B04F800785378 /* Cell.m */,
+				DC6534E5171B8DAB00785378 /* CustomSearchCell.h */,
+				DC6534E6171B8DAB00785378 /* CustomSearchCell.m */,
 				DC6534CE171B168400785378 /* CustomCellBackground.h */,
 				DC6534CF171B168400785378 /* CustomCellBackground.m */,
 				DC65349617179CF900785378 /* ViewController.h */,
@@ -175,6 +182,7 @@
 		DCE80B6C171784E700A0FE35 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DC6534E0171B68B500785378 /* child.jpeg */,
 				DC6534CC171B0D5300785378 /* departure.jpeg */,
 				DC6534C3171A6ACD00785378 /* signup.jpeg */,
 				DC6534C8171B08E900785378 /* profile.jpeg */,
@@ -255,6 +263,7 @@
 				DC6534C9171B08E900785378 /* profile.jpeg in Resources */,
 				DC6534CB171B0C5B00785378 /* update.jpeg in Resources */,
 				DC6534CD171B0D5300785378 /* departure.jpeg in Resources */,
+				DC6534E1171B68B500785378 /* child.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +287,7 @@
 				DC6534D9171B4BF500785378 /* SearchTableViewController.m in Sources */,
 				DC6534DC171B62A700785378 /* Child.m in Sources */,
 				DC6534DF171B63B100785378 /* Child+SetupChild.m in Sources */,
+				DC6534E7171B8DAC00785378 /* CustomSearchCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

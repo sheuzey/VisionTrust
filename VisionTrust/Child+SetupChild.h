@@ -20,7 +20,6 @@
                          city:(NSString *)city
                       picture:(NSString *)picture
                      isActive:(NSNumber *)active
-                           ts:(NSString *)ts
                     inContext:(NSManagedObjectContext *)context;
 
 @end
