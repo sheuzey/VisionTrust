@@ -22,8 +22,21 @@
     self.title = @"Search";
     
     self.searchData = [[NSMutableArray alloc] initWithArray:self.children];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(keyboardWillAppear) name:UIKeyboardWillShowNotification object:nil];
+    [center addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
     
     NSLog(@"%d", [self.children count]);
+}
+
+- (void)keyboardWillAppear
+{
+    self.searchBar.showsCancelButton = YES;
+}
+
+- (void)keyboardWillHide
+{
+    self.searchBar.showsCancelButton = NO;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
@@ -55,6 +68,8 @@
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+    self.searchBar.text = @"";
+    [self searchBar:self.searchBar textDidChange:self.searchBar.text];
     [self.searchBar resignFirstResponder];
 }
 
