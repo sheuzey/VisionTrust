@@ -16,7 +16,6 @@
 @implementation HomeViewController
 
 - (IBAction)logoutButtonPressed:(id)sender {
-
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

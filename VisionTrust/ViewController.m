@@ -117,11 +117,13 @@
                      animations:^(void) {
                          //Move logo frame up..
                          [[self.view.subviews lastObject] setCenter:CGPointMake(self.view.center.x,
-                                                                               self.view.center.y - 150)];
+                                                                               self.view.center.y - 160)];
                      }
                      completion:^(BOOL finished){
                          [UIView animateWithDuration:0.3
                                           animations:^(void){
+                                              UIView *logoView = [self.view.subviews lastObject];
+                                              [self.loginTable setCenter:CGPointMake(self.view.center.x, logoView.center.y + 150)];
                                               [self.loginTable setAlpha:1.0];
                                               [self.loginButton setAlpha:1.0];
                                           }];

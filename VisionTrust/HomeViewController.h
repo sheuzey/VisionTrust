@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class HomeViewController;
-
 @interface HomeViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;

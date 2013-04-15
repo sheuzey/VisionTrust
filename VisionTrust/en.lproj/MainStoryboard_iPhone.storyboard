@@ -227,6 +227,7 @@
         <!--Navigation Controller-->
         <scene sceneID="f5b-qf-Oee">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5jw-xS-ocV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="yzy-WF-Gfd" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="49B-pM-53y">
@@ -238,7 +239,6 @@
                         <segue destination="2" kind="relationship" relationship="rootViewController" id="COQ-ZS-aKC"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5jw-xS-ocV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="193" y="-39"/>
         </scene>
@@ -286,9 +286,6 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
-        </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
@@ -304,6 +301,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="g0f-4n-Shq"/>
+        <segue reference="mdk-e1-6eH"/>
     </inferredMetricsTieBreakers>
 </document>
