@@ -115,7 +115,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Log out" id="hGX-tv-RL5">
                             <color key="tintColor" red="0.42944834183673475" green="0.0095122990603635025" blue="0.0048520491980973048" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="logoutButtonPressed:" destination="fGz-60-l55" id="917-Yi-rKT"/>
+                                <action selector="logoutButtonPressed:" destination="fGz-60-l55" id="qNl-to-ZiG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -285,6 +285,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>

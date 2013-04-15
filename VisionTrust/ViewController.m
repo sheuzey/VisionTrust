@@ -23,25 +23,10 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    //Add logo to view..
-    UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VisionTrustLogo.jpg"]];
-    [logoView setCenter:CGPointMake(self.view.center.x, self.view.center.y - 30)];
-    [self.view addSubview:logoView];
-    
-    //Set button and table alpha to 0..
-    [self.loginTable setAlpha:0.0];
-    [self.loginButton setAlpha:0.0];
-    [self.loginButton setTitle:@"Logging In" forState:UIControlStateSelected];
-    
-    //Set table background color and disable scrolling..
-    self.loginTable.backgroundView = nil;
-    self.loginTable.scrollEnabled = NO;
-    self.loginTable.backgroundColor = self.view.backgroundColor;
-}
+#define LOGO_TAG 100
+#define USERNAME_TAG 100
+#define PASSWORD_TAG 200
+
 
 - (void)insertSampleData
 {
@@ -91,9 +76,31 @@
     }
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    //Set title of login button when selected..
+    [self.loginButton setTitle:@"Logging In" forState:UIControlStateSelected];
+    
+    //Clear the table background view and disable scrolling..
+    self.loginTable.backgroundView = nil;
+    self.loginTable.scrollEnabled = NO;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    //Create logo view, set its tag and add as subview..
+    UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VisionTrustLogo.jpg"]];
+    [logoView setCenter:CGPointMake(self.view.center.x, self.view.center.y - 30)];
+    [logoView setTag:LOGO_TAG];
+    [self.view addSubview:logoView];
+    
+    //Set button and table alpha to 0..
+    [self.loginTable setAlpha:0.0];
+    [self.loginButton setAlpha:0.0];
     
     //Hide Navigation Bar..
     self.navigationController.navigationBarHidden = YES;
@@ -141,7 +148,7 @@
     self.loginButton.titleLabel.text = @"Logging in";
     
     //Retrieve user from db..
-    UITextField *usernameField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:100];
+    UITextField *usernameField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:USERNAME_TAG];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.predicate = [NSPredicate predicateWithFormat:@"username = %@", [usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
@@ -153,7 +160,7 @@
     
     //If exists, authenticate..
     if(user) {
-        UITextField *passwordField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]] viewWithTag:200];
+        UITextField *passwordField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]] viewWithTag:PASSWORD_TAG];
         
         //If provided password is correct, segue to home controller..
         if ([passwordField.text isEqualToString:user.password]) {
@@ -223,7 +230,7 @@
                 [inputField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
                 
                 //Arbitrary tag value..
-                inputField.tag = 100;
+                inputField.tag = USERNAME_TAG;
                 [cell addSubview:inputField];
                 break;
             case 1:
@@ -231,7 +238,7 @@
                 inputField.secureTextEntry = YES;
                 
                 //Arbitrary tag value..
-                inputField.tag = 200;
+                inputField.tag = PASSWORD_TAG;
                 [cell addSubview:inputField];
                 break;
         }
@@ -250,6 +257,33 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    for (UIView *view in self.view.subviews) {
+        if (view.tag == LOGO_TAG) {
+            [view removeFromSuperview];
+            break;
+        }
+    }
+    
+    //Set button and table alpha to 0..
+    [self.loginTable setAlpha:0.0];
+    [self.loginButton setAlpha:0.0];
+    
+    //Retrieve password text field, clear text, and replace back into cell..
+    NSIndexPath *passwordCellPath = [NSIndexPath indexPathForRow:1 inSection:0];
+    UITextField *passwordField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:passwordCellPath] viewWithTag:PASSWORD_TAG];
+    passwordField.text = nil;
+    for (UIView *view in [[self.loginTable cellForRowAtIndexPath:passwordCellPath] subviews]) {
+        if (view.tag == PASSWORD_TAG) {
+            [view removeFromSuperview];
+            [[self.loginTable cellForRowAtIndexPath:passwordCellPath] addSubview:passwordField];
+            break;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
