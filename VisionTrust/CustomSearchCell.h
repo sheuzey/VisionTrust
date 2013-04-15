@@ -13,5 +13,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 @property (strong, nonatomic) IBOutlet UILabel *fullName;
 @property (strong, nonatomic) IBOutlet UILabel *cityCountry;
+@property (strong, nonatomic) IBOutlet UILabel *project;
 
 @end

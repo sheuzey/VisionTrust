@@ -11,7 +11,6 @@
 #import "CustomSearchCell.h"
 
 @interface SearchTableViewController ()
-
 @end
 
 @implementation SearchTableViewController
@@ -36,6 +35,7 @@
         [self.searchData addObjectsFromArray:self.children];
     } else {
         
+        //if the search text matches anywhere within a childs full name, add to search table and reload table data
         [self.searchData removeAllObjects];
         for (Child *child in self.children) {
             NSString *nameString = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
@@ -53,6 +53,11 @@
     [self.searchBar resignFirstResponder];
 }
 
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchBar resignFirstResponder];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.searchData count];
@@ -63,7 +68,7 @@
     static NSString *CellIdentifier = @"Cell";
     CustomSearchCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    // Configure cell...
     if (!cell) {
         cell = [[CustomSearchCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
@@ -72,6 +77,8 @@
     cell.image.image = [UIImage imageNamed:child.pictureURL];
     cell.fullName.text = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
     cell.cityCountry.text = [NSString stringWithFormat:@"%@, %@", child.city, child.country];
+    cell.project.text = @"Some project";
+    [cell.contentView setBackgroundColor:[UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:238.0/255.0 alpha:1]];
     
     return cell;
 }
@@ -84,13 +91,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSegueWithIdentifier:@"go" sender:self];
 }
 
 @end

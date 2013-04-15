@@ -134,46 +134,50 @@
         <scene sceneID="NgD-SC-rhE">
             <objects>
                 <tableViewController id="kHd-nU-wgm" customClass="SearchTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="136" sectionHeaderHeight="22" sectionFooterHeight="22" id="wzf-GP-b82">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="120" sectionHeaderHeight="22" sectionFooterHeight="22" id="wzf-GP-b82">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="Tqt-Bg-Ibs">
+                        <searchBar key="tableHeaderView" contentMode="redraw" showsCancelButton="YES" id="Tqt-Bg-Ibs">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
                             <connections>
                                 <outlet property="delegate" destination="kHd-nU-wgm" id="boc-fi-brK"/>
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="136" id="5Pd-h8-j4M" customClass="CustomSearchCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="136"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="5Pd-h8-j4M" customClass="CustomSearchCell">
+                                <rect key="frame" x="0.0" y="66" width="320" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="119"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="tQW-Ya-9Sj">
-                                            <rect key="frame" x="20" y="20" width="95" height="95"/>
+                                            <rect key="frame" x="20" y="20" width="79" height="79"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gJJ-H4-hFb">
-                                            <rect key="frame" x="139" y="20" width="143" height="21"/>
+                                            <rect key="frame" x="107" y="20" width="143" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qSn-Jd-3PN">
-                                            <rect key="frame" x="139" y="57" width="143" height="21"/>
+                                            <rect key="frame" x="107" y="49" width="143" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="q1s-qH-lut">
-                                            <rect key="frame" x="139" y="94" width="143" height="21"/>
+                                            <rect key="frame" x="107" y="78" width="143" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -186,6 +190,7 @@
                                     <outlet property="cityCountry" destination="qSn-Jd-3PN" id="oiF-Q1-2hi"/>
                                     <outlet property="fullName" destination="gJJ-H4-hFb" id="I8B-7d-bbB"/>
                                     <outlet property="image" destination="tQW-Ya-9Sj" id="YBe-cv-SsC"/>
+                                    <outlet property="project" destination="q1s-qH-lut" id="eUr-jW-98b"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -197,6 +202,7 @@
                     <navigationItem key="navigationItem" id="Z1v-E8-87c"/>
                     <connections>
                         <outlet property="searchBar" destination="Tqt-Bg-Ibs" id="OOq-hs-U1q"/>
+                        <segue destination="s9r-Du-Gmt" kind="push" identifier="go" id="g0f-4n-Shq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adv-zg-dnQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -251,11 +257,13 @@
                 <relationship kind="outlet" name="cityCountry" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="fullName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="project" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="HomeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="logoutButtonPressed:"/>
                 <relationship kind="outlet" name="menuCollection" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
             </relationships>
@@ -284,7 +292,6 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="action" name="loginButtonWasPressed:"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginTable" candidateClass="UITableView"/>
             </relationships>
@@ -295,4 +302,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="g0f-4n-Shq"/>
+    </inferredMetricsTieBreakers>
 </document>
