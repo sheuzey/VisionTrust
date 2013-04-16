@@ -17,7 +17,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+}
+
+- (IBAction)searchButtonPressed:(id)sender {
+    [self.delegate exitAdvancedSearch];
 }
 
 - (void)didReceiveMemoryWarning

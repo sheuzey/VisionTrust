@@ -92,11 +92,13 @@
     
     Child *child = [self.searchData objectAtIndex:indexPath.row];
     cell.image.image = [UIImage imageNamed:child.pictureURL];
+    
     //Round edges of picture..
     cell.image.layer.masksToBounds = YES;
     cell.image.layer.cornerRadius = 5.0;
-    cell.image.layer.borderWidth = 1.0;
+    cell.image.layer.borderWidth = 2.5;
     cell.image.layer.borderColor = [[UIColor blackColor] CGColor];
+    
     cell.fullName.text = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
     cell.cityCountry.text = [NSString stringWithFormat:@"%@, %@", child.city, child.country];
     cell.project.text = @"Some project";
