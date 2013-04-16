@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import <QuartzCore/QuartzCore.h>
 #import "Cell.h"
 #import "SearchTableViewController.h"
 
@@ -44,6 +45,10 @@
 {
     static NSString *CellIdentifier = @"Cell";
     Cell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
+    cell.image.layer.masksToBounds = YES;
+    cell.image.layer.cornerRadius = 10.0;
+    cell.image.layer.borderWidth = 5.0;
+    cell.image.layer.borderColor = [[UIColor blackColor] CGColor];
     
     switch ([indexPath row]) {
         case 0:

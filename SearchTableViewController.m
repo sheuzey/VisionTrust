@@ -7,10 +7,12 @@
 //
 
 #import "SearchTableViewController.h"
+#import <QuartzCore/QuartzCore.h>
 #import "Child.h"
 #import "CustomSearchCell.h"
+#import "AdvancedSearchViewController.h"
 
-@interface SearchTableViewController ()
+@interface SearchTableViewController () <QuitAdvancedSearchProtocol>
 @end
 
 @implementation SearchTableViewController
@@ -90,12 +92,30 @@
     
     Child *child = [self.searchData objectAtIndex:indexPath.row];
     cell.image.image = [UIImage imageNamed:child.pictureURL];
+    //Round edges of picture..
+    cell.image.layer.masksToBounds = YES;
+    cell.image.layer.cornerRadius = 5.0;
+    cell.image.layer.borderWidth = 1.0;
+    cell.image.layer.borderColor = [[UIColor blackColor] CGColor];
     cell.fullName.text = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
     cell.cityCountry.text = [NSString stringWithFormat:@"%@, %@", child.city, child.country];
     cell.project.text = @"Some project";
-    [cell.contentView setBackgroundColor:[UIColor colorWithRed:226.0/255.0 green:231.0/255.0 blue:238.0/255.0 alpha:1]];
+    [cell.contentView setBackgroundColor:[UIColor colorWithRed:205.0/255.0 green:201.0/255.0 blue:201.0/255.0 alpha:1]];
     
     return cell;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"GoToAdvancedSearch"]) {
+        AdvancedSearchViewController *asvc = (AdvancedSearchViewController *)segue.destinationViewController;
+        asvc.delegate = self;
+    }
+}
+
+- (void)exitAdvancedSearch
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
