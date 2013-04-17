@@ -2,20 +2,18 @@
 //  User.m
 //  VisionTrust
 //
-//  Created by Programming on 4/17/13.
+//  Created by Stephen Heuzey on 4/13/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
 #import "User.h"
-#import "UserType.h"
 
 
 @implementation User
 
-@dynamic firstName;
-@dynamic lastName;
 @dynamic password;
 @dynamic username;
-@dynamic typeHeld;
+@dynamic firstName;
+@dynamic lastName;
 
 @end
