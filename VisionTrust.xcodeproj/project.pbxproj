@@ -7,17 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D585803A171E5BD000EF0E58 /* GuardianStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = D5858039171E5BD000EF0E58 /* GuardianStatus.m */; };
-		D585803D171E5BD000EF0E58 /* Guardian.m in Sources */ = {isa = PBXBuildFile; fileRef = D585803C171E5BD000EF0E58 /* Guardian.m */; };
-		D5858040171E5BD000EF0E58 /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = D585803F171E5BD000EF0E58 /* Child.m */; };
-		D5858043171E5BD000EF0E58 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D5858042171E5BD000EF0E58 /* User.m */; };
-		D5858046171E5BD000EF0E58 /* UserType.m in Sources */ = {isa = PBXBuildFile; fileRef = D5858045171E5BD000EF0E58 /* UserType.m */; };
 		DC65348C17178F0400785378 /* VisionTrustLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC65348B17178F0400785378 /* VisionTrustLogo.jpg */; };
 		DC65349817179CF900785378 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC65349717179CF900785378 /* ViewController.m */; };
 		DC6534B31718607B00785378 /* User+SetupUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534B21718607B00785378 /* User+SetupUser.m */; };
 		DC6534B6171868DB00785378 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6534B5171868DB00785378 /* CoreData.framework */; };
 		DC6534B91719D2CA00785378 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534B81719D2CA00785378 /* HomeViewController.m */; };
 		DC6534BF171A3C5000785378 /* LoginModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DC6534BD171A3C5000785378 /* LoginModel.xcdatamodeld */; };
+		DC6534C2171A3D1200785378 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534C1171A3D1200785378 /* User.m */; };
 		DC6534C4171A6ACD00785378 /* signup.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534C3171A6ACD00785378 /* signup.jpeg */; };
 		DC6534C7171B04F800785378 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534C6171B04F800785378 /* Cell.m */; };
 		DC6534C9171B08E900785378 /* profile.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534C8171B08E900785378 /* profile.jpeg */; };
@@ -26,6 +22,7 @@
 		DC6534D0171B168400785378 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534CF171B168400785378 /* CustomCellBackground.m */; };
 		DC6534D6171B484600785378 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534D5171B484600785378 /* PersonalViewController.m */; };
 		DC6534D9171B4BF500785378 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534D8171B4BF500785378 /* SearchTableViewController.m */; };
+		DC6534DC171B62A700785378 /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534DB171B62A700785378 /* Child.m */; };
 		DC6534DF171B63B100785378 /* Child+SetupChild.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534DE171B63B000785378 /* Child+SetupChild.m */; };
 		DC6534E1171B68B500785378 /* child.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534E0171B68B500785378 /* child.jpeg */; };
 		DC6534E7171B8DAC00785378 /* CustomSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534E6171B8DAB00785378 /* CustomSearchCell.m */; };
@@ -45,16 +42,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D5858038171E5BD000EF0E58 /* GuardianStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianStatus.h; sourceTree = "<group>"; };
-		D5858039171E5BD000EF0E58 /* GuardianStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianStatus.m; sourceTree = "<group>"; };
-		D585803B171E5BD000EF0E58 /* Guardian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Guardian.h; sourceTree = "<group>"; };
-		D585803C171E5BD000EF0E58 /* Guardian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Guardian.m; sourceTree = "<group>"; };
-		D585803E171E5BD000EF0E58 /* Child.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Child.h; sourceTree = "<group>"; };
-		D585803F171E5BD000EF0E58 /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
-		D5858041171E5BD000EF0E58 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		D5858042171E5BD000EF0E58 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		D5858044171E5BD000EF0E58 /* UserType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserType.h; sourceTree = "<group>"; };
-		D5858045171E5BD000EF0E58 /* UserType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserType.m; sourceTree = "<group>"; };
 		DC65348B17178F0400785378 /* VisionTrustLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = VisionTrustLogo.jpg; sourceTree = "<group>"; };
 		DC65349617179CF900785378 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		DC65349717179CF900785378 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -64,6 +51,8 @@
 		DC6534B71719D2CA00785378 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		DC6534B81719D2CA00785378 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		DC6534BE171A3C5000785378 /* LoginModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LoginModel.xcdatamodel; sourceTree = "<group>"; };
+		DC6534C0171A3D1200785378 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		DC6534C1171A3D1200785378 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		DC6534C3171A6ACD00785378 /* signup.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = signup.jpeg; sourceTree = "<group>"; };
 		DC6534C5171B04F700785378 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cell.h; sourceTree = "<group>"; };
 		DC6534C6171B04F800785378 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cell.m; sourceTree = "<group>"; };
@@ -76,6 +65,8 @@
 		DC6534D5171B484600785378 /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
 		DC6534D7171B4BF500785378 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTableViewController.h; path = ../SearchTableViewController.h; sourceTree = "<group>"; };
 		DC6534D8171B4BF500785378 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTableViewController.m; path = ../SearchTableViewController.m; sourceTree = "<group>"; };
+		DC6534DA171B62A700785378 /* Child.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Child.h; sourceTree = "<group>"; };
+		DC6534DB171B62A700785378 /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
 		DC6534DD171B63B000785378 /* Child+SetupChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Child+SetupChild.h"; sourceTree = "<group>"; };
 		DC6534DE171B63B000785378 /* Child+SetupChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Child+SetupChild.m"; sourceTree = "<group>"; };
 		DC6534E0171B68B500785378 /* child.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = child.jpeg; sourceTree = "<group>"; };
@@ -129,19 +120,13 @@
 		DC6534B4171867CE00785378 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				DC6534DA171B62A700785378 /* Child.h */,
+				DC6534DB171B62A700785378 /* Child.m */,
 				DC6534DD171B63B000785378 /* Child+SetupChild.h */,
 				DC6534DE171B63B000785378 /* Child+SetupChild.m */,
 				DC6534BD171A3C5000785378 /* LoginModel.xcdatamodeld */,
-				D5858044171E5BD000EF0E58 /* UserType.h */,
-				D5858045171E5BD000EF0E58 /* UserType.m */,
-				D5858041171E5BD000EF0E58 /* User.h */,
-				D5858042171E5BD000EF0E58 /* User.m */,
-				D585803E171E5BD000EF0E58 /* Child.h */,
-				D585803F171E5BD000EF0E58 /* Child.m */,
-				D585803B171E5BD000EF0E58 /* Guardian.h */,
-				D585803C171E5BD000EF0E58 /* Guardian.m */,
-				D5858038171E5BD000EF0E58 /* GuardianStatus.h */,
-				D5858039171E5BD000EF0E58 /* GuardianStatus.m */,
+				DC6534C0171A3D1200785378 /* User.h */,
+				DC6534C1171A3D1200785378 /* User.m */,
 				DC6534B11718607B00785378 /* User+SetupUser.h */,
 				DC6534B21718607B00785378 /* User+SetupUser.m */,
 			);
@@ -304,22 +289,15 @@
 				DC6534B31718607B00785378 /* User+SetupUser.m in Sources */,
 				DC6534B91719D2CA00785378 /* HomeViewController.m in Sources */,
 				DC6534BF171A3C5000785378 /* LoginModel.xcdatamodeld in Sources */,
+				DC6534C2171A3D1200785378 /* User.m in Sources */,
 				DC6534C7171B04F800785378 /* Cell.m in Sources */,
 				DC6534D0171B168400785378 /* CustomCellBackground.m in Sources */,
 				DC6534D6171B484600785378 /* PersonalViewController.m in Sources */,
 				DC6534D9171B4BF500785378 /* SearchTableViewController.m in Sources */,
+				DC6534DC171B62A700785378 /* Child.m in Sources */,
 				DC6534DF171B63B100785378 /* Child+SetupChild.m in Sources */,
 				DC6534E7171B8DAC00785378 /* CustomSearchCell.m in Sources */,
-<<<<<<< HEAD
 				DC9726FD171E2E1B00852350 /* AdvancedSearchViewController.m in Sources */,
-=======
-				DC6534EA171CC57D00785378 /* AdvancedSearchViewController.m in Sources */,
-				D585803A171E5BD000EF0E58 /* GuardianStatus.m in Sources */,
-				D585803D171E5BD000EF0E58 /* Guardian.m in Sources */,
-				D5858040171E5BD000EF0E58 /* Child.m in Sources */,
-				D5858043171E5BD000EF0E58 /* User.m in Sources */,
-				D5858046171E5BD000EF0E58 /* UserType.m in Sources */,
->>>>>>> Added Guardian, UserType, and Guardian Classes to data model
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
