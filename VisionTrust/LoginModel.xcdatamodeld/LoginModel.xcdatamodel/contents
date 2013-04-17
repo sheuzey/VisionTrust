@@ -12,6 +12,24 @@
         <attribute name="pictureURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ts" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="hasGuardian" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Guardian" inverseName="guardianOf" inverseEntity="Guardian" syncable="YES"/>
+    </entity>
+    <entity name="Guardian" representedClassName="Guardian" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="occupation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="relationToChild" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="guardianOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="hasGuardian" inverseEntity="Child" syncable="YES"/>
+        <relationship name="hasGuardianStatus" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GuardianStatus" inverseName="guardianStatusOf" inverseEntity="GuardianStatus" syncable="YES"/>
+        <relationship name="hasOccupationType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="OccupationType" inverseName="occupationTypeOf" inverseEntity="OccupationType" syncable="YES"/>
+    </entity>
+    <entity name="GuardianStatus" representedClassName="GuardianStatus" syncable="YES">
+        <attribute name="guardianStatusDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="guardianStatusOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Guardian" inverseName="hasGuardianStatus" inverseEntity="Guardian" syncable="YES"/>
+    </entity>
+    <entity name="OccupationType" representedClassName="OccupationType" syncable="YES">
+        <attribute name="occupationTypeDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="occupationTypeOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Guardian" inverseName="hasOccupationType" inverseEntity="Guardian" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,14 +38,16 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="inType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserType" inverseName="heldBy" inverseEntity="UserType" syncable="YES"/>
     </entity>
-    <entity name="UserType" syncable="YES">
+    <entity name="UserType" representedClassName="UserType" syncable="YES">
         <attribute name="userTypeDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userTypeID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="heldBy" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="inType" inverseEntity="User" syncable="YES"/>
+        <relationship name="heldBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="inType" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Child" positionX="142" positionY="-0" width="128" height="210"/>
-        <element name="User" positionX="-72" positionY="105" width="128" height="120"/>
-        <element name="UserType" positionX="133" positionY="225" width="128" height="90"/>
+        <element name="Child" positionX="126" positionY="87" width="128" height="225"/>
+        <element name="User" positionX="-153" positionY="105" width="128" height="120"/>
+        <element name="UserType" positionX="34" positionY="369" width="128" height="75"/>
+        <element name="Guardian" positionX="342" positionY="99" width="128" height="150"/>
+        <element name="OccupationType" positionX="558" positionY="216" width="128" height="75"/>
+        <element name="GuardianStatus" positionX="558" positionY="126" width="128" height="75"/>
     </elements>
 </model>

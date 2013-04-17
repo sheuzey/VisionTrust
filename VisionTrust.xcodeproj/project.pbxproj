@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D50FF8F9171E669A00EFE78F /* UserType.m in Sources */ = {isa = PBXBuildFile; fileRef = D50FF8F8171E669A00EFE78F /* UserType.m */; };
+		D50FF905171E680600EFE78F /* Guardian.m in Sources */ = {isa = PBXBuildFile; fileRef = D50FF904171E680600EFE78F /* Guardian.m */; };
+		D50FF914171E69E400EFE78F /* OccupationType.m in Sources */ = {isa = PBXBuildFile; fileRef = D50FF913171E69E400EFE78F /* OccupationType.m */; };
+		D50FF917171E69E400EFE78F /* GuardianStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = D50FF916171E69E400EFE78F /* GuardianStatus.m */; };
 		DC65348C17178F0400785378 /* VisionTrustLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC65348B17178F0400785378 /* VisionTrustLogo.jpg */; };
 		DC65349817179CF900785378 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC65349717179CF900785378 /* ViewController.m */; };
 		DC6534B31718607B00785378 /* User+SetupUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534B21718607B00785378 /* User+SetupUser.m */; };
@@ -42,6 +46,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D50FF8F7171E669A00EFE78F /* UserType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserType.h; sourceTree = "<group>"; };
+		D50FF8F8171E669A00EFE78F /* UserType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserType.m; sourceTree = "<group>"; };
+		D50FF903171E680600EFE78F /* Guardian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Guardian.h; sourceTree = "<group>"; };
+		D50FF904171E680600EFE78F /* Guardian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Guardian.m; sourceTree = "<group>"; };
+		D50FF912171E69E400EFE78F /* OccupationType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OccupationType.h; sourceTree = "<group>"; };
+		D50FF913171E69E400EFE78F /* OccupationType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationType.m; sourceTree = "<group>"; };
+		D50FF915171E69E400EFE78F /* GuardianStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianStatus.h; sourceTree = "<group>"; };
+		D50FF916171E69E400EFE78F /* GuardianStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianStatus.m; sourceTree = "<group>"; };
 		DC65348B17178F0400785378 /* VisionTrustLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = VisionTrustLogo.jpg; sourceTree = "<group>"; };
 		DC65349617179CF900785378 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		DC65349717179CF900785378 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -125,6 +137,14 @@
 				DC6534DD171B63B000785378 /* Child+SetupChild.h */,
 				DC6534DE171B63B000785378 /* Child+SetupChild.m */,
 				DC6534BD171A3C5000785378 /* LoginModel.xcdatamodeld */,
+				D50FF915171E69E400EFE78F /* GuardianStatus.h */,
+				D50FF916171E69E400EFE78F /* GuardianStatus.m */,
+				D50FF912171E69E400EFE78F /* OccupationType.h */,
+				D50FF913171E69E400EFE78F /* OccupationType.m */,
+				D50FF903171E680600EFE78F /* Guardian.h */,
+				D50FF904171E680600EFE78F /* Guardian.m */,
+				D50FF8F7171E669A00EFE78F /* UserType.h */,
+				D50FF8F8171E669A00EFE78F /* UserType.m */,
 				DC6534C0171A3D1200785378 /* User.h */,
 				DC6534C1171A3D1200785378 /* User.m */,
 				DC6534B11718607B00785378 /* User+SetupUser.h */,
@@ -298,6 +318,10 @@
 				DC6534DF171B63B100785378 /* Child+SetupChild.m in Sources */,
 				DC6534E7171B8DAC00785378 /* CustomSearchCell.m in Sources */,
 				DC6534EA171CC57D00785378 /* AdvancedSearchViewController.m in Sources */,
+				D50FF8F9171E669A00EFE78F /* UserType.m in Sources */,
+				D50FF905171E680600EFE78F /* Guardian.m in Sources */,
+				D50FF914171E69E400EFE78F /* OccupationType.m in Sources */,
+				D50FF917171E69E400EFE78F /* GuardianStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

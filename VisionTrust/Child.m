@@ -2,25 +2,27 @@
 //  Child.m
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/14/13.
+//  Created by Programming on 4/17/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
 #import "Child.h"
+#import "Guardian.h"
 
 
 @implementation Child
 
-@dynamic unique;
-@dynamic firstName;
-@dynamic lastName;
-@dynamic gender;
-@dynamic dob;
-@dynamic country;
 @dynamic address;
 @dynamic city;
-@dynamic pictureURL;
+@dynamic country;
+@dynamic dob;
+@dynamic firstName;
+@dynamic gender;
 @dynamic isActive;
+@dynamic lastName;
+@dynamic pictureURL;
 @dynamic ts;
+@dynamic unique;
+@dynamic hasGuardian;
 
 @end
