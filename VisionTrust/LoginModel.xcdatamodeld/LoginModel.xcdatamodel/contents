@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Child" representedClassName="Child" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,9 +18,16 @@
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserType" inverseName="heldBy" inverseEntity="UserType" syncable="YES"/>
+    </entity>
+    <entity name="UserType" syncable="YES">
+        <attribute name="userTypeDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userTypeID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="heldBy" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="inType" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-45" positionY="0" width="128" height="103"/>
         <element name="Child" positionX="142" positionY="-0" width="128" height="210"/>
+        <element name="User" positionX="-72" positionY="105" width="128" height="120"/>
+        <element name="UserType" positionX="133" positionY="225" width="128" height="90"/>
     </elements>
 </model>
