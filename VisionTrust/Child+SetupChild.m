@@ -34,7 +34,7 @@
                                              inManagedObjectContext:context];
         child.firstName = fName;
         child.lastName = lName;
-        child.unique = ID;
+        child.childID = ID;
         child.gender = gender;
         child.dob = dob;
         child.country = country;
