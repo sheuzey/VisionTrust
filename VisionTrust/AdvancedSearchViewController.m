@@ -22,6 +22,8 @@
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     [self.actionSheet setActionSheetStyle:UIActionSheetStyleBlackOpaque];
     
+    self.pickerToolBar = [[UIToolbar alloc] init];
+    [self.pickerToolBar setBarStyle:UIBarStyleBlack];
     
     self.pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, 0, 0)];
     self.pickerView.showsSelectionIndicator = YES;
@@ -46,9 +48,11 @@
         }
     }
     [self.actionSheet addSubview:self.pickerView];
+
+    //Add items to toolbar..
     
     
-    
+    [self.actionSheet addSubview:self.pickerToolBar];
     [self.actionSheet showInView:self.view];
     [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height + 30)];
 }
