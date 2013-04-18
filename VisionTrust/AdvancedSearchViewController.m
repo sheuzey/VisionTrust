@@ -41,7 +41,7 @@
 
 - (void)cancelButtonPressed
 {
-    
+    [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 - (void)doneButtonPressed
@@ -61,7 +61,7 @@
 
     //Cancel Button..
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
-    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed:)];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)];
     cancelButton.tag = CANCEL_BUTTON_TAG;
     
     //Title Label..
@@ -74,7 +74,7 @@
     UIBarButtonItem *titleButton = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
     
     //Done Button..
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed:)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
     doneButton.tag = DONE_BUTTON_TAG;
     
     //Add to array, then add to toolbar..
