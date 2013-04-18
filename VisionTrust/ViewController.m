@@ -11,6 +11,7 @@
 #import "User+SetupUser.h"
 #import "Child+SetupChild.h"
 #import "SearchTableViewController.h"
+#import "VisionTrustDatabase.h"
 
 @interface ViewController ()
 
@@ -28,7 +29,7 @@
 #define PASSWORD_TAG 200
 
 
-- (void)insertSampleData
+/*- (void)insertSampleData
 {
     [self.loginDatabase.managedObjectContext performBlock:^{
         
@@ -74,7 +75,7 @@
         _loginDatabase = loginDatabase;
         [self useDocument];
     }
-}
+}*/
 
 - (void)viewDidLoad
 {
@@ -105,7 +106,7 @@
     //Hide Navigation Bar..
     self.navigationController.navigationBarHidden = YES;
     
-    //If database is nil, create it..
+    /*//If database is nil, create it..
     if(!self.loginDatabase){
         
         //Get documents directory for database file..
@@ -114,7 +115,7 @@
         //Append the name of the database to use..
         url = [url URLByAppendingPathComponent:@"Default Login Database"];
         self.loginDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
-    }
+    }*/
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -150,13 +151,15 @@
     //Retrieve user from db..
     UITextField *usernameField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:USERNAME_TAG];
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
+    /*NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
     request.predicate = [NSPredicate predicateWithFormat:@"username = %@", [usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
     
     NSError *error = nil;
     NSArray *userArray = [self.loginDatabase.managedObjectContext executeFetchRequest:request error:&error];
 
-    User *user = [userArray lastObject];
+    User *user = [userArray lastObject];*/
+
+    User *user = [VisionTrustDatabase getUserByUsername:usernameField.text];
     
     //If exists, authenticate..
     if(user) {
@@ -164,10 +167,10 @@
         
         //If provided password is correct, segue to home controller..
         if ([passwordField.text isEqualToString:user.password]) {
-            [self.loginDatabase saveToURL:self.loginDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
+            /*[self.loginDatabase saveToURL:self.loginDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
                 if(success)
                     NSLog(@"IT SAVED!");
-            }];
+            }];*/
             self.labelForHomePage = [NSString stringWithFormat:@"Welcome %@", user.firstName];
             [self performSegueWithIdentifier:@"GoToMainPage" sender:self];
         } else {
@@ -179,7 +182,7 @@
     } else {
         
         //Username incorrect...show error alert
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:@"The username you provided was not does not exist. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:Nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:@"The username you provided does not exist. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:Nil, nil];
         [alert show];
     }
     
@@ -196,7 +199,7 @@
     {
         HomeViewController *hvc = (HomeViewController *)segue.destinationViewController;
         hvc.firstName = self.labelForHomePage;
-        hvc.children = [self getArrayOfChildren];
+        hvc.children = [VisionTrustDatabase getAllChildren];
     }
 }
 
@@ -246,12 +249,12 @@
     return cell;
 }
 
-- (NSArray *)getArrayOfChildren
+/*- (NSArray *)getArrayOfChildren
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
     NSError *error = nil;
     return [self.loginDatabase.managedObjectContext executeFetchRequest:request error:&error];
-}
+}*/
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

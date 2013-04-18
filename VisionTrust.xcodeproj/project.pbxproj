@@ -32,6 +32,7 @@
 		DC6534E7171B8DAC00785378 /* CustomSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534E6171B8DAB00785378 /* CustomSearchCell.m */; };
 		DC6534EA171CC57D00785378 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534E9171CC57D00785378 /* AdvancedSearchViewController.m */; };
 		DC6534EC171CCB1A00785378 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6534EB171CCB1900785378 /* QuartzCore.framework */; };
+		DC9205CB172037B70087B1C3 /* VisionTrustDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
 		DCE80B6A171784E700A0FE35 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B69171784E700A0FE35 /* CoreGraphics.framework */; };
@@ -87,6 +88,8 @@
 		DC6534E8171CC57D00785378 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		DC6534E9171CC57D00785378 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		DC6534EB171CCB1900785378 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DC9205C9172037B70087B1C3 /* VisionTrustDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisionTrustDatabase.h; sourceTree = "<group>"; };
+		DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionTrustDatabase.m; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE80B65171784E700A0FE35 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DCE80B67171784E700A0FE35 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -149,6 +152,8 @@
 				DC6534C1171A3D1200785378 /* User.m */,
 				DC6534B11718607B00785378 /* User+SetupUser.h */,
 				DC6534B21718607B00785378 /* User+SetupUser.m */,
+				DC9205C9172037B70087B1C3 /* VisionTrustDatabase.h */,
+				DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				D50FF905171E680600EFE78F /* Guardian.m in Sources */,
 				D50FF914171E69E400EFE78F /* OccupationType.m in Sources */,
 				D50FF917171E69E400EFE78F /* GuardianStatus.m in Sources */,
+				DC9205CB172037B70087B1C3 /* VisionTrustDatabase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
