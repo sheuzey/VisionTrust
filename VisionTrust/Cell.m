@@ -23,4 +23,3 @@
 }
 
 @end
-/Users/Stephen/Desktop/Cedarville/Senior Yr/Spring '13/Sys Dev/VisionTrust/VisionTrust.xcodeproj/project.xcworkspace/xcuserdata/Stephen.xcuserdatad/UserInterfaceState.xcuserstate
