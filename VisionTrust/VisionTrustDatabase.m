@@ -97,11 +97,6 @@
     return [self.database.managedObjectContext executeFetchRequest:request error:&error];
 }
 
-- (NSArray *)getAllCountries
-{
-    
-}
-
 - (void)saveDatabase
 {
     [self.database saveToURL:self.database.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {

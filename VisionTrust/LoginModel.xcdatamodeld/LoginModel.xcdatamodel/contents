@@ -13,6 +13,7 @@
         <attribute name="ts" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="hasGuardian" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Guardian" inverseName="guardianOf" inverseEntity="Guardian" syncable="YES"/>
+        <relationship name="isPartOfProject" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasChildren" inverseEntity="Project" syncable="YES"/>
     </entity>
     <entity name="Guardian" representedClassName="Guardian" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -31,6 +32,12 @@
         <attribute name="occupationTypeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="occupationTypeOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Guardian" inverseName="hasOccupationType" inverseEntity="Guardian" syncable="YES"/>
     </entity>
+    <entity name="Project" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unique" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasChildren" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="isPartOfProject" inverseEntity="Child" syncable="YES"/>
+    </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
@@ -38,16 +45,17 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="inType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UserType" inverseName="heldBy" inverseEntity="UserType" syncable="YES"/>
     </entity>
-    <entity name="UserType" representedClassName="UserType" syncable="YES">
+    <entity name="UserType" syncable="YES">
         <attribute name="userTypeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="heldBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="inType" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Child" positionX="108" positionY="54" width="128" height="225"/>
-        <element name="Guardian" positionX="306" positionY="72" width="128" height="150"/>
+        <element name="Child" positionX="108" positionY="54" width="128" height="238"/>
+        <element name="Guardian" positionX="306" positionY="72" width="128" height="163"/>
         <element name="GuardianStatus" positionX="529" positionY="42" width="128" height="75"/>
         <element name="OccupationType" positionX="502" positionY="276" width="128" height="75"/>
-        <element name="User" positionX="-153" positionY="105" width="128" height="120"/>
-        <element name="UserType" positionX="34" positionY="369" width="128" height="75"/>
+        <element name="Project" positionX="-92" positionY="-16" width="128" height="103"/>
+        <element name="User" positionX="-198" positionY="162" width="128" height="118"/>
+        <element name="UserType" positionX="63" positionY="324" width="128" height="73"/>
     </elements>
 </model>

@@ -7,15 +7,18 @@
 //
 
 #import "AdvancedSearchViewController.h"
+#import "Child.h"
 
 @interface AdvancedSearchViewController ()
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, assign) NSInteger selectedIndex;
 @end
 
 @implementation AdvancedSearchViewController
 
 #define PICKER_VIEW_TAG 100
-#define CANCEL_BUTTON_TAG 110
-#define DONE_BUTTON_TAG 120
+#define COUNTRY_TAG 200
+#define PROJECT_TAG 300
 
 - (void)viewDidLoad
 {
@@ -38,30 +41,11 @@
     [self.delegate exitAdvancedSearch];
 }
 
-- (void)cancelButtonPressed
+- (void)addToolBarWithButtonsAndTitle:(NSString *)title andTag:(NSInteger)tag
 {
-    [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
-}
-
-- (void)doneButtonPressed
-{
-    
-}
-
-- (IBAction)countryButtonPressed:(id)sender {
-    
-    //Remove previous picker from action sheet, then add new picker..
-    for (UIView *view in self.actionSheet.subviews) {
-        if (view.tag == PICKER_VIEW_TAG) {
-            [view removeFromSuperview];
-        }
-    }
-    [self.actionSheet addSubview:self.pickerView];
-
     //Cancel Button..
     NSMutableArray *barItems = [[NSMutableArray alloc] init];
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelButtonPressed)];
-    cancelButton.tag = CANCEL_BUTTON_TAG;
     
     //Title Label..
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 30)];
@@ -69,32 +53,83 @@
     [titleLabel setTextColor:[UIColor whiteColor]];
     [titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
-    [titleLabel setText:@"Country"];
+    [titleLabel setText:title];
     UIBarButtonItem *titleButton = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
     
     //Done Button..
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
-    doneButton.tag = DONE_BUTTON_TAG;
+    doneButton.tag = tag;
     
     //Add to array, then add to toolbar..
     [barItems addObject:cancelButton];
     [barItems addObject:titleButton];
     [barItems addObject:doneButton];
     [self.pickerToolBar setItems:barItems animated:YES];
+}
+
+- (void)cancelButtonPressed
+{
+    [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)doneButtonPressed
+{
+    UIBarButtonItem *item = [self.pickerToolBar.items lastObject];
+    switch (item.tag) {
+        case COUNTRY_TAG:
+            [self.countryButton setTitle:[self.dataArray objectAtIndex:self.selectedIndex] forState:UIControlStateNormal];
+            break;
+    }
+    [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+- (void)removePreviousPicker
+{
+    for (UIView *view in self.actionSheet.subviews) {
+        if (view.tag == PICKER_VIEW_TAG) {
+            [view removeFromSuperview];
+        }
+    }
+}
+
+- (IBAction)countryButtonPressed:(id)sender {
     
+    [self removePreviousPicker];
+    
+    //Set data for picker, sort and add to subviews..
+    NSArray *children = [self.database getAllChildren];
+    self.dataArray = [[NSMutableArray alloc] init];
+    for (Child *child in children) {
+        if (![self.dataArray containsObject:child.country]) {
+            [self.dataArray addObject:child.country];
+        }
+    }
+    [self.dataArray sortUsingSelector:@selector(compare:)];
+    [self.actionSheet addSubview:self.pickerView];
+    
+    //Add buttons to toolbar, and add toolbar to actionSheet..
+    [self addToolBarWithButtonsAndTitle:@"Country" andTag:COUNTRY_TAG];
     [self.actionSheet addSubview:self.pickerToolBar];
+    
     [self.actionSheet showInView:self.view];
     [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height + 30)];
 }
 
+- (IBAction)projectButtonPressed:(id)sender {
+    
+    [self removePreviousPicker];
+    
+    //Set data for picker, sort and add to subviews..
+}
+
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    
+    self.selectedIndex = row;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return 5;
+    return [self.dataArray count];
 }
 
 
@@ -105,7 +140,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [NSString stringWithFormat:@"%d", row];
+    return [self.dataArray objectAtIndex:row];
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component

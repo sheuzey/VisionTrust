@@ -20,10 +20,11 @@
 @interface AdvancedSearchViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) id<QuitAdvancedSearchProtocol>delegate;
+@property (nonatomic, strong) VisionTrustDatabase *database;
 @property (strong, nonatomic) UIActionSheet *actionSheet;
 @property (strong, nonatomic) UIPickerView *pickerView;
 @property (strong, nonatomic) UIToolbar *pickerToolBar;
 @property (strong, nonatomic) IBOutlet UIButton *countryButton;
-@property (nonatomic, strong) VisionTrustDatabase *database;
+@property (strong, nonatomic) IBOutlet UIButton *projectButton;
 
 @end
