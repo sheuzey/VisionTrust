@@ -12,6 +12,7 @@
 @interface AdvancedSearchViewController ()
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, strong) NSMutableDictionary *parameters;
 @end
 
 @implementation AdvancedSearchViewController
@@ -32,6 +33,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.parameters = [[NSMutableDictionary alloc] init];
+    
+    self.searchTable.dataSource = self;
+    self.searchTable.delegate = self;
     
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     [self.actionSheet setActionSheetStyle:UIActionSheetStyleBlackOpaque];
@@ -85,23 +91,28 @@
     switch (item.tag) {
         case COUNTRY_TAG:
             [self.countryButton setTitle:title forState:UIControlStateNormal];
+            [self.parameters setValue:title forKey:@"country"];
             break;
         case PROJECT_TAG:
             [self.projectButton setTitle:title forState:UIControlStateNormal];
+            [self.parameters setValue:title forKey:@"project"];
             break;
         case GENDER_TAG:
             [self.genderButton setTitle:title forState:UIControlStateNormal];
+            [self.parameters setValue:title forKey:@"gender"];
             break;
         case STATUS_TAG:
             [self.statusButton setTitle:title forState:UIControlStateNormal];
+            [self.parameters setValue:title forKey:@"status"];
             break;
     }
-    //Reset selected index, and dismiss actionSheet
+    //Reset selected index, reload table and dismiss actionSheet
     self.selectedIndex = 0;
+    [self.searchTable reloadData];
     [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
 
-- (IBAction)countryButtonPressed:(id)sender {
+- (void)countryButtonPressed {
     
     [self createPicker];
     
@@ -127,7 +138,7 @@
                                            self.view.bounds.size.height + 30)];
 }
 
-- (IBAction)projectButtonPressed:(id)sender {
+- (void)projectButtonPressed {
     
     [self createPicker];
     
@@ -153,7 +164,7 @@
                                            self.view.bounds.size.height + 30)];
 }
 
-- (IBAction)genderButtonPressed:(id)sender {
+- (void)genderButtonPressed {
     
     [self createPicker];
     
@@ -171,7 +182,7 @@
                                            self.view.bounds.size.height + 30)];
 }
 
-- (IBAction)statusButtonPressed:(id)sender {
+- (void)statusButtonPressed {
     
     [self createPicker];
     self.dataArray = [[NSMutableArray alloc] initWithObjects:@"All", @"Active", @"Inactive", nil];
@@ -212,6 +223,80 @@
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
     return 300;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 4;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    switch ([indexPath section]) {
+        case 0:
+            cell.textLabel.text = [self.parameters valueForKey:@"country"] ? [self.parameters valueForKey:@"country"] : @"All";
+            break;
+        case 1:
+            cell.textLabel.text = [self.parameters valueForKey:@"project"] ? [self.parameters valueForKey:@"project"] : @"All";
+            break;
+        case 2:
+            cell.textLabel.text = [self.parameters valueForKey:@"gender"] ? [self.parameters valueForKey:@"gender"] : @"All";
+            break;
+        case 3:
+            cell.textLabel.text = [self.parameters valueForKey:@"status"] ? [self.parameters valueForKey:@"status"] : @"All";
+            break;
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.searchTable deselectRowAtIndexPath:indexPath animated:YES];
+    switch ([indexPath section]) {
+        case 0:
+            [self countryButtonPressed];
+            break;
+        case 1:
+            [self projectButtonPressed];
+            break;
+        case 2:
+            [self genderButtonPressed];
+            break;
+        case 3:
+            [self statusButtonPressed];
+            break;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0:
+            return @"Country";
+            break;
+        case 1:
+            return @"Project";
+            break;
+        case 2:
+            return @"Gender";
+            break;
+        case 3:
+            return @"Status";
+            break;
+        default:
+            return @"";
+            break;
+    }
 }
 
 @end
