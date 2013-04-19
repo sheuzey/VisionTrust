@@ -11,10 +11,8 @@
 #import "Child.h"
 #import "CustomSearchCell.h"
 #import "AdvancedSearchViewController.h"
-#import "VisionTrustDatabase.h"
 
 @interface SearchTableViewController () <QuitAdvancedSearchProtocol>
-@property (nonatomic, strong) VisionTrustDatabase *database;
 @end
 
 @implementation SearchTableViewController
@@ -22,7 +20,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.database = [[VisionTrustDatabase alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -30,6 +27,7 @@
     [super viewWillAppear:animated];
     
     self.title = @"Search";
+    self.children = [self.database getAllChildren];
     
     self.searchData = [[NSMutableArray alloc] initWithArray:self.children];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -120,7 +118,9 @@
     if ([segue.identifier isEqualToString:@"GoToAdvancedSearch"]) {
         AdvancedSearchViewController *asvc = (AdvancedSearchViewController *)segue.destinationViewController;
         asvc.delegate = self;
+        asvc.database = self.database;
     }
+    [self.database saveDatabase];
 }
 
 - (void)exitAdvancedSearch

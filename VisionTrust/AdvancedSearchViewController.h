@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VisionTrustDatabase.h"
 
 @class AdvancedSearchViewController;
 
@@ -23,5 +24,6 @@
 @property (strong, nonatomic) UIPickerView *pickerView;
 @property (strong, nonatomic) UIToolbar *pickerToolBar;
 @property (strong, nonatomic) IBOutlet UIButton *countryButton;
+@property (nonatomic, strong) VisionTrustDatabase *database;
 
 @end

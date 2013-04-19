@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "HomeViewController.h"
 #import "User+SetupUser.h"
-#import "VisionTrustDatabase.h"
 
 @interface ViewController ()
 
@@ -17,7 +16,6 @@
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *labelForHomePage;
-@property (strong, nonatomic) VisionTrustDatabase *database;
 
 @end
 

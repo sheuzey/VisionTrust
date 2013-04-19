@@ -10,10 +10,8 @@
 #import "SearchTableViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Cell.h"
-#import "VisionTrustDatabase.h"
 
 @interface HomeViewController ()
-@property (nonatomic, strong) VisionTrustDatabase *database;
 @end
 
 @implementation HomeViewController
@@ -89,8 +87,9 @@
 {
     if ([segue.identifier isEqualToString:@"GoToSearch"]) {
         SearchTableViewController *stvc = (SearchTableViewController *)segue.destinationViewController;
-        stvc.children = [self.database getAllChildren];
+        stvc.database = self.database;
     }
+    [self.database saveDatabase];
 }
 
 - (void)didReceiveMemoryWarning

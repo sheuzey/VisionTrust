@@ -14,6 +14,7 @@
 
 - (User *)getUserByUsername:(NSString *)username;
 - (NSArray *)getAllChildren;
+- (NSArray *)getAllCountries;
 - (void)saveDatabase;
 
 @end

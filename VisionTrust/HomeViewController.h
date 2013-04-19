@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "VisionTrustDatabase.h"
 
 @interface HomeViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (strong, nonatomic) IBOutlet UICollectionView *menuCollection;
 @property (strong, nonatomic) NSString *firstName;
-@property (strong, nonatomic) NSArray *children;
+@property (nonatomic, strong) VisionTrustDatabase *database;
 
 @end

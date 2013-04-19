@@ -9,7 +9,6 @@
 #import "AdvancedSearchViewController.h"
 
 @interface AdvancedSearchViewController ()
-
 @end
 
 @implementation AdvancedSearchViewController

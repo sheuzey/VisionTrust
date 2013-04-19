@@ -94,9 +94,12 @@
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
     NSError *error = nil;
-    NSArray *array = [self.database.managedObjectContext executeFetchRequest:request error:&error];
-    NSLog(@"Array count: %d", [array count]);
-    return array;
+    return [self.database.managedObjectContext executeFetchRequest:request error:&error];
+}
+
+- (NSArray *)getAllCountries
+{
+    
 }
 
 - (void)saveDatabase
