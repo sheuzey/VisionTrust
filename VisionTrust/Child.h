@@ -2,14 +2,14 @@
 //  Child.h
 //  VisionTrust
 //
-//  Created by Programming on 4/17/13.
+//  Created by Stephen Heuzey on 4/18/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Guardian;
+@class Guardian, Project;
 
 @interface Child : NSManagedObject
 
@@ -25,5 +25,6 @@
 @property (nonatomic, retain) NSString * ts;
 @property (nonatomic, retain) NSNumber * unique;
 @property (nonatomic, retain) Guardian *hasGuardian;
+@property (nonatomic, retain) Project *isPartOfProject;
 
 @end

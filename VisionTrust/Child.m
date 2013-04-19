@@ -2,12 +2,13 @@
 //  Child.m
 //  VisionTrust
 //
-//  Created by Programming on 4/17/13.
+//  Created by Stephen Heuzey on 4/18/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
 #import "Child.h"
 #import "Guardian.h"
+#import "Project.h"
 
 
 @implementation Child
@@ -24,5 +25,6 @@
 @dynamic ts;
 @dynamic unique;
 @dynamic hasGuardian;
+@dynamic isPartOfProject;
 
 @end
