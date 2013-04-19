@@ -136,7 +136,7 @@
 - (void)exitAdvancedSearchWithChildren:(NSMutableArray *)children
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    self.searchData = children;
+    self.searchData = [[NSMutableArray alloc] initWithArray:children];
     NSLog(@"%d", [self.searchData count]);
     [self.tableView reloadData];
 }

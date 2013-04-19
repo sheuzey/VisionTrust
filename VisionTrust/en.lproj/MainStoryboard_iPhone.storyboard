@@ -202,7 +202,7 @@
                     <navigationItem key="navigationItem" id="Z1v-E8-87c">
                         <barButtonItem key="rightBarButtonItem" title="Adv Search" id="oCJ-BV-rT4">
                             <connections>
-                                <segue destination="ZY4-wv-0iT" kind="modal" identifier="GoToAdvancedSearch" id="6cy-jc-zia"/>
+                                <segue destination="ZY4-wv-0iT" kind="modal" identifier="GoToAdvancedSearch" modalTransitionStyle="crossDissolve" id="6cy-jc-zia"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -299,11 +299,6 @@
         <class className="AdvancedSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AdvancedSearchViewController.h"/>
             <relationships>
-                <relationship kind="action" name="countryButtonPressed:"/>
-                <relationship kind="action" name="genderButtonPressed:"/>
-                <relationship kind="action" name="projectButtonPressed:"/>
-                <relationship kind="action" name="searchButtonPressed:"/>
-                <relationship kind="action" name="statusButtonPressed:"/>
                 <relationship kind="outlet" name="countryButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="genderButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="projectButton" candidateClass="UIButton"/>

@@ -96,7 +96,7 @@
             break;
         case PROJECT_TAG:
             [self.projectButton setTitle:title forState:UIControlStateNormal];
-            [self.parameters setValue:title forKey:@"isPartOfProject"];
+            [self.parameters setValue:title forKey:@"isPartOfProject.name"];
             break;
         case GENDER_TAG:
             [self.genderButton setTitle:title forState:UIControlStateNormal];
@@ -248,7 +248,7 @@
             cell.textLabel.text = [self.parameters valueForKey:@"country"] ? [self.parameters valueForKey:@"country"] : @"All";
             break;
         case 1:
-            cell.textLabel.text = [self.parameters valueForKey:@"isPartOfProject"] ? [self.parameters valueForKey:@"isPartOfProject"] : @"All";
+            cell.textLabel.text = [self.parameters valueForKey:@"isPartOfProject.name"] ? [self.parameters valueForKey:@"isPartOfProject.name"] : @"All";
             break;
         case 2:
             cell.textLabel.text = [self.parameters valueForKey:@"gender"] ? [self.parameters valueForKey:@"gender"] : @"All";
