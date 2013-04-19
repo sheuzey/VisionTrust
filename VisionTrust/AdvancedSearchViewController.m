@@ -86,6 +86,9 @@
         case COUNTRY_TAG:
             [self.countryButton setTitle:title forState:UIControlStateNormal];
             break;
+        case PROJECT_TAG:
+            [self.projectButton setTitle:title forState:UIControlStateNormal];
+            break;
         case GENDER_TAG:
             [self.genderButton setTitle:title forState:UIControlStateNormal];
             break;
@@ -113,12 +116,15 @@
     [self.dataArray sortUsingSelector:@selector(compare:)];
     [self.actionSheet addSubview:self.pickerView];
     
-    //Add buttons to toolbar, reload components and add toolbar to actionSheet..
+    //Add buttons to toolbar and add to actionSheet..
     [self addToolBarWithButtonsAndTitle:@"Country" andTag:COUNTRY_TAG];
     [self.actionSheet addSubview:self.pickerToolBar];
     
     [self.actionSheet showInView:self.view];
-    [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height + 30)];
+    [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x,
+                                           self.view.bounds.origin.y,
+                                           self.view.bounds.size.width,
+                                           self.view.bounds.size.height + 30)];
 }
 
 - (IBAction)projectButtonPressed:(id)sender {
@@ -126,7 +132,25 @@
     [self createPicker];
     
     //Set data for picker, sort and add to subviews..
+    NSArray *children = [self.database getAllChildren];
+    self.dataArray = [[NSMutableArray alloc] initWithObjects:@"All", nil];
+    for (Child *child in children) {
+        if (![self.dataArray containsObject:child.isPartOfProject.name]) {
+            [self.dataArray addObject:child.isPartOfProject.name];
+        }
+    }
+    [self.dataArray sortUsingSelector:@selector(compare:)];
+    [self.actionSheet addSubview:self.pickerView];
     
+    //Add buttons to toolbar and add to actionSheet..
+    [self addToolBarWithButtonsAndTitle:@"Project" andTag:PROJECT_TAG];
+    [self.actionSheet addSubview:self.pickerToolBar];
+    
+    [self.actionSheet showInView:self.view];
+    [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x,
+                                           self.view.bounds.origin.y,
+                                           self.view.bounds.size.width,
+                                           self.view.bounds.size.height + 30)];
 }
 
 - (IBAction)genderButtonPressed:(id)sender {
@@ -136,12 +160,15 @@
     self.dataArray = [[NSMutableArray alloc] initWithObjects:@"All", @"Female", @"Male", nil];
     [self.actionSheet addSubview:self.pickerView];
     
-    //Add buttons to toolbar, reload components and add toolbar to actionSheet..
+    //Add buttons to toolbar and add to actionSheet..
     [self addToolBarWithButtonsAndTitle:@"Gender" andTag:GENDER_TAG];
     [self.actionSheet addSubview:self.pickerToolBar];
     
     [self.actionSheet showInView:self.view];
-    [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height + 30)];
+    [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x,
+                                           self.view.bounds.origin.y,
+                                           self.view.bounds.size.width,
+                                           self.view.bounds.size.height + 30)];
 }
 
 - (IBAction)statusButtonPressed:(id)sender {
@@ -150,12 +177,15 @@
     self.dataArray = [[NSMutableArray alloc] initWithObjects:@"All", @"Active", @"Inactive", nil];
     [self.actionSheet addSubview:self.pickerView];
     
-    //Add buttons to toolbar, reload components and add toolbar to actionSheet..
+    //Add buttons to toolbar and add to actionSheet..
     [self addToolBarWithButtonsAndTitle:@"Status" andTag:STATUS_TAG];
     [self.actionSheet addSubview:self.pickerToolBar];
     
     [self.actionSheet showInView:self.view];
-    [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height + 30)];
+    [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x,
+                                           self.view.bounds.origin.y,
+                                           self.view.bounds.size.width,
+                                           self.view.bounds.size.height + 30)];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
