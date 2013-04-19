@@ -20,7 +20,7 @@
                       address:(NSString *)address
                          city:(NSString *)city
                       picture:(NSString *)picture
-                     isActive:(NSNumber *)active
+                       status:(NSString *)status
                       project:(Project *)project
                     inContext:(NSManagedObjectContext *)context;
 

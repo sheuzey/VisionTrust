@@ -19,7 +19,7 @@
                       address:(NSString *)address
                          city:(NSString *)city
                       picture:(NSString *)picture
-                     isActive:(NSNumber *)active
+                       status:(NSString *)status
                       project:(Project *)project
                     inContext:(NSManagedObjectContext *)context
 {
@@ -42,7 +42,7 @@
         child.address = address;
         child.city = city;
         child.pictureURL = picture;
-        child.isActive = active;
+        child.status = status;
         child.isPartOfProject = project;
         
         NSDate *now = [NSDate date];

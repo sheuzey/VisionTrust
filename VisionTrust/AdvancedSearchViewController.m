@@ -49,7 +49,8 @@
 }
 
 - (IBAction)searchButtonPressed:(id)sender {
-    [self.delegate exitAdvancedSearch];
+    NSMutableArray *array = [self.database getChildrenWithParameters:self.parameters];
+    [self.delegate exitAdvancedSearchWithChildren:array];
 }
 
 - (void)addToolBarWithButtonsAndTitle:(NSString *)title andTag:(NSInteger)tag
@@ -95,7 +96,7 @@
             break;
         case PROJECT_TAG:
             [self.projectButton setTitle:title forState:UIControlStateNormal];
-            [self.parameters setValue:title forKey:@"project"];
+            [self.parameters setValue:title forKey:@"isPartOfProject"];
             break;
         case GENDER_TAG:
             [self.genderButton setTitle:title forState:UIControlStateNormal];
@@ -247,7 +248,7 @@
             cell.textLabel.text = [self.parameters valueForKey:@"country"] ? [self.parameters valueForKey:@"country"] : @"All";
             break;
         case 1:
-            cell.textLabel.text = [self.parameters valueForKey:@"project"] ? [self.parameters valueForKey:@"project"] : @"All";
+            cell.textLabel.text = [self.parameters valueForKey:@"isPartOfProject"] ? [self.parameters valueForKey:@"isPartOfProject"] : @"All";
             break;
         case 2:
             cell.textLabel.text = [self.parameters valueForKey:@"gender"] ? [self.parameters valueForKey:@"gender"] : @"All";

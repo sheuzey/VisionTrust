@@ -19,7 +19,7 @@
 @property (nonatomic, retain) NSString * dob;
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * gender;
-@property (nonatomic, retain) NSNumber * isActive;
+@property (nonatomic, retain) NSString * status;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * pictureURL;
 @property (nonatomic, retain) NSString * ts;

@@ -15,6 +15,7 @@
 
 - (User *)getUserByUsername:(NSString *)username;
 - (NSArray *)getAllChildren;
+- (NSMutableArray *)getChildrenWithParameters:(NSMutableDictionary *)parameters;
 - (void)saveDatabase;
 
 @end

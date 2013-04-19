@@ -19,7 +19,7 @@
 @dynamic dob;
 @dynamic firstName;
 @dynamic gender;
-@dynamic isActive;
+@dynamic status;
 @dynamic lastName;
 @dynamic pictureURL;
 @dynamic ts;

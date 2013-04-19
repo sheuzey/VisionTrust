@@ -24,13 +24,13 @@
         [User userWithUsername:@"john" andPassword:@"pwd" andFirstName:@"John" andLastName:@"Delano" inManagedObjectContext:self.database.managedObjectContext];
         
         //Add children to projects..
-        [Child childWithFirstName:@"Julio" LastName:@"Gonzalas" uniqueID:[NSNumber numberWithInteger:1] gender:@"Male" dob:@"4/1/2000" country:@"Mexico" address:@"1 main avenue" city:@"Mexico City" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] project:[Project projectWithAddress:@"50 project place" name:@"DR-3320" ID:[NSNumber numberWithInt:1] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
-        [Child childWithFirstName:@"Hugo" LastName:@"Chavez" uniqueID:[NSNumber numberWithInteger:2] gender:@"Male" dob:@"7/28/1954" country:@"Venezuala" address:@"5 mansion place" city:@"Major City" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] project:[Project projectWithAddress:@"1 vision avenue" name:@"VEN-1099" ID:[NSNumber numberWithInt:2] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
-        [Child childWithFirstName:@"Kim Jong" LastName:@"Un" uniqueID:[NSNumber numberWithInteger:3] gender:@"Male" dob:@"1/1/1985" country:@"North Korea" address:@"255 Charlie Place" city:@"PyongYang" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] project:[Project projectWithAddress:@"23 trust blvd" name:@"MX-454" ID:[NSNumber numberWithInt:3] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
-        [Child childWithFirstName:@"Katie" LastName:@"Smith" uniqueID:[NSNumber numberWithInteger:4] gender:@"Female" dob:@"9/30/2005" country:@"Germany" address:@"2 3rd street" city:@"Berlin" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:0] project:[Project projectWithAddress:@"50 project place" name:@"DR-3320" ID:[NSNumber numberWithInt:1] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
-        [Child childWithFirstName:@"Vladimir" LastName:@"Putin" uniqueID:[NSNumber numberWithInteger:5] gender:@"Male" dob:@"10/7/1952" country:@"Russia" address:@"33 Communal Drive" city:@"St. Petersburg" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:0] project:[Project projectWithAddress:@"1 vision avenue" name:@"VEN-1099" ID:[NSNumber numberWithInt:2] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
-        [Child childWithFirstName:@"William" LastName:@"Brown" uniqueID:[NSNumber numberWithInteger:6] gender:@"Male" dob:@"2/1/1965" country:@"US" address:@"10 cedar road" city:@"Orlando, Florida" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] project:[Project projectWithAddress:@"23 trust blvd" name:@"MX-454" ID:[NSNumber numberWithInt:3] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
-        [Child childWithFirstName:@"Stefani" LastName:@"Germanotta" uniqueID:[NSNumber numberWithInteger:7] gender:@"Female" dob:@"3/28/1986" country:@"US" address:@"50 Crazy blvd." city:@"New York City" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] project:[Project projectWithAddress:@"11 main street" name:@"US-0031" ID:[NSNumber numberWithInt:4] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
+        [Child childWithFirstName:@"Julio" LastName:@"Gonzalas" uniqueID:[NSNumber numberWithInteger:1] gender:@"Male" dob:@"4/1/2000" country:@"Mexico" address:@"1 main avenue" city:@"Mexico City" picture:@"child.jpeg" status:@"Active" project:[Project projectWithAddress:@"50 project place" name:@"DR-3320" ID:[NSNumber numberWithInt:1] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
+        [Child childWithFirstName:@"Hugo" LastName:@"Chavez" uniqueID:[NSNumber numberWithInteger:2] gender:@"Male" dob:@"7/28/1954" country:@"Venezuala" address:@"5 mansion place" city:@"Major City" picture:@"child.jpeg" status:@"Active" project:[Project projectWithAddress:@"1 vision avenue" name:@"VEN-1099" ID:[NSNumber numberWithInt:2] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
+        [Child childWithFirstName:@"Kim Jong" LastName:@"Un" uniqueID:[NSNumber numberWithInteger:3] gender:@"Male" dob:@"1/1/1985" country:@"North Korea" address:@"255 Charlie Place" city:@"PyongYang" picture:@"child.jpeg" status:@"Active" project:[Project projectWithAddress:@"23 trust blvd" name:@"MX-454" ID:[NSNumber numberWithInt:3] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
+        [Child childWithFirstName:@"Katie" LastName:@"Smith" uniqueID:[NSNumber numberWithInteger:4] gender:@"Female" dob:@"9/30/2005" country:@"Germany" address:@"2 3rd street" city:@"Berlin" picture:@"child.jpeg" status:@"Inactive" project:[Project projectWithAddress:@"50 project place" name:@"DR-3320" ID:[NSNumber numberWithInt:1] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
+        [Child childWithFirstName:@"Vladimir" LastName:@"Putin" uniqueID:[NSNumber numberWithInteger:5] gender:@"Male" dob:@"10/7/1952" country:@"Russia" address:@"33 Communal Drive" city:@"St. Petersburg" picture:@"child.jpeg" status:@"Inactive" project:[Project projectWithAddress:@"1 vision avenue" name:@"VEN-1099" ID:[NSNumber numberWithInt:2] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
+        [Child childWithFirstName:@"William" LastName:@"Brown" uniqueID:[NSNumber numberWithInteger:6] gender:@"Male" dob:@"2/1/1965" country:@"US" address:@"10 cedar road" city:@"Orlando, Florida" picture:@"child.jpeg" status:@"Active" project:[Project projectWithAddress:@"23 trust blvd" name:@"MX-454" ID:[NSNumber numberWithInt:3] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
+        [Child childWithFirstName:@"Stefani" LastName:@"Germanotta" uniqueID:[NSNumber numberWithInteger:7] gender:@"Female" dob:@"3/28/1986" country:@"US" address:@"50 Crazy blvd." city:@"New York City" picture:@"child.jpeg" status:@"Active" project:[Project projectWithAddress:@"11 main street" name:@"US-0031" ID:[NSNumber numberWithInt:4] inContext:self.database.managedObjectContext] inContext:self.database.managedObjectContext];
         NSLog(@"ADDED DATA TO DATABASE");
     }];
 }
@@ -97,6 +97,27 @@
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
     NSError *error = nil;
+    return [self.database.managedObjectContext executeFetchRequest:request error:&error];
+}
+
+- (NSArray *)getChildrenWithParameters:(NSMutableDictionary *)parameters
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
+    NSMutableArray *predicates = [[NSMutableArray alloc] init];
+    for (NSString *key in parameters.keyEnumerator) {
+        NSString *value = [parameters valueForKey:key];
+        if (![value isEqualToString:@"All"]) {
+            NSExpression *left = [NSExpression expressionForKeyPath:key];
+            NSExpression *right = [NSExpression expressionForConstantValue:value];
+            NSPredicate *predicate = [NSComparisonPredicate predicateWithLeftExpression:left rightExpression:right modifier:NSDirectPredicateModifier type:NSEqualToPredicateOperatorType options:0];
+            [predicates addObject:predicate];
+        }
+    }
+    
+    NSPredicate *compound = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+    request.predicate = compound;
+    NSError *error = nil;
+
     return [self.database.managedObjectContext executeFetchRequest:request error:&error];
 }
 

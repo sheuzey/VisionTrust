@@ -7,9 +7,9 @@
         <attribute name="dob" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ts" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="hasGuardian" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Guardian" inverseName="guardianOf" inverseEntity="Guardian" syncable="YES"/>

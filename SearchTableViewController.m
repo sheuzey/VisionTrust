@@ -20,11 +20,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
     
     self.title = @"Search";
     self.children = [self.database getAllChildren];
@@ -35,6 +30,21 @@
     [center addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
     
     NSLog(@"%d", [self.children count]);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    /*self.title = @"Search";
+    self.children = [self.database getAllChildren];
+    
+    self.searchData = [[NSMutableArray alloc] initWithArray:self.children];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(keyboardWillAppear) name:UIKeyboardWillShowNotification object:nil];
+    [center addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+    
+    NSLog(@"%d", [self.children count]);*/
 }
 
 - (void)keyboardWillAppear
@@ -123,9 +133,12 @@
     [self.database saveDatabase];
 }
 
-- (void)exitAdvancedSearch
+- (void)exitAdvancedSearchWithChildren:(NSMutableArray *)children
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    self.searchData = children;
+    NSLog(@"%d", [self.searchData count]);
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning

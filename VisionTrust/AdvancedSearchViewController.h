@@ -13,7 +13,7 @@
 
 @protocol QuitAdvancedSearchProtocol
 
-- (void)exitAdvancedSearch;
+- (void)exitAdvancedSearchWithChildren:(NSMutableArray *)children;
 
 @end
 
