@@ -11,11 +11,19 @@
 #import "Child.h"
 #import "CustomSearchCell.h"
 #import "AdvancedSearchViewController.h"
+#import "VisionTrustDatabase.h"
 
 @interface SearchTableViewController () <QuitAdvancedSearchProtocol>
+@property (nonatomic, strong) VisionTrustDatabase *database;
 @end
 
 @implementation SearchTableViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.database = [[VisionTrustDatabase alloc] init];
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {

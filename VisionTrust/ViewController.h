@@ -11,6 +11,5 @@
 @interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *loginTable;
-@property (nonatomic, strong) UIManagedDocument *loginDatabase;
 
 @end

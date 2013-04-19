@@ -9,8 +9,6 @@
 #import "ViewController.h"
 #import "HomeViewController.h"
 #import "User+SetupUser.h"
-#import "Child+SetupChild.h"
-#import "SearchTableViewController.h"
 #import "VisionTrustDatabase.h"
 
 @interface ViewController ()
@@ -19,6 +17,7 @@
 @property (strong, nonatomic) NSString *username;
 @property (strong, nonatomic) NSString *password;
 @property (strong, nonatomic) NSString *labelForHomePage;
+@property (strong, nonatomic) VisionTrustDatabase *database;
 
 @end
 
@@ -27,55 +26,6 @@
 #define LOGO_TAG 100
 #define USERNAME_TAG 100
 #define PASSWORD_TAG 200
-
-
-/*- (void)insertSampleData
-{
-    [self.loginDatabase.managedObjectContext performBlock:^{
-        
-        //Add sample users to database to test authentication..
-        [User userWithUsername:@"steve" andPassword:@"pwd" andFirstName:@"Stephen" andLastName:@"Heuzey" inManagedObjectContext:self.loginDatabase.managedObjectContext];
-        [User userWithUsername:@"adam" andPassword:@"pwd" andFirstName:@"Adam" andLastName:@"Oakley" inManagedObjectContext:self.loginDatabase.managedObjectContext];
-        [Child childWithFirstName:@"Julio" LastName:@"Gonzalas" uniqueID:[NSNumber numberWithInteger:1] gender:@"Male" dob:@"4/1/2000" country:@"Mexico" address:@"1 main avenue" city:@"Mexico City" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
-        [Child childWithFirstName:@"Hugo" LastName:@"Chavez" uniqueID:[NSNumber numberWithInteger:2] gender:@"Male" dob:@"7/28/1954" country:@"Venezuala" address:@"5 mansion place" city:@"Major City" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
-        [Child childWithFirstName:@"Kim Jong" LastName:@"Un" uniqueID:[NSNumber numberWithInteger:3] gender:@"Male" dob:@"1/1/1985" country:@"North Korea" address:@"255 Charlie Place" city:@"PyongYang" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
-        [Child childWithFirstName:@"Katie" LastName:@"Smith" uniqueID:[NSNumber numberWithInteger:4] gender:@"Female" dob:@"9/30/2005" country:@"Germany" address:@"2 3rd street" city:@"Berlin" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:0] inContext:self.loginDatabase.managedObjectContext];
-        [Child childWithFirstName:@"Vladimir" LastName:@"Putin" uniqueID:[NSNumber numberWithInteger:5] gender:@"Male" dob:@"10/7/1952" country:@"Russia" address:@"33 Communal Drive" city:@"St. Petersburg" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:0] inContext:self.loginDatabase.managedObjectContext];
-        [Child childWithFirstName:@"William" LastName:@"Brown" uniqueID:[NSNumber numberWithInteger:6] gender:@"Male" dob:@"2/1/1965" country:@"US" address:@"10 cedar road" city:@"Orlando, Florida" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
-        [Child childWithFirstName:@"Stefani" LastName:@"Germanotta" uniqueID:[NSNumber numberWithInteger:7] gender:@"Female" dob:@"3/28/1986" country:@"US" address:@"50 Crazy blvd." city:@"New York City" picture:@"child.jpeg" isActive:[NSNumber numberWithInteger:1] inContext:self.loginDatabase.managedObjectContext];
-    }];
-}
-
-- (void)useDocument
-{
-    //If database does not exist on disk, create it..
-    if(![[NSFileManager defaultManager] fileExistsAtPath:[self.loginDatabase.fileURL path]]){
-        [self.loginDatabase saveToURL:self.loginDatabase.fileURL forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success){
-            [self insertSampleData];
-            }];
-    } else if (self.loginDatabase.documentState == UIDocumentStateClosed){
-        [self.loginDatabase openWithCompletionHandler:^(BOOL success){
-            //Test to see if database is null. If so, insert sample data..
-            NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-            request.predicate = [NSPredicate predicateWithFormat:@"username = %@", @"steve"];
-            NSError *error = nil;
-            NSArray *userArray = [self.loginDatabase.managedObjectContext executeFetchRequest:request error:&error];
-            if(!userArray){
-                [self insertSampleData];
-            }
-            User *temp = [[self.loginDatabase.managedObjectContext executeFetchRequest:request error:&error] lastObject];
-            NSLog(@"Last user in database: %@ %@", temp.username, temp.password);
-        }];
-    }
-}
-
-- (void)setLoginDatabase:(UIManagedDocument *)loginDatabase
-{
-    if(_loginDatabase != loginDatabase){
-        _loginDatabase = loginDatabase;
-        [self useDocument];
-    }
-}*/
 
 - (void)viewDidLoad
 {
@@ -87,6 +37,7 @@
     //Clear the table background view and disable scrolling..
     self.loginTable.backgroundView = nil;
     self.loginTable.scrollEnabled = NO;
+    self.database = [[VisionTrustDatabase alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -105,17 +56,6 @@
     
     //Hide Navigation Bar..
     self.navigationController.navigationBarHidden = YES;
-    
-    /*//If database is nil, create it..
-    if(!self.loginDatabase){
-        
-        //Get documents directory for database file..
-        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-    
-        //Append the name of the database to use..
-        url = [url URLByAppendingPathComponent:@"Default Login Database"];
-        self.loginDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
-    }*/
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -151,15 +91,7 @@
     //Retrieve user from db..
     UITextField *usernameField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:USERNAME_TAG];
     
-    /*NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"User"];
-    request.predicate = [NSPredicate predicateWithFormat:@"username = %@", [usernameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-    
-    NSError *error = nil;
-    NSArray *userArray = [self.loginDatabase.managedObjectContext executeFetchRequest:request error:&error];
-
-    User *user = [userArray lastObject];*/
-
-    User *user = [VisionTrustDatabase getUserByUsername:usernameField.text];
+    User *user= [self.database getUserByUsername:usernameField.text];
     
     //If exists, authenticate..
     if(user) {
@@ -167,10 +99,6 @@
         
         //If provided password is correct, segue to home controller..
         if ([passwordField.text isEqualToString:user.password]) {
-            /*[self.loginDatabase saveToURL:self.loginDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success){
-                if(success)
-                    NSLog(@"IT SAVED!");
-            }];*/
             self.labelForHomePage = [NSString stringWithFormat:@"Welcome %@", user.firstName];
             [self performSegueWithIdentifier:@"GoToMainPage" sender:self];
         } else {
@@ -199,8 +127,8 @@
     {
         HomeViewController *hvc = (HomeViewController *)segue.destinationViewController;
         hvc.firstName = self.labelForHomePage;
-        hvc.children = [VisionTrustDatabase getAllChildren];
     }
+    [self.database saveDatabase];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -248,13 +176,6 @@
     }
     return cell;
 }
-
-/*- (NSArray *)getArrayOfChildren
-{
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
-    NSError *error = nil;
-    return [self.loginDatabase.managedObjectContext executeFetchRequest:request error:&error];
-}*/
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

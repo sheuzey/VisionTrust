@@ -12,7 +12,8 @@
 
 @interface VisionTrustDatabase : NSObject
 
-+ (User *)getUserByUsername:(NSString *)username;
-+ (NSArray *)getAllChildren;
+- (User *)getUserByUsername:(NSString *)username;
+- (NSArray *)getAllChildren;
+- (void)saveDatabase;
 
 @end

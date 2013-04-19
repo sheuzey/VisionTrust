@@ -7,11 +7,13 @@
 //
 
 #import "HomeViewController.h"
+#import "SearchTableViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Cell.h"
-#import "SearchTableViewController.h"
+#import "VisionTrustDatabase.h"
 
 @interface HomeViewController ()
+@property (nonatomic, strong) VisionTrustDatabase *database;
 @end
 
 @implementation HomeViewController
@@ -23,6 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.database = [[VisionTrustDatabase alloc] init];
     
     //Set welcome label..
     self.welcomeLabel.text = self.firstName;
@@ -83,9 +87,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"GoToSearch"]) {
+    if ([segue.identifier isEqualToString:@"GoToSearch"]) {
         SearchTableViewController *stvc = (SearchTableViewController *)segue.destinationViewController;
-        stvc.children = self.children;
+        stvc.children = [self.database getAllChildren];
     }
 }
 
