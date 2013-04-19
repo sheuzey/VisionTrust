@@ -7,6 +7,7 @@
 //
 
 #import "Child.h"
+#import "Project.h"
 
 @interface Child (SetupChild)
 
@@ -20,6 +21,7 @@
                          city:(NSString *)city
                       picture:(NSString *)picture
                      isActive:(NSNumber *)active
+                      project:(Project *)project
                     inContext:(NSManagedObjectContext *)context;
 
 @end

@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) NSString * address;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * unique;
+@property (nonatomic, retain) NSNumber * unique;
 @property (nonatomic, retain) NSSet *hasChildren;
 @end
 

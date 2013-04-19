@@ -35,7 +35,7 @@
     <entity name="Project" representedClassName="Project" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="unique" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="hasChildren" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="isPartOfProject" inverseEntity="Child" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
@@ -54,7 +54,7 @@
         <element name="Guardian" positionX="306" positionY="72" width="128" height="163"/>
         <element name="GuardianStatus" positionX="529" positionY="42" width="128" height="75"/>
         <element name="OccupationType" positionX="502" positionY="276" width="128" height="75"/>
-        <element name="Project" positionX="-92" positionY="-16" width="128" height="103"/>
+        <element name="Project" positionX="-92" positionY="-16" width="128" height="105"/>
         <element name="User" positionX="-198" positionY="162" width="128" height="118"/>
         <element name="UserType" positionX="63" positionY="324" width="128" height="73"/>
     </elements>

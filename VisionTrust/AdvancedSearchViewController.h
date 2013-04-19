@@ -26,5 +26,7 @@
 @property (strong, nonatomic) UIToolbar *pickerToolBar;
 @property (strong, nonatomic) IBOutlet UIButton *countryButton;
 @property (strong, nonatomic) IBOutlet UIButton *projectButton;
+@property (strong, nonatomic) IBOutlet UIButton *genderButton;
+@property (strong, nonatomic) IBOutlet UIButton *statusButton;
 
 @end

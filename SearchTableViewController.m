@@ -107,7 +107,7 @@
     
     cell.fullName.text = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
     cell.cityCountry.text = [NSString stringWithFormat:@"%@, %@", child.city, child.country];
-    cell.project.text = @"Some project";
+    cell.project.text = child.isPartOfProject.name;
     [cell.contentView setBackgroundColor:[UIColor colorWithRed:205.0/255.0 green:201.0/255.0 blue:201.0/255.0 alpha:1]];
     
     return cell;

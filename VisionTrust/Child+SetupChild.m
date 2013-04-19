@@ -20,6 +20,7 @@
                          city:(NSString *)city
                       picture:(NSString *)picture
                      isActive:(NSNumber *)active
+                      project:(Project *)project
                     inContext:(NSManagedObjectContext *)context
 {
     Child *child = nil;
@@ -42,6 +43,7 @@
         child.city = city;
         child.pictureURL = picture;
         child.isActive = active;
+        child.isPartOfProject = project;
         
         NSDate *now = [NSDate date];
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];

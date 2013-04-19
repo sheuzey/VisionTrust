@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "User+SetupUser.h"
 #import "Child+SetupChild.h"
+#import "Project+SetupProject.h"
 
 @interface VisionTrustDatabase : NSObject
 

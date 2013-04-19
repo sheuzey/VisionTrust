@@ -45,6 +45,7 @@
 		DCE80B7C171784E700A0FE35 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B7B171784E700A0FE35 /* Default-568h@2x.png */; };
 		DCE80B7F171784E700A0FE35 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B7D171784E700A0FE35 /* MainStoryboard_iPhone.storyboard */; };
 		DCE80B82171784E700A0FE35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B80171784E700A0FE35 /* MainStoryboard_iPad.storyboard */; };
+		DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC84051721A3F5003862D5 /* Project+SetupProject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -108,6 +109,8 @@
 		DCE80B7B171784E700A0FE35 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DCE80B7E171784E700A0FE35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		DCE80B81171784E700A0FE35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		DCFC84041721A3F5003862D5 /* Project+SetupProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+SetupProject.h"; sourceTree = "<group>"; };
+		DCFC84051721A3F5003862D5 /* Project+SetupProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+SetupProject.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,25 +141,27 @@
 		DC6534B4171867CE00785378 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				DCDB81E71720DF3500D676A2 /* Child.h */,
+				DCDB81E81720DF3500D676A2 /* Child.m */,
 				DC6534DD171B63B000785378 /* Child+SetupChild.h */,
 				DC6534DE171B63B000785378 /* Child+SetupChild.m */,
 				DC6534BD171A3C5000785378 /* LoginModel.xcdatamodeld */,
-				DCDB81E71720DF3500D676A2 /* Child.h */,
-				DCDB81E81720DF3500D676A2 /* Child.m */,
-				DCDB81E41720DEFE00D676A2 /* Project.h */,
-				DCDB81E51720DEFE00D676A2 /* Project.m */,
+				D50FF903171E680600EFE78F /* Guardian.h */,
+				D50FF904171E680600EFE78F /* Guardian.m */,
 				D50FF915171E69E400EFE78F /* GuardianStatus.h */,
 				D50FF916171E69E400EFE78F /* GuardianStatus.m */,
 				D50FF912171E69E400EFE78F /* OccupationType.h */,
 				D50FF913171E69E400EFE78F /* OccupationType.m */,
-				D50FF903171E680600EFE78F /* Guardian.h */,
-				D50FF904171E680600EFE78F /* Guardian.m */,
-				D50FF8F7171E669A00EFE78F /* UserType.h */,
-				D50FF8F8171E669A00EFE78F /* UserType.m */,
+				DCDB81E41720DEFE00D676A2 /* Project.h */,
+				DCDB81E51720DEFE00D676A2 /* Project.m */,
+				DCFC84041721A3F5003862D5 /* Project+SetupProject.h */,
+				DCFC84051721A3F5003862D5 /* Project+SetupProject.m */,
 				DC6534C0171A3D1200785378 /* User.h */,
 				DC6534C1171A3D1200785378 /* User.m */,
 				DC6534B11718607B00785378 /* User+SetupUser.h */,
 				DC6534B21718607B00785378 /* User+SetupUser.m */,
+				D50FF8F7171E669A00EFE78F /* UserType.h */,
+				D50FF8F8171E669A00EFE78F /* UserType.m */,
 				DC9205C9172037B70087B1C3 /* VisionTrustDatabase.h */,
 				DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */,
 			);
@@ -334,6 +339,7 @@
 				DC9205CB172037B70087B1C3 /* VisionTrustDatabase.m in Sources */,
 				DCDB81E61720DEFE00D676A2 /* Project.m in Sources */,
 				DCDB81E91720DF3600D676A2 /* Child.m in Sources */,
+				DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
