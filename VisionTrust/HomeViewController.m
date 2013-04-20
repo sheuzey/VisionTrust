@@ -46,7 +46,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 20;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -81,17 +81,21 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath row] == 0 || [indexPath row] == 2 || [indexPath row] == 3) {
-        [self performSegueWithIdentifier:@"GoToSearch" sender:self];
+    if ([indexPath row] == 0) {
+        [self performSegueWithIdentifier:@"SearchThenView" sender:self];
     } else if([indexPath row] == 1) {
-        [self performSegueWithIdentifier:@"GoToPersonal" sender:self];
+        [self performSegueWithIdentifier:@"Register" sender:self];
+    } else if ([indexPath row] == 2) {
+        [self performSegueWithIdentifier:@"SearchThenEdit" sender:self];
+    } else if ([indexPath row] == 3) {
+        [self performSegueWithIdentifier:@"SearchThenEnrollment" sender:self];
     }
     [self.menuCollection deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"GoToSearch"]) {
+    if ([segue.identifier isEqualToString:@"SearchThenView"]) {
         SearchTableViewController *stvc = (SearchTableViewController *)segue.destinationViewController;
         stvc.database = self.database;
     }

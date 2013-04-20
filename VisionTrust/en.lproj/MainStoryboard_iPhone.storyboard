@@ -49,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="731" y="-39"/>
+            <point key="canvasLocation" x="673" y="-262"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="xqu-eY-KZD">
@@ -122,13 +122,74 @@
                     <connections>
                         <outlet property="menuCollection" destination="TQR-9E-Sh6" id="gcC-VC-mkO"/>
                         <outlet property="welcomeLabel" destination="tkn-OW-9sY" id="Rbi-Pi-PSH"/>
-                        <segue destination="kHd-nU-wgm" kind="push" identifier="GoToSearch" id="gNt-yo-A4S"/>
-                        <segue destination="S9y-Yf-aRM" kind="push" identifier="GoToPersonal" id="PbC-Rt-MUy"/>
+                        <segue destination="kHd-nU-wgm" kind="push" identifier="SearchThenView" id="gNt-yo-A4S"/>
+                        <segue destination="v8A-ng-PGY" kind="push" identifier="Register" id="hNd-VJ-sTY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQE-5w-4S9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1236" y="-39"/>
+            <point key="canvasLocation" x="1178" y="-262"/>
+        </scene>
+        <!--Register View Controller-->
+        <scene sceneID="9f6-NI-hfD">
+            <objects>
+                <viewController id="v8A-ng-PGY" customClass="RegisterViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OOp-bW-I7D">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="n1u-8G-ep5">
+                                <rect key="frame" x="105" y="20" width="110" height="110"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="n58-eB-COe">
+                                <rect key="frame" x="0.0" y="138" width="320" height="278"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="BBT-fV-mHW" detailTextLabel="dBH-p4-UXI" style="IBUITableViewCellStyleValue1" id="fPG-Ad-hRi">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BBT-fV-mHW">
+                                                    <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dBH-p4-UXI">
+                                                    <rect key="frame" x="246" y="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="S9y-Yf-aRM" id="Oo4-Ty-473"/>
+                                    <outlet property="delegate" destination="S9y-Yf-aRM" id="jYR-TR-KSk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="McB-LH-mny"/>
+                    <connections>
+                        <outlet property="childImageView" destination="n1u-8G-ep5" id="7PK-aT-TLr"/>
+                        <outlet property="tableView" destination="n58-eB-COe" id="f8p-Oi-P4c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="09Q-v3-eGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1178" y="469"/>
         </scene>
         <!--Personal View Controller-->
         <scene sceneID="iEh-DK-rZf">
@@ -189,7 +250,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq4-yE-xkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="473"/>
+            <point key="canvasLocation" x="2276" y="365"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="NgD-SC-rhE">
@@ -320,7 +381,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FDa-Gv-f3a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2308" y="-262"/>
+            <point key="canvasLocation" x="2276" y="-262"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="f5b-qf-Oee">
@@ -338,14 +399,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5jw-xS-ocV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="193" y="-39"/>
+            <point key="canvasLocation" x="135" y="-262"/>
         </scene>
     </scenes>
     <classes>
         <class className="AdvancedSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AdvancedSearchViewController.h"/>
             <relationships>
-                <relationship kind="action" name="searchButtonPressed:"/>
                 <relationship kind="outlet" name="countryButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="genderButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="projectButton" candidateClass="UIButton"/>
@@ -383,6 +443,13 @@
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
+        <class className="RegisterViewController" superclassName="PersonalViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
         <class className="SearchTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchTableViewController.h"/>
             <relationships>
@@ -411,7 +478,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="PbC-Rt-MUy"/>
-    </inferredMetricsTieBreakers>
 </document>

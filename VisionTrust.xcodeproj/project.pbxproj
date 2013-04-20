@@ -46,6 +46,7 @@
 		DCE80B82171784E700A0FE35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B80171784E700A0FE35 /* MainStoryboard_iPad.storyboard */; };
 		DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC84051721A3F5003862D5 /* Project+SetupProject.m */; };
 		DCFC840F17220CC3003862D5 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC840E17220CC3003862D5 /* PersonalViewController.m */; };
+		DCFC8412172225BF003862D5 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC8411172225BE003862D5 /* RegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,8 @@
 		DCFC84051721A3F5003862D5 /* Project+SetupProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+SetupProject.m"; sourceTree = "<group>"; };
 		DCFC840D17220CC3003862D5 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
 		DCFC840E17220CC3003862D5 /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
+		DCFC8410172225BE003862D5 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		DCFC8411172225BE003862D5 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +219,8 @@
 				DC6534B81719D2CA00785378 /* HomeViewController.m */,
 				DCFC840D17220CC3003862D5 /* PersonalViewController.h */,
 				DCFC840E17220CC3003862D5 /* PersonalViewController.m */,
+				DCFC8410172225BE003862D5 /* RegisterViewController.h */,
+				DCFC8411172225BE003862D5 /* RegisterViewController.m */,
 				DC6534D7171B4BF500785378 /* SearchTableViewController.h */,
 				DC6534D8171B4BF500785378 /* SearchTableViewController.m */,
 				DCE80B6C171784E700A0FE35 /* Supporting Files */,
@@ -340,6 +345,7 @@
 				DCDB81E91720DF3600D676A2 /* Child.m in Sources */,
 				DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */,
 				DCFC840F17220CC3003862D5 /* PersonalViewController.m in Sources */,
+				DCFC8412172225BF003862D5 /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
