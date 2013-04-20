@@ -7,6 +7,7 @@
 //
 
 #import "PersonalViewController.h"
+#import "GuardianViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface PersonalViewController ()
@@ -138,6 +139,45 @@
         default:
             return @"";
             break;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath section] > 0) {
+        switch ([indexPath section]) {
+            case 1:
+                [self performSegueWithIdentifier:@"GoToAcademic" sender:self];
+                break;
+            case 2:
+                [self performSegueWithIdentifier:@"GoToHealth" sender:self];
+                break;
+            case 3:
+                [self performSegueWithIdentifier:@"GoToSpiritual" sender:self];
+                break;
+            case 4:
+                [self performSegueWithIdentifier:@"GoToHomeLife" sender:self];
+                break;
+            case 5:
+                [self performSegueWithIdentifier:@"GoToGuardian" sender:self];
+                break;
+        }
+    }
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"GoToAcademic"]) {
+        
+    } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
+        
+    } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
+        
+    } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
+        
+    } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
+        
     }
 }
 

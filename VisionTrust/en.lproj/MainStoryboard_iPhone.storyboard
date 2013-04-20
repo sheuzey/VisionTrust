@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="5">
             <objects>
-                <viewController id="2" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="2" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -189,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09Q-v3-eGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="469"/>
+            <point key="canvasLocation" x="1178" y="365"/>
         </scene>
         <!--Personal View Controller-->
         <scene sceneID="iEh-DK-rZf">
@@ -246,11 +246,27 @@
                     <connections>
                         <outlet property="childImageView" destination="WVQ-cC-8XJ" id="I2S-KD-e4T"/>
                         <outlet property="tableView" destination="fiP-73-A5T" id="tav-4I-xRG"/>
+                        <segue destination="BnW-On-L3M" kind="push" identifier="GoToAcademic" id="ma7-b7-1Ii"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq4-yE-xkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2276" y="365"/>
+        </scene>
+        <!--Academic View Controller-->
+        <scene sceneID="PbT-Ic-AIt">
+            <objects>
+                <viewController id="BnW-On-L3M" customClass="AcademicViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DaI-5m-hod">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LPE-tu-dPv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yjw-8D-RhF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2721" y="365"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="NgD-SC-rhE">
@@ -335,7 +351,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adv-zg-dnQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="-262"/>
+            <point key="canvasLocation" x="1728" y="-262"/>
         </scene>
         <!--Advanced Search View Controller-->
         <scene sceneID="dno-Hc-Vp8">
@@ -432,8 +448,17 @@
         <class className="HomeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="logoutButtonPressed:"/>
                 <relationship kind="outlet" name="menuCollection" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="loginButtonWasPressed:"/>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTable" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="PersonalViewController" superclassName="UIViewController">
@@ -465,12 +490,8 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
-        <class className="ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="loginTable" candidateClass="UITableView"/>
-            </relationships>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

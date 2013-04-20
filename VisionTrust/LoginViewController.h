@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "VisionTrustDatabase.h"
 
-@interface ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
+@interface LoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *loginTable;
 @property (strong, nonatomic) VisionTrustDatabase *database;

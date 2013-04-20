@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "LoginViewController.h"
 #import "HomeViewController.h"
 #import "User+SetupUser.h"
 
-@interface ViewController ()
+@interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) NSString *username;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation ViewController
+@implementation LoginViewController
 
 #define LOGO_TAG 100
 #define USERNAME_TAG 100
