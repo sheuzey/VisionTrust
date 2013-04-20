@@ -90,7 +90,7 @@
     } else if ([indexPath row] == 3) {
         [self performSegueWithIdentifier:@"SearchThenEnrollment" sender:self];
     }
-    [self.menuCollection deselectItemAtIndexPath:indexPath animated:YES];
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Child.h"
+#import "Guardian.h"
+#import "OccupationType.h"
+#import "GuardianStatus.h"
 
-@interface GuardianViewController : UIViewController
+@interface GuardianViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) Child *child;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

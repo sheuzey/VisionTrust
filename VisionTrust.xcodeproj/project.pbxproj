@@ -36,6 +36,7 @@
 		DC9EA8CD1723224100C3137D /* OccupationType+SetupOccupationType.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8CC1723224100C3137D /* OccupationType+SetupOccupationType.m */; };
 		DC9EA8D317232B0400C3137D /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8D217232B0300C3137D /* Child.m */; };
 		DC9EA8D617232BC000C3137D /* Guardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8D517232BC000C3137D /* Guardian.m */; };
+		DC9EA8D917233B7100C3137D /* AllChildrenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8D817233B7100C3137D /* AllChildrenViewController.m */; };
 		DCDB81E61720DEFE00D676A2 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDB81E51720DEFE00D676A2 /* Project.m */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
@@ -103,6 +104,8 @@
 		DC9EA8D217232B0300C3137D /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
 		DC9EA8D417232BBF00C3137D /* Guardian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Guardian.h; sourceTree = "<group>"; };
 		DC9EA8D517232BC000C3137D /* Guardian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Guardian.m; sourceTree = "<group>"; };
+		DC9EA8D717233B7100C3137D /* AllChildrenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllChildrenViewController.h; sourceTree = "<group>"; };
+		DC9EA8D817233B7100C3137D /* AllChildrenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllChildrenViewController.m; sourceTree = "<group>"; };
 		DCDB81E41720DEFE00D676A2 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		DCDB81E51720DEFE00D676A2 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,12 +197,8 @@
 			children = (
 				DC6534E8171CC57D00785378 /* AdvancedSearchViewController.h */,
 				DC6534E9171CC57D00785378 /* AdvancedSearchViewController.m */,
-				DC6534C5171B04F700785378 /* Cell.h */,
-				DC6534C6171B04F800785378 /* Cell.m */,
-				DC6534E5171B8DAB00785378 /* CustomSearchCell.h */,
-				DC6534E6171B8DAB00785378 /* CustomSearchCell.m */,
-				DC6534CE171B168400785378 /* CustomCellBackground.h */,
-				DC6534CF171B168400785378 /* CustomCellBackground.m */,
+				DC9EA8D717233B7100C3137D /* AllChildrenViewController.h */,
+				DC9EA8D817233B7100C3137D /* AllChildrenViewController.m */,
 				DC9EA8BF17231E3400C3137D /* GuardianViewController.h */,
 				DC9EA8C017231E3400C3137D /* GuardianViewController.m */,
 				DC6534B71719D2CA00785378 /* HomeViewController.h */,
@@ -214,6 +213,19 @@
 				DC6534D8171B4BF500785378 /* SearchTableViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DC9EA8DA17233E7800C3137D /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				DC6534C5171B04F700785378 /* Cell.h */,
+				DC6534C6171B04F800785378 /* Cell.m */,
+				DC6534CE171B168400785378 /* CustomCellBackground.h */,
+				DC6534CF171B168400785378 /* CustomCellBackground.m */,
+				DC6534E5171B8DAB00785378 /* CustomSearchCell.h */,
+				DC6534E6171B8DAB00785378 /* CustomSearchCell.m */,
+			);
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		DCE80B59171784E700A0FE35 = {
@@ -248,8 +260,9 @@
 		DCE80B6B171784E700A0FE35 /* VisionTrust */ = {
 			isa = PBXGroup;
 			children = (
-				DC6534B4171867CE00785378 /* Core Data */,
 				DC9EA8BE17231CF400C3137D /* Controllers */,
+				DC6534B4171867CE00785378 /* Core Data */,
+				DC9EA8DA17233E7800C3137D /* Custom Cells */,
 				DC65348A17178EA800785378 /* Storyboards */,
 				DCE80B6C171784E700A0FE35 /* Supporting Files */,
 			);
@@ -378,6 +391,7 @@
 				DC9EA8CD1723224100C3137D /* OccupationType+SetupOccupationType.m in Sources */,
 				DC9EA8D317232B0400C3137D /* Child.m in Sources */,
 				DC9EA8D617232BC000C3137D /* Guardian.m in Sources */,
+				DC9EA8D917233B7100C3137D /* AllChildrenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

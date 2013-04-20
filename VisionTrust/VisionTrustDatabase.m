@@ -38,15 +38,15 @@
         //Create occupation types..
         OccupationType *t1 = [OccupationType typeWithDescription:@"Doctor" inContext:self.database.managedObjectContext];
         OccupationType *t2 = [OccupationType typeWithDescription:@"Engineer" inContext:self.database.managedObjectContext];
-        OccupationType *t3 = [OccupationType typeWithDescription:@"Unemployed" inContext:self.database.managedObjectContext];
+        OccupationType *t3 = [OccupationType typeWithDescription:@"Lawyer" inContext:self.database.managedObjectContext];
         OccupationType *t4 = [OccupationType typeWithDescription:@"Singer" inContext:self.database.managedObjectContext];
         OccupationType *t5 = [OccupationType typeWithDescription:@"Social Activist" inContext:self.database.managedObjectContext];
         
         //Create guardian status'..
         GuardianStatus *s1 = [GuardianStatus statusWithDescription:@"Full-Time" inContext:self.database.managedObjectContext];
         GuardianStatus *s2 = [GuardianStatus statusWithDescription:@"Part-Time" inContext:self.database.managedObjectContext];
-        GuardianStatus *s3 = [GuardianStatus statusWithDescription:@"Contractor" inContext:self.database.managedObjectContext];
-        GuardianStatus *s4 = [GuardianStatus statusWithDescription:@"Seasonal" inContext:self.database.managedObjectContext];
+        GuardianStatus *s3 = [GuardianStatus statusWithDescription:@"Unemployed" inContext:self.database.managedObjectContext];
+        GuardianStatus *s4 = [GuardianStatus statusWithDescription:@"Seasonally Employed" inContext:self.database.managedObjectContext];
         
         //Create guardians..
         Guardian *g1 = [Guardian guardianWithFirstName:@"Pedro"

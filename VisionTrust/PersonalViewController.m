@@ -49,7 +49,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
@@ -134,7 +134,7 @@
             return @"Home Life";
             break;
         case 5:
-            return @"Guardian Info";
+            return @"Guardian";
             break;
         default:
             return @"";
@@ -163,7 +163,7 @@
                 break;
         }
     }
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -177,7 +177,8 @@
     } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
         
     } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
-        
+        GuardianViewController *gvc = (GuardianViewController *)segue.destinationViewController;
+        gvc.child = self.child;
     }
 }
 
