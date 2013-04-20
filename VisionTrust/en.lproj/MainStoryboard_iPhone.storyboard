@@ -109,7 +109,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="2Rh-qf-nu2">
                         <barButtonItem key="leftBarButtonItem" title="Log out" id="hGX-tv-RL5">
@@ -122,13 +122,74 @@
                     <connections>
                         <outlet property="menuCollection" destination="TQR-9E-Sh6" id="gcC-VC-mkO"/>
                         <outlet property="welcomeLabel" destination="tkn-OW-9sY" id="Rbi-Pi-PSH"/>
-                        <segue destination="s9r-Du-Gmt" kind="push" identifier="GoToPersonal" id="mdk-e1-6eH"/>
                         <segue destination="kHd-nU-wgm" kind="push" identifier="GoToSearch" id="gNt-yo-A4S"/>
+                        <segue destination="S9y-Yf-aRM" kind="push" identifier="GoToPersonal" id="PbC-Rt-MUy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aQE-5w-4S9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1236" y="-39"/>
+        </scene>
+        <!--Personal View Controller-->
+        <scene sceneID="iEh-DK-rZf">
+            <objects>
+                <viewController id="S9y-Yf-aRM" customClass="PersonalViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jyh-QR-XoL">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="WVQ-cC-8XJ">
+                                <rect key="frame" x="105" y="20" width="110" height="110"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fiP-73-A5T">
+                                <rect key="frame" x="0.0" y="138" width="320" height="278"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="f7l-Er-m77" detailTextLabel="E3t-hJ-iSI" style="IBUITableViewCellStyleValue1" id="MRY-Dq-CQq">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f7l-Er-m77">
+                                                    <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E3t-hJ-iSI">
+                                                    <rect key="frame" x="246" y="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="S9y-Yf-aRM" id="Gbo-LG-M0G"/>
+                                    <outlet property="delegate" destination="S9y-Yf-aRM" id="rZP-o7-Cdf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QGG-Ay-0PL"/>
+                    <connections>
+                        <outlet property="childImageView" destination="WVQ-cC-8XJ" id="I2S-KD-e4T"/>
+                        <outlet property="tableView" destination="fiP-73-A5T" id="tav-4I-xRG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eq4-yE-xkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1756" y="473"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="NgD-SC-rhE">
@@ -208,7 +269,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="Tqt-Bg-Ibs" id="OOq-hs-U1q"/>
-                        <segue destination="s9r-Du-Gmt" kind="push" identifier="go" id="g0f-4n-Shq"/>
+                        <segue destination="S9y-Yf-aRM" kind="push" identifier="GoToPersonal" id="eR7-SG-vHY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adv-zg-dnQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -261,21 +322,6 @@
             </objects>
             <point key="canvasLocation" x="2308" y="-262"/>
         </scene>
-        <!--Personal View Controller-->
-        <scene sceneID="oYw-sO-Iu8">
-            <objects>
-                <viewController id="s9r-Du-Gmt" customClass="PersonalViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="4e7-Nd-2cc">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Ziq-uF-idx"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JkF-ex-EtO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1756" y="446"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="f5b-qf-Oee">
             <objects>
@@ -299,6 +345,7 @@
         <class className="AdvancedSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AdvancedSearchViewController.h"/>
             <relationships>
+                <relationship kind="action" name="searchButtonPressed:"/>
                 <relationship kind="outlet" name="countryButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="genderButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="projectButton" candidateClass="UIButton"/>
@@ -331,6 +378,10 @@
         </class>
         <class className="PersonalViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PersonalViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="SearchTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchTableViewController.h"/>
@@ -350,7 +401,6 @@
         <class className="ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
             <relationships>
-                <relationship kind="action" name="loginButtonWasPressed:"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginTable" candidateClass="UITableView"/>
             </relationships>
@@ -362,6 +412,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="g0f-4n-Shq"/>
+        <segue reference="PbC-Rt-MUy"/>
     </inferredMetricsTieBreakers>
 </document>

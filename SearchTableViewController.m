@@ -11,8 +11,10 @@
 #import "Child.h"
 #import "CustomSearchCell.h"
 #import "AdvancedSearchViewController.h"
+#import "PersonalViewController.h"
 
 @interface SearchTableViewController () <QuitAdvancedSearchProtocol>
+@property (nonatomic, strong) Child *selectedChild;
 @end
 
 @implementation SearchTableViewController
@@ -30,21 +32,6 @@
     [center addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
     
     NSLog(@"%d", [self.children count]);
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    /*self.title = @"Search";
-    self.children = [self.database getAllChildren];
-    
-    self.searchData = [[NSMutableArray alloc] initWithArray:self.children];
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self selector:@selector(keyboardWillAppear) name:UIKeyboardWillShowNotification object:nil];
-    [center addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
-    
-    NSLog(@"%d", [self.children count]);*/
 }
 
 - (void)keyboardWillAppear
@@ -129,6 +116,9 @@
         AdvancedSearchViewController *asvc = (AdvancedSearchViewController *)segue.destinationViewController;
         asvc.delegate = self;
         asvc.database = self.database;
+    } else if ([segue.identifier isEqualToString:@"GoToPersonal"]) {
+        PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
+        pvc.child = self.selectedChild;
     }
     [self.database saveDatabase];
 }
@@ -150,7 +140,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"go" sender:self];
+    self.selectedChild = [self.searchData objectAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"GoToPersonal" sender:self];
 }
 
 @end

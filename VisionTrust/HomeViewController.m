@@ -24,6 +24,12 @@
 {
     [super viewDidLoad];
     
+    //Set background color..
+    self.view.backgroundColor = [UIColor clearColor];
+    UITableView *tv = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    [self.view addSubview:tv];
+    [self.view sendSubviewToBack:tv];
+    
     self.database = [[VisionTrustDatabase alloc] init];
     
     //Set welcome label..
@@ -49,7 +55,7 @@
     Cell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
     cell.image.layer.masksToBounds = YES;
     cell.image.layer.cornerRadius = 10.0;
-    cell.image.layer.borderWidth = 5.0;
+    cell.image.layer.borderWidth = 2.0;
     cell.image.layer.borderColor = [[UIColor blackColor] CGColor];
     
     switch ([indexPath row]) {
