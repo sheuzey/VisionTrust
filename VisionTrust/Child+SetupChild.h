@@ -21,6 +21,8 @@
                          city:(NSString *)city
                       picture:(NSString *)picture
                        status:(NSString *)status
+                     guardian:(Guardian *)guardian
+         guardianRelationship:(NSString *)relationship
                       project:(Project *)project
                     inContext:(NSManagedObjectContext *)context;
 

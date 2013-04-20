@@ -2,7 +2,7 @@
 //  Child.m
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/18/13.
+//  Created by Stephen Heuzey on 4/20/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
@@ -19,11 +19,12 @@
 @dynamic dob;
 @dynamic firstName;
 @dynamic gender;
-@dynamic status;
 @dynamic lastName;
 @dynamic pictureURL;
+@dynamic status;
 @dynamic ts;
 @dynamic unique;
+@dynamic relationToGuardian;
 @dynamic hasGuardian;
 @dynamic isPartOfProject;
 

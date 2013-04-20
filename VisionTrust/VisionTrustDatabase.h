@@ -10,6 +10,10 @@
 #import "User+SetupUser.h"
 #import "Child+SetupChild.h"
 #import "Project+SetupProject.h"
+#import "Guardian+SetupGuardian.h"
+#import "GuardianStatus+SetuptGuardianStatus.h"
+#import "OccupationType+SetupOccupationType.h"
+
 
 @interface VisionTrustDatabase : NSObject
 

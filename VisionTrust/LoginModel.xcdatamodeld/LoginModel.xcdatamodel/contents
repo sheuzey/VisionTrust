@@ -9,6 +9,7 @@
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="relationToGuardian" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ts" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -18,8 +19,7 @@
     <entity name="Guardian" representedClassName="Guardian" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="occupation" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="relationToChild" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="guardianOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="hasGuardian" inverseEntity="Child" syncable="YES"/>
         <relationship name="hasGuardianStatus" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GuardianStatus" inverseName="guardianStatusOf" inverseEntity="GuardianStatus" syncable="YES"/>
         <relationship name="hasOccupationType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="OccupationType" inverseName="occupationTypeOf" inverseEntity="OccupationType" syncable="YES"/>
@@ -50,8 +50,8 @@
         <relationship name="heldBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="inType" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Child" positionX="108" positionY="54" width="128" height="238"/>
-        <element name="Guardian" positionX="306" positionY="72" width="128" height="163"/>
+        <element name="Child" positionX="108" positionY="54" width="128" height="253"/>
+        <element name="Guardian" positionX="306" positionY="72" width="128" height="133"/>
         <element name="GuardianStatus" positionX="502" positionY="51" width="128" height="75"/>
         <element name="OccupationType" positionX="502" positionY="261" width="128" height="75"/>
         <element name="Project" positionX="-92" positionY="-16" width="128" height="105"/>

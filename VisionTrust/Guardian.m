@@ -2,7 +2,7 @@
 //  Guardian.m
 //  VisionTrust
 //
-//  Created by Programming on 4/17/13.
+//  Created by Stephen Heuzey on 4/20/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
@@ -16,10 +16,9 @@
 
 @dynamic firstName;
 @dynamic lastName;
-@dynamic relationToChild;
-@dynamic occupation;
+@dynamic unique;
 @dynamic guardianOf;
-@dynamic hasOccupationType;
 @dynamic hasGuardianStatus;
+@dynamic hasOccupationType;
 
 @end
