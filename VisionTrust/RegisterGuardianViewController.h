@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "GuardianViewController.h"
 
-@interface RegisterGuardianViewController : GuardianViewController
+@interface RegisterGuardianViewController : UITableViewController
+
+@property (nonatomic, strong) NSMutableDictionary *guardianData;
 
 @end

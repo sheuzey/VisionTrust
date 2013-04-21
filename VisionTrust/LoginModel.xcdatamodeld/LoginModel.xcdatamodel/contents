@@ -56,6 +56,6 @@
         <element name="OccupationType" positionX="502" positionY="261" width="128" height="75"/>
         <element name="Project" positionX="-92" positionY="-16" width="128" height="105"/>
         <element name="User" positionX="-198" positionY="162" width="128" height="118"/>
-        <element name="UserType" positionX="63" positionY="324" width="128" height="73"/>
+        <element name="UserType" positionX="-162" positionY="351" width="128" height="73"/>
     </elements>
 </model>

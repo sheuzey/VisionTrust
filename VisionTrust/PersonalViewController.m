@@ -81,33 +81,11 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             break;
-        case 1:
+        default:
             cell.textLabel.text = @"Info";
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             cell.detailTextLabel.text = nil;
             break;
-        case 2:
-
-            cell.textLabel.text = @"Info";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.text = nil;
-            break;
-        case 3:
-            cell.textLabel.text = @"Info";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.text = nil;
-            break;
-        case 4:
-            cell.textLabel.text = @"Info";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.text = nil;
-            break;
-        case 5:
-            cell.textLabel.text = @"Info";
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            cell.detailTextLabel.text = nil;
-            break;
-            
     }
     return cell;
 }

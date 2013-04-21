@@ -8,6 +8,7 @@
 
 #import "RegisterChildViewController.h"
 #import "InputDataViewController.h"
+#import "RegisterGuardianViewController.h"
 
 @interface RegisterChildViewController () <GetData>
 @property (nonatomic, strong) NSString *selectedCellTitle;
@@ -152,28 +153,49 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    switch ([indexPath row]) {
-        case 0:
-            self.selectedCellTitle = FIRST_NAME;
-            break;
-        case 1:
-            self.selectedCellTitle = LAST_NAME;
-            break;
-        case 2:
-            self.selectedCellTitle = DOB;
-            break;
-        case 3:
-            self.selectedCellTitle = CITY;
-            break;
-        case 4:
-            self.selectedCellTitle = PROJECT;
-            break;
+    if ([indexPath section] > 0) {
+        switch ([indexPath section]) {
+            case 1:
+                [self performSegueWithIdentifier:@"GoToAcademic" sender:self];
+                break;
+            case 2:
+                [self performSegueWithIdentifier:@"GoToHealth" sender:self];
+                break;
+            case 3:
+                [self performSegueWithIdentifier:@"GoToSpiritual" sender:self];
+                break;
+            case 4:
+                [self performSegueWithIdentifier:@"GoToHomeLife" sender:self];
+                break;
+            case 5:
+                [self performSegueWithIdentifier:@"GoToGuardian" sender:self];
+                break;
+        }
+    } else {
+        switch ([indexPath row]) {
+            case 0:
+                self.selectedCellTitle = FIRST_NAME;
+                [self performSegueWithIdentifier:@"InputData" sender:self];
+                break;
+            case 1:
+                self.selectedCellTitle = LAST_NAME;
+                [self performSegueWithIdentifier:@"InputData" sender:self];
+                break;
+            case 2:
+                self.selectedCellTitle = DOB;
+                [self showPicker];
+                break;
+            case 3:
+                self.selectedCellTitle = CITY;
+                [self performSegueWithIdentifier:@"InputData" sender:self];
+                break;
+            case 4:
+                self.selectedCellTitle = PROJECT;
+                [self performSegueWithIdentifier:@"InputData" sender:self];
+                break;
+        }
     }
-    if ([indexPath row] == 2) {
-        [self showPicker];
-    } else
-        [self performSegueWithIdentifier:@"InputData" sender:self];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -183,8 +205,17 @@
         idvc.titleString = self.selectedCellTitle;
         idvc.dataString = [self.childData valueForKey:self.selectedCellTitle];
         idvc.delegate = self;
-    } else
-        [super prepareForSegue:segue sender:sender];
+    } else if ([segue.identifier isEqualToString:@"GoToAcademic"]) {
+        
+    } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
+        
+    } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
+        
+    } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
+        
+    } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
+        
+    }
 }
 
 - (void)giveBackData:(id)data
