@@ -60,29 +60,26 @@
                 case 0:
                     cell.textLabel.text = @"First Name";
                     cell.detailTextLabel.text = self.child.firstName;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 case 1:
                     cell.textLabel.text = @"Last Name";
                     cell.detailTextLabel.text = self.child.lastName;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 case 2:
                     cell.textLabel.text = @"Date of Birth";
                     cell.detailTextLabel.text = self.child.dob;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 case 3:
                     cell.textLabel.text = @"City";
                     cell.detailTextLabel.text = self.child.city;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 case 4:
                     cell.textLabel.text = @"Project";
                     cell.detailTextLabel.text = self.child.isPartOfProject.name;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
             }
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             break;
         case 1:
             cell.textLabel.text = @"Info";

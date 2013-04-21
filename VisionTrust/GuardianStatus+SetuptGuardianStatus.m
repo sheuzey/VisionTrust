@@ -10,7 +10,8 @@
 
 @implementation GuardianStatus (SetuptGuardianStatus)
 
-+ (GuardianStatus *)statusWithDescription:(NSString *)descriptionOfStatus inContext:(NSManagedObjectContext *)context
++ (GuardianStatus *)statusWithDescription:(NSString *)descriptionOfStatus
+                                inContext:(NSManagedObjectContext *)context
 {
     GuardianStatus *status = nil;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"GuardianStatus"];

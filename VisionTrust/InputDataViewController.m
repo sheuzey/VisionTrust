@@ -48,8 +48,6 @@
     inputField.delegate = self;
     
     inputField.placeholder = self.titleString;
-    [inputField setAutocorrectionType:UITextAutocorrectionTypeNo];
-    [inputField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     inputField.text = self.dataString;
     inputField.tag = DATA_TAG;
     
@@ -66,7 +64,8 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     UITextField *data = (UITextField *)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:DATA_TAG];
-    [self.delegate giveBackData:data.text];
+    NSString *text = [data.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    [self.delegate giveBackData:text];
 }
 
 @end
