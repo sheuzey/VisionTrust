@@ -8,7 +8,7 @@
 
 #import "PersonalViewController.h"
 
-@interface RegisterChildViewController : PersonalViewController
+@interface RegisterChildViewController : PersonalViewController <UIActionSheetDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *childImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
