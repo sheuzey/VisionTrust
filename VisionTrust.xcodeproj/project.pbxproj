@@ -37,6 +37,8 @@
 		DC9EA8D317232B0400C3137D /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8D217232B0300C3137D /* Child.m */; };
 		DC9EA8D617232BC000C3137D /* Guardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8D517232BC000C3137D /* Guardian.m */; };
 		DC9EA8D917233B7100C3137D /* AllChildrenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8D817233B7100C3137D /* AllChildrenViewController.m */; };
+		DC9EA8DD17234D8900C3137D /* RegisterGuardianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8DC17234D8900C3137D /* RegisterGuardianViewController.m */; };
+		DC9EA8E01723507900C3137D /* InputDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8DF1723507800C3137D /* InputDataViewController.m */; };
 		DCDB81E61720DEFE00D676A2 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDB81E51720DEFE00D676A2 /* Project.m */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
@@ -51,7 +53,7 @@
 		DCE80B82171784E700A0FE35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B80171784E700A0FE35 /* MainStoryboard_iPad.storyboard */; };
 		DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC84051721A3F5003862D5 /* Project+SetupProject.m */; };
 		DCFC840F17220CC3003862D5 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC840E17220CC3003862D5 /* PersonalViewController.m */; };
-		DCFC8412172225BF003862D5 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC8411172225BE003862D5 /* RegisterViewController.m */; };
+		DCFC8412172225BF003862D5 /* RegisterChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC8411172225BE003862D5 /* RegisterChildViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +108,10 @@
 		DC9EA8D517232BC000C3137D /* Guardian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Guardian.m; sourceTree = "<group>"; };
 		DC9EA8D717233B7100C3137D /* AllChildrenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllChildrenViewController.h; sourceTree = "<group>"; };
 		DC9EA8D817233B7100C3137D /* AllChildrenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllChildrenViewController.m; sourceTree = "<group>"; };
+		DC9EA8DB17234D8900C3137D /* RegisterGuardianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterGuardianViewController.h; sourceTree = "<group>"; };
+		DC9EA8DC17234D8900C3137D /* RegisterGuardianViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterGuardianViewController.m; sourceTree = "<group>"; };
+		DC9EA8DE1723507800C3137D /* InputDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputDataViewController.h; sourceTree = "<group>"; };
+		DC9EA8DF1723507800C3137D /* InputDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDataViewController.m; sourceTree = "<group>"; };
 		DCDB81E41720DEFE00D676A2 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		DCDB81E51720DEFE00D676A2 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,8 +133,8 @@
 		DCFC84051721A3F5003862D5 /* Project+SetupProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+SetupProject.m"; sourceTree = "<group>"; };
 		DCFC840D17220CC3003862D5 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
 		DCFC840E17220CC3003862D5 /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
-		DCFC8410172225BE003862D5 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		DCFC8411172225BE003862D5 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		DCFC8410172225BE003862D5 /* RegisterChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterChildViewController.h; sourceTree = "<group>"; };
+		DCFC8411172225BE003862D5 /* RegisterChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterChildViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,12 +209,16 @@
 				DC9EA8C017231E3400C3137D /* GuardianViewController.m */,
 				DC6534B71719D2CA00785378 /* HomeViewController.h */,
 				DC6534B81719D2CA00785378 /* HomeViewController.m */,
+				DC9EA8DE1723507800C3137D /* InputDataViewController.h */,
+				DC9EA8DF1723507800C3137D /* InputDataViewController.m */,
 				DC65349617179CF900785378 /* LoginViewController.h */,
 				DC65349717179CF900785378 /* LoginViewController.m */,
 				DCFC840D17220CC3003862D5 /* PersonalViewController.h */,
 				DCFC840E17220CC3003862D5 /* PersonalViewController.m */,
-				DCFC8410172225BE003862D5 /* RegisterViewController.h */,
-				DCFC8411172225BE003862D5 /* RegisterViewController.m */,
+				DCFC8410172225BE003862D5 /* RegisterChildViewController.h */,
+				DCFC8411172225BE003862D5 /* RegisterChildViewController.m */,
+				DC9EA8DB17234D8900C3137D /* RegisterGuardianViewController.h */,
+				DC9EA8DC17234D8900C3137D /* RegisterGuardianViewController.m */,
 				DC6534D7171B4BF500785378 /* SearchTableViewController.h */,
 				DC6534D8171B4BF500785378 /* SearchTableViewController.m */,
 			);
@@ -384,7 +394,7 @@
 				DCDB81E61720DEFE00D676A2 /* Project.m in Sources */,
 				DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */,
 				DCFC840F17220CC3003862D5 /* PersonalViewController.m in Sources */,
-				DCFC8412172225BF003862D5 /* RegisterViewController.m in Sources */,
+				DCFC8412172225BF003862D5 /* RegisterChildViewController.m in Sources */,
 				DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */,
 				DC9EA8C717231F8E00C3137D /* Guardian+SetupGuardian.m in Sources */,
 				DC9EA8CA1723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m in Sources */,
@@ -392,6 +402,8 @@
 				DC9EA8D317232B0400C3137D /* Child.m in Sources */,
 				DC9EA8D617232BC000C3137D /* Guardian.m in Sources */,
 				DC9EA8D917233B7100C3137D /* AllChildrenViewController.m in Sources */,
+				DC9EA8DD17234D8900C3137D /* RegisterGuardianViewController.m in Sources */,
+				DC9EA8E01723507900C3137D /* InputDataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,10 +8,9 @@
 
 #import "PersonalViewController.h"
 
-@interface RegisterViewController : PersonalViewController
+@interface RegisterChildViewController : PersonalViewController
 
 @property (strong, nonatomic) IBOutlet UIImageView *childImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) Child *child;
 
 @end
