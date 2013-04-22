@@ -44,8 +44,6 @@
     
     self.pickerToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 45)];
     [self.pickerToolBar setBarStyle:UIBarStyleBlack];
-    
-    [self createPicker];
 }
 
 - (IBAction)searchButtonPressed:(id)sender {
@@ -91,19 +89,15 @@
     NSString *title = [self.dataArray objectAtIndex:self.selectedIndex];
     switch (item.tag) {
         case COUNTRY_TAG:
-            [self.countryButton setTitle:title forState:UIControlStateNormal];
             [self.parameters setValue:title forKey:@"country"];
             break;
         case PROJECT_TAG:
-            [self.projectButton setTitle:title forState:UIControlStateNormal];
             [self.parameters setValue:title forKey:@"isPartOfProject.name"];
             break;
         case GENDER_TAG:
-            [self.genderButton setTitle:title forState:UIControlStateNormal];
             [self.parameters setValue:title forKey:@"gender"];
             break;
         case STATUS_TAG:
-            [self.statusButton setTitle:title forState:UIControlStateNormal];
             [self.parameters setValue:title forKey:@"status"];
             break;
     }
