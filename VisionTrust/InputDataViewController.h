@@ -12,12 +12,16 @@
 
 @protocol GetData
 
-- (void)giveBackData:(id)data;
+//Used to give data back to calling view controller
+- (void)giveBackData:(NSString *)data;
 
 @end
 
-@interface InputDataViewController : UITableViewController <UITextFieldDelegate>
+@interface InputDataViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSString *titleString;
 @property (nonatomic, strong) NSString *dataString;
 @property (nonatomic, weak) id<GetData>delegate;
+
 @end

@@ -80,6 +80,28 @@
                                         guardianStatus:s1
                                              inContext:self.database.managedObjectContext];
         
+        //Create projects..
+        Project *p1 = [Project projectWithAddress:@"50 project place"
+                               name:@"DR-3320"
+                                 ID:[NSNumber numberWithInt:1]
+                          inContext:self.database.managedObjectContext];
+        Project *p2 = [Project projectWithAddress:@"1 vision avenue"
+                                             name:@"VEN-1099"
+                                               ID:[NSNumber numberWithInt:2]
+                                        inContext:self.database.managedObjectContext];
+        Project *p3 = [Project projectWithAddress:@"23 trust blvd"
+                                             name:@"MX-454"
+                                               ID:[NSNumber numberWithInt:3]
+                                        inContext:self.database.managedObjectContext];
+        Project *p4 = [Project projectWithAddress:@"11 main street"
+                                             name:@"US-0031"
+                                               ID:[NSNumber numberWithInt:4]
+                                        inContext:self.database.managedObjectContext];
+        [Project projectWithAddress:@"45 2nd way"
+                               name:@"BRZ-1324"
+                                 ID:[NSNumber numberWithInt:4]
+                          inContext:self.database.managedObjectContext];
+        
         //Add children with projects..
         [Child childWithFirstName:@"Julio"
                          LastName:@"Gonzalas"
@@ -93,11 +115,9 @@
                            status:@"Active"
                          guardian:g1
              guardianRelationship:@"Father"
-                          project:[Project projectWithAddress:@"50 project place"
-                                                         name:@"DR-3320"
-                                                           ID:[NSNumber numberWithInt:1]
-                                                    inContext:self.database.managedObjectContext]
+                          project:p1
                         inContext:self.database.managedObjectContext];
+        
         [Child childWithFirstName:@"Hugo"
                          LastName:@"Chavez"
                          uniqueID:[NSNumber numberWithInteger:2]
@@ -110,11 +130,9 @@
                            status:@"Active"
                          guardian:g2
              guardianRelationship:@"Mother"
-                          project:[Project projectWithAddress:@"1 vision avenue"
-                                                         name:@"VEN-1099"
-                                                           ID:[NSNumber numberWithInt:2]
-                                                    inContext:self.database.managedObjectContext]
+                          project:p2
                         inContext:self.database.managedObjectContext];
+        
         [Child childWithFirstName:@"Kim Jong"
                          LastName:@"Un"
                          uniqueID:[NSNumber numberWithInteger:3]
@@ -127,11 +145,9 @@
                            status:@"Active"
                          guardian:g3
              guardianRelationship:@"Uncle"
-                          project:[Project projectWithAddress:@"23 trust blvd"
-                                                         name:@"MX-454"
-                                                           ID:[NSNumber numberWithInt:3]
-                                                    inContext:self.database.managedObjectContext]
+                          project:p3
                         inContext:self.database.managedObjectContext];
+        
         [Child childWithFirstName:@"Katie"
                          LastName:@"Smith"
                          uniqueID:[NSNumber numberWithInteger:4]
@@ -144,11 +160,9 @@
                            status:@"Inactive"
                          guardian:g5
              guardianRelationship:@"Aunt"
-                          project:[Project projectWithAddress:@"50 project place"
-                                                         name:@"DR-3320"
-                                                           ID:[NSNumber numberWithInt:1]
-                                                    inContext:self.database.managedObjectContext]
+                          project:p1
                         inContext:self.database.managedObjectContext];
+        
         [Child childWithFirstName:@"Vladimir"
                          LastName:@"Putin"
                          uniqueID:[NSNumber numberWithInteger:5]
@@ -161,11 +175,9 @@
                            status:@"Inactive"
                          guardian:g4
              guardianRelationship:@"Father"
-                          project:[Project projectWithAddress:@"1 vision avenue"
-                                                         name:@"VEN-1099"
-                                                           ID:[NSNumber numberWithInt:2]
-                                                    inContext:self.database.managedObjectContext]
+                          project:p2
                         inContext:self.database.managedObjectContext];
+        
         [Child childWithFirstName:@"William"
                          LastName:@"Brown"
                          uniqueID:[NSNumber numberWithInteger:6]
@@ -178,11 +190,9 @@
                            status:@"Active"
                          guardian:g5
              guardianRelationship:@"Step Aunt"
-                          project:[Project projectWithAddress:@"23 trust blvd"
-                                                         name:@"MX-454"
-                                                           ID:[NSNumber numberWithInt:3]
-                                                    inContext:self.database.managedObjectContext]
+                          project:p3
                         inContext:self.database.managedObjectContext];
+        
         [Child childWithFirstName:@"Stefani"
                          LastName:@"Germanotta"
                          uniqueID:[NSNumber numberWithInteger:7]
@@ -195,10 +205,7 @@
                            status:@"Active"
                          guardian:g4
              guardianRelationship:@"Uncle"
-                          project:[Project projectWithAddress:@"11 main street"
-                                                         name:@"US-0031"
-                                                           ID:[NSNumber numberWithInt:4]
-                                                    inContext:self.database.managedObjectContext]
+                          project:p4
                         inContext:self.database.managedObjectContext];
         
         NSLog(@"ADDED DATA TO DATABASE");
@@ -266,6 +273,13 @@
 - (NSArray *)getAllChildren
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
+    NSError *error = nil;
+    return [self.database.managedObjectContext executeFetchRequest:request error:&error];
+}
+
+- (NSArray *)getAllProjects
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Project"];
     NSError *error = nil;
     return [self.database.managedObjectContext executeFetchRequest:request error:&error];
 }

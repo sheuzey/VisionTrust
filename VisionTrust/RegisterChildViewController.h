@@ -7,10 +7,12 @@
 //
 
 #import "PersonalViewController.h"
+#import "VisionTrustDatabase.h"
 
-@interface RegisterChildViewController : PersonalViewController <UIActionSheetDelegate>
+@interface RegisterChildViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *childImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) VisionTrustDatabase *database;
 
 @end

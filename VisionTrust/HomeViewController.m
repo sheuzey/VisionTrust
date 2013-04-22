@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "SearchTableViewController.h"
+#import "RegisterChildViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "Cell.h"
 
@@ -98,6 +99,9 @@
     if ([segue.identifier isEqualToString:@"SearchThenView"]) {
         SearchTableViewController *stvc = (SearchTableViewController *)segue.destinationViewController;
         stvc.database = self.database;
+    } else if ([segue.identifier isEqualToString:@"Register"]) {
+        RegisterChildViewController *rcvc = (RegisterChildViewController *)segue.destinationViewController;
+        rcvc.database = self.database;
     }
     [self.database saveDatabase];
 }

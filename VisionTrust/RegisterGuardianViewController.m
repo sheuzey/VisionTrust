@@ -24,7 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.guardianData = [[NSMutableDictionary alloc] init];
     self.title = @"Guardian";
 }
 
@@ -69,7 +68,7 @@
             break;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -105,8 +104,9 @@
     }
 }
 
-- (void)giveBackData:(id)data
+- (void)giveBackData:(NSString *)data
 {
+    [self dismissViewControllerAnimated:YES completion:nil];
     if ([self.selectedCellTitle isEqualToString:FNAME]) {
         [self.guardianData setValue:data forKey:FNAME];
     } else if ([self.selectedCellTitle isEqualToString:LNAME]) {
@@ -119,6 +119,11 @@
         [self.guardianData setValue:data forKey:STATUS];
     }
     [[self tableView] reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.delegate guardianInfo:self.guardianData];
 }
 
 @end

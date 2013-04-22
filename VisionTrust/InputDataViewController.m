@@ -15,6 +15,11 @@
 
 #define DATA_TAG 100
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -28,6 +33,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return self.titleString;
+}
+
+- (float)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 100;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -50,6 +60,7 @@
     inputField.placeholder = self.titleString;
     inputField.text = self.dataString;
     inputField.tag = DATA_TAG;
+    [inputField becomeFirstResponder];
     
     [cell addSubview:inputField];
     return cell;
@@ -58,14 +69,10 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    return YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
     UITextField *data = (UITextField *)[[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:DATA_TAG];
     NSString *text = [data.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     [self.delegate giveBackData:text];
+    return YES;
 }
 
 @end

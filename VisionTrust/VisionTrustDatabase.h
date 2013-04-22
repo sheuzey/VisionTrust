@@ -20,6 +20,7 @@
 - (User *)getUserByUsername:(NSString *)username;
 - (NSArray *)getAllChildren;
 - (NSMutableArray *)getChildrenWithParameters:(NSMutableDictionary *)parameters;
+- (NSArray *)getAllProjects;
 - (void)saveDatabase;
 
 @end
