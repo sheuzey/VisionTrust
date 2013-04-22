@@ -7,9 +7,11 @@
 //
 
 #import "FavoriteSubjectsViewController.h"
+#import "InputDataViewController.h"
 
-@interface FavoriteSubjectsViewController ()
+@interface FavoriteSubjectsViewController () <GetData>
 @property (nonatomic, strong) NSArray *subjects;
+@property (nonatomic, strong) NSString *otherSubject;
 @end
 
 @implementation FavoriteSubjectsViewController
@@ -54,13 +56,11 @@
     if ([indexPath section] == 0) {
         cell.textLabel.text = [self.subjects objectAtIndex:[indexPath row]];
     } else {
-        cell.textLabel.text = @"";
+        cell.textLabel.text = self.otherSubject;
     }
     
     return cell;
 }
-
-#pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -68,12 +68,33 @@
     //Reverse subject existence in favoriteSubjects array..
     
     //Reverse selection accessory..
-    if ([cell accessoryType] == UITableViewCellAccessoryCheckmark) {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
+    if ([indexPath section] == 0) {
+        if ([cell accessoryType] == UITableViewCellAccessoryCheckmark) {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+        } else {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        }
     } else {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        [self performSegueWithIdentifier:@"InputData" sender:self];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"InputData"]) {
+        InputDataViewController *idvc = (InputDataViewController *)segue.destinationViewController;
+        idvc.titleString = @"Other";
+        idvc.dataString = self.otherSubject;
+        idvc.delegate = self;
+    }
+}
+
+- (void)giveBackData:(NSString *)data
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    self.otherSubject = data;
+    [self.tableView reloadData];
 }
 
 - (IBAction)doneButtonePressed:(id)sender {

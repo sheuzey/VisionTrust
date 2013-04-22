@@ -293,10 +293,13 @@
                             <outlet property="delegate" destination="Til-tQ-uH1" id="GLn-kb-oMX"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="cp8-vZ-ouR" kind="modal" identifier="InputData" modalTransitionStyle="partialCurl" id="V5b-Ye-Nbk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aN-u3-eKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="1326"/>
+            <point key="canvasLocation" x="2146" y="1326"/>
         </scene>
         <!--Register Guardian View Controller-->
         <scene sceneID="tEU-5I-InB">
@@ -389,7 +392,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WfT-3S-kAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2190" y="264"/>
+            <point key="canvasLocation" x="2326" y="278"/>
         </scene>
         <!--Personal View Controller-->
         <scene sceneID="iEh-DK-rZf">
@@ -803,6 +806,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="eR7-SG-vHY"/>
-        <segue reference="Lo8-dU-YFb"/>
+        <segue reference="V5b-Ye-Nbk"/>
     </inferredMetricsTieBreakers>
 </document>

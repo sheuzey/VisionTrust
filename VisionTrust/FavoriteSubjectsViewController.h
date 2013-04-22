@@ -16,7 +16,7 @@
 
 @end
 
-@interface FavoriteSubjectsViewController : UITableViewController
+@interface FavoriteSubjectsViewController : UITableViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *favoriteSubjects;
 @property (nonatomic, weak) id<FavoriteSubjectsProtocol>delegate;
