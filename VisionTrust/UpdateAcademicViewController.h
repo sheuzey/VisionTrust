@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class RegisterAcademicViewController;
+@class UpdateAcademicViewController;
 
-@protocol AcademicRegistrationProtocol
+@protocol UpdateRegistrationProtocol
 
 - (void)academicInfo:(NSMutableDictionary *)info;
 
 @end
 
-@interface RegisterAcademicViewController : UITableViewController <UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
+@interface UpdateAcademicViewController : UITableViewController <UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) NSMutableDictionary *academicData;
-@property (nonatomic, weak) id<AcademicRegistrationProtocol>delegate;
+@property (nonatomic, weak) id<UpdateRegistrationProtocol>delegate;
 
 @end

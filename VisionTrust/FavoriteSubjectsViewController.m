@@ -55,6 +55,7 @@
     
     if ([indexPath section] == 0) {
         cell.textLabel.text = [self.subjects objectAtIndex:[indexPath row]];
+        
     } else {
         cell.textLabel.text = self.otherSubject;
     }
@@ -65,9 +66,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    //Reverse subject existence in favoriteSubjects array..
     
-    //Reverse selection accessory..
+    //Reverse selection accessory if its in the first section
     if ([indexPath section] == 0) {
         if ([cell accessoryType] == UITableViewCellAccessoryCheckmark) {
             [cell setAccessoryType:UITableViewCellAccessoryNone];
@@ -98,6 +98,9 @@
 }
 
 - (IBAction)doneButtonePressed:(id)sender {
+    
+    if ([self.otherSubject length] > 0)
+        [self.favoriteSubjects addObject:self.otherSubject];
     [self.delegate favoriteSubjects:self.favoriteSubjects];
 }
 

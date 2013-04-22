@@ -1,31 +1,29 @@
 //
-//  RegisterAcademicViewController.m
+//  RegisterHealthViewController.m
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/21/13.
+//  Created by Stephen Heuzey on 4/22/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
-#import "RegisterAcademicViewController.h"
-#import "FavoriteSubjectsViewController.h"
+#import "RegisterHealthViewController.h"
+#import "InputDataViewController.h"
 
-@interface RegisterAcademicViewController () <FavoriteSubjectsProtocol>
-@property (nonatomic, strong) UIPickerView *pickerView;
-@property (nonatomic, strong) UIToolbar *pickerToolBar;
-@property (nonatomic, strong) UIActionSheet *actionSheet;
-@property (nonatomic, strong) NSString *selectedCellTitle;
+@interface RegisterHealthViewController () <GetData>
 @property (nonatomic, assign) NSInteger selectedTableIndex;
 @property (nonatomic, assign) NSInteger selectedPickerIndex;
 @property (nonatomic, strong) NSMutableArray *pickerData;
 @end
 
-@implementation RegisterAcademicViewController
+@implementation RegisterHealthViewController
 
-#define GRADE @"currentGrade"
-#define PERFORMANCE @"performance"
-#define FAVORITE_SUBJECTS @"favoriteSubjects"
-#define GRADE_TAG 100
-#define PERFORMANCE_TAG 200
+#define HEALTH @"health"
+#define TREATMENT @"medicalTreatment"
+#define MEDICATION @"receivingMedication"
+#define ILLNESS @"illness"
+#define HEALTH_TAG 100
+#define TREATMENT_TAG 200
+#define MEDICATION_TAG 300
 
 - (void)viewDidLoad
 {
@@ -60,15 +58,18 @@
     UIBarButtonItem *item = [self.pickerToolBar.items lastObject];
     NSString *title = [self.pickerData objectAtIndex:self.selectedPickerIndex];
     switch (item.tag) {
-        case GRADE_TAG:
-            [self.academicData setValue:title forKey:GRADE];
+        case HEALTH_TAG:
+            [self.healthData setValue:title forKey:HEALTH];
             break;
-        case PERFORMANCE_TAG:
-            [self.academicData setValue:title forKey:PERFORMANCE];
+        case TREATMENT_TAG:
+            [self.healthData setValue:title forKey:TREATMENT];
+            break;
+        case MEDICATION_TAG:
+            [self.healthData setValue:title forKey:MEDICATION];
             break;
     }
     //Reset selected index, reload table and dismiss actionSheet
-    //self.selectedTableIndex = 0;
+    self.selectedPickerIndex = 0;
     [self.tableView reloadData];
     [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
@@ -106,27 +107,19 @@
     NSInteger tag;
     switch (self.selectedTableIndex) {
         case 0:
-            self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Pre-K",
-                               @"Kindergarden",
-                               @"1st",
-                               @"2nd",
-                               @"3rd",
-                               @"4th",
-                               @"5th",
-                               @"6th",
-                               @"7th",
-                               @"8th",
-                               @"9th",
-                               @"10th",
-                               @"11th",
-                               @"12th", nil];
-            title = @"Grade";
-            tag = GRADE_TAG;
+            self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Very Poor", @"Poor", @"Average", @"Good", @"Very Good", nil];
+            title = @"Health";
+            tag = HEALTH_TAG;
             break;
         case 1:
-            self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Very Poor", @"Poor", @"Average", @"Good", @"Very Good", nil];
-            title = @"Performance";
-            tag = PERFORMANCE_TAG;
+            self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Yes", @"No", nil];
+            title = @"Treatment";
+            tag = TREATMENT_TAG;
+            break;
+        case 2:
+            self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Yes", @"No", nil];
+            title = @"Medication";
+            tag = MEDICATION_TAG;
             break;
     }
     
@@ -155,11 +148,6 @@
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 3;
-}
-
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     return [self.pickerData objectAtIndex:row];
@@ -170,6 +158,18 @@
     self.selectedPickerIndex = row;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (section == 0)
+        return 3;
+    return 1;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -177,58 +177,71 @@
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    switch ([indexPath row]) {
-        case 0:
-            cell.textLabel.text = @"Grade";
-            cell.detailTextLabel.text = [self.academicData valueForKey:GRADE];
-            break;
-        case 1:
-            cell.textLabel.text = @"Performance";
-            cell.detailTextLabel.text = [self.academicData valueForKey:PERFORMANCE];
-            break;
-        case 2:
-            cell.textLabel.text = @"Favorite Subjects";
-            cell.detailTextLabel.text = @"";
-            break;
+    // Configure the cell...
+    if ([indexPath section] == 0)
+        switch ([indexPath row]) {
+            case 0:
+                cell.textLabel.text = @"Health";
+                cell.detailTextLabel.text = [self.healthData valueForKey:HEALTH];
+                break;
+            case 1:
+                cell.textLabel.text = @"Medical Treatment";
+                cell.detailTextLabel.text = [self.healthData valueForKey:TREATMENT];
+                break;
+            case 2:
+                cell.textLabel.text = @"Medication";
+                cell.detailTextLabel.text = [self.healthData valueForKey:MEDICATION];
+                break;
+        }
+    else {
+        cell.textLabel.text = @"Illness Details";
+        cell.detailTextLabel.text = [self.healthData valueForKey:ILLNESS];
     }
-    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedTableIndex = [indexPath row];
-    switch ([indexPath row]) {
-        case 0:
-            [self showPicker];
-            break;
-        case 1:
-            [self showPicker];
-            break;
-        case 2:
-            [self performSegueWithIdentifier:@"GoToFavoriteSubjects" sender:self];
-            break;
-    }
+    if ([indexPath section] == 0)
+        switch ([indexPath row]) {
+            case 0:
+                [self showPicker];
+                break;
+            case 1:
+                [self showPicker];
+                break;
+            case 2:
+                [self showPicker];
+                break;
+        }
+    else
+        [self performSegueWithIdentifier:@"InputData" sender:self];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"GoToFavoriteSubjects"]) {
-        FavoriteSubjectsViewController *fsvc = (FavoriteSubjectsViewController *)segue.destinationViewController;
-        fsvc.delegate = self;
+    if ([segue.identifier isEqualToString:@"InputData"]) {
+        InputDataViewController *idvc = (InputDataViewController *)segue.destinationViewController;
+        idvc.titleString = @"Illness";
+        idvc.dataString = [self.healthData valueForKey:ILLNESS];
+        idvc.delegate = self;
     }
 }
 
-- (void)favoriteSubjects:(NSMutableArray *)subjects
+- (void)giveBackData:(NSString *)data
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.academicData setValue:subjects forKey:FAVORITE_SUBJECTS];
+    [self.healthData setValue:data forKey:ILLNESS];
+    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.delegate academicInfo:self.academicData];
+    [self.delegate healthInfo:self.healthData];
 }
 
 @end

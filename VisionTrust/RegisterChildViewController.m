@@ -9,9 +9,9 @@
 #import "InputDataViewController.h"
 #import "RegisterChildViewController.h"
 #import "RegisterGuardianViewController.h"
-#import "RegisterAcademicViewController.h"
+#import "RegisterHealthViewController.h"
 
-@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, AcademicRegistrationProtocol>
+@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, HealthRegistrationProtocol>
 @property (nonatomic ,strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIPickerView *projectPicker;
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
@@ -19,8 +19,8 @@
 @property (nonatomic, strong) NSString *selectedCellTitle;
 @property (nonatomic, assign) NSInteger selectedProject;
 @property (nonatomic, strong) NSMutableArray *projects;
-@property (nonatomic, strong) NSMutableDictionary *academicData;
 @property (nonatomic, strong) NSMutableDictionary *childData;
+@property (nonatomic, strong) NSMutableDictionary *healthData;
 @property (nonatomic, strong) NSMutableDictionary *guardianData;
 @end
 
@@ -189,7 +189,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -239,18 +239,9 @@
             return @"General Info";
             break;
         case 1:
-            return @"Academic";
-            break;
-        case 2:
             return @"Health";
             break;
-        case 3:
-            return @"Spiritual";
-            break;
-        case 4:
-            return @"Home Life";
-            break;
-        case 5:
+        case 2:
             return @"Guardian";
             break;
         default:
@@ -268,18 +259,9 @@
     if ([indexPath section] > 0) {
         switch ([indexPath section]) {
             case 1:
-                [self performSegueWithIdentifier:@"GoToAcademic" sender:self];
-                break;
-            case 2:
                 [self performSegueWithIdentifier:@"GoToHealth" sender:self];
                 break;
-            case 3:
-                [self performSegueWithIdentifier:@"GoToSpiritual" sender:self];
-                break;
-            case 4:
-                [self performSegueWithIdentifier:@"GoToHomeLife" sender:self];
-                break;
-            case 5:
+            case 2:
                 [self performSegueWithIdentifier:@"GoToGuardian" sender:self];
                 break;
         }
@@ -317,16 +299,10 @@
         idvc.titleString = self.selectedCellTitle;
         idvc.dataString = [self.childData valueForKey:self.selectedCellTitle];
         idvc.delegate = self;
-    } else if ([segue.identifier isEqualToString:@"GoToAcademic"]) {
-        RegisterAcademicViewController *ravc = (RegisterAcademicViewController *)segue.destinationViewController;
-        ravc.academicData = [[NSMutableDictionary alloc] initWithDictionary:self.academicData];
-        ravc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
-        
-    } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
-        
-    } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
-        
+        RegisterHealthViewController *rhvc = (RegisterHealthViewController *)segue.destinationViewController;
+        rhvc.healthData = [[NSMutableDictionary alloc] initWithDictionary:self.healthData];
+        rhvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
         RegisterGuardianViewController *rgvc = (RegisterGuardianViewController *)segue.destinationViewController;
         rgvc.guardianData = [[NSMutableDictionary alloc] initWithDictionary:self.guardianData];
@@ -358,10 +334,10 @@
     self.guardianData = [[NSMutableDictionary alloc] initWithDictionary:info];
 }
 
-- (void)academicInfo:(NSMutableDictionary *)info
+- (void)healthInfo:(NSMutableDictionary *)info
 {
-    //Set academic data into academicData dictionary..
-    self.academicData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    //Set health data into healthData dictionary..
+    self.healthData = [[NSMutableDictionary alloc] initWithDictionary:info];
 }
 
 @end
