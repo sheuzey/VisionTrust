@@ -22,7 +22,7 @@
 @implementation UpdateAcademicViewController
 
 #define GRADE @"currentGrade"
-#define PERFORMANCE @"performance"
+#define PERFORMANCE @"developmentLevel"
 #define FAVORITE_SUBJECTS @"favoriteSubjects"
 #define GRADE_TAG 100
 #define PERFORMANCE_TAG 200

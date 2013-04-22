@@ -45,7 +45,12 @@
     [self.view addSubview:tv];
     [self.view sendSubviewToBack:tv];
 
+    //Add gesture recognizer to imageView..
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageWasTapped:)];
+    [self.childImageView addGestureRecognizer:tapRecognizer];
+    
     self.childImageView.backgroundColor = [UIColor grayColor];
+
     self.childData = [[NSMutableDictionary alloc] init];
     self.tableView.backgroundView = nil;
     self.title = @"Child Registration";
@@ -71,6 +76,11 @@
     self.projectPicker.showsSelectionIndicator = YES;
     self.projectPicker.dataSource = self;
     self.projectPicker.delegate = self;
+}
+
+- (void)imageWasTapped:(UITapGestureRecognizer *)tapGesture
+{
+    NSLog(@"TAPPED!");
 }
 
 - (void)cancelButtonPressed

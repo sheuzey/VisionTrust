@@ -17,13 +17,11 @@
 
 @implementation RegisterHealthViewController
 
-#define HEALTH @"health"
-#define TREATMENT @"medicalTreatment"
-#define MEDICATION @"receivingMedication"
-#define ILLNESS @"illness"
+#define HEALTH @"healthCondition"
+#define TREATMENT @"currentlyReceivingTreatment"
+#define ILLNESS @"chronicIllness"
 #define HEALTH_TAG 100
 #define TREATMENT_TAG 200
-#define MEDICATION_TAG 300
 
 - (void)viewDidLoad
 {
@@ -64,12 +62,9 @@
         case TREATMENT_TAG:
             [self.healthData setValue:title forKey:TREATMENT];
             break;
-        case MEDICATION_TAG:
-            [self.healthData setValue:title forKey:MEDICATION];
-            break;
     }
     //Reset selected index, reload table and dismiss actionSheet
-    self.selectedPickerIndex = 0;
+    self.selectedPickerIndex = self.selectedTableIndex = 0;
     [self.tableView reloadData];
     [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
@@ -116,11 +111,6 @@
             title = @"Treatment";
             tag = TREATMENT_TAG;
             break;
-        case 2:
-            self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Yes", @"No", nil];
-            title = @"Medication";
-            tag = MEDICATION_TAG;
-            break;
     }
     
     //Add picker to actionSheet..
@@ -166,7 +156,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
-        return 3;
+        return 2;
     return 1;
 }
 
@@ -187,10 +177,6 @@
             case 1:
                 cell.textLabel.text = @"Medical Treatment";
                 cell.detailTextLabel.text = [self.healthData valueForKey:TREATMENT];
-                break;
-            case 2:
-                cell.textLabel.text = @"Medication";
-                cell.detailTextLabel.text = [self.healthData valueForKey:MEDICATION];
                 break;
         }
     else {
