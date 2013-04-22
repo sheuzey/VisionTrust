@@ -7,8 +7,9 @@
 //
 
 #import "RegisterAcademicViewController.h"
+#import "FavoriteSubjectsViewController.h"
 
-@interface RegisterAcademicViewController ()
+@interface RegisterAcademicViewController () <FavoriteSubjectsProtocol>
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
@@ -20,17 +21,15 @@
 
 @implementation RegisterAcademicViewController
 
-#define GRADE @"Current Grade"
-#define PERFORMANCE @"Performance"
-#define FAVORITE_SUBJECTS @"Favorite Subjects"
+#define GRADE @"currentGrade"
+#define PERFORMANCE @"performance"
+#define FAVORITE_SUBJECTS @"favoriteSubjects"
 #define GRADE_TAG 100
 #define PERFORMANCE_TAG 200
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.academicData = [[NSMutableDictionary alloc] init];
     
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
@@ -121,12 +120,12 @@
                                @"10th",
                                @"11th",
                                @"12th", nil];
-            title = GRADE;
+            title = @"Grade";
             tag = GRADE_TAG;
             break;
         case 1:
             self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Very Poor", @"Poor", @"Average", @"Good", @"Very Good", nil];
-            title = PERFORMANCE;
+            title = @"Performance";
             tag = PERFORMANCE_TAG;
             break;
     }
@@ -180,16 +179,16 @@
     
     switch ([indexPath row]) {
         case 0:
-            cell.textLabel.text = GRADE;
+            cell.textLabel.text = @"Grade";
             cell.detailTextLabel.text = [self.academicData valueForKey:GRADE];
             break;
         case 1:
-            cell.textLabel.text = PERFORMANCE;
+            cell.textLabel.text = @"Performance";
             cell.detailTextLabel.text = [self.academicData valueForKey:PERFORMANCE];
             break;
         case 2:
-            cell.textLabel.text = FAVORITE_SUBJECTS;
-            cell.detailTextLabel.text = [self.academicData valueForKey:FAVORITE_SUBJECTS];
+            cell.textLabel.text = @"Favorite Subjects";
+            cell.detailTextLabel.text = @"";
             break;
     }
     
@@ -208,9 +207,28 @@
             [self showPicker];
             break;
         case 2:
-            //Go to favorite subjects controller
+            [self performSegueWithIdentifier:@"GoToFavoriteSubjects" sender:self];
             break;
     }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"GoToFavoriteSubjects"]) {
+        FavoriteSubjectsViewController *fsvc = (FavoriteSubjectsViewController *)segue.destinationViewController;
+        fsvc.delegate = self;
+    }
+}
+
+- (void)favoriteSubjects:(NSMutableArray *)subjects
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.academicData setValue:subjects forKey:FAVORITE_SUBJECTS];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.delegate academicInfo:self.academicData];
 }
 
 @end

@@ -9,8 +9,9 @@
 #import "InputDataViewController.h"
 #import "RegisterChildViewController.h"
 #import "RegisterGuardianViewController.h"
+#import "RegisterAcademicViewController.h"
 
-@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol>
+@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, AcademicRegistrationProtocol>
 @property (nonatomic ,strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIPickerView *projectPicker;
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
@@ -18,17 +19,18 @@
 @property (nonatomic, strong) NSString *selectedCellTitle;
 @property (nonatomic, assign) NSInteger selectedProject;
 @property (nonatomic, strong) NSMutableArray *projects;
+@property (nonatomic, strong) NSMutableDictionary *academicData;
 @property (nonatomic, strong) NSMutableDictionary *childData;
 @property (nonatomic, strong) NSMutableDictionary *guardianData;
 @end
 
 @implementation RegisterChildViewController
 
-#define FIRST_NAME @"First Name"
-#define LAST_NAME @"Last Name"
-#define DOB @"Date of Birth"
-#define CITY @"City"
-#define PROJECT @"Project"
+#define FIRST_NAME @"firstName"
+#define LAST_NAME @"lastName"
+#define DOB @"dob"
+#define CITY @"city"
+#define PROJECT @"project"
 #define DATA_TAG 100
 #define DOB_TAG 200
 #define PROJECT_TAG 300
@@ -201,23 +203,23 @@
     if ([indexPath section] == 0) {
         switch ([indexPath row]) {
             case 0:
-                cell.textLabel.text = FIRST_NAME;
+                cell.textLabel.text = @"First Name";
                 cell.detailTextLabel.text = [self.childData valueForKey:FIRST_NAME];
                 break;
             case 1:
-                cell.textLabel.text = LAST_NAME;
+                cell.textLabel.text = @"Last Name";
                 cell.detailTextLabel.text = [self.childData valueForKey:LAST_NAME];
                 break;
             case 2:
-                cell.textLabel.text = DOB;
+                cell.textLabel.text = @"Date of Birth";
                 cell.detailTextLabel.text = [self.childData valueForKey:DOB];
                 break;
             case 3:
-                cell.textLabel.text = CITY;
+                cell.textLabel.text = @"City";
                 cell.detailTextLabel.text = [self.childData valueForKey:CITY];
                 break;
             case 4:
-                cell.textLabel.text = PROJECT;
+                cell.textLabel.text = @"Project";
                 cell.detailTextLabel.text = [self.childData valueForKey:PROJECT];
                 break;
         }
@@ -284,23 +286,23 @@
     } else {
         switch ([indexPath row]) {
             case 0:
-                self.selectedCellTitle = FIRST_NAME;
+                self.selectedCellTitle = @"First Name";
                 [self performSegueWithIdentifier:@"InputData" sender:self];
                 break;
             case 1:
-                self.selectedCellTitle = LAST_NAME;
+                self.selectedCellTitle = @"Last Name";
                 [self performSegueWithIdentifier:@"InputData" sender:self];
                 break;
             case 2:
-                self.selectedCellTitle = DOB;
+                self.selectedCellTitle = @"Date of Birth";
                 [self showDatePicker];
                 break;
             case 3:
-                self.selectedCellTitle = CITY;
+                self.selectedCellTitle = @"City";
                 [self performSegueWithIdentifier:@"InputData" sender:self];
                 break;
             case 4:
-                self.selectedCellTitle = PROJECT;
+                self.selectedCellTitle = @"Project";
                 [self showProjectPicker];
                 break;
         }
@@ -316,7 +318,9 @@
         idvc.dataString = [self.childData valueForKey:self.selectedCellTitle];
         idvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToAcademic"]) {
-        
+        RegisterAcademicViewController *ravc = (RegisterAcademicViewController *)segue.destinationViewController;
+        ravc.academicData = [[NSMutableDictionary alloc] initWithDictionary:self.academicData];
+        ravc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
         
     } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
@@ -332,16 +336,17 @@
 
 - (void)giveBackData:(NSString *)data
 {
+    //Set child data into childData dictionary..
     [self dismissViewControllerAnimated:YES completion:nil];
-    if ([self.selectedCellTitle isEqualToString:FIRST_NAME]) {
+    if ([self.selectedCellTitle isEqualToString:@"First Name"]) {
         [self.childData setValue:data forKey:FIRST_NAME];
-    } else if ([self.selectedCellTitle isEqualToString:LAST_NAME]) {
+    } else if ([self.selectedCellTitle isEqualToString:@"Last Name"]) {
         [self.childData setValue:data forKey:LAST_NAME];
-    } else if ([self.selectedCellTitle isEqualToString:DOB]) {
+    } else if ([self.selectedCellTitle isEqualToString:@"Date of Birth"]) {
         [self.childData setValue:data forKey:DOB];
-    } else if ([self.selectedCellTitle isEqualToString:CITY]) {
+    } else if ([self.selectedCellTitle isEqualToString:@"City"]) {
         [self.childData setValue:data forKey:CITY];
-    } else if ([self.selectedCellTitle isEqualToString:PROJECT]) {
+    } else if ([self.selectedCellTitle isEqualToString:@"Project"]) {
         [self.childData setValue:data forKey:PROJECT];
     }
     [[self tableView] reloadData];
@@ -349,7 +354,14 @@
 
 - (void)guardianInfo:(NSMutableDictionary *)info
 {
+    //Set guardian data into guardianData dictionary..
     self.guardianData = [[NSMutableDictionary alloc] initWithDictionary:info];
+}
+
+- (void)academicInfo:(NSMutableDictionary *)info
+{
+    //Set academic data into academicData dictionary..
+    self.academicData = [[NSMutableDictionary alloc] initWithDictionary:info];
 }
 
 @end

@@ -15,11 +15,11 @@
 
 @implementation RegisterGuardianViewController
 
-#define FNAME @"First Name"
-#define LNAME @"Last Name"
-#define RELATION @"Relation"
-#define OCCUPATION @"Occupation"
-#define STATUS @"Status"
+#define FNAME @"firstName"
+#define LNAME @"lastName"
+#define RELATION @"relation"
+#define OCCUPATION @"occupation"
+#define STATUS @"status"
 
 - (void)viewDidLoad
 {
@@ -47,23 +47,23 @@
     
     switch ([indexPath row]) {
         case 0:
-            cell.textLabel.text = FNAME;
+            cell.textLabel.text = @"First Name";
             cell.detailTextLabel.text = [self.guardianData valueForKey:FNAME];
             break;
         case 1:
-            cell.textLabel.text = LNAME;
+            cell.textLabel.text = @"Last Name";
             cell.detailTextLabel.text = [self.guardianData valueForKey:LNAME];
             break;
         case 2:
-            cell.textLabel.text = RELATION;
+            cell.textLabel.text = @"Relation";
             cell.detailTextLabel.text = [self.guardianData valueForKey:RELATION];
             break;
         case 3:
-            cell.textLabel.text = OCCUPATION;
+            cell.textLabel.text = @"Occupation";
             cell.detailTextLabel.text = [self.guardianData valueForKey:OCCUPATION];
             break;
         case 4:
-            cell.textLabel.text = STATUS;
+            cell.textLabel.text = @"Status";
             cell.detailTextLabel.text = [self.guardianData valueForKey:STATUS];
             break;
     }
@@ -76,19 +76,19 @@
 {
     switch ([indexPath row]) {
         case 0:
-            self.selectedCellTitle = FNAME;
+            self.selectedCellTitle = @"First Name";
             break;
         case 1:
-            self.selectedCellTitle = LNAME;
+            self.selectedCellTitle = @"Last Name";
             break;
         case 2:
-            self.selectedCellTitle = RELATION;
+            self.selectedCellTitle = @"Relation";
             break;
         case 3:
-            self.selectedCellTitle = OCCUPATION;
+            self.selectedCellTitle = @"Occupation";
             break;
         case 4:
-            self.selectedCellTitle = STATUS;
+            self.selectedCellTitle = @"Status";
             break;
     }
     [self performSegueWithIdentifier:@"InputData" sender:self];
@@ -107,15 +107,15 @@
 - (void)giveBackData:(NSString *)data
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    if ([self.selectedCellTitle isEqualToString:FNAME]) {
+    if ([self.selectedCellTitle isEqualToString:@"First Name"]) {
         [self.guardianData setValue:data forKey:FNAME];
-    } else if ([self.selectedCellTitle isEqualToString:LNAME]) {
+    } else if ([self.selectedCellTitle isEqualToString:@"Last Name"]) {
         [self.guardianData setValue:data forKey:LNAME];
-    } else if ([self.selectedCellTitle isEqualToString:RELATION]) {
+    } else if ([self.selectedCellTitle isEqualToString:@"Relation"]) {
         [self.guardianData setValue:data forKey:RELATION];
-    } else if ([self.selectedCellTitle isEqualToString:OCCUPATION]) {
+    } else if ([self.selectedCellTitle isEqualToString:@"Occupation"]) {
         [self.guardianData setValue:data forKey:OCCUPATION];
-    } else if ([self.selectedCellTitle isEqualToString:STATUS]) {
+    } else if ([self.selectedCellTitle isEqualToString:@"Status"]) {
         [self.guardianData setValue:data forKey:STATUS];
     }
     [[self tableView] reloadData];

@@ -40,6 +40,7 @@
 		DC9EA8DD17234D8900C3137D /* RegisterGuardianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8DC17234D8900C3137D /* RegisterGuardianViewController.m */; };
 		DC9EA8E01723507900C3137D /* InputDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8DF1723507800C3137D /* InputDataViewController.m */; };
 		DC9EA8E61724BA2200C3137D /* RegisterAcademicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8E51724BA2100C3137D /* RegisterAcademicViewController.m */; };
+		DC9EA8E91724DE5B00C3137D /* FavoriteSubjectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8E81724DE5B00C3137D /* FavoriteSubjectsViewController.m */; };
 		DCDB81E61720DEFE00D676A2 /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDB81E51720DEFE00D676A2 /* Project.m */; };
 		DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B65171784E700A0FE35 /* UIKit.framework */; };
 		DCE80B68171784E700A0FE35 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE80B67171784E700A0FE35 /* Foundation.framework */; };
@@ -115,6 +116,8 @@
 		DC9EA8DF1723507800C3137D /* InputDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputDataViewController.m; sourceTree = "<group>"; };
 		DC9EA8E41724BA2100C3137D /* RegisterAcademicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterAcademicViewController.h; sourceTree = "<group>"; };
 		DC9EA8E51724BA2100C3137D /* RegisterAcademicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterAcademicViewController.m; sourceTree = "<group>"; };
+		DC9EA8E71724DE5B00C3137D /* FavoriteSubjectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteSubjectsViewController.h; sourceTree = "<group>"; };
+		DC9EA8E81724DE5B00C3137D /* FavoriteSubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteSubjectsViewController.m; sourceTree = "<group>"; };
 		DCDB81E41720DEFE00D676A2 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		DCDB81E51720DEFE00D676A2 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -208,6 +211,8 @@
 				DC6534E9171CC57D00785378 /* AdvancedSearchViewController.m */,
 				DC9EA8D717233B7100C3137D /* AllChildrenViewController.h */,
 				DC9EA8D817233B7100C3137D /* AllChildrenViewController.m */,
+				DC9EA8E71724DE5B00C3137D /* FavoriteSubjectsViewController.h */,
+				DC9EA8E81724DE5B00C3137D /* FavoriteSubjectsViewController.m */,
 				DC9EA8BF17231E3400C3137D /* GuardianViewController.h */,
 				DC9EA8C017231E3400C3137D /* GuardianViewController.m */,
 				DC6534B71719D2CA00785378 /* HomeViewController.h */,
@@ -410,6 +415,7 @@
 				DC9EA8DD17234D8900C3137D /* RegisterGuardianViewController.m in Sources */,
 				DC9EA8E01723507900C3137D /* InputDataViewController.m in Sources */,
 				DC9EA8E61724BA2200C3137D /* RegisterAcademicViewController.m in Sources */,
+				DC9EA8E91724DE5B00C3137D /* FavoriteSubjectsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
