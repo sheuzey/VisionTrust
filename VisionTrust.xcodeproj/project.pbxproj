@@ -24,7 +24,6 @@
 		DC6534CB171B0C5B00785378 /* update.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534CA171B0C5B00785378 /* update.jpeg */; };
 		DC6534CD171B0D5300785378 /* departure.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534CC171B0D5300785378 /* departure.jpeg */; };
 		DC6534D0171B168400785378 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534CF171B168400785378 /* CustomCellBackground.m */; };
-		DC6534D9171B4BF500785378 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534D8171B4BF500785378 /* SearchTableViewController.m */; };
 		DC6534DF171B63B100785378 /* Child+SetupChild.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534DE171B63B000785378 /* Child+SetupChild.m */; };
 		DC6534E1171B68B500785378 /* child.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DC6534E0171B68B500785378 /* child.jpeg */; };
 		DC6534E7171B8DAC00785378 /* CustomSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534E6171B8DAB00785378 /* CustomSearchCell.m */; };
@@ -33,7 +32,6 @@
 		DC9205CB172037B70087B1C3 /* VisionTrustDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */; };
 		DC99916B1727208400E67AFA /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = DC99916A1727208400E67AFA /* Child.m */; };
 		DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C017231E3400C3137D /* GuardianViewController.m */; };
-		DC9EA8C717231F8E00C3137D /* Guardian+SetupGuardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C617231F8E00C3137D /* Guardian+SetupGuardian.m */; };
 		DC9EA8CA1723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C91723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m */; };
 		DC9EA8CD1723224100C3137D /* OccupationType+SetupOccupationType.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8CC1723224100C3137D /* OccupationType+SetupOccupationType.m */; };
 		DC9EA8D617232BC000C3137D /* Guardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8D517232BC000C3137D /* Guardian.m */; };
@@ -87,8 +85,6 @@
 		DC6534CC171B0D5300785378 /* departure.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = departure.jpeg; sourceTree = "<group>"; };
 		DC6534CE171B168400785378 /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
 		DC6534CF171B168400785378 /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackground.m; sourceTree = "<group>"; };
-		DC6534D7171B4BF500785378 /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchTableViewController.h; path = ../SearchTableViewController.h; sourceTree = "<group>"; };
-		DC6534D8171B4BF500785378 /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchTableViewController.m; path = ../SearchTableViewController.m; sourceTree = "<group>"; };
 		DC6534DD171B63B000785378 /* Child+SetupChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Child+SetupChild.h"; sourceTree = "<group>"; };
 		DC6534DE171B63B000785378 /* Child+SetupChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Child+SetupChild.m"; sourceTree = "<group>"; };
 		DC6534E0171B68B500785378 /* child.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = child.jpeg; sourceTree = "<group>"; };
@@ -103,8 +99,6 @@
 		DC99916A1727208400E67AFA /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
 		DC9EA8BF17231E3400C3137D /* GuardianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianViewController.h; sourceTree = "<group>"; };
 		DC9EA8C017231E3400C3137D /* GuardianViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianViewController.m; sourceTree = "<group>"; };
-		DC9EA8C517231F8E00C3137D /* Guardian+SetupGuardian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Guardian+SetupGuardian.h"; path = "../Guardian+SetupGuardian.h"; sourceTree = "<group>"; };
-		DC9EA8C617231F8E00C3137D /* Guardian+SetupGuardian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Guardian+SetupGuardian.m"; path = "../Guardian+SetupGuardian.m"; sourceTree = "<group>"; };
 		DC9EA8C81723222900C3137D /* GuardianStatus+SetuptGuardianStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GuardianStatus+SetuptGuardianStatus.h"; sourceTree = "<group>"; };
 		DC9EA8C91723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GuardianStatus+SetuptGuardianStatus.m"; sourceTree = "<group>"; };
 		DC9EA8CB1723224000C3137D /* OccupationType+SetupOccupationType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OccupationType+SetupOccupationType.h"; sourceTree = "<group>"; };
@@ -123,6 +117,10 @@
 		DC9EA8E81724DE5B00C3137D /* FavoriteSubjectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteSubjectsViewController.m; sourceTree = "<group>"; };
 		DC9EA8EA172593C300C3137D /* RegisterHealthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterHealthViewController.h; sourceTree = "<group>"; };
 		DC9EA8EB172593C400C3137D /* RegisterHealthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterHealthViewController.m; sourceTree = "<group>"; };
+		DCAA152E1727465B00470392 /* SearchTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
+		DCAA152F1727465B00470392 /* SearchTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
+		DCAA15301727468400470392 /* Guardian+SetupGuardian.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Guardian+SetupGuardian.h"; sourceTree = "<group>"; };
+		DCAA15311727468500470392 /* Guardian+SetupGuardian.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Guardian+SetupGuardian.m"; sourceTree = "<group>"; };
 		DCDB81E41720DEFE00D676A2 /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		DCDB81E51720DEFE00D676A2 /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		DCE80B62171784E700A0FE35 /* VisionTrust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionTrust.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,8 +182,8 @@
 				DC6534BD171A3C5000785378 /* LoginModel.xcdatamodeld */,
 				DC9EA8D417232BBF00C3137D /* Guardian.h */,
 				DC9EA8D517232BC000C3137D /* Guardian.m */,
-				DC9EA8C517231F8E00C3137D /* Guardian+SetupGuardian.h */,
-				DC9EA8C617231F8E00C3137D /* Guardian+SetupGuardian.m */,
+				DCAA15301727468400470392 /* Guardian+SetupGuardian.h */,
+				DCAA15311727468500470392 /* Guardian+SetupGuardian.m */,
 				D50FF915171E69E400EFE78F /* GuardianStatus.h */,
 				D50FF916171E69E400EFE78F /* GuardianStatus.m */,
 				DC9EA8C81723222900C3137D /* GuardianStatus+SetuptGuardianStatus.h */,
@@ -237,8 +235,8 @@
 				DC9EA8EB172593C400C3137D /* RegisterHealthViewController.m */,
 				DC9EA8DB17234D8900C3137D /* RegisterGuardianViewController.h */,
 				DC9EA8DC17234D8900C3137D /* RegisterGuardianViewController.m */,
-				DC6534D7171B4BF500785378 /* SearchTableViewController.h */,
-				DC6534D8171B4BF500785378 /* SearchTableViewController.m */,
+				DCAA152E1727465B00470392 /* SearchTableViewController.h */,
+				DCAA152F1727465B00470392 /* SearchTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -402,7 +400,6 @@
 				DC6534C2171A3D1200785378 /* User.m in Sources */,
 				DC6534C7171B04F800785378 /* Cell.m in Sources */,
 				DC6534D0171B168400785378 /* CustomCellBackground.m in Sources */,
-				DC6534D9171B4BF500785378 /* SearchTableViewController.m in Sources */,
 				DC6534DF171B63B100785378 /* Child+SetupChild.m in Sources */,
 				DC6534E7171B8DAC00785378 /* CustomSearchCell.m in Sources */,
 				DC6534EA171CC57D00785378 /* AdvancedSearchViewController.m in Sources */,
@@ -415,7 +412,6 @@
 				DCFC840F17220CC3003862D5 /* PersonalViewController.m in Sources */,
 				DCFC8412172225BF003862D5 /* RegisterChildViewController.m in Sources */,
 				DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */,
-				DC9EA8C717231F8E00C3137D /* Guardian+SetupGuardian.m in Sources */,
 				DC9EA8CA1723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m in Sources */,
 				DC9EA8CD1723224100C3137D /* OccupationType+SetupOccupationType.m in Sources */,
 				DC9EA8D617232BC000C3137D /* Guardian.m in Sources */,
