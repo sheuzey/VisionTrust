@@ -10,8 +10,10 @@
 #import "RegisterChildViewController.h"
 #import "RegisterGuardianViewController.h"
 #import "RegisterHealthViewController.h"
+#import <MobileCoreServices/MobileCoreServices.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, HealthRegistrationProtocol>
+@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, HealthRegistrationProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (nonatomic ,strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIPickerView *projectPicker;
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
@@ -22,6 +24,7 @@
 @property (nonatomic, strong) NSMutableDictionary *childData;
 @property (nonatomic, strong) NSMutableDictionary *healthData;
 @property (nonatomic, strong) NSMutableDictionary *guardianData;
+@property (nonatomic, strong) UIPopoverController *imagePopover;
 @end
 
 @implementation RegisterChildViewController
@@ -39,6 +42,8 @@
 {
     [super viewDidLoad];
     
+    self.navigationController.delegate = self;
+    
     //Set background color..
     self.view.backgroundColor = [UIColor clearColor];
     UITableView *tv = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
@@ -50,6 +55,8 @@
     [self.childImageView addGestureRecognizer:tapRecognizer];
     
     self.childImageView.backgroundColor = [UIColor grayColor];
+    self.childImageView.layer.masksToBounds = YES;
+    self.childImageView.layer.cornerRadius = 10.0;
 
     self.childData = [[NSMutableDictionary alloc] init];
     self.tableView.backgroundView = nil;
@@ -78,9 +85,45 @@
     self.projectPicker.delegate = self;
 }
 
+#define IMAGE_PICKER_IN_POPOVER YES
+
 - (void)imageWasTapped:(UITapGestureRecognizer *)tapGesture
 {
-    NSLog(@"TAPPED!");
+    if(!self.imagePopover && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        NSArray *mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+        if([mediaTypes containsObject:(NSString *)kUTTypeImage]) {
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            picker.mediaTypes = [NSArray arrayWithObject:(NSString *)kUTTypeImage];
+            picker.allowsEditing = YES;
+            if(IMAGE_PICKER_IN_POPOVER && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)) {
+                self.imagePopover = [[UIPopoverController alloc] initWithContentViewController:picker];
+                [self.imagePopover presentPopoverFromRect:self.view.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            } else {
+                [self presentViewController:picker animated:YES completion:nil];
+            }
+        }
+    }
+}
+
+- (void)dismissImagePicker
+{
+    [self.imagePopover dismissPopoverAnimated:YES];
+    self.imagePopover = nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    if(!image) image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    if(image) {
+        [self.childImageView setContentMode:UIViewContentModeScaleAspectFit];
+        [self.childImageView setImage:image];
+    }
+    [self dismissImagePicker];
 }
 
 - (void)cancelButtonPressed

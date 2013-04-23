@@ -10,6 +10,7 @@
 		D50FF8F9171E669A00EFE78F /* UserType.m in Sources */ = {isa = PBXBuildFile; fileRef = D50FF8F8171E669A00EFE78F /* UserType.m */; };
 		D50FF914171E69E400EFE78F /* OccupationType.m in Sources */ = {isa = PBXBuildFile; fileRef = D50FF913171E69E400EFE78F /* OccupationType.m */; };
 		D50FF917171E69E400EFE78F /* GuardianStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = D50FF916171E69E400EFE78F /* GuardianStatus.m */; };
+		DC274F331726EAEE008F093C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC274F321726EAEE008F093C /* MobileCoreServices.framework */; };
 		DC65348C17178F0400785378 /* VisionTrustLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DC65348B17178F0400785378 /* VisionTrustLogo.jpg */; };
 		DC65349817179CF900785378 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC65349717179CF900785378 /* LoginViewController.m */; };
 		DC6534B31718607B00785378 /* User+SetupUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534B21718607B00785378 /* User+SetupUser.m */; };
@@ -66,6 +67,7 @@
 		D50FF913171E69E400EFE78F /* OccupationType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OccupationType.m; sourceTree = "<group>"; };
 		D50FF915171E69E400EFE78F /* GuardianStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianStatus.h; sourceTree = "<group>"; };
 		D50FF916171E69E400EFE78F /* GuardianStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuardianStatus.m; sourceTree = "<group>"; };
+		DC274F321726EAEE008F093C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		DC65348B17178F0400785378 /* VisionTrustLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = VisionTrustLogo.jpg; sourceTree = "<group>"; };
 		DC65349617179CF900785378 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		DC65349717179CF900785378 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC274F331726EAEE008F093C /* MobileCoreServices.framework in Frameworks */,
 				DC6534EC171CCB1A00785378 /* QuartzCore.framework in Frameworks */,
 				DC6534B6171868DB00785378 /* CoreData.framework in Frameworks */,
 				DCE80B66171784E700A0FE35 /* UIKit.framework in Frameworks */,
@@ -273,6 +276,7 @@
 		DCE80B64171784E700A0FE35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC274F321726EAEE008F093C /* MobileCoreServices.framework */,
 				DC6534EB171CCB1900785378 /* QuartzCore.framework */,
 				DC6534B5171868DB00785378 /* CoreData.framework */,
 				DCE80B65171784E700A0FE35 /* UIKit.framework */,

@@ -93,11 +93,11 @@
         <element name="GuardianStatus" positionX="502" positionY="51" width="128" height="75"/>
         <element name="Interactions" positionX="-9" positionY="389" width="198" height="193"/>
         <element name="OccupationType" positionX="502" positionY="261" width="128" height="75"/>
-        <element name="Project" positionX="-92" positionY="-16" width="128" height="105"/>
+        <element name="OptionCategories" positionX="-9" positionY="738" width="128" height="88"/>
+        <element name="Project" positionX="-108" positionY="-9" width="128" height="105"/>
         <element name="Update" positionX="288" positionY="413" width="128" height="208"/>
+        <element name="UpdateOptions" positionX="223" positionY="666" width="128" height="103"/>
         <element name="User" positionX="-207" positionY="236" width="128" height="133"/>
         <element name="UserType" positionX="-378" positionY="234" width="128" height="73"/>
-        <element name="OptionCategories" positionX="-9" positionY="738" width="128" height="88"/>
-        <element name="UpdateOptions" positionX="223" positionY="666" width="128" height="103"/>
     </elements>
 </model>
