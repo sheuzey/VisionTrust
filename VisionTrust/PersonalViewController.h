@@ -16,5 +16,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *childImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) Child *child;
+@property (nonatomic, strong) NSArray *guardians;
 
 @end

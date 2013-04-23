@@ -113,8 +113,7 @@
                              city:@"Mexico City"
                           picture:@"child.jpeg"
                            status:@"Active"
-                         guardian:g1
-             guardianRelationship:@"Father"
+                        guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
                           project:p1
                         inContext:self.database.managedObjectContext];
         
@@ -128,8 +127,7 @@
                              city:@"Major City"
                           picture:@"child.jpeg"
                            status:@"Active"
-                         guardian:g2
-             guardianRelationship:@"Mother"
+                        guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
                           project:p2
                         inContext:self.database.managedObjectContext];
         
@@ -143,8 +141,7 @@
                              city:@"PyongYang"
                           picture:@"child.jpeg"
                            status:@"Active"
-                         guardian:g3
-             guardianRelationship:@"Uncle"
+                        guardians:[[NSSet alloc] initWithObjects:g3, g5, nil]
                           project:p3
                         inContext:self.database.managedObjectContext];
         
@@ -158,8 +155,7 @@
                              city:@"Berlin"
                           picture:@"child.jpeg"
                            status:@"Inactive"
-                         guardian:g5
-             guardianRelationship:@"Aunt"
+                        guardians:[[NSSet alloc] initWithObjects:g4, g5, nil]
                           project:p1
                         inContext:self.database.managedObjectContext];
         
@@ -173,8 +169,7 @@
                              city:@"St. Petersburg"
                           picture:@"child.jpeg"
                            status:@"Inactive"
-                         guardian:g4
-             guardianRelationship:@"Father"
+                        guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
                           project:p2
                         inContext:self.database.managedObjectContext];
         
@@ -188,8 +183,7 @@
                              city:@"Orlando, Florida"
                           picture:@"child.jpeg"
                            status:@"Active"
-                         guardian:g5
-             guardianRelationship:@"Step Aunt"
+                        guardians:[[NSSet alloc] initWithObjects:g1, g5, nil]
                           project:p3
                         inContext:self.database.managedObjectContext];
         
@@ -203,8 +197,7 @@
                              city:@"New York City"
                           picture:@"child.jpeg"
                            status:@"Active"
-                         guardian:g4
-             guardianRelationship:@"Uncle"
+                        guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
                           project:p4
                         inContext:self.database.managedObjectContext];
         

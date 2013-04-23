@@ -20,8 +20,7 @@
                          city:(NSString *)city
                       picture:(NSString *)picture
                        status:(NSString *)status
-                     guardian:(Guardian *)guardian
-         guardianRelationship:(NSString *)relationship
+                     guardians:(NSSet *)guardians
                       project:(Project *)project
                     inContext:(NSManagedObjectContext *)context
 {
@@ -45,8 +44,7 @@
         child.city = city;
         child.pictureURL = picture;
         child.status = status;
-        child.hasGuardian = guardian;
-        child.relationToGuardian = relationship;
+        child.hasGuardians = guardians;
         child.isPartOfProject = project;
         
         NSDate *now = [NSDate date];

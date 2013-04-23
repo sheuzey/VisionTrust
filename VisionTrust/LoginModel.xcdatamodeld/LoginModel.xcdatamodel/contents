@@ -9,11 +9,10 @@
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureURL" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="relationToGuardian" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ts" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="hasGuardian" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Guardian" inverseName="guardianOf" inverseEntity="Guardian" syncable="YES"/>
+        <relationship name="hasGuardians" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Guardian" inverseName="guardianOf" inverseEntity="Guardian" syncable="YES"/>
         <relationship name="interactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interactions" inverseName="child" inverseEntity="Interactions" syncable="YES"/>
         <relationship name="isPartOfProject" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasChildren" inverseEntity="Project" syncable="YES"/>
     </entity>
@@ -21,7 +20,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="guardianOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="hasGuardian" inverseEntity="Child" syncable="YES"/>
+        <relationship name="guardianOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="hasGuardians" inverseEntity="Child" syncable="YES"/>
         <relationship name="hasGuardianStatus" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GuardianStatus" inverseName="guardianStatusOf" inverseEntity="GuardianStatus" syncable="YES"/>
         <relationship name="hasOccupationType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="OccupationType" inverseName="occupationTypeOf" inverseEntity="OccupationType" syncable="YES"/>
     </entity>
@@ -88,7 +87,7 @@
         <relationship name="heldBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="inType" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Child" positionX="99" positionY="63" width="128" height="268"/>
+        <element name="Child" positionX="99" positionY="63" width="128" height="253"/>
         <element name="Guardian" positionX="306" positionY="72" width="128" height="133"/>
         <element name="GuardianStatus" positionX="502" positionY="51" width="128" height="75"/>
         <element name="Interactions" positionX="-9" positionY="389" width="198" height="193"/>

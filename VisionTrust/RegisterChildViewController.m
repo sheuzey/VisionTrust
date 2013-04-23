@@ -252,35 +252,40 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    if ([indexPath section] == 0) {
-        switch ([indexPath row]) {
-            case 0:
-                cell.textLabel.text = @"First Name";
-                cell.detailTextLabel.text = [self.childData valueForKey:FIRST_NAME];
-                break;
-            case 1:
-                cell.textLabel.text = @"Last Name";
-                cell.detailTextLabel.text = [self.childData valueForKey:LAST_NAME];
-                break;
-            case 2:
-                cell.textLabel.text = @"Date of Birth";
-                cell.detailTextLabel.text = [self.childData valueForKey:DOB];
-                break;
-            case 3:
-                cell.textLabel.text = @"City";
-                cell.detailTextLabel.text = [self.childData valueForKey:CITY];
-                break;
-            case 4:
-                cell.textLabel.text = @"Project";
-                cell.detailTextLabel.text = [self.childData valueForKey:PROJECT];
-                break;
-        }
-    } else {
-        cell.textLabel.text = @"Info";
-        cell.detailTextLabel.text = nil;
+    switch ([indexPath section]) {
+        case 0:
+            switch ([indexPath row]) {
+                case 0:
+                    cell.textLabel.text = @"First Name";
+                    cell.detailTextLabel.text = [self.childData valueForKey:FIRST_NAME];
+                    break;
+                case 1:
+                    cell.textLabel.text = @"Last Name";
+                    cell.detailTextLabel.text = [self.childData valueForKey:LAST_NAME];
+                    break;
+                case 2:
+                    cell.textLabel.text = @"Date of Birth";
+                    cell.detailTextLabel.text = [self.childData valueForKey:DOB];
+                    break;
+                case 3:
+                    cell.textLabel.text = @"City";
+                    cell.detailTextLabel.text = [self.childData valueForKey:CITY];
+                    break;
+                case 4:
+                    cell.textLabel.text = @"Project";
+                    cell.detailTextLabel.text = [self.childData valueForKey:PROJECT];
+                    break;
+            }
+            break;
+        case 1:
+            cell.textLabel.text = @"Health";
+            cell.detailTextLabel.text = nil;
+            break;
+        case 2:
+            cell.textLabel.text = @"Guardians";
+            cell.detailTextLabel.text = nil;
+            break;
     }
-    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -290,12 +295,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     switch (section) {
         case 0:
             return @"General Info";
-            break;
-        case 1:
-            return @"Health";
-            break;
-        case 2:
-            return @"Guardian";
             break;
         default:
             return @"";
@@ -309,38 +308,37 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath section] > 0) {
-        switch ([indexPath section]) {
-            case 1:
-                [self performSegueWithIdentifier:@"GoToHealth" sender:self];
-                break;
-            case 2:
-                [self performSegueWithIdentifier:@"GoToGuardian" sender:self];
-                break;
-        }
-    } else {
-        switch ([indexPath row]) {
-            case 0:
-                self.selectedCellTitle = @"First Name";
-                [self performSegueWithIdentifier:@"InputData" sender:self];
-                break;
-            case 1:
-                self.selectedCellTitle = @"Last Name";
-                [self performSegueWithIdentifier:@"InputData" sender:self];
-                break;
-            case 2:
-                self.selectedCellTitle = @"Date of Birth";
-                [self showDatePicker];
-                break;
-            case 3:
-                self.selectedCellTitle = @"City";
-                [self performSegueWithIdentifier:@"InputData" sender:self];
-                break;
-            case 4:
-                self.selectedCellTitle = @"Project";
-                [self showProjectPicker];
-                break;
-        }
+    switch ([indexPath section]) {
+        case 0:
+            switch ([indexPath row]) {
+                case 0:
+                    self.selectedCellTitle = @"First Name";
+                    [self performSegueWithIdentifier:@"InputData" sender:self];
+                    break;
+                case 1:
+                    self.selectedCellTitle = @"Last Name";
+                    [self performSegueWithIdentifier:@"InputData" sender:self];
+                    break;
+                case 2:
+                    self.selectedCellTitle = @"Date of Birth";
+                    [self showDatePicker];
+                    break;
+                case 3:
+                    self.selectedCellTitle = @"City";
+                    [self performSegueWithIdentifier:@"InputData" sender:self];
+                    break;
+                case 4:
+                    self.selectedCellTitle = @"Project";
+                    [self showProjectPicker];
+                    break;
+            }
+            break;
+        case 1:
+            [self performSegueWithIdentifier:@"GoToHealth" sender:self];
+            break;
+        case 2:
+            [self performSegueWithIdentifier:@"GoToGuardian" sender:self];
+            break;
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

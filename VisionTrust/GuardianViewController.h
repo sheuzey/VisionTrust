@@ -15,6 +15,7 @@
 @interface GuardianViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) Child *child;
+@property (nonatomic, strong) Guardian *guardian;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

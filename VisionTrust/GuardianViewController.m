@@ -24,7 +24,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
-        return 5;
+        return 4;
     return 1;
 }
 
@@ -53,31 +53,25 @@
             switch ([indexPath row]) {
                 case 0:
                     cell.textLabel.text = @"First Name";
-                    cell.detailTextLabel.text = self.child.hasGuardian.firstName;
+                    cell.detailTextLabel.text = self.guardian.firstName;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 case 1:
                     cell.textLabel.text = @"Last Name";
-                    cell.detailTextLabel.text = self.child.hasGuardian.lastName;
+                    cell.detailTextLabel.text = self.guardian.lastName;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 case 2:
-                    cell.textLabel.text = @"Relation";
-                    cell.detailTextLabel.text = self.child.relationToGuardian;
+                    cell.textLabel.text = @"Occupation";
+                    cell.detailTextLabel.text = self.guardian.hasOccupationType.occupationTypeDescription;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
                 case 3:
-                    cell.textLabel.text = @"Occupation";
-                    cell.detailTextLabel.text = self.child.hasGuardian.hasOccupationType.occupationTypeDescription;
-                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                    cell.accessoryType = UITableViewCellAccessoryNone;
-                    break;
-                case 4:
                     cell.textLabel.text = @"Status";
-                    cell.detailTextLabel.text = self.child.hasGuardian.hasGuardianStatus.guardianStatusDescription;
+                    cell.detailTextLabel.text = self.guardian.hasGuardianStatus.guardianStatusDescription;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     break;
@@ -104,14 +98,8 @@
 {
     if ([[segue identifier] isEqualToString:@"GoToOtherChildren"]) {
         AllChildrenViewController *ocvc = (AllChildrenViewController *)segue.destinationViewController;
-        ocvc.guardian = self.child.hasGuardian;
+        ocvc.guardian = self.guardian;
     }
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
