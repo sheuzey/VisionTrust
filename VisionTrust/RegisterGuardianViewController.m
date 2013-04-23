@@ -17,7 +17,6 @@
 
 #define FNAME @"firstName"
 #define LNAME @"lastName"
-#define RELATION @"relation"
 #define OCCUPATION @"occupation"
 #define STATUS @"status"
 
@@ -34,7 +33,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -55,14 +54,10 @@
             cell.detailTextLabel.text = [self.guardianData valueForKey:LNAME];
             break;
         case 2:
-            cell.textLabel.text = @"Relation";
-            cell.detailTextLabel.text = [self.guardianData valueForKey:RELATION];
-            break;
-        case 3:
             cell.textLabel.text = @"Occupation";
             cell.detailTextLabel.text = [self.guardianData valueForKey:OCCUPATION];
             break;
-        case 4:
+        case 3:
             cell.textLabel.text = @"Status";
             cell.detailTextLabel.text = [self.guardianData valueForKey:STATUS];
             break;
@@ -82,12 +77,9 @@
             self.selectedCellTitle = @"Last Name";
             break;
         case 2:
-            self.selectedCellTitle = @"Relation";
-            break;
-        case 3:
             self.selectedCellTitle = @"Occupation";
             break;
-        case 4:
+        case 3:
             self.selectedCellTitle = @"Status";
             break;
     }
@@ -111,8 +103,6 @@
         [self.guardianData setValue:data forKey:FNAME];
     } else if ([self.selectedCellTitle isEqualToString:@"Last Name"]) {
         [self.guardianData setValue:data forKey:LNAME];
-    } else if ([self.selectedCellTitle isEqualToString:@"Relation"]) {
-        [self.guardianData setValue:data forKey:RELATION];
     } else if ([self.selectedCellTitle isEqualToString:@"Occupation"]) {
         [self.guardianData setValue:data forKey:OCCUPATION];
     } else if ([self.selectedCellTitle isEqualToString:@"Status"]) {

@@ -19,12 +19,12 @@
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, strong) NSString *selectedCellTitle;
-@property (nonatomic, assign) NSInteger selectedProject;
+@property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, strong) NSMutableArray *projects;
+@property (nonatomic, strong) UIPopoverController *imagePopover;
 @property (nonatomic, strong) NSMutableDictionary *childData;
 @property (nonatomic, strong) NSMutableDictionary *healthData;
-@property (nonatomic, strong) NSMutableDictionary *guardianData;
-@property (nonatomic, strong) UIPopoverController *imagePopover;
+@property (nonatomic, strong) NSMutableArray *guardians;
 @end
 
 @implementation RegisterChildViewController
@@ -43,6 +43,7 @@
     [super viewDidLoad];
     
     self.navigationController.delegate = self;
+    self.guardians = [[NSMutableArray alloc] init];
     
     //Set background color..
     self.view.backgroundColor = [UIColor clearColor];
@@ -143,7 +144,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             [self.childData setValue:string forKey:DOB];
             break;
         case PROJECT_TAG:
-            string = [self.projects objectAtIndex:self.selectedProject];
+            string = [self.projects objectAtIndex:self.selectedIndex];
             [self.childData setValue:string forKey:PROJECT];
             break;
     }
@@ -229,13 +230,15 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self.selectedProject = row;
+    self.selectedIndex = row;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
         return 5;
+    } else if (section == 2) {
+        return [self.guardians count] + 1;
     }
     return 1;
 }
@@ -281,10 +284,17 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             cell.textLabel.text = @"Health";
             cell.detailTextLabel.text = nil;
             break;
-        case 2:
-            cell.textLabel.text = @"Guardians";
-            cell.detailTextLabel.text = nil;
-            break;
+    }
+    if ([indexPath section] == 2) {
+        
+        //If row is less then number of guardians, set cell row text to guardian first/last name
+        if ([indexPath row] < [self.guardians count]) {
+            NSMutableDictionary *guardian = [self.guardians objectAtIndex:[indexPath row]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [guardian valueForKey:FIRST_NAME], [guardian valueForKey:LAST_NAME]];
+        } else {
+            cell.textLabel.text = @"Add Guardian";
+        }
+        cell.detailTextLabel.text = nil;
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -296,9 +306,28 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         case 0:
             return @"General Info";
             break;
+        case 2:
+            return @"Guardians";
+            break;
         default:
             return @"";
             break;
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath section] == 2) {
+        if ([indexPath row] < [self.guardians count])
+            return YES;
+    }
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
     }
 }
 
@@ -337,6 +366,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             [self performSegueWithIdentifier:@"GoToHealth" sender:self];
             break;
         case 2:
+            if ([indexPath row] < [self.guardians count]) {
+                self.selectedCellTitle = @"EditGuardian";
+                self.selectedIndex = [indexPath row];
+            }
+            else
+                self.selectedCellTitle = @"NewGuardian";
             [self performSegueWithIdentifier:@"GoToGuardian" sender:self];
             break;
     }
@@ -356,8 +391,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         rhvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
         RegisterGuardianViewController *rgvc = (RegisterGuardianViewController *)segue.destinationViewController;
-        rgvc.guardianData = [[NSMutableDictionary alloc] initWithDictionary:self.guardianData];
         rgvc.delegate = self;
+        if ([self.selectedCellTitle isEqualToString:@"NewGuardian"]) {
+            rgvc.guardianData = [[NSMutableDictionary alloc] init];
+        } else {
+            rgvc.guardianData = [[NSMutableDictionary alloc] initWithDictionary:[self.guardians objectAtIndex:self.selectedIndex]];
+        }
     }
 }
 
@@ -381,8 +420,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)guardianInfo:(NSMutableDictionary *)info
 {
-    //Set guardian data into guardianData dictionary..
-    self.guardianData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    //If new guardian, add to guardians array. Else update..
+    if ([self.selectedCellTitle isEqualToString:@"NewGuardian"]) {
+        if ([info valueForKey:FIRST_NAME])
+            [self.guardians addObject:info];
+    } else {
+        [self.guardians replaceObjectAtIndex:self.selectedIndex withObject:info];
+    }
+    [self.tableView reloadData];
 }
 
 - (void)healthInfo:(NSMutableDictionary *)info
