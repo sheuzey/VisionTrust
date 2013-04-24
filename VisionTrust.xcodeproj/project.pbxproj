@@ -53,6 +53,8 @@
 		DCE80B7C171784E700A0FE35 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B7B171784E700A0FE35 /* Default-568h@2x.png */; };
 		DCE80B7F171784E700A0FE35 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B7D171784E700A0FE35 /* MainStoryboard_iPhone.storyboard */; };
 		DCE80B82171784E700A0FE35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B80171784E700A0FE35 /* MainStoryboard_iPad.storyboard */; };
+		DCFB73D817276CFB009DDCA8 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA152F1727465B00470392 /* SearchTableViewController.m */; };
+		DCFB73D917276D04009DDCA8 /* Guardian+SetupGuardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA15311727468500470392 /* Guardian+SetupGuardian.m */; };
 		DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC84051721A3F5003862D5 /* Project+SetupProject.m */; };
 		DCFC840F17220CC3003862D5 /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC840E17220CC3003862D5 /* PersonalViewController.m */; };
 		DCFC8412172225BF003862D5 /* RegisterChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC8411172225BE003862D5 /* RegisterChildViewController.m */; };
@@ -391,6 +393,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCFB73D917276D04009DDCA8 /* Guardian+SetupGuardian.m in Sources */,
+				DCFB73D817276CFB009DDCA8 /* SearchTableViewController.m in Sources */,
 				DCE80B72171784E700A0FE35 /* main.m in Sources */,
 				DCE80B76171784E700A0FE35 /* AppDelegate.m in Sources */,
 				DC65349817179CF900785378 /* LoginViewController.m in Sources */,
@@ -398,6 +402,7 @@
 				DC6534B91719D2CA00785378 /* HomeViewController.m in Sources */,
 				DC6534BF171A3C5000785378 /* LoginModel.xcdatamodeld in Sources */,
 				DC6534C2171A3D1200785378 /* User.m in Sources */,
+				DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */,
 				DC6534C7171B04F800785378 /* Cell.m in Sources */,
 				DC6534D0171B168400785378 /* CustomCellBackground.m in Sources */,
 				DC6534DF171B63B100785378 /* Child+SetupChild.m in Sources */,
@@ -411,7 +416,6 @@
 				DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */,
 				DCFC840F17220CC3003862D5 /* PersonalViewController.m in Sources */,
 				DCFC8412172225BF003862D5 /* RegisterChildViewController.m in Sources */,
-				DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */,
 				DC9EA8CA1723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m in Sources */,
 				DC9EA8CD1723224100C3137D /* OccupationType+SetupOccupationType.m in Sources */,
 				DC9EA8D617232BC000C3137D /* Guardian.m in Sources */,

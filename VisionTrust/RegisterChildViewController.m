@@ -19,6 +19,7 @@
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, strong) NSString *selectedCellTitle;
+@property (nonatomic, strong) NSString *selectedCellIdentifier;
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, strong) NSMutableArray *projects;
 @property (nonatomic, strong) UIPopoverController *imagePopover;
@@ -327,8 +328,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+        [self.guardians removeObjectAtIndex:[indexPath row]];
     }
+    [self.tableView deleteRowsAtIndexPaths:[[NSArray alloc] initWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationRight];
+    NSLog(@"%d", [self.guardians count]);
 }
 
 - (IBAction)registerButtonPressed:(id)sender {
@@ -342,10 +345,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             switch ([indexPath row]) {
                 case 0:
                     self.selectedCellTitle = @"First Name";
+                    self.selectedCellIdentifier = FIRST_NAME;
                     [self performSegueWithIdentifier:@"InputData" sender:self];
                     break;
                 case 1:
                     self.selectedCellTitle = @"Last Name";
+                    self.selectedCellIdentifier = LAST_NAME;
                     [self performSegueWithIdentifier:@"InputData" sender:self];
                     break;
                 case 2:
@@ -354,6 +359,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                     break;
                 case 3:
                     self.selectedCellTitle = @"City";
+                    self.selectedCellIdentifier = CITY;
                     [self performSegueWithIdentifier:@"InputData" sender:self];
                     break;
                 case 4:
@@ -383,7 +389,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     if ([[segue identifier] isEqualToString:@"InputData"]) {
         InputDataViewController *idvc = (InputDataViewController *)segue.destinationViewController;
         idvc.titleString = self.selectedCellTitle;
-        idvc.dataString = [self.childData valueForKey:self.selectedCellTitle];
+        idvc.dataString = [self.childData valueForKey:self.selectedCellIdentifier];
         idvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
         RegisterHealthViewController *rhvc = (RegisterHealthViewController *)segue.destinationViewController;

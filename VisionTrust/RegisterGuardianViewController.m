@@ -11,6 +11,7 @@
 
 @interface RegisterGuardianViewController () <GetData>
 @property (nonatomic, strong) NSString *selectedCellTitle;
+@property (nonatomic, strong) NSString *selectedCellIdentifier;
 @end
 
 @implementation RegisterGuardianViewController
@@ -72,15 +73,19 @@
     switch ([indexPath row]) {
         case 0:
             self.selectedCellTitle = @"First Name";
+            self.selectedCellIdentifier = FNAME;
             break;
         case 1:
             self.selectedCellTitle = @"Last Name";
+            self.selectedCellIdentifier = LNAME;
             break;
         case 2:
             self.selectedCellTitle = @"Occupation";
+            self.selectedCellIdentifier = OCCUPATION;
             break;
         case 3:
             self.selectedCellTitle = @"Status";
+            self.selectedCellIdentifier = STATUS;
             break;
     }
     [self performSegueWithIdentifier:@"InputData" sender:self];
@@ -91,7 +96,7 @@
     if ([[segue identifier] isEqualToString:@"InputData"]) {
         InputDataViewController *idvc = (InputDataViewController *)segue.destinationViewController;
         idvc.titleString = self.selectedCellTitle;
-        idvc.dataString = [self.guardianData valueForKey:self.selectedCellTitle];
+        idvc.dataString = [self.guardianData valueForKey:self.selectedCellIdentifier];
         idvc.delegate = self;
     }
 }
