@@ -40,7 +40,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 5;
+        return 7;
     } else if (section == 5) {
         return [self.guardians count];
     }
@@ -75,10 +75,18 @@
                     cell.detailTextLabel.text = self.child.dob;
                     break;
                 case 3:
+                    cell.textLabel.text = @"Address";
+                    cell.detailTextLabel.text = self.child.address;
+                    break;
+                case 4:
                     cell.textLabel.text = @"City";
                     cell.detailTextLabel.text = self.child.city;
                     break;
-                case 4:
+                case 5:
+                    cell.textLabel.text = @"Country";
+                    cell.detailTextLabel.text = self.child.country;
+                    break;
+                case 6:
                     cell.textLabel.text = @"Project";
                     cell.detailTextLabel.text = self.child.isPartOfProject.name;
                     break;

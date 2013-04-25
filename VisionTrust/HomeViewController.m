@@ -13,6 +13,7 @@
 #import "Cell.h"
 
 @interface HomeViewController ()
+
 @end
 
 @implementation HomeViewController
@@ -30,8 +31,6 @@
     UITableView *tv = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     [self.view addSubview:tv];
     [self.view sendSubviewToBack:tv];
-    
-    self.database = [[VisionTrustDatabase alloc] init];
     
     //Set welcome label..
     self.welcomeLabel.text = self.firstName;
@@ -92,24 +91,6 @@
         [self performSegueWithIdentifier:@"SearchThenEnrollment" sender:self];
     }
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"SearchThenView"]) {
-        SearchTableViewController *stvc = (SearchTableViewController *)segue.destinationViewController;
-        stvc.database = self.database;
-    } else if ([segue.identifier isEqualToString:@"Register"]) {
-        RegisterChildViewController *rcvc = (RegisterChildViewController *)segue.destinationViewController;
-        rcvc.database = self.database;
-    }
-    [self.database saveDatabase];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

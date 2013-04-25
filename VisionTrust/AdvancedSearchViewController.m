@@ -34,6 +34,8 @@
 {
     [super viewDidLoad];
     
+    self.database = [VisionTrustDatabase vtDatabase];
+    
     self.parameters = [[NSMutableDictionary alloc] init];
     
     self.searchTable.dataSource = self;

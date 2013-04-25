@@ -20,6 +20,7 @@
                       address:(NSString *)address
                          city:(NSString *)city
                       picture:(NSString *)picture
+                  pictureData:(NSData *)data
                        status:(NSString *)status
                      guardians:(NSSet *)guardians
                       project:(Project *)project

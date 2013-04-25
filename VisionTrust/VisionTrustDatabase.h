@@ -21,6 +21,11 @@
 - (NSArray *)getAllChildren;
 - (NSMutableArray *)getChildrenWithParameters:(NSMutableDictionary *)parameters;
 - (NSArray *)getAllProjects;
-- (void)saveDatabase;
 
+- (void)saveDatabase;
+- (void)registerChildWithGeneralInfo:(NSMutableDictionary *)general
+                          healthInfo:(NSMutableDictionary *)health
+                        andGuardians:(NSSet *)guardians;
+//Create singletone instance..
++ (VisionTrustDatabase *)vtDatabase;
 @end

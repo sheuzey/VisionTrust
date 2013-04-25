@@ -19,6 +19,7 @@
                       address:(NSString *)address
                          city:(NSString *)city
                       picture:(NSString *)picture
+                  pictureData:(NSData *)data
                        status:(NSString *)status
                      guardians:(NSSet *)guardians
                       project:(Project *)project
@@ -43,6 +44,7 @@
         child.address = address;
         child.city = city;
         child.pictureURL = picture;
+        child.pictureData = data;
         child.status = status;
         child.hasGuardians = guardians;
         child.isPartOfProject = project;

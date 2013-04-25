@@ -14,6 +14,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *welcomeLabel;
 @property (strong, nonatomic) IBOutlet UICollectionView *menuCollection;
 @property (strong, nonatomic) NSString *firstName;
-@property (nonatomic, strong) VisionTrustDatabase *database;
 
 @end

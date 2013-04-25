@@ -24,6 +24,7 @@
 @property (nonatomic, retain) NSString * status;
 @property (nonatomic, retain) NSString * ts;
 @property (nonatomic, retain) NSNumber * unique;
+@property (nonatomic, retain) NSData * pictureData;
 @property (nonatomic, retain) NSSet *hasGuardians;
 @property (nonatomic, retain) NSSet *interactions;
 @property (nonatomic, retain) Project *isPartOfProject;

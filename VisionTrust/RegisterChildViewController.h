@@ -13,6 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *childImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) VisionTrustDatabase *database;
+@property (weak, nonatomic) VisionTrustDatabase *database;
 
 @end

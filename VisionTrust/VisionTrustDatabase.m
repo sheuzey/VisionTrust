@@ -14,6 +14,22 @@
 
 @implementation VisionTrustDatabase
 
+#define FIRST_NAME @"firstName"
+#define LAST_NAME @"lastName"
+#define DOB @"dob"
+#define ADDRESS @"address"
+#define CITY @"city"
+#define COUNTRY @"country"
+#define PROJECT @"project"
+#define PICTURE @"pictureData"
+
+#define HEALTH @"healthCondition"
+#define TREATMENT @"currentlyReceivingTreatment"
+#define ILLNESS @"chronicIllness"
+
+#define OCCUPATION @"occupation"
+#define STATUS @"status"
+
 - (void)insertSampleData
 {
     [self.database.managedObjectContext performBlock:^{
@@ -112,6 +128,7 @@
                           address:@"1 main avenue"
                              city:@"Mexico City"
                           picture:@"child.jpeg"
+                      pictureData:nil
                            status:@"Active"
                         guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
                           project:p1
@@ -126,6 +143,7 @@
                           address:@"5 mansion place"
                              city:@"Major City"
                           picture:@"child.jpeg"
+                      pictureData:nil
                            status:@"Active"
                         guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
                           project:p2
@@ -140,6 +158,7 @@
                           address:@"255 Charlie Place"
                              city:@"PyongYang"
                           picture:@"child.jpeg"
+                      pictureData:nil         
                            status:@"Active"
                         guardians:[[NSSet alloc] initWithObjects:g3, g5, nil]
                           project:p3
@@ -154,6 +173,7 @@
                           address:@"2 3rd street"
                              city:@"Berlin"
                           picture:@"child.jpeg"
+                      pictureData:nil         
                            status:@"Inactive"
                         guardians:[[NSSet alloc] initWithObjects:g4, g5, nil]
                           project:p1
@@ -168,6 +188,7 @@
                           address:@"33 Communal Drive"
                              city:@"St. Petersburg"
                           picture:@"child.jpeg"
+                      pictureData:nil         
                            status:@"Inactive"
                         guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
                           project:p2
@@ -182,6 +203,7 @@
                           address:@"10 cedar road"
                              city:@"Orlando, Florida"
                           picture:@"child.jpeg"
+                      pictureData:nil         
                            status:@"Active"
                         guardians:[[NSSet alloc] initWithObjects:g1, g5, nil]
                           project:p3
@@ -196,6 +218,7 @@
                           address:@"50 Crazy blvd."
                              city:@"New York City"
                           picture:@"child.jpeg"
+                      pictureData:nil         
                            status:@"Active"
                         guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
                           project:p4
@@ -213,18 +236,7 @@
             [self insertSampleData];
         }];
     } else if (self.database.documentState == UIDocumentStateClosed){
-        [self.database openWithCompletionHandler:^(BOOL success){
-            //Test to see if database is null. If so, insert sample data..
-            NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
-            //request.predicate = [NSPredicate predicateWithFormat:@"username = %@", @"steve"];
-            NSError *error = nil;
-            NSArray *userArray = [self.database.managedObjectContext executeFetchRequest:request error:&error];
-            if(!userArray){
-                [self insertSampleData];
-            }
-            Child *temp = [[self.database.managedObjectContext executeFetchRequest:request error:&error] lastObject];
-            NSLog(@"Last child in database: %@ %@", temp.firstName, temp.lastName);
-        }];
+        [self.database openWithCompletionHandler:nil];
     }
 }
 
@@ -248,7 +260,6 @@
     //Append the name of the database to use..
     url = [url URLByAppendingPathComponent:@"Default Login Database"];
     self.database = [[UIManagedDocument alloc] initWithFileURL:url];
-    
     return self;
 }
 
@@ -300,14 +311,32 @@
 
 - (void)saveDatabase
 {
-    [self.database saveToURL:self.database.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:^(BOOL success) {
-        if (success) {
-            NSLog(@"DATABASE SAVED!");
-        }
-        else {
-            NSLog(@"Database didn't save..");
-        }
+    [self.database closeWithCompletionHandler:^(BOOL sucess) {
+        if (sucess)
+            NSLog(@"DATABASE CLOSED!");
+        else
+            NSLog(@"Database didn't close..");
     }];
+}
+
+- (void)registerChildWithGeneralInfo:(NSMutableDictionary *)general
+                          healthInfo:(NSMutableDictionary *)health
+                        andGuardians:(NSSet *)guardians
+{
+    
+}
+
++ (VisionTrustDatabase *)vtDatabase
+{
+    static VisionTrustDatabase *theOneAndOnly = NULL;
+    
+    @synchronized(self)
+    {
+        if (!theOneAndOnly) {
+            theOneAndOnly = [[VisionTrustDatabase alloc] init];
+        }
+    }
+    return theOneAndOnly;
 }
 
 @end

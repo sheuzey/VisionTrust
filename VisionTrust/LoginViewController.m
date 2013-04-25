@@ -21,7 +21,7 @@
 
 @implementation LoginViewController
 
-#define LOGO_TAG 100
+#define LOGO_TAG 300
 #define USERNAME_TAG 100
 #define PASSWORD_TAG 200
 
@@ -29,18 +29,19 @@
 {
     [super viewDidLoad];
     
-    //Set title of login button when selected..
-    [self.loginButton setTitle:@"Logging In" forState:UIControlStateSelected];
-    
     //Clear the table background view and disable scrolling..
     self.loginTable.backgroundView = nil;
     self.loginTable.scrollEnabled = NO;
-    self.database = [[VisionTrustDatabase alloc] init];
+    //self.database = [[VisionTrustDatabase alloc] init];
+    self.database = [VisionTrustDatabase vtDatabase];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    //Set title of login button when selected..
+    [self.loginButton setTitle:@"Log in" forState:UIControlStateNormal];
     
     //Create logo view, set its tag and add as subview..
     UIImageView *logoView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VisionTrustLogo.jpg"]];
@@ -77,46 +78,52 @@
 }
 
 - (IBAction)loginButtonWasPressed:(id)sender {
-    
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [spinner startAnimating];
     [spinner setFrame:CGRectMake(self.loginButton.frame.size.width - 40, 15, 10, 10)];
-    [spinner setTag:100];
+    [spinner setTag:50];
     [self.loginButton addSubview:spinner];
     
-    self.loginButton.titleLabel.text = @"Logging in";
+    [self.loginButton setTitle:@"Logging in" forState:UIControlStateNormal];
     
-    //Retrieve user from db..
+    //Get username..
     UITextField *usernameField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]] viewWithTag:USERNAME_TAG];
     
-    User *user= [self.database getUserByUsername:usernameField.text];
+    //Make user thread-safe..
+    __block User *user;
     
-    //If exists, authenticate..
-    if(user) {
-        UITextField *passwordField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]] viewWithTag:PASSWORD_TAG];
-        
-        //If provided password is correct, segue to home controller..
-        if ([passwordField.text isEqualToString:user.password]) {
-            self.labelForHomePage = [NSString stringWithFormat:@"Welcome %@", user.firstName];
-            [self performSegueWithIdentifier:@"GoToMainPage" sender:self];
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //Retrieve user from db..
+        user = [self.database getUserByUsername:usernameField.text];
+    });
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        //If exists, authenticate..
+        if(user) {
+            UITextField *passwordField = (UITextField *)[[self.loginTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:0]] viewWithTag:PASSWORD_TAG];
+            
+            //If provided password is correct, segue to home controller..
+            if ([passwordField.text isEqualToString:user.password]) {
+                self.labelForHomePage = [NSString stringWithFormat:@"Welcome %@", user.firstName];
+                [self performSegueWithIdentifier:@"GoToMainPage" sender:self];
+            } else {
+                
+                //Password incorrect...show error alert
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Password" message:@"The password you entered is incorrect. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [alert show];
+            }
         } else {
             
-            //Password incorrect...show error alert
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Incorrect Password" message:@"The password you entered is incorrect. Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            //Username incorrect...show error alert
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:@"The username you provided does not exist. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:Nil, nil];
             [alert show];
         }
-    } else {
-        
-        //Username incorrect...show error alert
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failed" message:@"The username you provided does not exist. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:Nil, nil];
-        [alert show];
-    }
-    
-    //Remove spinner from button..
-    for (UIView *view in self.loginButton.subviews) {
-        if(view.tag == 100)
-            [view removeFromSuperview];
-    }
+        //Remove spinner from button..
+        for (UIView *view in self.loginButton.subviews) {
+            if(view.tag == 50)
+                [view removeFromSuperview];
+        }
+    });
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

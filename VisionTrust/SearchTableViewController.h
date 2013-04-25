@@ -15,6 +15,6 @@
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *searchData;       //Data from search..
 @property (strong, nonatomic) NSArray *children;                //Children from database..
-@property (nonatomic, strong) VisionTrustDatabase *database;
+@property (strong, nonatomic) VisionTrustDatabase *database;
 
 @end

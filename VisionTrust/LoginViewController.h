@@ -12,6 +12,6 @@
 @interface LoginViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UITableView *loginTable;
-@property (strong, nonatomic) VisionTrustDatabase *database;
+@property (nonatomic, strong) VisionTrustDatabase *database;
 
 @end

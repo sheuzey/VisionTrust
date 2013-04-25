@@ -24,6 +24,7 @@
 @dynamic status;
 @dynamic ts;
 @dynamic unique;
+@dynamic pictureData;
 @dynamic hasGuardians;
 @dynamic interactions;
 @dynamic isPartOfProject;
