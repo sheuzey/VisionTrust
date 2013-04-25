@@ -127,7 +127,7 @@
         pvc.child = self.selectedChild;
     } else if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
         UpdateListViewController *ulvc = (UpdateListViewController *)segue.destinationViewController;
-        ulvc.interactions = self.selectedChild.interactions;
+        ulvc.interactions = [[NSMutableArray alloc] initWithArray:[self.selectedChild.interactions allObjects]];
     }
     [self.database saveDatabase];
 }

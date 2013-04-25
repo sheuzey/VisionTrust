@@ -28,15 +28,28 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    
+    Interactions *interaction = [self.interactions objectAtIndex:section];
+    NSDateFormatter *format = [[NSDateFormatter alloc] init];
+    [format setTimeStyle:NSDateFormatterLongStyle];
+    [format setDateStyle:NSDateFormatterLongStyle];
+    return [format stringFromDate:interaction.interactionDate];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    switch ([indexPath row]) {
+        case 0:
+            cell.textLabel.text = @"Registration";
+            break;
+        default:
+            cell.textLabel.text = @"Update";
+            break;
+    }
     
     return cell;
 }
