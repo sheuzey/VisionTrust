@@ -8,8 +8,9 @@
 
 #import "UpdateAcademicViewController.h"
 #import "FavoriteSubjectsViewController.h"
+#import "InputDataViewController.h"
 
-@interface UpdateAcademicViewController () <FavoriteSubjectsProtocol>
+@interface UpdateAcademicViewController () <FavoriteSubjectsProtocol, GetData>
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
@@ -17,6 +18,8 @@
 @property (nonatomic, assign) NSInteger selectedTableIndex;
 @property (nonatomic, assign) NSInteger selectedPickerIndex;
 @property (nonatomic, strong) NSMutableArray *pickerData;
+@property (nonatomic, strong) NSArray *allSubjects;
+@property (nonatomic, strong) NSString *otherSubject;
 @end
 
 @implementation UpdateAcademicViewController
@@ -40,6 +43,8 @@
     
     self.pickerToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 45)];
     [self.pickerToolBar setBarStyle:UIBarStyleBlack];
+    
+    self.favoriteSubjects = [[NSArray alloc] initWithObjects:@"Math", @"Science", @"History", nil];
 }
 
 - (void)createPicker
@@ -165,9 +170,16 @@
     self.selectedPickerIndex = row;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    if (section == 0)
+        return 2;
+    return [self.favoriteSubjects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -176,23 +188,25 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    
-    switch ([indexPath row]) {
+    switch ([indexPath section]) {
         case 0:
-            cell.textLabel.text = @"Grade";
-            cell.detailTextLabel.text = [self.academicData valueForKey:GRADE];
+            switch ([indexPath row]) {
+                case 0:
+                    cell.textLabel.text = @"Grade";
+                    cell.detailTextLabel.text = [self.academicData valueForKey:GRADE];
+                    break;
+                case 1:
+                    cell.textLabel.text = @"Performance";
+                    cell.detailTextLabel.text = [self.academicData valueForKey:PERFORMANCE];
+                    break;
+            }
             break;
         case 1:
-            cell.textLabel.text = @"Performance";
-            cell.detailTextLabel.text = [self.academicData valueForKey:PERFORMANCE];
-            break;
-        case 2:
-            cell.textLabel.text = @"Favorite Subjects";
-            cell.detailTextLabel.text = @"";
+            cell.textLabel.text = [self.favoriteSubjects objectAtIndex:[indexPath row]];
+            cell.detailTextLabel.text = nil;
             break;
     }
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -225,6 +239,11 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     [self.academicData setValue:subjects forKey:FAVORITE_SUBJECTS];
+}
+
+- (void)giveBackData:(NSString *)data
+{
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated

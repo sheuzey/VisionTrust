@@ -51,7 +51,7 @@
         <attribute name="occupationTypeDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="occupationTypeOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Guardian" inverseName="hasOccupationType" inverseEntity="Guardian" syncable="YES"/>
     </entity>
-    <entity name="OptionCategories" syncable="YES">
+    <entity name="OptionCategories" representedClassName="OptionCategories" syncable="YES">
         <attribute name="categoryDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="partOfOption" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UpdateOptions" inverseName="hasCategories" inverseEntity="UpdateOptions" syncable="YES"/>
     </entity>
@@ -60,14 +60,14 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hasChildren" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="isPartOfProject" inverseEntity="Child" syncable="YES"/>
     </entity>
-    <entity name="Update" syncable="YES">
-        <relationship name="hasUpdateOptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UpdateOptions" inverseName="newRelationship" inverseEntity="UpdateOptions" syncable="YES"/>
+    <entity name="Update" representedClassName="Update" syncable="YES">
+        <relationship name="hasUpdateOptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UpdateOptions" inverseName="inUpdate" inverseEntity="UpdateOptions" syncable="YES"/>
         <relationship name="inInteraction" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Interactions" inverseName="updates" inverseEntity="Interactions" syncable="YES"/>
     </entity>
-    <entity name="UpdateOptions" syncable="YES">
+    <entity name="UpdateOptions" representedClassName="UpdateOptions" syncable="YES">
         <attribute name="updateOptionDescription" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="hasCategories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OptionCategories" inverseName="partOfOption" inverseEntity="OptionCategories" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Update" inverseName="hasUpdateOptions" inverseEntity="Update" syncable="YES"/>
+        <relationship name="inUpdate" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Update" inverseName="hasUpdateOptions" inverseEntity="Update" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>

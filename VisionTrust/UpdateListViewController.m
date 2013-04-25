@@ -63,9 +63,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    Interactions *interaction = [self.interactions objectAtIndex:self.selectedInteractionIndex];
-    PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
-    pvc.child = interaction.child;
+    UpdateViewController *uvc = (UpdateViewController *)segue.destinationViewController;
+    uvc.interaction = [self.interactions objectAtIndex:self.selectedInteractionIndex];
 }
 
 @end

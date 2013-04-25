@@ -11,12 +11,17 @@
 #import "Child.h"
 #import "Guardian.h"
 #import "Project.h"
+#import "Interactions.h"
+#import "VisionTrustDatabase.h"
 
-@interface UpdateViewController : PersonalViewController
+@interface UpdateViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *childImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) VisionTrustDatabase *database;
+@property (nonatomic, strong) Interactions *interaction;
 @property (nonatomic, strong) Child *child;
 @property (nonatomic, strong) NSArray *guardians;
+@property (nonatomic, strong) NSMutableDictionary *academicData;
 
 @end

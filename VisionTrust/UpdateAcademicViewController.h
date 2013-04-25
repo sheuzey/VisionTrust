@@ -10,7 +10,7 @@
 
 @class UpdateAcademicViewController;
 
-@protocol UpdateRegistrationProtocol
+@protocol UpdateAcademicProtocol
 
 - (void)academicInfo:(NSMutableDictionary *)info;
 
@@ -19,6 +19,7 @@
 @interface UpdateAcademicViewController : UITableViewController <UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) NSMutableDictionary *academicData;
-@property (nonatomic, weak) id<UpdateRegistrationProtocol>delegate;
+@property (nonatomic, strong) NSArray *favoriteSubjects;
+@property (nonatomic, weak) id<UpdateAcademicProtocol>delegate;
 
 @end

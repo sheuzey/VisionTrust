@@ -57,6 +57,12 @@
 		DCF1F97B17298F5E0094E25D /* Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97A17298F5E0094E25D /* Interactions.m */; };
 		DCF1F97E17299DA70094E25D /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97D17299DA70094E25D /* UpdateViewController.m */; };
 		DCF1F9811729A6950094E25D /* UpdateListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F9801729A6950094E25D /* UpdateListViewController.m */; };
+		DCF49DEE1729CC7D0076830E /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49DED1729CC7D0076830E /* Update.m */; };
+		DCF49DF11729CC7D0076830E /* UpdateOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49DF01729CC7D0076830E /* UpdateOptions.m */; };
+		DCF49DF41729CC7D0076830E /* OptionCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49DF31729CC7D0076830E /* OptionCategories.m */; };
+		DCF49DF71729CD900076830E /* Update+SetupUpdate.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49DF61729CD900076830E /* Update+SetupUpdate.m */; };
+		DCF49DFA1729CE5A0076830E /* UpdateOptions+SetupOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49DF91729CE5A0076830E /* UpdateOptions+SetupOptions.m */; };
+		DCF49DFD1729CF870076830E /* OptionCategories+SetupCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49DFC1729CF870076830E /* OptionCategories+SetupCategories.m */; };
 		DCFB73D817276CFB009DDCA8 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA152F1727465B00470392 /* SearchTableViewController.m */; };
 		DCFB73D917276D04009DDCA8 /* Guardian+SetupGuardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA15311727468500470392 /* Guardian+SetupGuardian.m */; };
 		DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC84051721A3F5003862D5 /* Project+SetupProject.m */; };
@@ -152,6 +158,18 @@
 		DCF1F97D17299DA70094E25D /* UpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateViewController.m; sourceTree = "<group>"; };
 		DCF1F97F1729A6950094E25D /* UpdateListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateListViewController.h; sourceTree = "<group>"; };
 		DCF1F9801729A6950094E25D /* UpdateListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateListViewController.m; sourceTree = "<group>"; };
+		DCF49DEC1729CC7D0076830E /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
+		DCF49DED1729CC7D0076830E /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
+		DCF49DEF1729CC7D0076830E /* UpdateOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateOptions.h; sourceTree = "<group>"; };
+		DCF49DF01729CC7D0076830E /* UpdateOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateOptions.m; sourceTree = "<group>"; };
+		DCF49DF21729CC7D0076830E /* OptionCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionCategories.h; sourceTree = "<group>"; };
+		DCF49DF31729CC7D0076830E /* OptionCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionCategories.m; sourceTree = "<group>"; };
+		DCF49DF51729CD900076830E /* Update+SetupUpdate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Update+SetupUpdate.h"; sourceTree = "<group>"; };
+		DCF49DF61729CD900076830E /* Update+SetupUpdate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Update+SetupUpdate.m"; sourceTree = "<group>"; };
+		DCF49DF81729CE5A0076830E /* UpdateOptions+SetupOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UpdateOptions+SetupOptions.h"; sourceTree = "<group>"; };
+		DCF49DF91729CE5A0076830E /* UpdateOptions+SetupOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UpdateOptions+SetupOptions.m"; sourceTree = "<group>"; };
+		DCF49DFB1729CF870076830E /* OptionCategories+SetupCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OptionCategories+SetupCategories.h"; sourceTree = "<group>"; };
+		DCF49DFC1729CF870076830E /* OptionCategories+SetupCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OptionCategories+SetupCategories.m"; sourceTree = "<group>"; };
 		DCFC84041721A3F5003862D5 /* Project+SetupProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+SetupProject.h"; sourceTree = "<group>"; };
 		DCFC84051721A3F5003862D5 /* Project+SetupProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+SetupProject.m"; sourceTree = "<group>"; };
 		DCFC840D17220CC3003862D5 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
@@ -206,6 +224,10 @@
 				DCF1F97A17298F5E0094E25D /* Interactions.m */,
 				DCCB62511728B5AE00395C59 /* Interactions+SetupInteraction.h */,
 				DCCB62521728B5AE00395C59 /* Interactions+SetupInteraction.m */,
+				DCF49DF21729CC7D0076830E /* OptionCategories.h */,
+				DCF49DF31729CC7D0076830E /* OptionCategories.m */,
+				DCF49DFB1729CF870076830E /* OptionCategories+SetupCategories.h */,
+				DCF49DFC1729CF870076830E /* OptionCategories+SetupCategories.m */,
 				D50FF912171E69E400EFE78F /* OccupationType.h */,
 				D50FF913171E69E400EFE78F /* OccupationType.m */,
 				DC9EA8CB1723224000C3137D /* OccupationType+SetupOccupationType.h */,
@@ -214,6 +236,14 @@
 				DCF1F97717298EEF0094E25D /* Project.m */,
 				DCFC84041721A3F5003862D5 /* Project+SetupProject.h */,
 				DCFC84051721A3F5003862D5 /* Project+SetupProject.m */,
+				DCF49DEC1729CC7D0076830E /* Update.h */,
+				DCF49DED1729CC7D0076830E /* Update.m */,
+				DCF49DF51729CD900076830E /* Update+SetupUpdate.h */,
+				DCF49DF61729CD900076830E /* Update+SetupUpdate.m */,
+				DCF49DEF1729CC7D0076830E /* UpdateOptions.h */,
+				DCF49DF01729CC7D0076830E /* UpdateOptions.m */,
+				DCF49DF81729CE5A0076830E /* UpdateOptions+SetupOptions.h */,
+				DCF49DF91729CE5A0076830E /* UpdateOptions+SetupOptions.m */,
 				DC6534C0171A3D1200785378 /* User.h */,
 				DC6534C1171A3D1200785378 /* User.m */,
 				DC6534B11718607B00785378 /* User+SetupUser.h */,
@@ -450,6 +480,12 @@
 				DCF1F97B17298F5E0094E25D /* Interactions.m in Sources */,
 				DCF1F97E17299DA70094E25D /* UpdateViewController.m in Sources */,
 				DCF1F9811729A6950094E25D /* UpdateListViewController.m in Sources */,
+				DCF49DEE1729CC7D0076830E /* Update.m in Sources */,
+				DCF49DF11729CC7D0076830E /* UpdateOptions.m in Sources */,
+				DCF49DF41729CC7D0076830E /* OptionCategories.m in Sources */,
+				DCF49DF71729CD900076830E /* Update+SetupUpdate.m in Sources */,
+				DCF49DFA1729CE5A0076830E /* UpdateOptions+SetupOptions.m in Sources */,
+				DCF49DFD1729CF870076830E /* OptionCategories+SetupCategories.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

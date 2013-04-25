@@ -22,6 +22,7 @@
 - (NSArray *)getAllChildren;
 - (NSMutableArray *)getChildrenWithParameters:(NSMutableDictionary *)parameters;
 - (NSArray *)getAllProjects;
+- (NSDictionary *)getAcademicDataFromInteraction:(Interactions *)interaction;
 
 - (void)saveDatabase;
 - (void)registerChildWithGeneralInfo:(NSMutableDictionary *)general

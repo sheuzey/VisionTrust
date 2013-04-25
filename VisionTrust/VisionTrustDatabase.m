@@ -294,6 +294,11 @@
     return [self.database.managedObjectContext executeFetchRequest:request error:&error];
 }
 
+- (NSDictionary *)getAcademicDataFromInteraction:(Interactions *)interaction
+{
+    
+}
+
 - (void)saveDatabase
 {
     [self.database closeWithCompletionHandler:^(BOOL sucess) {
