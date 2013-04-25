@@ -16,12 +16,13 @@
 
 #define FIRST_NAME @"firstName"
 #define LAST_NAME @"lastName"
+#define GENDER @"gender"
 #define DOB @"dob"
 #define ADDRESS @"address"
 #define CITY @"city"
 #define COUNTRY @"country"
 #define PROJECT @"project"
-#define PICTURE @"pictureData"
+#define PICTURE_DATA @"pictureData"
 
 #define HEALTH @"healthCondition"
 #define TREATMENT @"currentlyReceivingTreatment"
@@ -319,11 +320,33 @@
     }];
 }
 
+- (void)addInteractionForChild:(Child *)child
+{
+    
+}
+
 - (void)registerChildWithGeneralInfo:(NSMutableDictionary *)general
                           healthInfo:(NSMutableDictionary *)health
                         andGuardians:(NSSet *)guardians
 {
-    
+    __block Child *child;
+    [self.database.managedObjectContext performBlock:^{
+        child = [Child childWithFirstName:[general valueForKey:FIRST_NAME]
+                                 LastName:[general valueForKey:LAST_NAME]
+                                 uniqueID:[NSNumber numberWithInt:10]
+                                   gender:[general valueForKey:GENDER]
+                                      dob:[general valueForKey:DOB]
+                                  country:[general valueForKey:COUNTRY]
+                                  address:[general valueForKey:ADDRESS]
+                                     city:[general valueForKey:CITY]
+                                  picture:nil
+                              pictureData:[general valueForKey:PICTURE_DATA]
+                                   status:[general valueForKey:STATUS]
+                                guardians:guardians
+                                  project:[general valueForKey:PROJECT]
+                                inContext:self.database.managedObjectContext];
+    }];
+    [self addInteractionForChild:child];
 }
 
 + (VisionTrustDatabase *)vtDatabase

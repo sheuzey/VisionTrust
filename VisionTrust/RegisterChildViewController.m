@@ -491,7 +491,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 }
 
 - (IBAction)registerButtonPressed:(id)sender {
-    //[self.database registerChildWithGeneralInfo:self.childData healthInfo:self.healthData andGuardians:[[NSSet alloc] initWithArray:self.guardians]];
+    [self.database registerChildWithGeneralInfo:self.childData healthInfo:self.healthData andGuardians:[[NSSet alloc] initWithArray:self.guardians]];
 }
 
 @end
