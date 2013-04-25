@@ -12,6 +12,7 @@
 #import "CustomSearchCell.h"
 #import "AdvancedSearchViewController.h"
 #import "PersonalViewController.h"
+#import "UpdateListViewController.h"
 
 @interface SearchTableViewController () <QuitAdvancedSearchProtocol>
 @property (nonatomic, strong) Child *selectedChild;
@@ -124,6 +125,9 @@
     } else if ([segue.identifier isEqualToString:@"GoToPersonal"]) {
         PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
         pvc.child = self.selectedChild;
+    } else if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
+        UpdateListViewController *ulvc = (UpdateListViewController *)segue.destinationViewController;
+        ulvc.interactions = self.selectedChild.interactions;
     }
     [self.database saveDatabase];
 }
@@ -138,9 +142,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     self.selectedChild = [self.searchData objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"GoToPersonal" sender:self];
+    
+    if (self.goToUpdate)
+        [self performSegueWithIdentifier:@"GoToUpdate" sender:self];
+    else
+        [self performSegueWithIdentifier:@"GoToPersonal" sender:self];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

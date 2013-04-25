@@ -122,7 +122,7 @@
                     <connections>
                         <outlet property="menuCollection" destination="TQR-9E-Sh6" id="gcC-VC-mkO"/>
                         <outlet property="welcomeLabel" destination="tkn-OW-9sY" id="Rbi-Pi-PSH"/>
-                        <segue destination="kHd-nU-wgm" kind="push" identifier="SearchThenView" id="gNt-yo-A4S"/>
+                        <segue destination="kHd-nU-wgm" kind="push" identifier="Search" id="gNt-yo-A4S"/>
                         <segue destination="v8A-ng-PGY" kind="push" identifier="Register" id="hNd-VJ-sTY"/>
                     </connections>
                 </viewController>
@@ -199,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09Q-v3-eGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1178" y="453"/>
+            <point key="canvasLocation" x="673" y="629"/>
         </scene>
         <!--Update Academic View Controller-->
         <scene sceneID="RQA-jY-uZF">
@@ -248,7 +248,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qr2-aE-W5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2768" y="1062"/>
+            <point key="canvasLocation" x="3062" y="228"/>
         </scene>
         <!--Favorite Subjects View Controller-->
         <scene sceneID="Y7t-bf-CB8">
@@ -300,7 +300,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aN-u3-eKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3184" y="554"/>
+            <point key="canvasLocation" x="3474" y="228"/>
         </scene>
         <!--Register Guardian View Controller-->
         <scene sceneID="tEU-5I-InB">
@@ -349,7 +349,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJd-5R-Qec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1680" y="440"/>
+            <point key="canvasLocation" x="1175" y="629"/>
         </scene>
         <!--Register Health View Controller-->
         <scene sceneID="pJb-pk-sJP">
@@ -398,7 +398,98 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbb-wd-4jO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1680" y="1068"/>
+            <point key="canvasLocation" x="1175" y="1244"/>
+        </scene>
+        <!--Update List View Controller-->
+        <scene sceneID="yd8-KZ-T3u">
+            <objects>
+                <tableViewController id="Qdh-VO-0oY" customClass="UpdateListViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ola-6A-B7H">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="xgk-eD-CJ7">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Qdh-VO-0oY" id="Aai-O1-7h6"/>
+                            <outlet property="delegate" destination="Qdh-VO-0oY" id="EE6-bZ-8qg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="JRe-rl-nwi"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Odk-fT-4Ah" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2260" y="300"/>
+        </scene>
+        <!--Update View Controller-->
+        <scene sceneID="h2I-2q-zhU">
+            <objects>
+                <viewController id="ldz-ob-2v1" customClass="UpdateViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pbe-gs-YH5">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="uXv-JE-Wfi">
+                                <rect key="frame" x="105" y="20" width="110" height="154"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VY3-cy-bs7">
+                                <rect key="frame" x="0.0" y="138" width="320" height="322"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="ls8-Ei-zia" detailTextLabel="yW8-bJ-SDd" style="IBUITableViewCellStyleValue1" id="asu-zt-Khq">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ls8-Ei-zia">
+                                                    <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yW8-bJ-SDd">
+                                                    <rect key="frame" x="226" y="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ldz-ob-2v1" id="0Kp-fC-heY"/>
+                                    <outlet property="delegate" destination="ldz-ob-2v1" id="ZBd-nE-2po"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xEc-RO-YoP"/>
+                    <connections>
+                        <outlet property="childImageView" destination="uXv-JE-Wfi" id="piK-vJ-3n9"/>
+                        <outlet property="tableView" destination="VY3-cy-bs7" id="UqL-xd-heA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y0K-Xy-a9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616" y="228"/>
         </scene>
         <!--Input Data View Controller-->
         <scene sceneID="5nq-kj-Gkl">
@@ -442,7 +533,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WfT-3S-kAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2710" y="118"/>
+            <point key="canvasLocation" x="2260" y="1146"/>
         </scene>
         <!--Personal View Controller-->
         <scene sceneID="iEh-DK-rZf">
@@ -561,7 +652,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yjw-8D-RhF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2705" y="-577"/>
+            <point key="canvasLocation" x="2767" y="-1093"/>
         </scene>
         <!--All Children View Controller-->
         <scene sceneID="iQe-6b-clq">
@@ -603,7 +694,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tP0-9p-9mb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3148" y="-577"/>
+            <point key="canvasLocation" x="3210" y="-1093"/>
         </scene>
         <!--Search Table View Controller-->
         <scene sceneID="NgD-SC-rhE">
@@ -684,6 +775,7 @@
                     <connections>
                         <outlet property="searchBar" destination="Tqt-Bg-Ibs" id="OOq-hs-U1q"/>
                         <segue destination="S9y-Yf-aRM" kind="push" identifier="GoToPersonal" id="eR7-SG-vHY"/>
+                        <segue destination="Qdh-VO-0oY" kind="push" identifier="GoToUpdate" id="cQH-Xr-sy8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adv-zg-dnQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -759,6 +851,7 @@
         <class className="AdvancedSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AdvancedSearchViewController.h"/>
             <relationships>
+                <relationship kind="action" name="searchButtonPressed:"/>
                 <relationship kind="outlet" name="searchTable" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -783,6 +876,9 @@
         </class>
         <class className="FavoriteSubjectsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSubjectsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonePressed:"/>
+            </relationships>
         </class>
         <class className="GuardianViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GuardianViewController.h"/>
@@ -793,6 +889,7 @@
         <class className="HomeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="logoutButtonPressed:"/>
                 <relationship kind="outlet" name="menuCollection" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
             </relationships>
@@ -806,6 +903,7 @@
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
+                <relationship kind="action" name="loginButtonWasPressed:"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginTable" candidateClass="UITableView"/>
             </relationships>
@@ -846,8 +944,21 @@
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
         </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
+        </class>
         <class className="UpdateAcademicViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateAcademicViewController.h"/>
+        </class>
+        <class className="UpdateListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateListViewController.h"/>
+        </class>
+        <class className="UpdateViewController" superclassName="PersonalViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -857,6 +968,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="eR7-SG-vHY"/>
-        <segue reference="7bM-Uc-MdT"/>
+        <segue reference="V5b-Ye-Nbk"/>
     </inferredMetricsTieBreakers>
 </document>

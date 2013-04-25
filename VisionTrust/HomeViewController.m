@@ -13,7 +13,7 @@
 #import "Cell.h"
 
 @interface HomeViewController ()
-
+@property BOOL goToUpdate;
 @end
 
 @implementation HomeViewController
@@ -82,15 +82,25 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] == 0) {
-        [self performSegueWithIdentifier:@"SearchThenView" sender:self];
+        self.goToUpdate = NO;
+        [self performSegueWithIdentifier:@"Search" sender:self];
     } else if([indexPath row] == 1) {
         [self performSegueWithIdentifier:@"Register" sender:self];
     } else if ([indexPath row] == 2) {
-        [self performSegueWithIdentifier:@"SearchThenEdit" sender:self];
+        self.goToUpdate = YES;
+        [self performSegueWithIdentifier:@"Search" sender:self];
     } else if ([indexPath row] == 3) {
         [self performSegueWithIdentifier:@"SearchThenEnrollment" sender:self];
     }
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Search"]) {
+        SearchTableViewController *stvc = (SearchTableViewController *)segue.destinationViewController;
+        stvc.goToUpdate = self.goToUpdate;
+    }
 }
 
 @end

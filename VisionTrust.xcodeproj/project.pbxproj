@@ -55,6 +55,8 @@
 		DCF1F97517298E410094E25D /* Guardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97417298E410094E25D /* Guardian.m */; };
 		DCF1F97817298EEF0094E25D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97717298EEF0094E25D /* Project.m */; };
 		DCF1F97B17298F5E0094E25D /* Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97A17298F5E0094E25D /* Interactions.m */; };
+		DCF1F97E17299DA70094E25D /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97D17299DA70094E25D /* UpdateViewController.m */; };
+		DCF1F9811729A6950094E25D /* UpdateListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F9801729A6950094E25D /* UpdateListViewController.m */; };
 		DCFB73D817276CFB009DDCA8 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA152F1727465B00470392 /* SearchTableViewController.m */; };
 		DCFB73D917276D04009DDCA8 /* Guardian+SetupGuardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA15311727468500470392 /* Guardian+SetupGuardian.m */; };
 		DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC84051721A3F5003862D5 /* Project+SetupProject.m */; };
@@ -146,6 +148,10 @@
 		DCF1F97717298EEF0094E25D /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
 		DCF1F97917298F5E0094E25D /* Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interactions.h; sourceTree = "<group>"; };
 		DCF1F97A17298F5E0094E25D /* Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interactions.m; sourceTree = "<group>"; };
+		DCF1F97C17299DA70094E25D /* UpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateViewController.h; sourceTree = "<group>"; };
+		DCF1F97D17299DA70094E25D /* UpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateViewController.m; sourceTree = "<group>"; };
+		DCF1F97F1729A6950094E25D /* UpdateListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateListViewController.h; sourceTree = "<group>"; };
+		DCF1F9801729A6950094E25D /* UpdateListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateListViewController.m; sourceTree = "<group>"; };
 		DCFC84041721A3F5003862D5 /* Project+SetupProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+SetupProject.h"; sourceTree = "<group>"; };
 		DCFC84051721A3F5003862D5 /* Project+SetupProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+SetupProject.m"; sourceTree = "<group>"; };
 		DCFC840D17220CC3003862D5 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
@@ -239,8 +245,6 @@
 				DC65349717179CF900785378 /* LoginViewController.m */,
 				DCFC840D17220CC3003862D5 /* PersonalViewController.h */,
 				DCFC840E17220CC3003862D5 /* PersonalViewController.m */,
-				DC9EA8E41724BA2100C3137D /* UpdateAcademicViewController.h */,
-				DC9EA8E51724BA2100C3137D /* UpdateAcademicViewController.m */,
 				DCFC8410172225BE003862D5 /* RegisterChildViewController.h */,
 				DCFC8411172225BE003862D5 /* RegisterChildViewController.m */,
 				DC9EA8EA172593C300C3137D /* RegisterHealthViewController.h */,
@@ -249,6 +253,12 @@
 				DC9EA8DC17234D8900C3137D /* RegisterGuardianViewController.m */,
 				DCAA152E1727465B00470392 /* SearchTableViewController.h */,
 				DCAA152F1727465B00470392 /* SearchTableViewController.m */,
+				DC9EA8E41724BA2100C3137D /* UpdateAcademicViewController.h */,
+				DC9EA8E51724BA2100C3137D /* UpdateAcademicViewController.m */,
+				DCF1F97F1729A6950094E25D /* UpdateListViewController.h */,
+				DCF1F9801729A6950094E25D /* UpdateListViewController.m */,
+				DCF1F97C17299DA70094E25D /* UpdateViewController.h */,
+				DCF1F97D17299DA70094E25D /* UpdateViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -438,6 +448,8 @@
 				DCF1F97517298E410094E25D /* Guardian.m in Sources */,
 				DCF1F97817298EEF0094E25D /* Project.m in Sources */,
 				DCF1F97B17298F5E0094E25D /* Interactions.m in Sources */,
+				DCF1F97E17299DA70094E25D /* UpdateViewController.m in Sources */,
+				DCF1F9811729A6950094E25D /* UpdateListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
