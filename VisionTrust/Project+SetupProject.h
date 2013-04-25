@@ -12,7 +12,6 @@
 
 + (Project *)projectWithAddress:(NSString *)address
                            name:(NSString *)name
-                             ID:(NSNumber *)unique
                       inContext:(NSManagedObjectContext *)context;
 
 @end

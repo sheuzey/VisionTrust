@@ -12,7 +12,6 @@
 
 + (Interactions *)interactionWithDepartureComments:(NSString *)dComments
                                departureReasonCode:(NSString *)code
-                                     interactionID:(NSNumber *)unique
                                        isattending:(NSNumber *)attending
                                       pictureTaken:(NSNumber *)taken
                                       registeredBy:(NSString *)registerName
@@ -30,41 +29,27 @@
                                        withUpdates:(NSSet *)updates
                                          inContext:(NSManagedObjectContext *)context
 {
-    Interactions *interaction = nil;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Interactions"];
-    request.predicate = [NSPredicate predicateWithFormat:@"interactionID = %d", unique];
-    
-    NSError *error = nil;
-    NSArray *matches = [context executeFetchRequest:request error:&error];
-    
-    if([matches count] == 0) {
-        interaction = [NSEntityDescription insertNewObjectForEntityForName:@"Interactions"
+    Interactions *interaction = [NSEntityDescription insertNewObjectForEntityForName:@"Interactions"
                                               inManagedObjectContext:context];
-        
-        interaction.departureComments = dComments;
-        interaction.departureReasonCode = code;
-        interaction.interactionID = unique;
-        interaction.isAttending = attending;
-        interaction.pictureTaken = taken;
-        interaction.registeredBy = registerName;
-        interaction.chronicIllness = illness;
-        interaction.healthComments = hComments;
-        interaction.currentlyReceivingTreatment = treatment;
-        interaction.developmentLevel = level;
-        interaction.healthCondition = condition;
-        interaction.ifNotAttending = ifNot;
-        interaction.isHandicapped = handicapped;
-        interaction.schoolGrade = grade;
-        interaction.usSchoolGrade = usGrade;
-        interaction.child = child;
-        interaction.staff = staff;
-        interaction.updates = updates;
-        
-        interaction.interactionDate = [NSDate date];
-        
-    } else if([matches count] == 1) {
-        interaction = [matches lastObject];
-    }
+    interaction.departureComments = dComments;
+    interaction.departureReasonCode = code;
+    interaction.isAttending = attending;
+    interaction.pictureTaken = taken;
+    interaction.registeredBy = registerName;
+    interaction.chronicIllness = illness;
+    interaction.healthComments = hComments;
+    interaction.currentlyReceivingTreatment = treatment;
+    interaction.developmentLevel = level;
+    interaction.healthCondition = condition;
+    interaction.ifNotAttending = ifNot;
+    interaction.isHandicapped = handicapped;
+    interaction.schoolGrade = grade;
+    interaction.usSchoolGrade = usGrade;
+    interaction.child = child;
+    interaction.staff = staff;
+    interaction.updates = updates;
+    interaction.interactionDate = [NSDate date];
+    
     return interaction;
 }
 

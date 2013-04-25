@@ -12,7 +12,6 @@
 
 + (Guardian *)guardianWithFirstName:(NSString *)fName
                            lastName:(NSString *)lName
-                             unique:(NSNumber *)unique
                      occupationType:(OccupationType *)type
                      guardianStatus:(GuardianStatus *)status
                           inContext:(NSManagedObjectContext *)context;

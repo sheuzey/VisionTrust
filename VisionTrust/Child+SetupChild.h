@@ -13,7 +13,6 @@
 
 + (Child *)childWithFirstName:(NSString *)fName
                      LastName:(NSString *)lName
-                     uniqueID:(NSNumber *)ID
                        gender:(NSString *)gender
                           dob:(NSString *)dob
                       country:(NSString *)country

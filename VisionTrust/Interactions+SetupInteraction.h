@@ -12,7 +12,6 @@
 
 + (Interactions *)interactionWithDepartureComments:(NSString *)dComments
                                departureReasonCode:(NSString *)code
-                                     interactionID:(NSNumber *)unique
                                        isattending:(NSNumber *)attending
                                       pictureTaken:(NSNumber *)taken
                                       registeredBy:(NSString *)registerName

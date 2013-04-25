@@ -20,6 +20,7 @@
 #define HEALTH @"healthCondition"
 #define TREATMENT @"currentlyReceivingTreatment"
 #define ILLNESS @"chronicIllness"
+#define HEALTH_COMMENTS @"healthComments"
 #define HEALTH_TAG 100
 #define TREATMENT_TAG 200
 
@@ -155,9 +156,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0)
-        return 2;
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -168,21 +167,33 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     // Configure the cell...
-    if ([indexPath section] == 0)
-        switch ([indexPath row]) {
-            case 0:
-                cell.textLabel.text = @"Health";
-                cell.detailTextLabel.text = [self.healthData valueForKey:HEALTH];
-                break;
-            case 1:
-                cell.textLabel.text = @"Medical Treatment";
-                cell.detailTextLabel.text = [self.healthData valueForKey:TREATMENT];
-                break;
-        }
-    else {
-        cell.textLabel.text = @"Illness Details";
-        cell.detailTextLabel.text = [self.healthData valueForKey:ILLNESS];
+    switch ([indexPath section]) {
+        case 0:
+            switch ([indexPath row]) {
+                case 0:
+                    cell.textLabel.text = @"Health";
+                    cell.detailTextLabel.text = [self.healthData valueForKey:HEALTH];
+                    break;
+                case 1:
+                    cell.textLabel.text = @"Medical Treatment";
+                    cell.detailTextLabel.text = [self.healthData valueForKey:TREATMENT];
+                    break;
+            }
+            break;
+        case 1:
+            switch ([indexPath row]) {
+                case 0:
+                    cell.textLabel.text = @"Illness Details";
+                    cell.detailTextLabel.text = [self.healthData valueForKey:ILLNESS];
+                    break;
+                case 1:
+                    cell.textLabel.text = @"Other Comments";
+                    cell.detailTextLabel.text = [self.healthData valueForKey:HEALTH_COMMENTS];
+                    break;
+            }
+            break;
     }
+
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
@@ -191,20 +202,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedTableIndex = [indexPath row];
-    if ([indexPath section] == 0)
-        switch ([indexPath row]) {
-            case 0:
-                [self showPicker];
-                break;
-            case 1:
-                [self showPicker];
-                break;
-            case 2:
-                [self showPicker];
-                break;
-        }
-    else
-        [self performSegueWithIdentifier:@"InputData" sender:self];
+    switch ([indexPath section]) {
+        case 0:
+            [self showPicker];
+            break;
+        case 1:
+            [self performSegueWithIdentifier:@"InputData" sender:self];
+            break;
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -212,8 +217,14 @@
 {
     if ([segue.identifier isEqualToString:@"InputData"]) {
         InputDataViewController *idvc = (InputDataViewController *)segue.destinationViewController;
-        idvc.titleString = @"Illness";
-        idvc.dataString = [self.healthData valueForKey:ILLNESS];
+        if (self.selectedTableIndex == 0) {
+            idvc.dataString = [self.healthData valueForKey:ILLNESS];
+            idvc.titleString = @"Illness";
+        }
+        else {
+            idvc.dataString = [self.healthData valueForKey:HEALTH_COMMENTS];
+            idvc.titleString = @"Comments";
+        }
         idvc.delegate = self;
     }
 }
@@ -221,7 +232,12 @@
 - (void)giveBackData:(NSString *)data
 {
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self.healthData setValue:data forKey:ILLNESS];
+    
+    if (self.selectedTableIndex == 0)
+        [self.healthData setValue:data forKey:ILLNESS];
+    else
+        [self.healthData setValue:data forKey:HEALTH_COMMENTS];
+    
     [self.tableView reloadData];
 }
 

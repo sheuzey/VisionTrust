@@ -123,6 +123,7 @@
             if(view.tag == 50)
                 [view removeFromSuperview];
         }
+        [self.loginButton setTitle:@"Log in" forState:UIControlStateNormal];
     });
 }
 

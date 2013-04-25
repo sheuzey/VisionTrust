@@ -27,6 +27,7 @@
 - (void)registerChildWithGeneralInfo:(NSMutableDictionary *)general
                           healthInfo:(NSMutableDictionary *)health
                         andGuardians:(NSSet *)guardians;
+
 //Create singletone instance..
 + (VisionTrustDatabase *)vtDatabase;
 @end

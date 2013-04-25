@@ -2,7 +2,7 @@
 //  Interactions.m
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/24/13.
+//  Created by Stephen Heuzey on 4/25/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
@@ -13,20 +13,19 @@
 
 @implementation Interactions
 
+@dynamic chronicIllness;
+@dynamic currentlyReceivingTreatment;
 @dynamic departureComments;
 @dynamic departureReasonCode;
-@dynamic interactionDate;
-@dynamic interactionID;
-@dynamic isAttending;
-@dynamic pictureTaken;
-@dynamic registeredBy;
-@dynamic chronicIllness;
-@dynamic healthComments;
-@dynamic currentlyReceivingTreatment;
 @dynamic developmentLevel;
+@dynamic healthComments;
 @dynamic healthCondition;
 @dynamic ifNotAttending;
+@dynamic interactionDate;
+@dynamic isAttending;
 @dynamic isHandicapped;
+@dynamic pictureTaken;
+@dynamic registeredBy;
 @dynamic schoolGrade;
 @dynamic usSchoolGrade;
 @dynamic child;

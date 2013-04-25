@@ -12,26 +12,13 @@
 
 + (Project *)projectWithAddress:(NSString *)address
                            name:(NSString *)name
-                             ID:(NSNumber *)unique
                       inContext:(NSManagedObjectContext *)context
 {
-    Project *project = nil;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Project"];
-    request.predicate = [NSPredicate predicateWithFormat:@"unique = %d", unique];
-    
-    NSError *error = nil;
-    NSArray *matches = [context executeFetchRequest:request error:&error];
-    
-    if([matches count] == 0) {
-        project = [NSEntityDescription insertNewObjectForEntityForName:@"Project"
+    Project *project = [NSEntityDescription insertNewObjectForEntityForName:@"Project"
                                              inManagedObjectContext:context];
-        project.address = address;
-        project.name = name;
-        project.unique = unique;
-        
-    } else if([matches count] == 1) {
-        project = [matches lastObject];
-    }
+    project.address = address;
+    project.name = name;
+    
     return project;
 }
 

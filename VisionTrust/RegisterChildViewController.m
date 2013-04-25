@@ -38,7 +38,8 @@
 #define CITY @"city"
 #define COUNTRY @"country"
 #define PROJECT @"project"
-#define PICTURE @"pictureData"
+#define PICTURE_DATA @"pictureData"
+
 #define GENDER_TAG 100
 #define DOB_TAG 200
 #define PROJECT_TAG 300
@@ -123,7 +124,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.childImageView setContentMode:UIViewContentModeScaleAspectFit];
         [self.childImageView setImage:image];
     }
-    [self.childData setValue:UIImagePNGRepresentation(self.childImageView.image) forKey:PICTURE];
+    [self.childData setValue:UIImagePNGRepresentation(self.childImageView.image) forKey:PICTURE_DATA];
     
     //Remove label..
     for (UIView *view in self.childImageView.subviews) {
@@ -508,7 +509,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (IBAction)registerButtonPressed:(id)sender {
     
-    //  Store register button to display after activity indicator
+    // Store register button to display after activity indicator
     UIBarButtonItem *registerButton = self.navigationItem.rightBarButtonItem;
     
     UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
@@ -516,9 +517,9 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     
+    //Asynchronously register child.. 
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        //sleep(2);
         [self.database registerChildWithGeneralInfo:self.childData
                                          healthInfo:self.healthData
                                        andGuardians:[[NSSet alloc] initWithArray:self.guardians]];
@@ -531,6 +532,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                               otherButtonTitles:nil, nil];
         [alert show];
         self.navigationItem.rightBarButtonItem = registerButton;
+        [self.database saveDatabase];
     });
 }
 

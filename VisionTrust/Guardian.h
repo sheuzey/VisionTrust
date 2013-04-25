@@ -2,7 +2,7 @@
 //  Guardian.h
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/20/13.
+//  Created by Stephen Heuzey on 4/25/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
@@ -15,7 +15,6 @@
 
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSString * lastName;
-@property (nonatomic, retain) NSNumber * unique;
 @property (nonatomic, retain) NSSet *guardianOf;
 @property (nonatomic, retain) GuardianStatus *hasGuardianStatus;
 @property (nonatomic, retain) OccupationType *hasOccupationType;

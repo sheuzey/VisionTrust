@@ -27,6 +27,7 @@
 #define HEALTH @"healthCondition"
 #define TREATMENT @"currentlyReceivingTreatment"
 #define ILLNESS @"chronicIllness"
+#define HEALTH_COMMENTS @"healthComments"
 
 #define OCCUPATION @"occupation"
 #define STATUS @"status"
@@ -68,31 +69,26 @@
         //Create guardians..
         Guardian *g1 = [Guardian guardianWithFirstName:@"Pedro"
                                               lastName:@"Gonzalas"
-                                                unique:[NSNumber numberWithInt:1]
                                         occupationType:t1
                                         guardianStatus:s2
                                              inContext:self.database.managedObjectContext];
         Guardian *g2 = [Guardian guardianWithFirstName:@"Lisa"
                                               lastName:@"Chavez"
-                                                unique:[NSNumber numberWithInt:2]
                                         occupationType:t5
                                         guardianStatus:s1
                                              inContext:self.database.managedObjectContext];
         Guardian *g3 = [Guardian guardianWithFirstName:@"Stuart"
                                               lastName:@"Un"
-                                                unique:[NSNumber numberWithInt:3]
                                         occupationType:t4
                                         guardianStatus:s4
                                              inContext:self.database.managedObjectContext];
         Guardian *g4 = [Guardian guardianWithFirstName:@"Dmitri"
                                               lastName:@"Putin"
-                                                unique:[NSNumber numberWithInt:4]
                                         occupationType:t2
                                         guardianStatus:s3
                                              inContext:self.database.managedObjectContext];
         Guardian *g5 = [Guardian guardianWithFirstName:@"Caroline"
                                               lastName:@"Smith"
-                                                unique:[NSNumber numberWithInt:5]
                                         occupationType:t3
                                         guardianStatus:s1
                                              inContext:self.database.managedObjectContext];
@@ -100,29 +96,23 @@
         //Create projects..
         Project *p1 = [Project projectWithAddress:@"50 project place"
                                name:@"DR-3320"
-                                 ID:[NSNumber numberWithInt:1]
                           inContext:self.database.managedObjectContext];
         Project *p2 = [Project projectWithAddress:@"1 vision avenue"
                                              name:@"VEN-1099"
-                                               ID:[NSNumber numberWithInt:2]
                                         inContext:self.database.managedObjectContext];
         Project *p3 = [Project projectWithAddress:@"23 trust blvd"
                                              name:@"MX-454"
-                                               ID:[NSNumber numberWithInt:3]
                                         inContext:self.database.managedObjectContext];
         Project *p4 = [Project projectWithAddress:@"11 main street"
                                              name:@"US-0031"
-                                               ID:[NSNumber numberWithInt:4]
                                         inContext:self.database.managedObjectContext];
         [Project projectWithAddress:@"45 2nd way"
                                name:@"BRZ-1324"
-                                 ID:[NSNumber numberWithInt:4]
                           inContext:self.database.managedObjectContext];
         
         //Add children with projects..
         [Child childWithFirstName:@"Julio"
                          LastName:@"Gonzalas"
-                         uniqueID:[NSNumber numberWithInteger:1]
                            gender:@"Male"
                               dob:@"4/1/2000"
                           country:@"Mexico"
@@ -137,7 +127,6 @@
         
         [Child childWithFirstName:@"Hugo"
                          LastName:@"Chavez"
-                         uniqueID:[NSNumber numberWithInteger:2]
                            gender:@"Male"
                               dob:@"7/28/1954"
                           country:@"Venezuala"
@@ -152,7 +141,6 @@
         
         [Child childWithFirstName:@"Kim Jong"
                          LastName:@"Un"
-                         uniqueID:[NSNumber numberWithInteger:3]
                            gender:@"Male"
                               dob:@"1/1/1985"
                           country:@"North Korea"
@@ -167,7 +155,6 @@
         
         [Child childWithFirstName:@"Katie"
                          LastName:@"Smith"
-                         uniqueID:[NSNumber numberWithInteger:4]
                            gender:@"Female"
                               dob:@"9/30/2005"
                           country:@"Germany"
@@ -182,7 +169,6 @@
         
         [Child childWithFirstName:@"Vladimir"
                          LastName:@"Putin"
-                         uniqueID:[NSNumber numberWithInteger:5]
                            gender:@"Male"
                               dob:@"10/7/1952"
                           country:@"Russia"
@@ -197,7 +183,6 @@
         
         [Child childWithFirstName:@"William"
                          LastName:@"Brown"
-                         uniqueID:[NSNumber numberWithInteger:6]
                            gender:@"Male"
                               dob:@"2/1/1965"
                           country:@"US"
@@ -212,7 +197,6 @@
         
         [Child childWithFirstName:@"Stefani"
                          LastName:@"Germanotta"
-                         uniqueID:[NSNumber numberWithInteger:7]
                            gender:@"Female"
                               dob:@"3/28/1986"
                           country:@"US"
@@ -324,7 +308,7 @@
                           healthInfo:(NSMutableDictionary *)health
                         andGuardians:(NSSet *)guardians
 {
-    //For each guardian dictionary in guardian set, create/get and add to final set..
+    //For each guardian dictionary in guardian set, create/get and add to final array. Create NSSet from final array..
     NSMutableArray *gArray = [[NSMutableArray alloc] init];
     for (NSMutableDictionary *dict in guardians) {
         
@@ -336,26 +320,25 @@
         
         Guardian *temp = [Guardian guardianWithFirstName:[dict valueForKey:FIRST_NAME]
                                                 lastName:[dict valueForKey:LAST_NAME]
-                                                  unique:[NSNumber numberWithInt:10]
                                           occupationType:occupation
                                           guardianStatus:status
                                                inContext:self.database.managedObjectContext];
         [gArray addObject:temp];
     }
     NSSet *allGuardians = [[NSSet alloc] initWithArray:gArray];
+    
     //Get treament number from text..
     __block NSNumber *treatment;
     if ([[health valueForKey:TREATMENT] isEqualToString:@"Yes"])
         treatment = [NSNumber numberWithInt:1];
     else
         treatment = [NSNumber numberWithInt:0];
-    
+        
     //Create child..
     __block Child *child;
     [self.database.managedObjectContext performBlock:^{
         child = [Child childWithFirstName:[general valueForKey:FIRST_NAME]
                                  LastName:[general valueForKey:LAST_NAME]
-                                 uniqueID:[NSNumber numberWithInt:10]
                                    gender:[general valueForKey:GENDER]
                                       dob:[general valueForKey:DOB]
                                   country:[general valueForKey:COUNTRY]
@@ -367,17 +350,23 @@
                                 guardians:allGuardians
                                   project:[Project projectWithAddress:[general valueForKey:ADDRESS]
                                                                  name:[general valueForKey:PROJECT]
-                                                                   ID:[NSNumber numberWithInt:10]
                                                             inContext:self.database.managedObjectContext]
                                 inContext:self.database.managedObjectContext];
+        
+        //Set NSNumber for pictureTaken..
+        NSNumber *taken;
+        if (child.pictureData)
+            taken = [[NSNumber alloc] initWithInt:1];
+        else
+            taken = [[NSNumber alloc] initWithInt:0];
+        
         [Interactions interactionWithDepartureComments:nil
                                    departureReasonCode:nil
-                                         interactionID:[NSNumber numberWithInt:1]
                                            isattending:[NSNumber numberWithInt:1]
-                                          pictureTaken:[NSNumber numberWithInt:1]
+                                          pictureTaken:taken
                                           registeredBy:nil
                                         chronicIllness:[health valueForKey:ILLNESS]
-                                        healthComments:nil
+                                        healthComments:[health valueForKey:HEALTH_COMMENTS]
                                     receivingTreatment:treatment
                                       developmentLevel:nil
                                        healthCondition:[health valueForKey:HEALTH]
@@ -390,7 +379,6 @@
                                            withUpdates:nil
                                              inContext:self.database.managedObjectContext];
     }];
-    [self saveDatabase];
 }
 
 + (VisionTrustDatabase *)vtDatabase

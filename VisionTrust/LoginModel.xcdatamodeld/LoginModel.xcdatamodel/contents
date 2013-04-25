@@ -12,7 +12,6 @@
         <attribute name="pictureURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ts" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="hasGuardians" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Guardian" inverseName="guardianOf" inverseEntity="Guardian" syncable="YES"/>
         <relationship name="interactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Interactions" inverseName="child" inverseEntity="Interactions" syncable="YES"/>
         <relationship name="isPartOfProject" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="hasChildren" inverseEntity="Project" syncable="YES"/>
@@ -20,7 +19,6 @@
     <entity name="Guardian" representedClassName="Guardian" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="guardianOf" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="hasGuardians" inverseEntity="Child" syncable="YES"/>
         <relationship name="hasGuardianStatus" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GuardianStatus" inverseName="guardianStatusOf" inverseEntity="GuardianStatus" syncable="YES"/>
         <relationship name="hasOccupationType" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="OccupationType" inverseName="occupationTypeOf" inverseEntity="OccupationType" syncable="YES"/>
@@ -39,7 +37,6 @@
         <attribute name="healthCondition" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ifNotAttending" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="interactionDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="interactionID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="isAttending" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="isHandicapped" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="pictureTaken" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -56,13 +53,11 @@
     </entity>
     <entity name="OptionCategories" syncable="YES">
         <attribute name="categoryDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="categoryID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="partOfOption" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="UpdateOptions" inverseName="hasCategories" inverseEntity="UpdateOptions" syncable="YES"/>
     </entity>
     <entity name="Project" representedClassName="Project" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="unique" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="hasChildren" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Child" inverseName="isPartOfProject" inverseEntity="Child" syncable="YES"/>
     </entity>
     <entity name="Update" syncable="YES">
@@ -71,7 +66,6 @@
     </entity>
     <entity name="UpdateOptions" syncable="YES">
         <attribute name="updateOptionDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updateOptionID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="hasCategories" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OptionCategories" inverseName="partOfOption" inverseEntity="OptionCategories" syncable="YES"/>
         <relationship name="newRelationship" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Update" inverseName="hasUpdateOptions" inverseEntity="Update" syncable="YES"/>
     </entity>
@@ -88,15 +82,15 @@
         <relationship name="heldBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="inType" inverseEntity="User" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Child" positionX="99" positionY="63" width="128" height="268"/>
-        <element name="Guardian" positionX="306" positionY="72" width="128" height="133"/>
+        <element name="Child" positionX="99" positionY="63" width="128" height="253"/>
+        <element name="Guardian" positionX="306" positionY="72" width="128" height="118"/>
         <element name="GuardianStatus" positionX="502" positionY="51" width="128" height="75"/>
-        <element name="Interactions" positionX="-9" positionY="389" width="198" height="328"/>
+        <element name="Interactions" positionX="-27" positionY="389" width="198" height="313"/>
         <element name="OccupationType" positionX="502" positionY="261" width="128" height="75"/>
-        <element name="OptionCategories" positionX="306" positionY="722" width="128" height="88"/>
-        <element name="Project" positionX="-108" positionY="-9" width="128" height="105"/>
+        <element name="OptionCategories" positionX="306" positionY="722" width="128" height="73"/>
+        <element name="Project" positionX="-108" positionY="-9" width="128" height="88"/>
         <element name="Update" positionX="288" positionY="413" width="198" height="73"/>
-        <element name="UpdateOptions" positionX="322" positionY="558" width="128" height="103"/>
+        <element name="UpdateOptions" positionX="322" positionY="558" width="128" height="88"/>
         <element name="User" positionX="-207" positionY="236" width="128" height="133"/>
         <element name="UserType" positionX="-378" positionY="234" width="128" height="73"/>
     </elements>

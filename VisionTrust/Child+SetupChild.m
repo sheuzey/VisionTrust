@@ -12,7 +12,6 @@
 
 + (Child *)childWithFirstName:(NSString *)fName
                      LastName:(NSString *)lName
-                     uniqueID:(NSNumber *)ID
                        gender:(NSString *)gender
                           dob:(NSString *)dob
                       country:(NSString *)country
@@ -25,39 +24,27 @@
                       project:(Project *)project
                     inContext:(NSManagedObjectContext *)context
 {
-    Child *child = nil;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Child"];
-    request.predicate = [NSPredicate predicateWithFormat:@"unique = %d", ID];
-    
-    NSError *error = nil;
-    NSArray *matches = [context executeFetchRequest:request error:&error];
-    
-    if([matches count] == 0) {
-        child = [NSEntityDescription insertNewObjectForEntityForName:@"Child"
+    Child *child = [NSEntityDescription insertNewObjectForEntityForName:@"Child"
                                              inManagedObjectContext:context];
-        child.firstName = fName;
-        child.lastName = lName;
-        child.unique = ID;
-        child.gender = gender;
-        child.dob = dob;
-        child.country = country;
-        child.address = address;
-        child.city = city;
-        child.pictureURL = picture;
-        child.pictureData = data;
-        child.status = status;
-        child.hasGuardians = guardians;
-        child.isPartOfProject = project;
-        
-        NSDate *now = [NSDate date];
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateStyle:NSDateFormatterFullStyle];
-        [dateFormat setTimeStyle:NSDateFormatterFullStyle];
-        child.ts = [dateFormat stringFromDate:now];
-        
-    } else if([matches count] == 1) {
-        child = [matches lastObject];
-    }
+    child.firstName = fName;
+    child.lastName = lName;
+    child.gender = gender;
+    child.dob = dob;
+    child.country = country;
+    child.address = address;
+    child.city = city;
+    child.pictureURL = picture;
+    child.pictureData = data;
+    child.status = status;
+    child.hasGuardians = guardians;
+    child.isPartOfProject = project;
+    
+    NSDate *now = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateStyle:NSDateFormatterFullStyle];
+    [dateFormat setTimeStyle:NSDateFormatterFullStyle];
+    child.ts = [dateFormat stringFromDate:now];
+    
     return child;
 }
 
