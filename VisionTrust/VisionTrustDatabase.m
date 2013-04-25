@@ -324,9 +324,10 @@
                           healthInfo:(NSMutableDictionary *)health
                         andGuardians:(NSSet *)guardians
 {
-    //For each guardian dictionary in guardian set, create/get and add to final set =..
+    //For each guardian dictionary in guardian set, create/get and add to final set..
     NSMutableArray *gArray = [[NSMutableArray alloc] init];
     for (NSMutableDictionary *dict in guardians) {
+        
         //Create guardian occupation..
         OccupationType *occupation = [OccupationType typeWithDescription:[dict valueForKey:OCCUPATION] inContext:self.database.managedObjectContext];
         
@@ -342,6 +343,12 @@
         [gArray addObject:temp];
     }
     NSSet *allGuardians = [[NSSet alloc] initWithArray:gArray];
+    //Get treament number from text..
+    __block NSNumber *treatment;
+    if ([[health valueForKey:TREATMENT] isEqualToString:@"Yes"])
+        treatment = [NSNumber numberWithInt:1];
+    else
+        treatment = [NSNumber numberWithInt:0];
     
     //Create child..
     __block Child *child;
@@ -371,7 +378,7 @@
                                           registeredBy:nil
                                         chronicIllness:[health valueForKey:ILLNESS]
                                         healthComments:nil
-                                    receivingTreatment:[health valueForKey:TREATMENT]
+                                    receivingTreatment:treatment
                                       developmentLevel:nil
                                        healthCondition:[health valueForKey:HEALTH]
                                         ifNotAttending:nil
@@ -383,6 +390,7 @@
                                            withUpdates:nil
                                              inContext:self.database.managedObjectContext];
     }];
+    [self saveDatabase];
 }
 
 + (VisionTrustDatabase *)vtDatabase

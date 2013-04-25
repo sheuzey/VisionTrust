@@ -28,7 +28,13 @@
     
     //Setup title and picture..
     self.title = [NSString stringWithFormat:@"%@ %@", self.child.firstName, self.child.lastName];
-    [self.childImageView setImage:[UIImage imageNamed:self.child.pictureURL]];
+    
+    //If image data exists, use data. Else use url..
+    if (self.child.pictureData)
+        [self.childImageView setImage:[[UIImage alloc] initWithData:self.child.pictureData]];
+    else
+        [self.childImageView setImage:[UIImage imageNamed:self.child.pictureURL]];
+    
     self.childImageView.layer.masksToBounds = YES;
     self.childImageView.layer.cornerRadius = 5.0;
     self.tableView.backgroundView = nil;

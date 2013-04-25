@@ -13,7 +13,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, HealthRegistrationProtocol, UIImagePickerControllerDelegate, UIAlertViewDelegate>
+@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, HealthRegistrationProtocol, UIImagePickerControllerDelegate, UINavigationBarDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIPickerView *projectPicker;
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
@@ -61,9 +61,14 @@
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageWasTapped:)];
     [self.childImageView addGestureRecognizer:tapRecognizer];
     
-    self.childImageView.backgroundColor = [UIColor grayColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 40, 375, 20)];
+    [label setBackgroundColor:[UIColor clearColor]];
+    label.text = @"Take picture";
+    label.tag = 100;
+    [self.childImageView addSubview:label];
     self.childImageView.layer.masksToBounds = YES;
     self.childImageView.layer.cornerRadius = 10.0;
+    self.childImageView.layer.borderWidth = 2.5;
 
     self.childData = [[NSMutableDictionary alloc] init];
     self.tableView.backgroundView = nil;
@@ -78,11 +83,6 @@
     
     self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, 0, 0)];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
-    
-    self.projectPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, 0, 0)];
-    self.projectPicker.showsSelectionIndicator = YES;
-    self.projectPicker.dataSource = self;
-    self.projectPicker.delegate = self;
 }
 
 #define IMAGE_PICKER_IN_POPOVER YES
@@ -124,6 +124,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.childImageView setImage:image];
     }
     [self.childData setValue:UIImagePNGRepresentation(self.childImageView.image) forKey:PICTURE];
+    
+    //Remove label..
+    for (UIView *view in self.childImageView.subviews) {
+        if (view.tag == 100)
+            [view removeFromSuperview];
+    }
     [self dismissImagePicker];
 }
 
@@ -201,6 +207,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (void)showPicker
 {
+    //Create picker..
+    self.projectPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, 0, 0)];
+    self.projectPicker.showsSelectionIndicator = YES;
+    self.projectPicker.dataSource = self;
+    self.projectPicker.delegate = self;
+    
     if ([self.selectedCellTitle isEqualToString:@"Project"]) {
         
         //Setup projects array..
@@ -215,7 +227,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         
         //Add buttons to toolbar..
         [self addToolBarWithButtonsAndTitle:@"Projects" andTag:PROJECT_TAG];
-        [self.actionSheet addSubview:self.pickerToolBar];
 
     } else if ([self.selectedCellTitle isEqualToString:@"Gender"]) {
         
@@ -339,7 +350,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     switch (section) {
         case 0:
-            return @"General Info";
+            return @"General Child Info";
             break;
         case 2:
             return @"Guardians";

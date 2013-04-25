@@ -95,7 +95,12 @@
     }
     
     Child *child = [self.searchData objectAtIndex:indexPath.row];
-    cell.image.image = [UIImage imageNamed:child.pictureURL];
+    
+    //If image data exists, use data. Else use url..
+    if (child.pictureData)
+        cell.image.image = [[UIImage alloc] initWithData:child.pictureData];
+    else
+        cell.image.image = [UIImage imageNamed:child.pictureURL];
     
     //Round edges of picture..
     cell.image.layer.masksToBounds = YES;
