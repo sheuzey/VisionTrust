@@ -7,6 +7,7 @@
 //
 
 #import "UpdateListViewController.h"
+#import "UpdateViewController.h"
 
 @interface UpdateListViewController ()
 
@@ -56,7 +57,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self performSegueWithIdentifier:@"GoToUpdate" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
+        
+    }
 }
 
 @end
