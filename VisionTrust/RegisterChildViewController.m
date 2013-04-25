@@ -13,7 +13,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, HealthRegistrationProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, HealthRegistrationProtocol, UIImagePickerControllerDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIPickerView *projectPicker;
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
@@ -490,8 +490,37 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     self.healthData = [[NSMutableDictionary alloc] initWithDictionary:info];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (IBAction)registerButtonPressed:(id)sender {
-    [self.database registerChildWithGeneralInfo:self.childData healthInfo:self.healthData andGuardians:[[NSSet alloc] initWithArray:self.guardians]];
+    
+    //  Store register button to display after activity indicator
+    UIBarButtonItem *registerButton = self.navigationItem.rightBarButtonItem;
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        //sleep(2);
+        [self.database registerChildWithGeneralInfo:self.childData
+                                         healthInfo:self.healthData
+                                       andGuardians:[[NSSet alloc] initWithArray:self.guardians]];
+    });
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                        message:@"Child successfully registered"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        self.navigationItem.rightBarButtonItem = registerButton;
+    });
 }
 
 @end

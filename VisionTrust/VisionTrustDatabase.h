@@ -13,6 +13,7 @@
 #import "Guardian+SetupGuardian.h"
 #import "GuardianStatus+SetuptGuardianStatus.h"
 #import "OccupationType+SetupOccupationType.h"
+#import "Interactions+SetupInteraction.h"
 
 
 @interface VisionTrustDatabase : NSObject

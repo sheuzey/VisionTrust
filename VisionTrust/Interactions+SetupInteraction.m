@@ -31,8 +31,8 @@
                                          inContext:(NSManagedObjectContext *)context
 {
     Interactions *interaction = nil;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Interaction"];
-    request.predicate = [NSPredicate predicateWithFormat:@"unique = %d", unique];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Interactions"];
+    request.predicate = [NSPredicate predicateWithFormat:@"interactionID = %d", unique];
     
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];

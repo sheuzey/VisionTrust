@@ -320,15 +320,30 @@
     }];
 }
 
-- (void)addInteractionForChild:(Child *)child
-{
-    
-}
-
 - (void)registerChildWithGeneralInfo:(NSMutableDictionary *)general
                           healthInfo:(NSMutableDictionary *)health
                         andGuardians:(NSSet *)guardians
 {
+    //For each guardian dictionary in guardian set, create/get and add to final set =..
+    NSMutableArray *gArray = [[NSMutableArray alloc] init];
+    for (NSMutableDictionary *dict in guardians) {
+        //Create guardian occupation..
+        OccupationType *occupation = [OccupationType typeWithDescription:[dict valueForKey:OCCUPATION] inContext:self.database.managedObjectContext];
+        
+        //And status..
+        GuardianStatus *status = [GuardianStatus statusWithDescription:[dict valueForKey:STATUS] inContext:self.database.managedObjectContext];
+        
+        Guardian *temp = [Guardian guardianWithFirstName:[dict valueForKey:FIRST_NAME]
+                                                lastName:[dict valueForKey:LAST_NAME]
+                                                  unique:[NSNumber numberWithInt:10]
+                                          occupationType:occupation
+                                          guardianStatus:status
+                                               inContext:self.database.managedObjectContext];
+        [gArray addObject:temp];
+    }
+    NSSet *allGuardians = [[NSSet alloc] initWithArray:gArray];
+    
+    //Create child..
     __block Child *child;
     [self.database.managedObjectContext performBlock:^{
         child = [Child childWithFirstName:[general valueForKey:FIRST_NAME]
@@ -342,11 +357,32 @@
                                   picture:nil
                               pictureData:[general valueForKey:PICTURE_DATA]
                                    status:[general valueForKey:STATUS]
-                                guardians:guardians
-                                  project:[general valueForKey:PROJECT]
+                                guardians:allGuardians
+                                  project:[Project projectWithAddress:[general valueForKey:ADDRESS]
+                                                                 name:[general valueForKey:PROJECT]
+                                                                   ID:[NSNumber numberWithInt:10]
+                                                            inContext:self.database.managedObjectContext]
                                 inContext:self.database.managedObjectContext];
+        [Interactions interactionWithDepartureComments:nil
+                                   departureReasonCode:nil
+                                         interactionID:[NSNumber numberWithInt:1]
+                                           isattending:[NSNumber numberWithInt:1]
+                                          pictureTaken:[NSNumber numberWithInt:1]
+                                          registeredBy:nil
+                                        chronicIllness:[health valueForKey:ILLNESS]
+                                        healthComments:nil
+                                    receivingTreatment:[health valueForKey:TREATMENT]
+                                      developmentLevel:nil
+                                       healthCondition:[health valueForKey:HEALTH]
+                                        ifNotAttending:nil
+                                         isHandicapped:nil
+                                           schoolGrade:nil
+                                         usSchoolGrade:nil
+                                              forChild:child
+                                               byStaff:nil
+                                           withUpdates:nil
+                                             inContext:self.database.managedObjectContext];
     }];
-    [self addInteractionForChild:child];
 }
 
 + (VisionTrustDatabase *)vtDatabase
