@@ -248,7 +248,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qr2-aE-W5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3062" y="228"/>
+            <point key="canvasLocation" x="3342" y="154"/>
         </scene>
         <!--Favorite Subjects View Controller-->
         <scene sceneID="Y7t-bf-CB8">
@@ -300,7 +300,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aN-u3-eKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3474" y="228"/>
+            <point key="canvasLocation" x="3754" y="154"/>
         </scene>
         <!--Register Guardian View Controller-->
         <scene sceneID="tEU-5I-InB">
@@ -545,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WfT-3S-kAD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2260" y="1146"/>
+            <point key="canvasLocation" x="2260" y="1442"/>
         </scene>
         <!--Personal View Controller-->
         <scene sceneID="iEh-DK-rZf">
@@ -863,6 +863,7 @@
         <class className="AdvancedSearchViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AdvancedSearchViewController.h"/>
             <relationships>
+                <relationship kind="action" name="searchButtonPressed:"/>
                 <relationship kind="outlet" name="searchTable" candidateClass="UITableView"/>
             </relationships>
         </class>
@@ -914,6 +915,7 @@
         <class className="LoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
+                <relationship kind="action" name="loginButtonWasPressed:"/>
                 <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="loginTable" candidateClass="UITableView"/>
             </relationships>
@@ -928,6 +930,7 @@
         <class className="RegisterChildViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterChildViewController.h"/>
             <relationships>
+                <relationship kind="action" name="registerButtonPressed:"/>
                 <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>

@@ -10,7 +10,7 @@
 #import "UpdateViewController.h"
 
 @interface UpdateListViewController ()
-
+@property (nonatomic, assign) NSInteger selectedInteractionIndex;
 @end
 
 @implementation UpdateListViewController
@@ -57,14 +57,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.selectedInteractionIndex = [indexPath section];
     [self performSegueWithIdentifier:@"GoToUpdate" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
-        
-    }
+    Interactions *interaction = [self.interactions objectAtIndex:self.selectedInteractionIndex];
+    PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
+    pvc.child = interaction.child;
 }
 
 @end
