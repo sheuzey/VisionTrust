@@ -24,7 +24,8 @@
     [super viewDidLoad];
     
     self.title = @"Search";
-    self.children = [self.database getAllChildren];
+    self.database = [VisionTrustDatabase vtDatabase];
+    self.children = [[NSArray alloc] initWithArray:[self.database getAllChildren]];
     
     self.searchData = [[NSMutableArray alloc] initWithArray:self.children];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -115,7 +116,6 @@
     if ([segue.identifier isEqualToString:@"GoToAdvancedSearch"]) {
         AdvancedSearchViewController *asvc = (AdvancedSearchViewController *)segue.destinationViewController;
         asvc.delegate = self;
-        asvc.database = self.database;
     } else if ([segue.identifier isEqualToString:@"GoToPersonal"]) {
         PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
         pvc.child = self.selectedChild;
@@ -129,12 +129,6 @@
     self.searchData = [[NSMutableArray alloc] initWithArray:children];
     NSLog(@"%d", [self.searchData count]);
     [self.tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

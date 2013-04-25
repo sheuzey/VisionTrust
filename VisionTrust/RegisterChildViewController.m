@@ -14,14 +14,14 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface RegisterChildViewController () <GetData, GuardianRegistrationProtocol, HealthRegistrationProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
-@property (nonatomic ,strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UIDatePicker *datePicker;
 @property (nonatomic, strong) UIPickerView *projectPicker;
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, strong) NSString *selectedCellTitle;
 @property (nonatomic, strong) NSString *selectedCellIdentifier;
 @property (nonatomic, assign) NSInteger selectedIndex;
-@property (nonatomic, strong) NSMutableArray *projects;
+@property (nonatomic, strong) NSMutableArray *pickerData;
 @property (nonatomic, strong) UIPopoverController *imagePopover;
 @property (nonatomic, strong) NSMutableDictionary *childData;
 @property (nonatomic, strong) NSMutableDictionary *healthData;
@@ -32,10 +32,14 @@
 
 #define FIRST_NAME @"firstName"
 #define LAST_NAME @"lastName"
+#define GENDER @"gender"
 #define DOB @"dob"
+#define ADDRESS @"address"
 #define CITY @"city"
+#define COUNTRY @"country"
 #define PROJECT @"project"
-#define DATA_TAG 100
+#define PICTURE @"pictureData"
+#define GENDER_TAG 100
 #define DOB_TAG 200
 #define PROJECT_TAG 300
 
@@ -43,7 +47,8 @@
 {
     [super viewDidLoad];
     
-    self.navigationController.delegate = self;
+    self.database = [VisionTrustDatabase vtDatabase];
+    
     self.guardians = [[NSMutableArray alloc] init];
     
     //Set background color..
@@ -63,13 +68,6 @@
     self.childData = [[NSMutableDictionary alloc] init];
     self.tableView.backgroundView = nil;
     self.title = @"Child Registration";
-    
-    //Setup projects array
-    NSArray *array = [[NSArray alloc] initWithArray:[self.database getAllProjects]];
-    self.projects = [[NSMutableArray alloc] init];
-    for (Project *project in array) {
-        [self.projects addObject:project.name];
-    }
     
     //Create actionSheet, toolBar, datePicker and projectPicker..
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
@@ -125,6 +123,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.childImageView setContentMode:UIViewContentModeScaleAspectFit];
         [self.childImageView setImage:image];
     }
+    [self.childData setValue:UIImagePNGRepresentation(self.childImageView.image) forKey:PICTURE];
     [self dismissImagePicker];
 }
 
@@ -145,8 +144,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             [self.childData setValue:string forKey:DOB];
             break;
         case PROJECT_TAG:
-            string = [self.projects objectAtIndex:self.selectedIndex];
+            string = [self.pickerData objectAtIndex:self.selectedIndex];
             [self.childData setValue:string forKey:PROJECT];
+            break;
+        case GENDER_TAG:
+            string = [self.pickerData objectAtIndex:self.selectedIndex];
+            [self.childData setValue:string forKey:GENDER];
             break;
     }
     [self.tableView reloadData];
@@ -196,17 +199,36 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                            self.view.bounds.size.height + 30)];
 }
 
-- (void)showProjectPicker
+- (void)showPicker
 {
-    //Sort projects array and add to actionSheet..
-    [self.projects sortUsingSelector:@selector(compare:)];
+    if ([self.selectedCellTitle isEqualToString:@"Project"]) {
+        
+        //Setup projects array..
+        NSArray *array = [[NSArray alloc] initWithArray:[self.database getAllProjects]];
+        self.pickerData = [[NSMutableArray alloc] init];
+        for (Project *project in array) {
+            [self.pickerData addObject:project.name];
+        }
+        
+        //Sort projects array..
+        [self.pickerData sortUsingSelector:@selector(compare:)];
+        
+        //Add buttons to toolbar..
+        [self addToolBarWithButtonsAndTitle:@"Projects" andTag:PROJECT_TAG];
+        [self.actionSheet addSubview:self.pickerToolBar];
+
+    } else if ([self.selectedCellTitle isEqualToString:@"Gender"]) {
+        
+        //Setup gender array..
+        self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Female", @"Male", nil];
+        
+        //Add buttons to toolbar..
+        [self addToolBarWithButtonsAndTitle:@"Gender" andTag:GENDER_TAG];
+    }
+    
+    //Add picker and toolbar to actionSheet and show..
     [self.actionSheet addSubview:self.projectPicker];
-    
-    //Add buttons to toolbar and add to actionSheet..
-    [self addToolBarWithButtonsAndTitle:@"Projects" andTag:PROJECT_TAG];
     [self.actionSheet addSubview:self.pickerToolBar];
-    
-    //Show actionSheet
     [self.actionSheet showInView:self.view];
     [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x,
                                            self.view.bounds.origin.y,
@@ -221,12 +243,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return [self.projects count];
+    return [self.pickerData count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [self.projects objectAtIndex:row];
+    return [self.pickerData objectAtIndex:row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
@@ -237,7 +259,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 5;
+        return 8;
     } else if (section == 2) {
         return [self.guardians count] + 1;
     }
@@ -268,14 +290,26 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                     cell.detailTextLabel.text = [self.childData valueForKey:LAST_NAME];
                     break;
                 case 2:
+                    cell.textLabel.text = @"Gender";
+                    cell.detailTextLabel.text = [self.childData valueForKey:GENDER];
+                    break;
+                case 3:
                     cell.textLabel.text = @"Date of Birth";
                     cell.detailTextLabel.text = [self.childData valueForKey:DOB];
                     break;
-                case 3:
+                case 4:
+                    cell.textLabel.text = @"Address";
+                    cell.detailTextLabel.text = [self.childData valueForKey:ADDRESS];
+                    break;
+                case 5:
                     cell.textLabel.text = @"City";
                     cell.detailTextLabel.text = [self.childData valueForKey:CITY];
                     break;
-                case 4:
+                case 6:
+                    cell.textLabel.text = @"Country";
+                    cell.detailTextLabel.text = [self.childData valueForKey:COUNTRY];
+                    break;
+                case 7:
                     cell.textLabel.text = @"Project";
                     cell.detailTextLabel.text = [self.childData valueForKey:PROJECT];
                     break;
@@ -334,10 +368,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     NSLog(@"%d", [self.guardians count]);
 }
 
-- (IBAction)registerButtonPressed:(id)sender {
-    
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch ([indexPath section]) {
@@ -354,17 +384,31 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                     [self performSegueWithIdentifier:@"InputData" sender:self];
                     break;
                 case 2:
+                    self.selectedCellTitle = @"Gender";
+                    [self showPicker];
+                    break;
+                case 3:
                     self.selectedCellTitle = @"Date of Birth";
                     [self showDatePicker];
                     break;
-                case 3:
+                case 4:
+                    self.selectedCellTitle = @"Address";
+                    self.selectedCellIdentifier = ADDRESS;
+                    [self performSegueWithIdentifier:@"InputData" sender:self];
+                    break;
+                case 5:
                     self.selectedCellTitle = @"City";
                     self.selectedCellIdentifier = CITY;
                     [self performSegueWithIdentifier:@"InputData" sender:self];
                     break;
-                case 4:
+                case 6:
+                    self.selectedCellTitle = @"Country";
+                    self.selectedCellIdentifier = COUNTRY;
+                    [self performSegueWithIdentifier:@"InputData" sender:self];
+                    break;
+                case 7:
                     self.selectedCellTitle = @"Project";
-                    [self showProjectPicker];
+                    [self showPicker];
                     break;
             }
             break;
@@ -416,8 +460,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.childData setValue:data forKey:LAST_NAME];
     } else if ([self.selectedCellTitle isEqualToString:@"Date of Birth"]) {
         [self.childData setValue:data forKey:DOB];
+    } else if ([self.selectedCellTitle isEqualToString:@"Address"]) {
+        [self.childData setValue:data forKey:ADDRESS];
     } else if ([self.selectedCellTitle isEqualToString:@"City"]) {
         [self.childData setValue:data forKey:CITY];
+    } else if ([self.selectedCellTitle isEqualToString:@"Country"]) {
+        [self.childData setValue:data forKey:COUNTRY];
     } else if ([self.selectedCellTitle isEqualToString:@"Project"]) {
         [self.childData setValue:data forKey:PROJECT];
     }
@@ -440,6 +488,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     //Set health data into healthData dictionary..
     self.healthData = [[NSMutableDictionary alloc] initWithDictionary:info];
+}
+
+- (IBAction)registerButtonPressed:(id)sender {
+    //[self.database registerChildWithGeneralInfo:self.childData healthInfo:self.healthData andGuardians:[[NSSet alloc] initWithArray:self.guardians]];
 }
 
 @end
