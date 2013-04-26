@@ -11,7 +11,6 @@
 @interface Update (SetupUpdate)
 
 + (Update *)updateInInteraction:(Interactions *)interaction
-                    withOptions:(NSSet *)options
                       inContext:(NSManagedObjectContext *)context;
 
 @end

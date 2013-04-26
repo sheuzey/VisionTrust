@@ -25,7 +25,7 @@
 
 #define BAPTISM @"baptism"
 #define SALVATION @"salvation"
-#define SPIRITUAL_ACTIVITIES @"activities"
+#define SPIRITUAL_ACTIVITIES @"spiritualActivities"
 #define PROGRESS @"progress"
 #define BAPTISM_TAG 100
 #define SALVATION_TAG 200
@@ -42,7 +42,8 @@
                           @"Other", nil];
     
     self.progress = [self.spiritualData valueForKey:PROGRESS];
-    self.otherActivity = [self.spiritualData valueForKey:@"other"];
+    self.spiritualActivities = [[NSMutableArray alloc] initWithArray:[self.spiritualData valueForKey:SPIRITUAL_ACTIVITIES]];
+    self.otherActivity = [self.spiritualActivities lastObject];
     
     self.pickerView.dataSource = self;
     self.pickerView.delegate = self;
@@ -204,6 +205,8 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     // Configure the cell...
     switch ([indexPath section]) {
@@ -304,14 +307,19 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    //Give back data..
-    if ([self.otherActivity length] > 0) {
+    
+    //If there is an otherActivity, add it to activities. Else add a blank activity (will be ignored when update occurs)..
+    if (self.otherActivity)
         [self.spiritualActivities addObject:self.otherActivity];
-        [self.spiritualData setValue:self.otherActivity forKey:@"other"];
-    }
-    if ([self.progress length] > 0) {
+    else
+        [self.spiritualActivities addObject:@""];
+    
+    //Add progress if there is any...else, add a blank entry (will be ignored when update occurs)..
+    if ([self.progress length] > 0)
         [self.spiritualData setValue:self.progress forKey:PROGRESS];
-    }
+    else
+        [self.spiritualData setValue:@"" forKey:PROGRESS];
+    
     [self.spiritualData setValue:self.spiritualActivities forKey:SPIRITUAL_ACTIVITIES];
     [self.delegate spiritualInfo:self.spiritualData];
 }

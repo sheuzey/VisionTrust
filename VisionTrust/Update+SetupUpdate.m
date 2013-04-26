@@ -11,13 +11,11 @@
 @implementation Update (SetupUpdate)
 
 + (Update *)updateInInteraction:(Interactions *)interaction
-                    withOptions:(NSSet *)options
                       inContext:(NSManagedObjectContext *)context
 {
     Update *update = [NSEntityDescription insertNewObjectForEntityForName:@"Update"
                                                      inManagedObjectContext:context];
     update.inInteraction = interaction;
-    update.hasUpdateOptions = options;
     
     return update;
 }

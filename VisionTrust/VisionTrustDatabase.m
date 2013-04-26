@@ -24,17 +24,30 @@
 #define PROJECT @"project"
 #define PICTURE_DATA @"pictureData"
 
+#define OCCUPATION @"occupation"
+#define STATUS @"status"
+
 #define HEALTH @"healthCondition"
 #define TREATMENT @"currentlyReceivingTreatment"
 #define ILLNESS @"chronicIllness"
 #define HEALTH_COMMENTS @"healthComments"
 
-#define OCCUPATION @"occupation"
-#define STATUS @"status"
-
+#define ACADEMIC_OPTION @"Academic"
 #define GRADE @"currentGrade"
-#define PERFORMANCE @"developmentLevel"
+#define DEVELOPMENT_LEVEL @"developmentLevel"
 #define FAVORITE_SUBJECTS @"favoriteSubjects"
+
+#define HOMELIFE_OPTION @"Home Life"
+#define FAVORITE_ACTIVITIES @"favoriteActivities"
+#define HOME_CHORES @"homeChores"
+#define PERSONALITY @"personalityTraits"
+#define ADDITIONAL_COMMENTS @"additionalComments"
+
+#define SPIRITUAL_OPTION @"Spiritual"
+#define BAPTISM @"baptism"
+#define SALVATION @"salvation"
+#define SPIRITUAL_ACTIVITIES @"spiritualActivities"
+#define PROGRESS @"progress"
 
 - (void)insertSampleData
 {
@@ -312,50 +325,49 @@
                           healthInfo:(NSMutableDictionary *)health
                         andGuardians:(NSSet *)guardians
 {
-    //For each guardian dictionary in guardian set, create/get and add to final array. Create NSSet from final array..
-    NSMutableArray *gArray = [[NSMutableArray alloc] init];
-    for (NSMutableDictionary *dict in guardians) {
-        
-        //Create guardian occupation..
-        OccupationType *occupation = [OccupationType typeWithDescription:[dict valueForKey:OCCUPATION] inContext:self.database.managedObjectContext];
-        
-        //And status..
-        GuardianStatus *status = [GuardianStatus statusWithDescription:[dict valueForKey:STATUS] inContext:self.database.managedObjectContext];
-        
-        Guardian *temp = [Guardian guardianWithFirstName:[dict valueForKey:FIRST_NAME]
-                                                lastName:[dict valueForKey:LAST_NAME]
-                                          occupationType:occupation
-                                          guardianStatus:status
-                                               inContext:self.database.managedObjectContext];
-        [gArray addObject:temp];
-    }
-    NSSet *allGuardians = [[NSSet alloc] initWithArray:gArray];
-    
-    //Get treament number from text..
-    __block NSNumber *treatment;
-    if ([[health valueForKey:TREATMENT] isEqualToString:@"Yes"])
-        treatment = [NSNumber numberWithInt:1];
-    else
-        treatment = [NSNumber numberWithInt:0];
-        
-    //Create child..
-    __block Child *child;
     [self.database.managedObjectContext performBlock:^{
-        child = [Child childWithFirstName:[general valueForKey:FIRST_NAME]
-                                 LastName:[general valueForKey:LAST_NAME]
-                                   gender:[general valueForKey:GENDER]
-                                      dob:[general valueForKey:DOB]
-                                  country:[general valueForKey:COUNTRY]
-                                  address:[general valueForKey:ADDRESS]
-                                     city:[general valueForKey:CITY]
-                                  picture:nil
-                              pictureData:[general valueForKey:PICTURE_DATA]
-                                   status:[general valueForKey:STATUS]
-                                guardians:allGuardians
-                                  project:[Project projectWithAddress:[general valueForKey:ADDRESS]
-                                                                 name:[general valueForKey:PROJECT]
-                                                            inContext:self.database.managedObjectContext]
-                                inContext:self.database.managedObjectContext];
+        //For each guardian dictionary in guardian set, create/get and add to final array. Create NSSet from final array..
+        NSMutableArray *gArray = [[NSMutableArray alloc] init];
+        for (NSMutableDictionary *dict in guardians) {
+            
+            //Create guardian occupation..
+            OccupationType *occupation = [OccupationType typeWithDescription:[dict valueForKey:OCCUPATION] inContext:self.database.managedObjectContext];
+            
+            //And status..
+            GuardianStatus *status = [GuardianStatus statusWithDescription:[dict valueForKey:STATUS] inContext:self.database.managedObjectContext];
+            
+            Guardian *temp = [Guardian guardianWithFirstName:[dict valueForKey:FIRST_NAME]
+                                                    lastName:[dict valueForKey:LAST_NAME]
+                                              occupationType:occupation
+                                              guardianStatus:status
+                                                   inContext:self.database.managedObjectContext];
+            [gArray addObject:temp];
+        }
+        NSSet *allGuardians = [[NSSet alloc] initWithArray:gArray];
+        
+        //Get treament number from text..
+        NSNumber *treatment;
+        if ([[health valueForKey:TREATMENT] isEqualToString:@"Yes"])
+            treatment = [NSNumber numberWithInt:1];
+        else
+            treatment = [NSNumber numberWithInt:0];
+        
+        //Create child..
+        Child *child = [Child childWithFirstName:[general valueForKey:FIRST_NAME]
+                                        LastName:[general valueForKey:LAST_NAME]
+                                          gender:[general valueForKey:GENDER]
+                                             dob:[general valueForKey:DOB]
+                                         country:[general valueForKey:COUNTRY]
+                                         address:[general valueForKey:ADDRESS]
+                                            city:[general valueForKey:CITY]
+                                         picture:nil
+                                     pictureData:[general valueForKey:PICTURE_DATA]
+                                          status:[general valueForKey:STATUS]
+                                       guardians:allGuardians
+                                         project:[Project projectWithAddress:[general valueForKey:ADDRESS]
+                                                                        name:[general valueForKey:PROJECT]
+                                                                   inContext:self.database.managedObjectContext]
+                                       inContext:self.database.managedObjectContext];
         
         //Set NSNumber for pictureTaken..
         NSNumber *taken;
@@ -380,8 +392,128 @@
                                          usSchoolGrade:nil
                                               forChild:child
                                                byStaff:nil
-                                           withUpdates:nil
                                              inContext:self.database.managedObjectContext];
+    }];
+}
+
+- (void)updateChild:(Child *)child
+   WithAcademicData:(NSMutableDictionary *)academicData
+         healthData:(NSMutableDictionary *)healthData
+      spiritualData:(NSMutableDictionary *)spiritualData
+        andHomeData:(NSMutableDictionary *)homeData
+{
+    [self.database.managedObjectContext performBlock:^{
+        
+        //Create an Interaction
+        
+        //Get treament number from text..
+        NSNumber *treatment;
+        if ([[healthData valueForKey:TREATMENT] isEqualToString:@"Yes"])
+            treatment = [NSNumber numberWithInt:1];
+        else
+            treatment = [NSNumber numberWithInt:0];
+        
+        //Set NSNumber for pictureTaken..
+        NSNumber *taken;
+        if (child.pictureData)
+            taken = [[NSNumber alloc] initWithInt:1];
+        else
+            taken = [[NSNumber alloc] initWithInt:0];
+        
+        
+        
+        Interactions *interaction = [Interactions interactionWithDepartureComments:nil
+                                                               departureReasonCode:nil
+                                                                       isattending:[NSNumber numberWithInt:1]
+                                                                      pictureTaken:taken
+                                                                      registeredBy:nil
+                                                                    chronicIllness:[healthData valueForKey:ILLNESS]
+                                                                    healthComments:[healthData valueForKey:HEALTH_COMMENTS]
+                                                                receivingTreatment:treatment
+                                                                  developmentLevel:[academicData valueForKey:DEVELOPMENT_LEVEL]
+                                                                   healthCondition:[healthData valueForKey:HEALTH]
+                                                                    ifNotAttending:nil
+                                                                     isHandicapped:nil
+                                                                       schoolGrade:[academicData valueForKey:GRADE]
+                                                                     usSchoolGrade:[academicData valueForKey:GRADE]
+                                                                          forChild:child
+                                                                           byStaff:nil
+                                                                         inContext:self.database.managedObjectContext];
+        //Add update to Interaction..
+        Update *update = [Update updateInInteraction:interaction inContext:self.database.managedObjectContext];
+        
+        //Add update options to update..
+        UpdateOptions *academicOptions;
+        UpdateOptions *spiritualOptions;
+        UpdateOptions *homeOptions;
+        if (academicData) {
+            academicOptions = [UpdateOptions optionWithDescription:ACADEMIC_OPTION
+                                                          inUpdate:update inContext:self.database.managedObjectContext];
+            
+            //Create OptionCategories for academicData..
+            NSArray *favoriteSubjects = [[NSArray alloc] initWithArray:[academicData valueForKey:FAVORITE_SUBJECTS]];
+            for (NSString *subject in favoriteSubjects) {
+                if ([subject length] > 0)
+                    [OptionCategories categoryWithDescription:subject
+                                                     inOption:academicOptions inContext:self.database.managedObjectContext];
+            }
+        }
+        if (spiritualData) {
+            spiritualOptions = [UpdateOptions optionWithDescription:SPIRITUAL_OPTION
+                                                           inUpdate:update
+                                                          inContext:self.database.managedObjectContext];
+            //Create OptionCategories for spiritualData..
+            //Add Baptism data if exists..
+            if ([spiritualData valueForKey:BAPTISM])
+                [OptionCategories categoryWithDescription:[spiritualData valueForKey:BAPTISM]
+                                                 inOption:spiritualOptions inContext:self.database.managedObjectContext];
+            
+            //Add salvation data if exists..
+            if ([spiritualData valueForKey:SALVATION])
+                [OptionCategories categoryWithDescription:[spiritualData valueForKey:SALVATION]
+                                                 inOption:spiritualOptions inContext:self.database.managedObjectContext];
+            
+            //Add spiritual progress data if exsits..
+            if ([spiritualData valueForKey:PROGRESS])
+                [OptionCategories categoryWithDescription:[spiritualData valueForKey:PROGRESS]
+                                                 inOption:spiritualOptions inContext:self.database.managedObjectContext];
+            //Add all spiritual activities..
+            for (NSString *activity in [spiritualData valueForKey:SPIRITUAL_ACTIVITIES]) {
+                if ([activity length] > 0)
+                    [OptionCategories categoryWithDescription:activity
+                                                     inOption:spiritualOptions
+                                                    inContext:self.database.managedObjectContext];
+            }
+        }
+        if (homeData) {
+            homeOptions = [UpdateOptions optionWithDescription:HOMELIFE_OPTION
+                                                      inUpdate:update inContext:self.database.managedObjectContext];
+            //Create OptionCategories for homeData..
+            //Add additional comments if exists..
+            if ([homeData valueForKey:ADDITIONAL_COMMENTS])
+                [OptionCategories categoryWithDescription:[homeData valueForKey:ADDITIONAL_COMMENTS]
+                                                 inOption:homeOptions inContext:self.database.managedObjectContext];
+            //Add all home chores..
+            for (NSString *chores in [homeData valueForKey:HOME_CHORES]) {
+                if ([chores length] > 0)
+                    [OptionCategories categoryWithDescription:chores
+                                                     inOption:homeOptions inContext:self.database.managedObjectContext];
+            }
+            
+            //Add all favorite activities..
+            for (NSString *activity in [homeData valueForKey:FAVORITE_ACTIVITIES]) {
+                if ([activity length] > 0)
+                    [OptionCategories categoryWithDescription:activity
+                                                     inOption:homeOptions inContext:self.database.managedObjectContext];
+            }
+            
+            //Add all personality traits..
+            for (NSString *trait in [homeData valueForKey:PERSONALITY]) {
+                if ([trait length] > 0)
+                    [OptionCategories categoryWithDescription:trait
+                                                     inOption:homeOptions inContext:self.database.managedObjectContext];
+            }
+        }
     }];
 }
 

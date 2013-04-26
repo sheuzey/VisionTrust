@@ -26,7 +26,6 @@
                                      usSchoolGrade:(NSString *)usGrade
                                           forChild:(Child *)child
                                            byStaff:(User *)staff
-                                       withUpdates:(NSSet *)updates
                                          inContext:(NSManagedObjectContext *)context;
 
 

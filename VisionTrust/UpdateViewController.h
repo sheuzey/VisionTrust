@@ -18,7 +18,8 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *childImageView;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) Interactions *interaction;
+@property (strong, nonatomic) VisionTrustDatabase *database;
+@property (strong, nonatomic) Child *child;
 @property (nonatomic, strong) NSArray *guardians;
 
 @end

@@ -11,5 +11,5 @@
 #import "Interactions.h"
 
 @interface UpdateListViewController : UITableViewController
-@property (nonatomic, strong) NSMutableArray *interactions;
+@property (nonatomic, strong) Child *child;
 @end

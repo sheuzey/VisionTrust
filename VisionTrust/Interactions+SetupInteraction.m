@@ -26,7 +26,6 @@
                                      usSchoolGrade:(NSString *)usGrade
                                           forChild:(Child *)child
                                            byStaff:(User *)staff
-                                       withUpdates:(NSSet *)updates
                                          inContext:(NSManagedObjectContext *)context
 {
     Interactions *interaction = [NSEntityDescription insertNewObjectForEntityForName:@"Interactions"
@@ -47,7 +46,6 @@
     interaction.usSchoolGrade = usGrade;
     interaction.child = child;
     interaction.staff = staff;
-    interaction.updates = updates;
     interaction.interactionDate = [NSDate date];
     
     return interaction;

@@ -10,10 +10,13 @@
 #import "UpdateAcademicViewController.h"
 #import "RegisterHealthViewController.h"
 #import "UpdateSpiritualViewController.h"
+#import "UpdateHomeLifeViewController.h"
+#import <MobileCoreServices/MobileCoreServices.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface UpdateViewController () <UpdateAcademicProtocol, HealthRegistrationProtocol, UpdateSpiritualProtocol>
+@interface UpdateViewController () <UpdateAcademicProtocol, HealthRegistrationProtocol, UpdateSpiritualProtocol, UpdateHomeProtocol, UIAlertViewDelegate, UIImagePickerControllerDelegate, UINavigationBarDelegate>
 @property (nonatomic, assign) NSInteger selectedGuardianIndex;
+@property (nonatomic, strong) UIPopoverController *imagePopover;
 @property (nonatomic, strong) NSMutableDictionary *academicData;
 @property (nonatomic, strong) NSMutableDictionary *healthData;
 @property (nonatomic, strong) NSMutableDictionary *spiritualData;
@@ -23,11 +26,13 @@
 @implementation UpdateViewController 
 
 #define FAVORITE_SUBJECTS @"favoriteSubjects"
-#define SPIRITUAL_ACTIVITIES @"activities"
+#define SPIRITUAL_ACTIVITIES @"spiritualActivities"
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.database = [VisionTrustDatabase vtDatabase];
     
     //Set background color..
     self.view.backgroundColor = [UIColor clearColor];
@@ -35,18 +40,71 @@
     [self.view addSubview:tv];
     [self.view sendSubviewToBack:tv];
     
-    //Setup title and picture..
-    self.title = [NSString stringWithFormat:@"%@ %@", self.interaction.child.firstName, self.interaction.child.lastName];
+    //Add gesture recognizer to imageView..
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageWasTapped:)];
+    [self.childImageView addGestureRecognizer:tapRecognizer];
     
-    //If image data exists, use data. Else use url..
-    if (self.interaction.child.pictureData)
-        [self.childImageView setImage:[[UIImage alloc] initWithData:self.interaction.child.pictureData]];
-    else
-        [self.childImageView setImage:[UIImage imageNamed:self.interaction.child.pictureURL]];
-    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 40, 375, 20)];
+    [label setBackgroundColor:[UIColor clearColor]];
+    label.text = @"Take picture";
+    label.tag = 100;
+    [self.childImageView addSubview:label];
     self.childImageView.layer.masksToBounds = YES;
     self.childImageView.layer.cornerRadius = 5.0;
+    self.childImageView.layer.borderWidth = 2.5;
+    
+    //Setup title and picture..
+    self.title = [NSString stringWithFormat:@"%@ %@", self.child.firstName, self.child.lastName];
+    
     self.tableView.backgroundView = nil;
+}
+
+#define IMAGE_PICKER_IN_POPOVER YES
+
+- (void)imageWasTapped:(UITapGestureRecognizer *)tapGesture
+{
+    if(!self.imagePopover && [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        NSArray *mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+        if([mediaTypes containsObject:(NSString *)kUTTypeImage]) {
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            picker.mediaTypes = [NSArray arrayWithObject:(NSString *)kUTTypeImage];
+            picker.allowsEditing = YES;
+            if(IMAGE_PICKER_IN_POPOVER && (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)) {
+                self.imagePopover = [[UIPopoverController alloc] initWithContentViewController:picker];
+                [self.imagePopover presentPopoverFromRect:self.view.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            } else {
+                [self presentViewController:picker animated:YES completion:nil];
+            }
+        }
+    }
+}
+
+- (void)dismissImagePicker
+{
+    [self.imagePopover dismissPopoverAnimated:YES];
+    self.imagePopover = nil;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
+    if(!image) image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    if(image) {
+        [self.childImageView setContentMode:UIViewContentModeScaleAspectFit];
+        [self.childImageView setImage:image];
+    }
+    self.child.pictureData = UIImagePNGRepresentation(self.childImageView.image);
+    
+    //Remove label..
+    for (UIView *view in self.childImageView.subviews) {
+        if (view.tag == 100)
+            [view removeFromSuperview];
+    }
+    [self dismissImagePicker];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -109,7 +167,6 @@
     if ([segue.identifier isEqualToString:@"GoToAcademic"]) {
         UpdateAcademicViewController *uavc = (UpdateAcademicViewController *)segue.destinationViewController;
         uavc.academicData = [[NSMutableDictionary alloc] initWithDictionary:self.academicData];
-        uavc.favoriteSubjects = [[NSMutableArray alloc] initWithArray:[self.academicData valueForKey:FAVORITE_SUBJECTS]];
         uavc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
         RegisterHealthViewController *rhvc = (RegisterHealthViewController *)segue.destinationViewController;
@@ -118,10 +175,11 @@
     } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
         UpdateSpiritualViewController *usvc = (UpdateSpiritualViewController *)segue.destinationViewController;
         usvc.spiritualData = [[NSMutableDictionary alloc] initWithDictionary:self.spiritualData];
-        usvc.spiritualActivities = [[NSMutableArray alloc] initWithArray:[self.spiritualData valueForKey:SPIRITUAL_ACTIVITIES]];
         usvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
-        
+        UpdateHomeLifeViewController *uhlvc = (UpdateHomeLifeViewController *)segue.destinationViewController;
+        uhlvc.homeData = [[NSMutableDictionary alloc] initWithDictionary:self.homeData];
+        uhlvc.delegate = self;
     }
 }
 
@@ -138,6 +196,48 @@
 - (void)spiritualInfo:(NSMutableDictionary *)info
 {
     self.spiritualData = [[NSMutableDictionary alloc] initWithDictionary:info];
+}
+
+- (void)homeInfo:(NSMutableDictionary *)info
+{
+    self.homeData = [[NSMutableDictionary alloc] initWithDictionary:info];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)updateButtonPressed:(id)sender {
+    
+    // Store register button to display after activity indicator
+    UIBarButtonItem *registerButton = self.navigationItem.rightBarButtonItem;
+    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]
+                                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [spinner startAnimating];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+    
+    //Asynchronously update child..
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        //Call update method..
+        [self.database updateChild:self.child
+                  WithAcademicData:self.academicData
+                        healthData:self.healthData
+                     spiritualData:self.spiritualData
+                       andHomeData:self.homeData];
+    });
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                        message:@"Update complete"
+                                                       delegate:self
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+        self.navigationItem.rightBarButtonItem = registerButton;
+    });
 }
 
 @end

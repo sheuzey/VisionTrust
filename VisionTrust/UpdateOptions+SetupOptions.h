@@ -12,7 +12,6 @@
 
 + (UpdateOptions *)optionWithDescription:(NSString *)optionDescription
                                 inUpdate:(Update *)update
-                          withCategories:(NSSet *)categories
                                inContext:(NSManagedObjectContext *)context;
 
 @end

@@ -11,15 +11,20 @@
 
 @interface UpdateListViewController ()
 @property (nonatomic, assign) NSInteger selectedInteractionIndex;
+@property (nonatomic, strong) NSArray *interactions;
 @end
 
 @implementation UpdateListViewController
 
-#pragma mark - Table view data source
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    self.interactions = [[NSArray alloc] initWithArray:[self.child.interactions allObjects]];
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.interactions count];
+    return [self.child.interactions count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -58,13 +63,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedInteractionIndex = [indexPath section];
-    [self performSegueWithIdentifier:@"GoToUpdate" sender:self];
+    [self performSegueWithIdentifier:@"ViewUpdate" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    UpdateViewController *uvc = (UpdateViewController *)segue.destinationViewController;
-    uvc.interaction = [self.interactions objectAtIndex:self.selectedInteractionIndex];
+    if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
+        
+    } else if ([segue.identifier isEqualToString:@"ViewUpdate"]) {
+        UpdateViewController *uvc = (UpdateViewController *)segue.destinationViewController;
+        uvc.child = self.child;
+    }
+}
+- (IBAction)addButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"GoToUpdate" sender:self];
 }
 
 @end

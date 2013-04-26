@@ -12,14 +12,12 @@
 
 + (UpdateOptions *)optionWithDescription:(NSString *)optionDescription
                                 inUpdate:(Update *)update
-                          withCategories:(NSSet *)categories
                                inContext:(NSManagedObjectContext *)context
 {
     UpdateOptions *option = [NSEntityDescription insertNewObjectForEntityForName:@"UpdateOptions"
                                                      inManagedObjectContext:context];
     option.updateOptionDescription = optionDescription;
     option.inUpdate = update;
-    option.hasCategories = categories;
     
     return option;
 }

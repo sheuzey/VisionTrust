@@ -24,10 +24,10 @@
 @implementation UpdateAcademicViewController
 
 #define GRADE @"currentGrade"
-#define PERFORMANCE @"developmentLevel"
+#define DEVELOPMENT_LEVEL @"developmentLevel"
 #define FAVORITE_SUBJECTS @"favoriteSubjects"
 #define GRADE_TAG 100
-#define PERFORMANCE_TAG 200
+#define DEVELOPMENT_LEVEL_TAG 200
 
 - (void)viewDidLoad
 {
@@ -51,7 +51,8 @@
                         @"Physical Education",
                         @"Science",
                         @"Other", nil];
-    self.otherSubject = [self.academicData valueForKey:@"other"];
+    self.favoriteSubjects = [[NSMutableArray alloc] initWithArray:[self.academicData valueForKey:FAVORITE_SUBJECTS]];
+    self.otherSubject = [self.favoriteSubjects lastObject];
 }
 
 - (void)createPicker
@@ -75,8 +76,8 @@
         case GRADE_TAG:
             [self.academicData setValue:title forKey:GRADE];
             break;
-        case PERFORMANCE_TAG:
-            [self.academicData setValue:title forKey:PERFORMANCE];
+        case DEVELOPMENT_LEVEL_TAG:
+            [self.academicData setValue:title forKey:DEVELOPMENT_LEVEL];
             break;
     }
     //Reset selected index, reload table and dismiss actionSheet
@@ -138,7 +139,7 @@
         case 1:
             self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Very Poor", @"Poor", @"Average", @"Good", @"Very Good", nil];
             title = @"Performance";
-            tag = PERFORMANCE_TAG;
+            tag = DEVELOPMENT_LEVEL_TAG;
             break;
     }
     
@@ -211,7 +212,7 @@
                     break;
                 case 1:
                     cell.textLabel.text = @"Performance";
-                    cell.detailTextLabel.text = [self.academicData valueForKey:PERFORMANCE];
+                    cell.detailTextLabel.text = [self.academicData valueForKey:DEVELOPMENT_LEVEL];
                     break;
             }
             break;
@@ -286,10 +287,12 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if ([self.otherSubject length] > 0) {
+    //If there is an otherSubject, add it to favorites. Else add a blank subject (will be ignored when update occurs)..
+    if (self.otherSubject)
         [self.favoriteSubjects addObject:self.otherSubject];
-        [self.academicData setValue:self.otherSubject forKey:@"other"];
-    }
+    else
+        [self.favoriteSubjects addObject:@""];
+    
     [self.academicData setValue:self.favoriteSubjects forKey:FAVORITE_SUBJECTS];
     [self.delegate academicInfo:self.academicData];
 }
