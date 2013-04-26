@@ -14,7 +14,9 @@
 #import "GuardianStatus+SetuptGuardianStatus.h"
 #import "OccupationType+SetupOccupationType.h"
 #import "Interactions+SetupInteraction.h"
-
+#import "Update+SetupUpdate.h"
+#import "UpdateOptions+SetupOptions.h"
+#import "OptionCategories+SetupCategories.h"
 
 @interface VisionTrustDatabase : NSObject
 
@@ -22,7 +24,6 @@
 - (NSArray *)getAllChildren;
 - (NSMutableArray *)getChildrenWithParameters:(NSMutableDictionary *)parameters;
 - (NSArray *)getAllProjects;
-- (NSDictionary *)getAcademicDataFromInteraction:(Interactions *)interaction;
 
 - (void)saveDatabase;
 - (void)registerChildWithGeneralInfo:(NSMutableDictionary *)general

@@ -8,21 +8,26 @@
 
 #import "UpdateViewController.h"
 #import "UpdateAcademicViewController.h"
+#import "RegisterHealthViewController.h"
+#import "UpdateSpiritualViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface UpdateViewController () <UpdateAcademicProtocol>
+@interface UpdateViewController () <UpdateAcademicProtocol, HealthRegistrationProtocol, UpdateSpiritualProtocol>
 @property (nonatomic, assign) NSInteger selectedGuardianIndex;
+@property (nonatomic, strong) NSMutableDictionary *academicData;
+@property (nonatomic, strong) NSMutableDictionary *healthData;
+@property (nonatomic, strong) NSMutableDictionary *spiritualData;
+@property (nonatomic, strong) NSMutableDictionary *homeData;
 @end
 
 @implementation UpdateViewController 
 
+#define FAVORITE_SUBJECTS @"favoriteSubjects"
+#define SPIRITUAL_ACTIVITIES @"activities"
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.database = [VisionTrustDatabase vtDatabase];
-    self.child = self.interaction.child;
-    self.academicData = [[NSMutableDictionary alloc] initWithDictionary:[self.database getAcademicDataFromInteraction:self.interaction]];
     
     //Set background color..
     self.view.backgroundColor = [UIColor clearColor];
@@ -31,13 +36,13 @@
     [self.view sendSubviewToBack:tv];
     
     //Setup title and picture..
-    self.title = [NSString stringWithFormat:@"%@ %@", self.child.firstName, self.child.lastName];
+    self.title = [NSString stringWithFormat:@"%@ %@", self.interaction.child.firstName, self.interaction.child.lastName];
     
     //If image data exists, use data. Else use url..
-    if (self.child.pictureData)
-        [self.childImageView setImage:[[UIImage alloc] initWithData:self.child.pictureData]];
+    if (self.interaction.child.pictureData)
+        [self.childImageView setImage:[[UIImage alloc] initWithData:self.interaction.child.pictureData]];
     else
-        [self.childImageView setImage:[UIImage imageNamed:self.child.pictureURL]];
+        [self.childImageView setImage:[UIImage imageNamed:self.interaction.child.pictureURL]];
     
     self.childImageView.layer.masksToBounds = YES;
     self.childImageView.layer.cornerRadius = 5.0;
@@ -104,13 +109,18 @@
     if ([segue.identifier isEqualToString:@"GoToAcademic"]) {
         UpdateAcademicViewController *uavc = (UpdateAcademicViewController *)segue.destinationViewController;
         uavc.academicData = [[NSMutableDictionary alloc] initWithDictionary:self.academicData];
+        uavc.favoriteSubjects = [[NSMutableArray alloc] initWithArray:[self.academicData valueForKey:FAVORITE_SUBJECTS]];
+        uavc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
-        
+        RegisterHealthViewController *rhvc = (RegisterHealthViewController *)segue.destinationViewController;
+        rhvc.healthData = [[NSMutableDictionary alloc] initWithDictionary:self.healthData];
+        rhvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
-        
+        UpdateSpiritualViewController *usvc = (UpdateSpiritualViewController *)segue.destinationViewController;
+        usvc.spiritualData = [[NSMutableDictionary alloc] initWithDictionary:self.spiritualData];
+        usvc.spiritualActivities = [[NSMutableArray alloc] initWithArray:[self.spiritualData valueForKey:SPIRITUAL_ACTIVITIES]];
+        usvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
-        
-    } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
         
     }
 }
@@ -118,6 +128,16 @@
 - (void)academicInfo:(NSMutableDictionary *)info
 {
     self.academicData = [[NSMutableDictionary alloc] initWithDictionary:info];
+}
+
+- (void)healthInfo:(NSMutableDictionary *)info
+{
+    self.healthData = [[NSMutableDictionary alloc] initWithDictionary:info];
+}
+
+- (void)spiritualInfo:(NSMutableDictionary *)info
+{
+    self.spiritualData = [[NSMutableDictionary alloc] initWithDictionary:info];
 }
 
 @end

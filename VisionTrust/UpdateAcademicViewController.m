@@ -7,10 +7,9 @@
 //
 
 #import "UpdateAcademicViewController.h"
-#import "FavoriteSubjectsViewController.h"
 #import "InputDataViewController.h"
 
-@interface UpdateAcademicViewController () <FavoriteSubjectsProtocol, GetData>
+@interface UpdateAcademicViewController () <GetData>
 @property (nonatomic, strong) UIPickerView *pickerView;
 @property (nonatomic, strong) UIToolbar *pickerToolBar;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
@@ -44,7 +43,15 @@
     self.pickerToolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 45)];
     [self.pickerToolBar setBarStyle:UIBarStyleBlack];
     
-    self.favoriteSubjects = [[NSArray alloc] initWithObjects:@"Math", @"Science", @"History", nil];
+    self.allSubjects = [[NSArray alloc] initWithObjects:@"Art",
+                        @"Geography",
+                        @"History",
+                        @"Language",
+                        @"Math",
+                        @"Physical Education",
+                        @"Science",
+                        @"Other", nil];
+    self.otherSubject = [self.academicData valueForKey:@"other"];
 }
 
 - (void)createPicker
@@ -170,6 +177,13 @@
     self.selectedPickerIndex = row;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+        return @"General Info";
+    return @"Favorite Subjects";
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
@@ -179,7 +193,7 @@
 {
     if (section == 0)
         return 2;
-    return [self.favoriteSubjects count];
+    return [self.allSubjects count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -202,8 +216,16 @@
             }
             break;
         case 1:
-            cell.textLabel.text = [self.favoriteSubjects objectAtIndex:[indexPath row]];
-            cell.detailTextLabel.text = nil;
+            //If cell is in favorites, add check mark to cell..
+            cell.textLabel.text = [self.allSubjects objectAtIndex:[indexPath row]];
+            if ([self.favoriteSubjects containsObject:[self.allSubjects objectAtIndex:[indexPath row]]])
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            if ([indexPath row] == [self.allSubjects count] - 1) {
+                cell.detailTextLabel.text = self.otherSubject;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
+            else
+                cell.detailTextLabel.text = nil;
             break;
     }
     
@@ -212,42 +234,63 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
     self.selectedTableIndex = [indexPath row];
-    switch ([indexPath row]) {
+    switch ([indexPath section]) {
         case 0:
-            [self showPicker];
+            switch ([indexPath row]) {
+                case 0:
+                    [self showPicker];
+                    break;
+                case 1:
+                    [self showPicker];
+                    break;
+            }
             break;
         case 1:
-            [self showPicker];
-            break;
-        case 2:
-            [self performSegueWithIdentifier:@"GoToFavoriteSubjects" sender:self];
+            
+            //Reverse selection accessory if its not "other"..
+            if ([indexPath row] != [self.allSubjects count] - 1) {
+                if ([cell accessoryType] == UITableViewCellAccessoryCheckmark) {
+                    [cell setAccessoryType:UITableViewCellAccessoryNone];
+                    [self.favoriteSubjects removeObject:cell.textLabel.text];
+                } else {
+                    [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+                    [self.favoriteSubjects addObject:cell.textLabel.text];
+                }
+            } else {
+                [self performSegueWithIdentifier:@"InputData" sender:self];
+            }
             break;
     }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"GoToFavoriteSubjects"]) {
-        FavoriteSubjectsViewController *fsvc = (FavoriteSubjectsViewController *)segue.destinationViewController;
-        fsvc.favoriteSubjects = [[NSMutableArray alloc] initWithArray:[self.academicData valueForKey:FAVORITE_SUBJECTS]];
-        fsvc.delegate = self;
+    if ([segue.identifier isEqualToString:@"InputData"]) {
+        InputDataViewController *idvc = (InputDataViewController *)segue.destinationViewController;
+        idvc.titleString = @"Other";
+        idvc.dataString = self.otherSubject;
+        idvc.delegate = self;
     }
-}
-
-- (void)favoriteSubjects:(NSMutableArray *)subjects
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.academicData setValue:subjects forKey:FAVORITE_SUBJECTS];
 }
 
 - (void)giveBackData:(NSString *)data
 {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    self.otherSubject = data;
+    [self.tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    if ([self.otherSubject length] > 0) {
+        [self.favoriteSubjects addObject:self.otherSubject];
+        [self.academicData setValue:self.otherSubject forKey:@"other"];
+    }
+    [self.academicData setValue:self.favoriteSubjects forKey:FAVORITE_SUBJECTS];
     [self.delegate academicInfo:self.academicData];
 }
 

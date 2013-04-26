@@ -10,6 +10,9 @@
 #import "InputDataViewController.h"
 
 @interface RegisterHealthViewController () <GetData>
+@property (strong, nonatomic) UIActionSheet *actionSheet;
+@property (strong, nonatomic) UIPickerView *pickerView;
+@property (strong, nonatomic) UIToolbar *pickerToolBar;
 @property (nonatomic, assign) NSInteger selectedTableIndex;
 @property (nonatomic, assign) NSInteger selectedPickerIndex;
 @property (nonatomic, strong) NSMutableArray *pickerData;

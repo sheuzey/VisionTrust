@@ -32,6 +32,10 @@
 #define OCCUPATION @"occupation"
 #define STATUS @"status"
 
+#define GRADE @"currentGrade"
+#define PERFORMANCE @"developmentLevel"
+#define FAVORITE_SUBJECTS @"favoriteSubjects"
+
 - (void)insertSampleData
 {
     [self.database.managedObjectContext performBlock:^{
@@ -292,11 +296,6 @@
     NSError *error = nil;
 
     return [self.database.managedObjectContext executeFetchRequest:request error:&error];
-}
-
-- (NSDictionary *)getAcademicDataFromInteraction:(Interactions *)interaction
-{
-    
 }
 
 - (void)saveDatabase

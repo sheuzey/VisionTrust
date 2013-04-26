@@ -18,9 +18,6 @@
 
 @interface RegisterHealthViewController : UITableViewController <UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
-@property (strong, nonatomic) UIActionSheet *actionSheet;
-@property (strong, nonatomic) UIPickerView *pickerView;
-@property (strong, nonatomic) UIToolbar *pickerToolBar;
 @property (nonatomic, strong) NSMutableDictionary *healthData;
 @property (nonatomic, weak) id<HealthRegistrationProtocol>delegate;
 

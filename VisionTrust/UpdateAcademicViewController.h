@@ -19,7 +19,7 @@
 @interface UpdateAcademicViewController : UITableViewController <UIActionSheetDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) NSMutableDictionary *academicData;
-@property (nonatomic, strong) NSArray *favoriteSubjects;
+@property (nonatomic, strong) NSMutableArray *favoriteSubjects;
 @property (nonatomic, weak) id<UpdateAcademicProtocol>delegate;
 
 @end

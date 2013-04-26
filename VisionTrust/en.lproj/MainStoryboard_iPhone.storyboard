@@ -201,7 +201,7 @@
             </objects>
             <point key="canvasLocation" x="673" y="629"/>
         </scene>
-        <!--Update Academic View Controller-->
+        <!--Update Academic View Controller - Academic-->
         <scene sceneID="RQA-jY-uZF">
             <objects>
                 <tableViewController id="eJW-Ux-fJF" customClass="UpdateAcademicViewController" sceneMemberID="viewController">
@@ -241,47 +241,93 @@
                             <outlet property="delegate" destination="eJW-Ux-fJF" id="7pe-JI-5P8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="2Zp-eW-WIo"/>
+                    <navigationItem key="navigationItem" title="Academic" id="2Zp-eW-WIo"/>
                     <connections>
-                        <segue destination="Til-tQ-uH1" kind="modal" identifier="GoToFavoriteSubjects" id="GWk-YJ-Yis"/>
+                        <segue destination="cp8-vZ-ouR" kind="modal" identifier="InputData" modalTransitionStyle="partialCurl" id="b67-DJ-tyt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qr2-aE-W5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3250" y="300"/>
+            <point key="canvasLocation" x="3304" y="300"/>
         </scene>
-        <!--Favorite Subjects View Controller-->
-        <scene sceneID="Y7t-bf-CB8">
+        <!--Update Spiritual View Controller - Spiritual-->
+        <scene sceneID="Vy4-fH-fk7">
             <objects>
-                <tableViewController id="Til-tQ-uH1" customClass="FavoriteSubjectsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="te7-jQ-Laa">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                <tableViewController id="rYk-P1-bLm" customClass="UpdateSpiritualViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lsn-Zx-FZX">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <toolbar key="tableHeaderView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="drA-Zn-TN7">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <barButtonItem title="Done" id="E3b-I9-lAY">
-                                    <connections>
-                                        <action selector="doneButtonePressed:" destination="Til-tQ-uH1" id="ufz-1z-XBz"/>
-                                    </connections>
-                                </barButtonItem>
-                            </items>
-                        </toolbar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="qVO-dJ-Wcs" style="IBUITableViewCellStyleDefault" id="aLv-cG-CBI">
-                                <rect key="frame" x="0.0" y="80" width="320" height="46"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="m4t-Tq-i4e" detailTextLabel="eeV-uT-JfP" style="IBUITableViewCellStyleValue1" id="tRp-II-PX7">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qVO-dJ-Wcs">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="m4t-Tq-i4e">
+                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eeV-uT-JfP">
+                                            <rect key="frame" x="246" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="rYk-P1-bLm" id="fxV-w1-81i"/>
+                            <outlet property="delegate" destination="rYk-P1-bLm" id="k9g-4S-kfc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Spiritual" id="rn5-44-qFY"/>
+                    <connections>
+                        <segue destination="cp8-vZ-ouR" kind="modal" identifier="InputData" modalTransitionStyle="partialCurl" id="N3x-P6-0cR"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nPk-W6-Z0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3304" y="1578"/>
+        </scene>
+        <!--Register Health View Controller - Health-->
+        <scene sceneID="W5F-Ds-Iys">
+            <objects>
+                <tableViewController id="fGJ-WN-tW7" customClass="RegisterHealthViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ySV-d4-U04">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="hVA-Rk-7h1" detailTextLabel="knU-EV-Apx" style="IBUITableViewCellStyleValue1" id="zbG-g9-Hkv">
+                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hVA-Rk-7h1">
+                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="knU-EV-Apx">
+                                            <rect key="frame" x="246" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
@@ -290,17 +336,18 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="Til-tQ-uH1" id="Sax-Ya-DbQ"/>
-                            <outlet property="delegate" destination="Til-tQ-uH1" id="GLn-kb-oMX"/>
+                            <outlet property="dataSource" destination="fGJ-WN-tW7" id="S1a-ZB-iSF"/>
+                            <outlet property="delegate" destination="fGJ-WN-tW7" id="kPy-BF-kdJ"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Health" id="I81-uj-ILs"/>
                     <connections>
-                        <segue destination="cp8-vZ-ouR" kind="modal" identifier="InputData" modalTransitionStyle="partialCurl" id="V5b-Ye-Nbk"/>
+                        <segue destination="cp8-vZ-ouR" kind="modal" identifier="InputData" modalTransitionStyle="partialCurl" id="9ye-ak-5EA"/>
                     </connections>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1aN-u3-eKJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iza-fb-CSW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3712" y="300"/>
+            <point key="canvasLocation" x="3304" y="944"/>
         </scene>
         <!--Register Guardian View Controller-->
         <scene sceneID="tEU-5I-InB">
@@ -491,6 +538,8 @@
                         <outlet property="childImageView" destination="uXv-JE-Wfi" id="piK-vJ-3n9"/>
                         <outlet property="tableView" destination="VY3-cy-bs7" id="UqL-xd-heA"/>
                         <segue destination="eJW-Ux-fJF" kind="push" identifier="GoToAcademic" id="jbU-My-9Xd"/>
+                        <segue destination="fGJ-WN-tW7" kind="push" identifier="GoToHealth" id="vE5-hZ-Db5"/>
+                        <segue destination="rYk-P1-bLm" kind="push" identifier="GoToSpiritual" id="63f-gs-yNA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0K-Xy-a9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -879,12 +928,6 @@
                 <relationship kind="outlet" name="project" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="FavoriteSubjectsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FavoriteSubjectsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="doneButtonePressed:"/>
-            </relationships>
-        </class>
         <class className="GuardianViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GuardianViewController.h"/>
             <relationships>
@@ -953,6 +996,9 @@
         <class className="UpdateListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateListViewController.h"/>
         </class>
+        <class className="UpdateSpiritualViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateSpiritualViewController.h"/>
+        </class>
         <class className="UpdateViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateViewController.h"/>
             <relationships>
@@ -968,6 +1014,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="eR7-SG-vHY"/>
-        <segue reference="V5b-Ye-Nbk"/>
+        <segue reference="N3x-P6-0cR"/>
     </inferredMetricsTieBreakers>
 </document>
