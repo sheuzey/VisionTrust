@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UpdateSpiritualViewController : UITableViewController
+@class UpdateSpiritualViewController;
+
+@protocol UpdateSpiritualProtocol
+
+- (void)spiritualInfo:(NSMutableDictionary *)info;
+
+@end
+
+@interface UpdateSpiritualViewController : UITableViewController <UIPickerViewDataSource, UIPickerViewDelegate, UIActionSheetDelegate>
+
+@property (nonatomic, strong) NSMutableDictionary *spiritualData;
+@property (strong, nonatomic) NSMutableArray *spiritualActivities;
+@property (nonatomic, weak) id<UpdateSpiritualProtocol>delegate;
 
 @end
