@@ -65,6 +65,7 @@
 		DCF49E03172A17F20076830E /* UpdateHomeLifeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E02172A17F20076830E /* UpdateHomeLifeViewController.m */; };
 		DCF49E06172A1BAA0076830E /* UpdateOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E05172A1BAA0076830E /* UpdateOptionsViewController.m */; };
 		DCF49E0C172B4D400076830E /* Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E0B172B4D3F0076830E /* Interactions.m */; };
+		DCF49E15172B6CE40076830E /* AcademicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E14172B6CE30076830E /* AcademicViewController.m */; };
 		DCFB73D817276CFB009DDCA8 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA152F1727465B00470392 /* SearchTableViewController.m */; };
 		DCFB73D917276D04009DDCA8 /* Guardian+SetupGuardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA15311727468500470392 /* Guardian+SetupGuardian.m */; };
 		DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC84051721A3F5003862D5 /* Project+SetupProject.m */; };
@@ -176,6 +177,8 @@
 		DCF49E05172A1BAA0076830E /* UpdateOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateOptionsViewController.m; sourceTree = "<group>"; };
 		DCF49E0A172B4D3E0076830E /* Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interactions.h; sourceTree = "<group>"; };
 		DCF49E0B172B4D3F0076830E /* Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interactions.m; sourceTree = "<group>"; };
+		DCF49E13172B6CE30076830E /* AcademicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcademicViewController.h; sourceTree = "<group>"; };
+		DCF49E14172B6CE30076830E /* AcademicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcademicViewController.m; sourceTree = "<group>"; };
 		DCFC84041721A3F5003862D5 /* Project+SetupProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+SetupProject.h"; sourceTree = "<group>"; };
 		DCFC84051721A3F5003862D5 /* Project+SetupProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+SetupProject.m"; sourceTree = "<group>"; };
 		DCFC840D17220CC3003862D5 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
@@ -265,6 +268,8 @@
 		DC9EA8BE17231CF400C3137D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DCF49E13172B6CE30076830E /* AcademicViewController.h */,
+				DCF49E14172B6CE30076830E /* AcademicViewController.m */,
 				DC6534E8171CC57D00785378 /* AdvancedSearchViewController.h */,
 				DC6534E9171CC57D00785378 /* AdvancedSearchViewController.m */,
 				DC9EA8D717233B7100C3137D /* AllChildrenViewController.h */,
@@ -498,6 +503,7 @@
 				DCF49E03172A17F20076830E /* UpdateHomeLifeViewController.m in Sources */,
 				DCF49E06172A1BAA0076830E /* UpdateOptionsViewController.m in Sources */,
 				DCF49E0C172B4D400076830E /* Interactions.m in Sources */,
+				DCF49E15172B6CE40076830E /* AcademicViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

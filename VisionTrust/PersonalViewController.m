@@ -8,6 +8,7 @@
 
 #import "PersonalViewController.h"
 #import "GuardianViewController.h"
+#import "AcademicViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface PersonalViewController ()
@@ -173,7 +174,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"GoToAcademic"]) {
-        
+        AcademicViewController *avc = (AcademicViewController *)segue.destinationViewController;
+        avc.child = self.child;
     } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
         
     } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
