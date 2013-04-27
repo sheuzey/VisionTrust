@@ -285,8 +285,8 @@
     [self.tableView reloadData];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (IBAction)doneButtonPressed:(id)sender {
+    
     //If there is an otherSubject, add it to favorites. Else add a blank subject (will be ignored when update occurs)..
     if (self.otherSubject)
         [self.favoriteSubjects addObject:self.otherSubject];

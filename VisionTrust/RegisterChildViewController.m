@@ -494,12 +494,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.guardians replaceObjectAtIndex:self.selectedIndex withObject:info];
     }
     [self.tableView reloadData];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)healthInfo:(NSMutableDictionary *)info
 {
     //Set health data into healthData dictionary..
     self.healthData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

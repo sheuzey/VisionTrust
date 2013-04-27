@@ -134,9 +134,8 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
+- (IBAction)doneButtonPressed:(id)sender {
+
     [self.homeData setValue:self.additionalComments forKey:ADDITIONAL_COMMENTS];
     [self.delegate homeInfo:self.homeData];
 }

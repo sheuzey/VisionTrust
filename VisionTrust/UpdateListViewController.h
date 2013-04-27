@@ -11,6 +11,16 @@
 #import "Interactions.h"
 #import "Update.h"
 
+@class UpdateListViewController;
+
+@protocol ExitListProtocol
+
+- (void)exitUpdateList;
+
+@end
+
 @interface UpdateListViewController : UITableViewController
 @property (nonatomic, strong) Child *child;
+@property (nonatomic, weak) id<ExitListProtocol>delegate;
+
 @end

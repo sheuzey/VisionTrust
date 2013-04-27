@@ -186,26 +186,30 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)academicInfo:(NSMutableDictionary *)info
 {
     self.academicData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)healthInfo:(NSMutableDictionary *)info
 {
     self.healthData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)spiritualInfo:(NSMutableDictionary *)info
 {
     self.spiritualData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)homeInfo:(NSMutableDictionary *)info
 {
     self.homeData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate exitUpdate];
 }
 
 - (IBAction)updateButtonPressed:(id)sender {
@@ -240,4 +244,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     });
 }
 
+- (IBAction)cancelButtonPressed:(id)sender {
+    [self.delegate exitUpdate];
+}
 @end

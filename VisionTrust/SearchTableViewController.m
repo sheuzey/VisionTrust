@@ -14,7 +14,7 @@
 #import "PersonalViewController.h"
 #import "UpdateListViewController.h"
 
-@interface SearchTableViewController () <QuitAdvancedSearchProtocol>
+@interface SearchTableViewController () <QuitAdvancedSearchProtocol, ExitListProtocol>
 @property (nonatomic, strong) Child *selectedChild;
 @end
 
@@ -128,6 +128,7 @@
     } else if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
         UpdateListViewController *ulvc = (UpdateListViewController *)segue.destinationViewController;
         ulvc.child = self.selectedChild;
+        ulvc.delegate = self;
     }
     [self.database saveDatabase];
 }
@@ -138,6 +139,14 @@
     self.searchData = [[NSMutableArray alloc] initWithArray:children];
     NSLog(@"%d", [self.searchData count]);
     [self.tableView reloadData];
+}
+
+- (void)exitUpdateList
+{
+    //Update children list..
+    self.children = [[NSArray alloc] initWithArray:[self.database getAllChildren]];
+    self.searchData = [[NSMutableArray alloc] initWithArray:self.children];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

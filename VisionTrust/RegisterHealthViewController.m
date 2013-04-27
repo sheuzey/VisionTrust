@@ -244,8 +244,7 @@
     [self.tableView reloadData];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (IBAction)doneButtonPressed:(id)sender {
     [self.delegate healthInfo:self.healthData];
 }
 

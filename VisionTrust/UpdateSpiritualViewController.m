@@ -305,8 +305,7 @@
     [self.tableView reloadData];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (IBAction)doneButtonPressed:(id)sender {
     
     //If there is an otherActivity, add it to activities. Else add a blank activity (will be ignored when update occurs)..
     if (self.otherActivity)

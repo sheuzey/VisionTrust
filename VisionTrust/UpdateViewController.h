@@ -14,6 +14,14 @@
 #import "Interactions.h"
 #import "VisionTrustDatabase.h"
 
+@class UpdateViewController;
+
+@protocol ExitUpdateProtocol
+
+- (void)exitUpdate;
+
+@end
+
 @interface UpdateViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UIImageView *childImageView;
@@ -21,5 +29,6 @@
 @property (strong, nonatomic) VisionTrustDatabase *database;
 @property (strong, nonatomic) Child *child;
 @property (nonatomic, strong) NSArray *guardians;
+@property (nonatomic, weak) id<ExitUpdateProtocol>delegate;
 
 @end

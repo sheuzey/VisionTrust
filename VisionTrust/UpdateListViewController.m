@@ -9,7 +9,7 @@
 #import "UpdateListViewController.h"
 #import "UpdateViewController.h"
 
-@interface UpdateListViewController ()
+@interface UpdateListViewController () <ExitUpdateProtocol>
 @property (nonatomic, assign) NSInteger selectedInteractionIndex;
 @property (nonatomic, strong) NSArray *interactions;
 @property (nonatomic, strong) NSMutableArray *updates;
@@ -85,13 +85,25 @@
     if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
         UpdateViewController *uvc = (UpdateViewController *)segue.destinationViewController;
         uvc.child = self.child;
+        uvc.delegate = self;
     }
     if ([segue.identifier isEqualToString:@"ViewUpdate"]) {
         
     }
 }
+
+- (void)exitUpdate
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (IBAction)addButtonPressed:(id)sender {
     [self performSegueWithIdentifier:@"GoToUpdate" sender:self];
 }
+
+- (IBAction)backButtonPressed:(id)sender {
+    [self.delegate exitUpdateList];
+}
+
 
 @end
