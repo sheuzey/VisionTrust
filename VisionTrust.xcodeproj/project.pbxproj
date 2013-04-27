@@ -53,7 +53,6 @@
 		DCF1F97217298CDB0094E25D /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97117298CDB0094E25D /* Child.m */; };
 		DCF1F97517298E410094E25D /* Guardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97417298E410094E25D /* Guardian.m */; };
 		DCF1F97817298EEF0094E25D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97717298EEF0094E25D /* Project.m */; };
-		DCF1F97B17298F5E0094E25D /* Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97A17298F5E0094E25D /* Interactions.m */; };
 		DCF1F97E17299DA70094E25D /* UpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97D17299DA70094E25D /* UpdateViewController.m */; };
 		DCF1F9811729A6950094E25D /* UpdateListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F9801729A6950094E25D /* UpdateListViewController.m */; };
 		DCF49DEE1729CC7D0076830E /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49DED1729CC7D0076830E /* Update.m */; };
@@ -65,6 +64,7 @@
 		DCF49E00172A04AA0076830E /* UpdateSpiritualViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49DFF172A04A90076830E /* UpdateSpiritualViewController.m */; };
 		DCF49E03172A17F20076830E /* UpdateHomeLifeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E02172A17F20076830E /* UpdateHomeLifeViewController.m */; };
 		DCF49E06172A1BAA0076830E /* UpdateOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E05172A1BAA0076830E /* UpdateOptionsViewController.m */; };
+		DCF49E0C172B4D400076830E /* Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E0B172B4D3F0076830E /* Interactions.m */; };
 		DCFB73D817276CFB009DDCA8 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA152F1727465B00470392 /* SearchTableViewController.m */; };
 		DCFB73D917276D04009DDCA8 /* Guardian+SetupGuardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA15311727468500470392 /* Guardian+SetupGuardian.m */; };
 		DCFC84061721A3F5003862D5 /* Project+SetupProject.m in Sources */ = {isa = PBXBuildFile; fileRef = DCFC84051721A3F5003862D5 /* Project+SetupProject.m */; };
@@ -152,8 +152,6 @@
 		DCF1F97417298E410094E25D /* Guardian.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Guardian.m; sourceTree = "<group>"; };
 		DCF1F97617298EEF0094E25D /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
 		DCF1F97717298EEF0094E25D /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
-		DCF1F97917298F5E0094E25D /* Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interactions.h; sourceTree = "<group>"; };
-		DCF1F97A17298F5E0094E25D /* Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interactions.m; sourceTree = "<group>"; };
 		DCF1F97C17299DA70094E25D /* UpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateViewController.h; sourceTree = "<group>"; };
 		DCF1F97D17299DA70094E25D /* UpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateViewController.m; sourceTree = "<group>"; };
 		DCF1F97F1729A6950094E25D /* UpdateListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateListViewController.h; sourceTree = "<group>"; };
@@ -176,6 +174,8 @@
 		DCF49E02172A17F20076830E /* UpdateHomeLifeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateHomeLifeViewController.m; sourceTree = "<group>"; };
 		DCF49E04172A1BAA0076830E /* UpdateOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateOptionsViewController.h; sourceTree = "<group>"; };
 		DCF49E05172A1BAA0076830E /* UpdateOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateOptionsViewController.m; sourceTree = "<group>"; };
+		DCF49E0A172B4D3E0076830E /* Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interactions.h; sourceTree = "<group>"; };
+		DCF49E0B172B4D3F0076830E /* Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interactions.m; sourceTree = "<group>"; };
 		DCFC84041721A3F5003862D5 /* Project+SetupProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+SetupProject.h"; sourceTree = "<group>"; };
 		DCFC84051721A3F5003862D5 /* Project+SetupProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+SetupProject.m"; sourceTree = "<group>"; };
 		DCFC840D17220CC3003862D5 /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
@@ -226,8 +226,8 @@
 				D50FF916171E69E400EFE78F /* GuardianStatus.m */,
 				DC9EA8C81723222900C3137D /* GuardianStatus+SetuptGuardianStatus.h */,
 				DC9EA8C91723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m */,
-				DCF1F97917298F5E0094E25D /* Interactions.h */,
-				DCF1F97A17298F5E0094E25D /* Interactions.m */,
+				DCF49E0A172B4D3E0076830E /* Interactions.h */,
+				DCF49E0B172B4D3F0076830E /* Interactions.m */,
 				DCCB62511728B5AE00395C59 /* Interactions+SetupInteraction.h */,
 				DCCB62521728B5AE00395C59 /* Interactions+SetupInteraction.m */,
 				DCF49DF21729CC7D0076830E /* OptionCategories.h */,
@@ -486,7 +486,6 @@
 				DCF1F97217298CDB0094E25D /* Child.m in Sources */,
 				DCF1F97517298E410094E25D /* Guardian.m in Sources */,
 				DCF1F97817298EEF0094E25D /* Project.m in Sources */,
-				DCF1F97B17298F5E0094E25D /* Interactions.m in Sources */,
 				DCF1F97E17299DA70094E25D /* UpdateViewController.m in Sources */,
 				DCF1F9811729A6950094E25D /* UpdateListViewController.m in Sources */,
 				DCF49DEE1729CC7D0076830E /* Update.m in Sources */,
@@ -498,6 +497,7 @@
 				DCF49E00172A04AA0076830E /* UpdateSpiritualViewController.m in Sources */,
 				DCF49E03172A17F20076830E /* UpdateHomeLifeViewController.m in Sources */,
 				DCF49E06172A1BAA0076830E /* UpdateOptionsViewController.m in Sources */,
+				DCF49E0C172B4D400076830E /* Interactions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

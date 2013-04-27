@@ -2,14 +2,14 @@
 //  Interactions.h
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/25/13.
+//  Created by Stephen Heuzey on 4/26/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Child, User;
+@class Child, Update, User;
 
 @interface Interactions : NSManagedObject
 
@@ -30,14 +30,6 @@
 @property (nonatomic, retain) NSString * usSchoolGrade;
 @property (nonatomic, retain) Child *child;
 @property (nonatomic, retain) User *staff;
-@property (nonatomic, retain) NSSet *updates;
-@end
-
-@interface Interactions (CoreDataGeneratedAccessors)
-
-- (void)addUpdatesObject:(NSManagedObject *)value;
-- (void)removeUpdatesObject:(NSManagedObject *)value;
-- (void)addUpdates:(NSSet *)values;
-- (void)removeUpdates:(NSSet *)values;
+@property (nonatomic, retain) Update *update;
 
 @end

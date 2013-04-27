@@ -2,12 +2,13 @@
 //  Interactions.m
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/25/13.
+//  Created by Stephen Heuzey on 4/26/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
 #import "Interactions.h"
 #import "Child.h"
+#import "Update.h"
 #import "User.h"
 
 
@@ -30,6 +31,6 @@
 @dynamic usSchoolGrade;
 @dynamic child;
 @dynamic staff;
-@dynamic updates;
+@dynamic update;
 
 @end

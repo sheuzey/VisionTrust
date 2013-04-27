@@ -128,103 +128,230 @@
                           inContext:self.database.managedObjectContext];
         
         //Add children with projects..
-        [Child childWithFirstName:@"Julio"
-                         LastName:@"Gonzalas"
-                           gender:@"Male"
-                              dob:@"4/1/2000"
-                          country:@"Mexico"
-                          address:@"1 main avenue"
-                             city:@"Mexico City"
-                          picture:@"child.jpeg"
-                      pictureData:nil
-                           status:@"Active"
-                        guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
-                          project:p1
-                        inContext:self.database.managedObjectContext];
+        Child *c1 = [Child childWithFirstName:@"Julio"
+                                     LastName:@"Gonzalas"
+                                       gender:@"Male"
+                                          dob:@"4/1/2000"
+                                      country:@"Mexico"
+                                      address:@"1 main avenue"
+                                         city:@"Mexico City"
+                                      picture:@"child.jpeg"
+                                  pictureData:nil
+                                       status:@"Active"
+                                    guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
+                                      project:p1
+                                    inContext:self.database.managedObjectContext];
         
-        [Child childWithFirstName:@"Hugo"
-                         LastName:@"Chavez"
-                           gender:@"Male"
-                              dob:@"7/28/1954"
-                          country:@"Venezuala"
-                          address:@"5 mansion place"
-                             city:@"Major City"
-                          picture:@"child.jpeg"
-                      pictureData:nil
-                           status:@"Active"
-                        guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
-                          project:p2
-                        inContext:self.database.managedObjectContext];
+        Child *c2 = [Child childWithFirstName:@"Hugo"
+                                     LastName:@"Chavez"
+                                       gender:@"Male"
+                                          dob:@"7/28/1954"
+                                      country:@"Venezuala"
+                                      address:@"5 mansion place"
+                                         city:@"Major City"
+                                      picture:@"child.jpeg"
+                                  pictureData:nil
+                                       status:@"Active"
+                                    guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
+                                      project:p2
+                                    inContext:self.database.managedObjectContext];
         
-        [Child childWithFirstName:@"Kim Jong"
-                         LastName:@"Un"
-                           gender:@"Male"
-                              dob:@"1/1/1985"
-                          country:@"North Korea"
-                          address:@"255 Charlie Place"
-                             city:@"PyongYang"
-                          picture:@"child.jpeg"
-                      pictureData:nil         
-                           status:@"Active"
-                        guardians:[[NSSet alloc] initWithObjects:g3, g5, nil]
-                          project:p3
-                        inContext:self.database.managedObjectContext];
+        Child *c3 = [Child childWithFirstName:@"Kim Jong"
+                                     LastName:@"Un"
+                                       gender:@"Male"
+                                          dob:@"1/1/1985"
+                                      country:@"North Korea"
+                                      address:@"255 Charlie Place"
+                                         city:@"PyongYang"
+                                      picture:@"child.jpeg"
+                                  pictureData:nil
+                                       status:@"Active"
+                                    guardians:[[NSSet alloc] initWithObjects:g3, g5, nil]
+                                      project:p3
+                                    inContext:self.database.managedObjectContext];
         
-        [Child childWithFirstName:@"Katie"
-                         LastName:@"Smith"
-                           gender:@"Female"
-                              dob:@"9/30/2005"
-                          country:@"Germany"
-                          address:@"2 3rd street"
-                             city:@"Berlin"
-                          picture:@"child.jpeg"
-                      pictureData:nil         
-                           status:@"Inactive"
-                        guardians:[[NSSet alloc] initWithObjects:g4, g5, nil]
-                          project:p1
-                        inContext:self.database.managedObjectContext];
+        Child *c4 = [Child childWithFirstName:@"Katie"
+                                     LastName:@"Smith"
+                                       gender:@"Female"
+                                          dob:@"9/30/2005"
+                                      country:@"Germany"
+                                      address:@"2 3rd street"
+                                         city:@"Berlin"
+                                      picture:@"child.jpeg"
+                                  pictureData:nil
+                                       status:@"Inactive"
+                                    guardians:[[NSSet alloc] initWithObjects:g4, g5, nil]
+                                      project:p1
+                                    inContext:self.database.managedObjectContext];
         
-        [Child childWithFirstName:@"Vladimir"
-                         LastName:@"Putin"
-                           gender:@"Male"
-                              dob:@"10/7/1952"
-                          country:@"Russia"
-                          address:@"33 Communal Drive"
-                             city:@"St. Petersburg"
-                          picture:@"child.jpeg"
-                      pictureData:nil         
-                           status:@"Inactive"
-                        guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
-                          project:p2
-                        inContext:self.database.managedObjectContext];
+        Child *c5 = [Child childWithFirstName:@"Vladimir"
+                                     LastName:@"Putin"
+                                       gender:@"Male"
+                                          dob:@"10/7/1952"
+                                      country:@"Russia"
+                                      address:@"33 Communal Drive"
+                                         city:@"St. Petersburg"
+                                      picture:@"child.jpeg"
+                                  pictureData:nil
+                                       status:@"Inactive"
+                                    guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
+                                      project:p2
+                                    inContext:self.database.managedObjectContext];
         
-        [Child childWithFirstName:@"William"
-                         LastName:@"Brown"
-                           gender:@"Male"
-                              dob:@"2/1/1965"
-                          country:@"US"
-                          address:@"10 cedar road"
-                             city:@"Orlando, Florida"
-                          picture:@"child.jpeg"
-                      pictureData:nil         
-                           status:@"Active"
-                        guardians:[[NSSet alloc] initWithObjects:g1, g5, nil]
-                          project:p3
-                        inContext:self.database.managedObjectContext];
+        Child *c6 = [Child childWithFirstName:@"William"
+                                     LastName:@"Brown"
+                                       gender:@"Male"
+                                          dob:@"2/1/1965"
+                                      country:@"US"
+                                      address:@"10 cedar road"
+                                         city:@"Orlando, Florida"
+                                      picture:@"child.jpeg"
+                                  pictureData:nil
+                                       status:@"Active"
+                                    guardians:[[NSSet alloc] initWithObjects:g1, g5, nil]
+                                      project:p3
+                                    inContext:self.database.managedObjectContext];
         
-        [Child childWithFirstName:@"Stefani"
-                         LastName:@"Germanotta"
-                           gender:@"Female"
-                              dob:@"3/28/1986"
-                          country:@"US"
-                          address:@"50 Crazy blvd."
-                             city:@"New York City"
-                          picture:@"child.jpeg"
-                      pictureData:nil         
-                           status:@"Active"
-                        guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
-                          project:p4
-                        inContext:self.database.managedObjectContext];
+        Child *c7 = [Child childWithFirstName:@"Stefani"
+                                     LastName:@"Germanotta"
+                                       gender:@"Female"
+                                          dob:@"3/28/1986"
+                                      country:@"US"
+                                      address:@"50 Crazy blvd."
+                                         city:@"New York City"
+                                      picture:@"child.jpeg"
+                                  pictureData:nil
+                                       status:@"Active"
+                                    guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
+                                      project:p4
+                                    inContext:self.database.managedObjectContext];
+        
+        //Add sample registrations for children..
+        [Interactions interactionWithDepartureComments:nil
+                                   departureReasonCode:nil
+                                           isattending:[NSNumber numberWithInt:1]
+                                          pictureTaken:nil
+                                          registeredBy:nil
+                                        chronicIllness:nil
+                                        healthComments:nil
+                                    receivingTreatment:nil
+                                      developmentLevel:nil
+                                       healthCondition:nil
+                                        ifNotAttending:nil
+                                         isHandicapped:nil
+                                           schoolGrade:nil
+                                         usSchoolGrade:nil
+                                              forChild:c1
+                                               byStaff:nil
+                                             inContext:self.database.managedObjectContext];
+        
+        [Interactions interactionWithDepartureComments:nil
+                                   departureReasonCode:nil
+                                           isattending:[NSNumber numberWithInt:1]
+                                          pictureTaken:nil
+                                          registeredBy:nil
+                                        chronicIllness:nil
+                                        healthComments:nil
+                                    receivingTreatment:nil
+                                      developmentLevel:nil
+                                       healthCondition:nil
+                                        ifNotAttending:nil
+                                         isHandicapped:nil
+                                           schoolGrade:nil
+                                         usSchoolGrade:nil
+                                              forChild:c2
+                                               byStaff:nil
+                                             inContext:self.database.managedObjectContext];
+        
+        [Interactions interactionWithDepartureComments:nil
+                                   departureReasonCode:nil
+                                           isattending:[NSNumber numberWithInt:1]
+                                          pictureTaken:nil
+                                          registeredBy:nil
+                                        chronicIllness:nil
+                                        healthComments:nil
+                                    receivingTreatment:nil
+                                      developmentLevel:nil
+                                       healthCondition:nil
+                                        ifNotAttending:nil
+                                         isHandicapped:nil
+                                           schoolGrade:nil
+                                         usSchoolGrade:nil
+                                              forChild:c3
+                                               byStaff:nil
+                                             inContext:self.database.managedObjectContext];
+        
+        [Interactions interactionWithDepartureComments:nil
+                                   departureReasonCode:nil
+                                           isattending:[NSNumber numberWithInt:1]
+                                          pictureTaken:nil
+                                          registeredBy:nil
+                                        chronicIllness:nil
+                                        healthComments:nil
+                                    receivingTreatment:nil
+                                      developmentLevel:nil
+                                       healthCondition:nil
+                                        ifNotAttending:nil
+                                         isHandicapped:nil
+                                           schoolGrade:nil
+                                         usSchoolGrade:nil
+                                              forChild:c4
+                                               byStaff:nil
+                                             inContext:self.database.managedObjectContext];
+        
+        [Interactions interactionWithDepartureComments:nil
+                                   departureReasonCode:nil
+                                           isattending:[NSNumber numberWithInt:1]
+                                          pictureTaken:nil
+                                          registeredBy:nil
+                                        chronicIllness:nil
+                                        healthComments:nil
+                                    receivingTreatment:nil
+                                      developmentLevel:nil
+                                       healthCondition:nil
+                                        ifNotAttending:nil
+                                         isHandicapped:nil
+                                           schoolGrade:nil
+                                         usSchoolGrade:nil
+                                              forChild:c5
+                                               byStaff:nil
+                                             inContext:self.database.managedObjectContext];
+        
+        [Interactions interactionWithDepartureComments:nil
+                                   departureReasonCode:nil
+                                           isattending:[NSNumber numberWithInt:1]
+                                          pictureTaken:nil
+                                          registeredBy:nil
+                                        chronicIllness:nil
+                                        healthComments:nil
+                                    receivingTreatment:nil
+                                      developmentLevel:nil
+                                       healthCondition:nil
+                                        ifNotAttending:nil
+                                         isHandicapped:nil
+                                           schoolGrade:nil
+                                         usSchoolGrade:nil
+                                              forChild:c6
+                                               byStaff:nil
+                                             inContext:self.database.managedObjectContext];
+        
+        [Interactions interactionWithDepartureComments:nil
+                                   departureReasonCode:nil
+                                           isattending:[NSNumber numberWithInt:1]
+                                          pictureTaken:nil
+                                          registeredBy:nil
+                                        chronicIllness:nil
+                                        healthComments:nil
+                                    receivingTreatment:nil
+                                      developmentLevel:nil
+                                       healthCondition:nil
+                                        ifNotAttending:nil
+                                         isHandicapped:nil
+                                           schoolGrade:nil
+                                         usSchoolGrade:nil
+                                              forChild:c7
+                                               byStaff:nil
+                                             inContext:self.database.managedObjectContext];
         
         NSLog(@"ADDED DATA TO DATABASE");
     }];

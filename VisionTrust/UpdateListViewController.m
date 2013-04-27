@@ -12,6 +12,7 @@
 @interface UpdateListViewController ()
 @property (nonatomic, assign) NSInteger selectedInteractionIndex;
 @property (nonatomic, strong) NSArray *interactions;
+@property (nonatomic, strong) NSMutableArray *updates;
 @end
 
 @implementation UpdateListViewController
@@ -19,12 +20,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = [NSString stringWithFormat:@"%@ %@", self.child.firstName, self.child.lastName];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     self.interactions = [[NSArray alloc] initWithArray:[self.child.interactions allObjects]];
+    self.updates = [[NSMutableArray alloc] init];
+    for (Interactions *interaction in self.interactions) {
+        if (interaction.update)
+            [self.updates addObject:interaction.update];
+    }
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.child.interactions count];
+    //Since registration will have no updates, add one for registration interaction..
+    return [self.updates count] + 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -48,7 +62,7 @@
     if (cell == nil)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
-    switch ([indexPath row]) {
+    switch ([indexPath section]) {
         case 0:
             cell.textLabel.text = @"Registration";
             break;
@@ -69,10 +83,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
-        
-    } else if ([segue.identifier isEqualToString:@"ViewUpdate"]) {
         UpdateViewController *uvc = (UpdateViewController *)segue.destinationViewController;
         uvc.child = self.child;
+    }
+    if ([segue.identifier isEqualToString:@"ViewUpdate"]) {
+        
     }
 }
 - (IBAction)addButtonPressed:(id)sender {

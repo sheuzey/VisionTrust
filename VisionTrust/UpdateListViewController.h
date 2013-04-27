@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Child.h"
 #import "Interactions.h"
+#import "Update.h"
 
 @interface UpdateListViewController : UITableViewController
 @property (nonatomic, strong) Child *child;

@@ -45,7 +45,7 @@
         <attribute name="usSchoolGrade" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="child" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="interactions" inverseEntity="Child" syncable="YES"/>
         <relationship name="staff" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="interactions" inverseEntity="User" syncable="YES"/>
-        <relationship name="updates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Update" inverseName="inInteraction" inverseEntity="Update" syncable="YES"/>
+        <relationship name="update" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Update" inverseName="inInteraction" inverseEntity="Update" syncable="YES"/>
     </entity>
     <entity name="OccupationType" representedClassName="OccupationType" syncable="YES">
         <attribute name="occupationTypeDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -62,7 +62,7 @@
     </entity>
     <entity name="Update" representedClassName="Update" syncable="YES">
         <relationship name="hasUpdateOptions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UpdateOptions" inverseName="inUpdate" inverseEntity="UpdateOptions" syncable="YES"/>
-        <relationship name="inInteraction" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Interactions" inverseName="updates" inverseEntity="Interactions" syncable="YES"/>
+        <relationship name="inInteraction" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Interactions" inverseName="update" inverseEntity="Interactions" syncable="YES"/>
     </entity>
     <entity name="UpdateOptions" representedClassName="UpdateOptions" syncable="YES">
         <attribute name="updateOptionDescription" optional="YES" attributeType="String" syncable="YES"/>
