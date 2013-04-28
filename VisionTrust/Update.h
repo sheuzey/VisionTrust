@@ -2,7 +2,7 @@
 //  Update.h
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/25/13.
+//  Created by Stephen Heuzey on 4/27/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
@@ -13,8 +13,9 @@
 
 @interface Update : NSManagedObject
 
-@property (nonatomic, retain) Interactions *inInteraction;
+@property (nonatomic, retain) NSString * updateDescription;
 @property (nonatomic, retain) NSSet *hasUpdateOptions;
+@property (nonatomic, retain) Interactions *inInteraction;
 @end
 
 @interface Update (CoreDataGeneratedAccessors)

@@ -12,7 +12,6 @@
 @interface UpdateListViewController () <ExitUpdateProtocol>
 @property (nonatomic, assign) NSInteger selectedInteractionIndex;
 @property (nonatomic, strong) NSArray *interactions;
-@property (nonatomic, strong) NSMutableArray *updates;
 @end
 
 @implementation UpdateListViewController
@@ -27,18 +26,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.interactions = [[NSArray alloc] initWithArray:[self.child.interactions allObjects]];
-    self.updates = [[NSMutableArray alloc] init];
-    for (Interactions *interaction in self.interactions) {
-        if (interaction.update)
-            [self.updates addObject:interaction.update];
-    }
     [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     //Since registration will have no updates, add one for registration interaction..
-    return [self.updates count] + 1;
+    return [self.interactions count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

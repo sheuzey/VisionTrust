@@ -11,6 +11,7 @@
 @interface Update (SetupUpdate)
 
 + (Update *)updateInInteraction:(Interactions *)interaction
+          withUpdateDescription:(NSString *)updateDescription
                       inContext:(NSManagedObjectContext *)context;
 
 @end

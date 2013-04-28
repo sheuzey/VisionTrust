@@ -2,7 +2,7 @@
 //  Update.m
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/25/13.
+//  Created by Stephen Heuzey on 4/27/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
@@ -13,7 +13,8 @@
 
 @implementation Update
 
-@dynamic inInteraction;
+@dynamic updateDescription;
 @dynamic hasUpdateOptions;
+@dynamic inInteraction;
 
 @end

@@ -591,16 +591,24 @@
                                                                           forChild:child
                                                                            byStaff:nil
                                                                          inContext:self.database.managedObjectContext];
-        //Add update to Interaction..
-        Update *update = [Update updateInInteraction:interaction inContext:self.database.managedObjectContext];
+        //Add updates to Interaction..
+        Update *academicUpdate = [Update updateInInteraction:interaction
+                                       withUpdateDescription:ACADEMIC_OPTION inContext:self.database.managedObjectContext];
+        Update *spiritualUpdate = [Update updateInInteraction:interaction
+                                        withUpdateDescription:SPIRITUAL_OPTION inContext:self.database.managedObjectContext];
+        Update *homeLifeUpdate = [Update updateInInteraction:interaction
+                                       withUpdateDescription:HOMELIFE_OPTION inContext:self.database.managedObjectContext];
         
         //Add update options to update..
         UpdateOptions *academicOptions;
         UpdateOptions *spiritualOptions;
-        UpdateOptions *homeOptions;
+        UpdateOptions *commentsOption;
+        UpdateOptions *choresOption;
+        UpdateOptions *activitiesOption;
+        UpdateOptions *personalityOption;
         if (academicData) {
             academicOptions = [UpdateOptions optionWithDescription:ACADEMIC_OPTION
-                                                          inUpdate:update inContext:self.database.managedObjectContext];
+                                                          inUpdate:academicUpdate inContext:self.database.managedObjectContext];
             
             //Create OptionCategories for academicData..
             NSArray *favoriteSubjects = [[NSArray alloc] initWithArray:[academicData valueForKey:FAVORITE_SUBJECTS]];
@@ -612,23 +620,9 @@
         }
         if (spiritualData) {
             spiritualOptions = [UpdateOptions optionWithDescription:SPIRITUAL_OPTION
-                                                           inUpdate:update
-                                                          inContext:self.database.managedObjectContext];
+                                                           inUpdate:spiritualUpdate inContext:self.database.managedObjectContext];
+            
             //Create OptionCategories for spiritualData..
-            /*//Add Baptism data if exists..
-            if ([spiritualData valueForKey:BAPTISM])
-                [OptionCategories categoryWithDescription:[spiritualData valueForKey:BAPTISM]
-                                                 inOption:spiritualOptions inContext:self.database.managedObjectContext];
-            
-            //Add salvation data if exists..
-            if ([spiritualData valueForKey:SALVATION])
-                [OptionCategories categoryWithDescription:[spiritualData valueForKey:SALVATION]
-                                                 inOption:spiritualOptions inContext:self.database.managedObjectContext];
-            
-            //Add spiritual progress data if exsits..
-            if ([spiritualData valueForKey:PROGRESS])
-                [OptionCategories categoryWithDescription:[spiritualData valueForKey:PROGRESS]
-                                                 inOption:spiritualOptions inContext:self.database.managedObjectContext];*/
             //Add all spiritual activities..
             for (NSString *activity in [spiritualData valueForKey:SPIRITUAL_ACTIVITIES]) {
                 if ([activity length] > 0)
@@ -638,32 +632,43 @@
             }
         }
         if (homeData) {
-            homeOptions = [UpdateOptions optionWithDescription:HOMELIFE_OPTION
-                                                      inUpdate:update inContext:self.database.managedObjectContext];
-            //Create OptionCategories for homeData..
+            commentsOption = [UpdateOptions optionWithDescription:ADDITIONAL_COMMENTS
+                                                      inUpdate:homeLifeUpdate inContext:self.database.managedObjectContext];
+            
+            //Create OptionCategories for each option..
             //Add additional comments if exists..
             if ([homeData valueForKey:ADDITIONAL_COMMENTS])
                 [OptionCategories categoryWithDescription:[homeData valueForKey:ADDITIONAL_COMMENTS]
-                                                 inOption:homeOptions inContext:self.database.managedObjectContext];
+                                                 inOption:commentsOption inContext:self.database.managedObjectContext];
+            
             //Add all home chores..
+            choresOption = [UpdateOptions optionWithDescription:HOME_CHORES
+                                                       inUpdate:homeLifeUpdate inContext:self.database.managedObjectContext];
+            
             for (NSString *chores in [homeData valueForKey:HOME_CHORES]) {
                 if ([chores length] > 0)
                     [OptionCategories categoryWithDescription:chores
-                                                     inOption:homeOptions inContext:self.database.managedObjectContext];
+                                                     inOption:choresOption inContext:self.database.managedObjectContext];
             }
             
             //Add all favorite activities..
+            activitiesOption = [UpdateOptions optionWithDescription:FAVORITE_ACTIVITIES
+                                                           inUpdate:homeLifeUpdate inContext:self.database.managedObjectContext];
+            
             for (NSString *activity in [homeData valueForKey:FAVORITE_ACTIVITIES]) {
                 if ([activity length] > 0)
                     [OptionCategories categoryWithDescription:activity
-                                                     inOption:homeOptions inContext:self.database.managedObjectContext];
+                                                     inOption:activitiesOption inContext:self.database.managedObjectContext];
             }
             
             //Add all personality traits..
+            personalityOption = [UpdateOptions optionWithDescription:PERSONALITY
+                                                            inUpdate:homeLifeUpdate inContext:self.database.managedObjectContext];
+            
             for (NSString *trait in [homeData valueForKey:PERSONALITY]) {
                 if ([trait length] > 0)
                     [OptionCategories categoryWithDescription:trait
-                                                     inOption:homeOptions inContext:self.database.managedObjectContext];
+                                                     inOption:personalityOption inContext:self.database.managedObjectContext];
             }
         }
     }];

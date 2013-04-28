@@ -32,18 +32,28 @@
         }
     }
     
-    //Get academic option..
-    UpdateOptions *academic;
-    for (UpdateOptions *option in [self.latestInteraction.update.hasUpdateOptions allObjects]) {
-        if ([option.updateOptionDescription isEqualToString:ACADEMIC_OPTION])
-            academic = option;
+    //Get academic update (only if interactions is not null)..
+    Update *academic;
+    if (self.latestInteraction) {
+        for (Update *update in [self.latestInteraction.updates allObjects]) {
+            if ([update.updateDescription isEqualToString:ACADEMIC_OPTION])
+                academic = update;
+        }
     }
     
-    //Get all category description strings and insert into favoriteSubjects..
+    //Get academic option (only if academic is not null)
+    //Since there is only one option for academic, retrieve last object..
+    UpdateOptions *academicOption;
+    if (academic)
+        academicOption = [[academic.hasUpdateOptions allObjects] lastObject];
+    
+    //Get all category description strings and insert into favoriteSubjects (only if academicOption is not null)..
     self.favoriteSubjects = [[NSMutableArray alloc] init];
-    NSArray *categories = [[NSArray alloc] initWithArray:[academic.hasCategories allObjects]];
-    for (OptionCategories *category in categories) {
-        [self.favoriteSubjects addObject:category.categoryDescription];
+    if (academicOption) {
+        NSArray *categories = [[NSArray alloc] initWithArray:[academicOption.hasCategories allObjects]];
+        for (OptionCategories *category in categories) {
+            [self.favoriteSubjects addObject:category.categoryDescription];
+        }
     }
 }
 
@@ -56,7 +66,10 @@
 {
     if (section == 0)
         return 2;
-    return [self.favoriteSubjects count];
+    else if (self.favoriteSubjects)
+        return [self.favoriteSubjects count];
+    else
+        return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -88,7 +101,10 @@
             }
             break;
         case 1:
-            cell.textLabel.text = [self.favoriteSubjects objectAtIndex:[indexPath row]];
+            if (self.favoriteSubjects)
+                cell.textLabel.text = [self.favoriteSubjects objectAtIndex:[indexPath row]];
+            else
+                cell.textLabel.text = @"No favorite subjects listed";
             cell.detailTextLabel.text = nil;
             break;
     }

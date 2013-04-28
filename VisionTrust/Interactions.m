@@ -34,6 +34,6 @@
 @dynamic spiritualProgress;
 @dynamic child;
 @dynamic staff;
-@dynamic update;
+@dynamic updates;
 
 @end

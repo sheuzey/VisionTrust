@@ -33,18 +33,31 @@
         }
     }
     
-    //Get spiritual option..
-    UpdateOptions *spiritual;
-    for (UpdateOptions *option in [self.latestInteraction.update.hasUpdateOptions allObjects]) {
-        if ([option.updateOptionDescription isEqualToString:SPIRITUAL_OPTION])
-            spiritual = option;
+    //Get spiritual update (only if interactions is not null)..
+    Update *spiritual;
+    if (self.latestInteraction) {
+        for (Update *update in [self.latestInteraction.updates allObjects]) {
+            if ([update.updateDescription isEqualToString:SPIRITUAL_OPTION])
+                spiritual = update;
+        }
     }
     
-    //Get all category description strings and insert into spiritualActivities..
+    //Get spiritual option (only if spiritual update is not null)..
+    UpdateOptions *spiritualOption;
+    if (spiritual) {
+        for (UpdateOptions *option in [spiritual.hasUpdateOptions allObjects]) {
+            if ([option.updateOptionDescription isEqualToString:SPIRITUAL_OPTION])
+                spiritualOption = option;
+        }
+    }
+    
+    //Get all category description strings and insert into spiritualActivities (only if spiritualOption is not null)..
     self.spiritualActivities = [[NSMutableArray alloc] init];
-    NSArray *categories = [[NSArray alloc] initWithArray:[spiritual.hasCategories allObjects]];
-    for (OptionCategories *category in categories) {
-        [self.spiritualActivities addObject:category.categoryDescription];
+    if (spiritualOption) {
+        NSArray *categories = [[NSArray alloc] initWithArray:[spiritualOption.hasCategories allObjects]];
+        for (OptionCategories *category in categories) {
+            [self.spiritualActivities addObject:category.categoryDescription];
+        }
     }
 }
 
@@ -57,7 +70,10 @@
 {
     if (section == 0)
         return 3;
-    return [self.spiritualActivities count];
+    else if (self.spiritualActivities)
+        return [self.spiritualActivities count];
+    else
+        return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -93,8 +109,11 @@
             }
             break;
         case 1:
-            cell.textLabel.text = [self.spiritualActivities objectAtIndex:[indexPath row]];
-            cell.detailTextLabel.text = nil;
+            if (self.spiritualActivities)
+                cell.textLabel.text = [self.spiritualActivities objectAtIndex:[indexPath row]];
+            else
+                cell.textLabel.text = @"No spiritual activities listed";
+                cell.detailTextLabel.text = nil;
             break;
     }
     return cell;

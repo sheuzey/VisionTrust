@@ -11,6 +11,7 @@
 #import "HealthViewController.h"
 #import "SpiritualViewController.h"
 #import "AcademicViewController.h"
+#import "HomeLifeViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface PersonalViewController ()
@@ -185,7 +186,8 @@
         SpiritualViewController *svc = (SpiritualViewController *)segue.destinationViewController;
         svc.child = self.child;
     } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
-        
+        HomeLifeViewController *hlvc = (HomeLifeViewController *)segue.destinationViewController;
+        hlvc.child = self.child;
     } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
         GuardianViewController *gvc = (GuardianViewController *)segue.destinationViewController;
         gvc.guardian = [self.guardians objectAtIndex:self.selectedGuardianIndex];

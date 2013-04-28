@@ -126,10 +126,10 @@
     
     //Show actionSheet
     [self.actionSheet showInView:self.view];
-    [self.actionSheet setBounds:CGRectMake(self.view.bounds.origin.x,
-                                           self.view.bounds.origin.y,
-                                           self.view.bounds.size.width,
-                                           self.view.bounds.size.height + 30)];
+    [self.actionSheet setBounds:CGRectMake(self.view.frame.origin.x,
+                                           self.view.frame.origin.y,
+                                           self.view.frame.size.width,
+                                           self.view.frame.size.height + 30)];
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component

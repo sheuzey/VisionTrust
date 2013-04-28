@@ -33,6 +33,14 @@
 @property (nonatomic, retain) NSString * spiritualProgress;
 @property (nonatomic, retain) Child *child;
 @property (nonatomic, retain) User *staff;
-@property (nonatomic, retain) Update *update;
+@property (nonatomic, retain) NSSet *updates;
+@end
+
+@interface Interactions (CoreDataGeneratedAccessors)
+
+- (void)addUpdatesObject:(Update *)value;
+- (void)removeUpdatesObject:(Update *)value;
+- (void)addUpdates:(NSSet *)values;
+- (void)removeUpdates:(NSSet *)values;
 
 @end
