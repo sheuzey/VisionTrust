@@ -34,6 +34,7 @@
 		DC8BF783172CBD1900F31B94 /* HomeLifeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF782172CBD1900F31B94 /* HomeLifeViewController.m */; };
 		DC8BF789172CBF3F00F31B94 /* Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF788172CBF3F00F31B94 /* Interactions.m */; };
 		DC8BF78C172CC03800F31B94 /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF78B172CC03800F31B94 /* Update.m */; };
+		DC8BF78F172D7C6800F31B94 /* ViewUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF78E172D7C6700F31B94 /* ViewUpdateViewController.m */; };
 		DC9205CB172037B70087B1C3 /* VisionTrustDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */; };
 		DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C017231E3400C3137D /* GuardianViewController.m */; };
 		DC9EA8CA1723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C91723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m */; };
@@ -121,6 +122,8 @@
 		DC8BF788172CBF3F00F31B94 /* Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interactions.m; sourceTree = "<group>"; };
 		DC8BF78A172CC03800F31B94 /* Update.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Update.h; sourceTree = "<group>"; };
 		DC8BF78B172CC03800F31B94 /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
+		DC8BF78D172D7C6700F31B94 /* ViewUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUpdateViewController.h; sourceTree = "<group>"; };
+		DC8BF78E172D7C6700F31B94 /* ViewUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUpdateViewController.m; sourceTree = "<group>"; };
 		DC9205C9172037B70087B1C3 /* VisionTrustDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisionTrustDatabase.h; sourceTree = "<group>"; };
 		DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionTrustDatabase.m; sourceTree = "<group>"; };
 		DC9EA8BF17231E3400C3137D /* GuardianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianViewController.h; sourceTree = "<group>"; };
@@ -319,6 +322,8 @@
 				DCF49DFF172A04A90076830E /* UpdateSpiritualViewController.m */,
 				DCF1F97C17299DA70094E25D /* UpdateViewController.h */,
 				DCF1F97D17299DA70094E25D /* UpdateViewController.m */,
+				DC8BF78D172D7C6700F31B94 /* ViewUpdateViewController.h */,
+				DC8BF78E172D7C6700F31B94 /* ViewUpdateViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 				DC8BF783172CBD1900F31B94 /* HomeLifeViewController.m in Sources */,
 				DC8BF789172CBF3F00F31B94 /* Interactions.m in Sources */,
 				DC8BF78C172CC03800F31B94 /* Update.m in Sources */,
+				DC8BF78F172D7C6800F31B94 /* ViewUpdateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

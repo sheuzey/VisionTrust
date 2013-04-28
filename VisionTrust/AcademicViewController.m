@@ -10,7 +10,6 @@
 
 @interface AcademicViewController ()
 @property (nonatomic, strong) NSMutableArray *favoriteSubjects;
-@property (nonatomic, strong) Interactions *latestInteraction;
 @end
 
 @implementation AcademicViewController
@@ -24,18 +23,10 @@
 {
     [super viewDidLoad];
     
-    //Get latest interaction..
-    NSArray *interactions = [self.child.interactions allObjects];
-    for (Interactions *i in interactions) {
-        if (([self.latestInteraction.interactionDate compare:i.interactionDate] == NSOrderedAscending) || !self.latestInteraction) {
-            self.latestInteraction = i;
-        }
-    }
-    
     //Get academic update (only if interactions is not null)..
     Update *academic;
-    if (self.latestInteraction) {
-        for (Update *update in [self.latestInteraction.updates allObjects]) {
+    if (self.interaction) {
+        for (Update *update in [self.interaction.updates allObjects]) {
             if ([update.updateDescription isEqualToString:ACADEMIC_OPTION])
                 academic = update;
         }
@@ -92,15 +83,15 @@
             switch ([indexPath row]) {
                 case 0:
                     cell.textLabel.text = @"Current Grade";
-                    if (self.latestInteraction.schoolGrade)
-                        cell.detailTextLabel.text = self.latestInteraction.schoolGrade;
+                    if (self.interaction.schoolGrade)
+                        cell.detailTextLabel.text = self.interaction.schoolGrade;
                     else
                         cell.detailTextLabel.text = @"No record";
                     break;
                 case 1:
                     cell.textLabel.text = @"Performance";
-                    if (self.latestInteraction.developmentLevel)
-                        cell.detailTextLabel.text = self.latestInteraction.developmentLevel;
+                    if (self.interaction.developmentLevel)
+                        cell.detailTextLabel.text = self.interaction.developmentLevel;
                     else
                         cell.detailTextLabel.text = @"No record";
                     break;
@@ -117,6 +108,11 @@
             break;
     }
     return cell;
+}
+
+//Only for exiting to ViewUpdate controller..
+- (IBAction)doneButtonPressed:(id)sender {
+    [self.delegate exitCategory];
 }
 
 @end

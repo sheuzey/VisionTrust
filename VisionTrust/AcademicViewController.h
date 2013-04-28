@@ -12,9 +12,11 @@
 #import "Update.h"
 #import "UpdateOptions.h"
 #import "OptionCategories.h"
+#import "ViewUpdateViewController.h"
 
 @interface AcademicViewController : UITableViewController
 
-@property (nonatomic, strong) Child *child;
+@property (nonatomic, strong) Interactions *interaction;
+@property (nonatomic, weak) id<ExitCategory>delegate;
 
 @end

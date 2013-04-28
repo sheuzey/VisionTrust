@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "Child.h"
 #import "Interactions.h"
+#import "ViewUpdateViewController.h"
 
 @interface HealthViewController : UITableViewController
 
-@property (nonatomic, strong) Child *child;
+@property (nonatomic, strong) Interactions *interaction;
+@property (nonatomic, weak) id<ExitCategory>delegate;
 
 @end

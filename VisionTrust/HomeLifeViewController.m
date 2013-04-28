@@ -13,7 +13,6 @@
 @property (nonatomic, strong) NSMutableArray *homeChores;
 @property (nonatomic, strong) NSMutableArray *personalityTraits;
 @property (nonatomic, strong) NSString *comments;
-@property (nonatomic, strong) Interactions *latestInteraction;
 @end
 
 @implementation HomeLifeViewController
@@ -28,18 +27,10 @@
 {
     [super viewDidLoad];
     
-    //Get latest interaction..
-    NSArray *interactions = [self.child.interactions allObjects];
-    for (Interactions *i in interactions) {
-        if (([self.latestInteraction.interactionDate compare:i.interactionDate] == NSOrderedAscending) || !self.latestInteraction) {
-            self.latestInteraction = i;
-        }
-    }
-    
     //Get homeLife update (if interaction is not null)..
     Update *homeLife;
-    if (self.latestInteraction) {
-        for (Update *update in [self.latestInteraction.updates allObjects]) {
+    if (self.interaction) {
+        for (Update *update in [self.interaction.updates allObjects]) {
             if ([update.updateDescription isEqualToString:HOMELIFE_OPTION])
                 homeLife = update;
         }
@@ -216,6 +207,11 @@
     }
     
     return cell;
+}
+
+//Only for exiting to ViewUpdate controller..
+- (IBAction)doneButtonPressed:(id)sender {
+    [self.delegate exitCategory];
 }
 
 @end

@@ -22,5 +22,6 @@
 @interface UpdateListViewController : UITableViewController
 @property (nonatomic, strong) Child *child;
 @property (nonatomic, weak) id<ExitListProtocol>delegate;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolBar;
 
 @end

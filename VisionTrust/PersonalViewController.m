@@ -15,7 +15,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface PersonalViewController ()
-@property (nonatomic, assign) NSInteger selectedGuardianIndex;
 @end
 
 @implementation PersonalViewController
@@ -176,24 +175,31 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //Get latest interaction data to send..
+    Interactions *latest;
+    for (Interactions *i in [self.child.interactions allObjects]) {
+        if (([latest.interactionDate compare:i.interactionDate] == NSOrderedAscending) || !latest) {
+            latest = i;
+        }
+    }
+    
     if ([segue.identifier isEqualToString:@"GoToAcademic"]) {
         AcademicViewController *avc = (AcademicViewController *)segue.destinationViewController;
-        avc.child = self.child;
+        avc.interaction = latest;
     } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
         HealthViewController *hvc = (HealthViewController *)segue.destinationViewController;
-        hvc.child = self.child;
+        hvc.interaction = latest;
     } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
         SpiritualViewController *svc = (SpiritualViewController *)segue.destinationViewController;
-        svc.child = self.child;
+        svc.interaction = latest;
     } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
         HomeLifeViewController *hlvc = (HomeLifeViewController *)segue.destinationViewController;
-        hlvc.child = self.child;
+        hlvc.interaction = latest;
     } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
         GuardianViewController *gvc = (GuardianViewController *)segue.destinationViewController;
         gvc.guardian = [self.guardians objectAtIndex:self.selectedGuardianIndex];
         gvc.child = self.child;
     }
 }
-
 
 @end

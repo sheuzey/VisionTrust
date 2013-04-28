@@ -9,7 +9,6 @@
 #import "HealthViewController.h"
 
 @interface HealthViewController ()
-@property (nonatomic, strong) Interactions *latestInteraction;
 @end
 
 @implementation HealthViewController
@@ -22,14 +21,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    //Get latest interaction..
-    NSArray *interactions = [self.child.interactions allObjects];
-    for (Interactions *i in interactions) {
-        if (([self.latestInteraction.interactionDate compare:i.interactionDate] == NSOrderedAscending) || !self.latestInteraction) {
-            self.latestInteraction = i;
-        }
-    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -56,16 +47,16 @@
             switch ([indexPath row]) {
                 case 0:
                     cell.textLabel.text = @"Health";
-                    if (self.latestInteraction.healthCondition)
-                        cell.detailTextLabel.text = self.latestInteraction.healthCondition;
+                    if (self.interaction.healthCondition)
+                        cell.detailTextLabel.text = self.interaction.healthCondition;
                     else
                         cell.detailTextLabel.text = @"No record";
                     break;
                 case 1:
                     cell.textLabel.text = @"Medical Treatment";
-                    if (self.latestInteraction.currentlyReceivingTreatment == [NSNumber numberWithInt:0])
+                    if (self.interaction.currentlyReceivingTreatment == [NSNumber numberWithInt:0])
                         cell.detailTextLabel.text = @"No";
-                    else if (self.latestInteraction.currentlyReceivingTreatment == [NSNumber numberWithInt:1])
+                    else if (self.interaction.currentlyReceivingTreatment == [NSNumber numberWithInt:1])
                         cell.detailTextLabel.text = @"Yes";
                     else
                         cell.detailTextLabel.text = @"No record";
@@ -76,15 +67,15 @@
             switch ([indexPath row]) {
                 case 0:
                     cell.textLabel.text = @"Illness";
-                    if (self.latestInteraction.chronicIllness)
-                        cell.detailTextLabel.text = self.latestInteraction.chronicIllness;
+                    if (self.interaction.chronicIllness)
+                        cell.detailTextLabel.text = self.interaction.chronicIllness;
                     else
                         cell.detailTextLabel.text = @"No record";
                     break;
                 case 1:
                     cell.textLabel.text = @"Other Comments";
-                    if (self.latestInteraction.healthComments)
-                        cell.detailTextLabel.text = self.latestInteraction.healthComments;
+                    if (self.interaction.healthComments)
+                        cell.detailTextLabel.text = self.interaction.healthComments;
                     else
                         cell.detailTextLabel.text = @"No record";
                     break;
@@ -93,6 +84,11 @@
     }
     
     return cell;
+}
+
+//Only for exiting to ViewUpdate controller..
+- (IBAction)doneButtonPressed:(id)sender {
+    [self.delegate exitCategory];
 }
 
 @end

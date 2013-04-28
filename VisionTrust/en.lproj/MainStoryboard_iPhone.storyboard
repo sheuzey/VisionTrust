@@ -518,6 +518,76 @@
             </objects>
             <point key="canvasLocation" x="3516" y="760"/>
         </scene>
+        <!--View Update View Controller-->
+        <scene sceneID="2Fm-fI-frU">
+            <objects>
+                <viewController id="ZP9-Dd-sxO" customClass="ViewUpdateViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lit-BC-0cB">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" id="cg4-FP-KHK">
+                                <rect key="frame" x="105" y="64" width="110" height="110"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="6py-f2-51Q">
+                                <rect key="frame" x="0.0" y="182" width="320" height="278"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="OYQ-51-s3K" detailTextLabel="vkT-j8-K03" style="IBUITableViewCellStyleValue1" id="i4K-kM-bcG">
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OYQ-51-s3K">
+                                                    <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vkT-j8-K03">
+                                                    <rect key="frame" x="226" y="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZP9-Dd-sxO" id="E0q-tN-rhB"/>
+                                    <outlet property="delegate" destination="ZP9-Dd-sxO" id="viF-7m-Ohc"/>
+                                </connections>
+                            </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="PBs-AG-2TZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items/>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="childImageView" destination="cg4-FP-KHK" id="Dkr-zo-C6J"/>
+                        <outlet property="navBar" destination="PBs-AG-2TZ" id="eni-8f-eIe"/>
+                        <outlet property="tableView" destination="6py-f2-51Q" id="0cR-I8-yEc"/>
+                        <segue destination="z1V-K6-geo" kind="modal" identifier="GoToAcademic" modalTransitionStyle="crossDissolve" id="Ifw-St-8hz"/>
+                        <segue destination="gKH-gj-iuk" kind="modal" identifier="GoToHealth" modalTransitionStyle="crossDissolve" id="0hP-Us-Zza"/>
+                        <segue destination="mBj-Rr-w3C" kind="modal" identifier="GoToSpiritual" modalTransitionStyle="crossDissolve" id="sKM-Ra-AB2"/>
+                        <segue destination="imx-HS-dlQ" kind="modal" identifier="GoToHomeLife" modalTransitionStyle="crossDissolve" id="ChZ-S5-AlD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qBi-U1-D3m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3914" y="418"/>
+        </scene>
         <!--Register Guardian View Controller-->
         <scene sceneID="tEU-5I-InB">
             <objects>
@@ -642,7 +712,7 @@
             </objects>
             <point key="canvasLocation" x="1175" y="1244"/>
         </scene>
-        <!--Academic View Controller-->
+        <!--Academic View Controller - Academic-->
         <scene sceneID="oRh-bo-gbr">
             <objects>
                 <tableViewController id="N7a-sJ-xZz" customClass="AcademicViewController" sceneMemberID="viewController">
@@ -682,13 +752,13 @@
                             <outlet property="delegate" destination="N7a-sJ-xZz" id="7FL-df-RRX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="fdK-s8-gJj"/>
+                    <navigationItem key="navigationItem" title="Academic" id="fdK-s8-gJj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1mx-gT-3hZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2290" y="-552"/>
         </scene>
-        <!--Health View Controller-->
+        <!--Health View Controller - Health-->
         <scene sceneID="WuL-Ey-HHI">
             <objects>
                 <tableViewController id="hxn-GK-R8h" customClass="HealthViewController" sceneMemberID="viewController">
@@ -728,13 +798,13 @@
                             <outlet property="delegate" destination="hxn-GK-R8h" id="nLB-1q-DBz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="o3o-HO-Ft6"/>
+                    <navigationItem key="navigationItem" title="Health" id="o3o-HO-Ft6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7oH-g8-Czu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2723" y="-552"/>
         </scene>
-        <!--Spiritual View Controller-->
+        <!--Spiritual View Controller - Spiritual-->
         <scene sceneID="qfl-hq-R5k">
             <objects>
                 <tableViewController id="wEc-It-CBW" customClass="SpiritualViewController" sceneMemberID="viewController">
@@ -774,13 +844,13 @@
                             <outlet property="delegate" destination="wEc-It-CBW" id="BYu-hR-3f4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="T7V-5G-LXR"/>
+                    <navigationItem key="navigationItem" title="Spiritual" id="T7V-5G-LXR"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWH-3o-rcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3184" y="-550"/>
         </scene>
-        <!--Home Life View Controller-->
+        <!--Home Life View Controller - Home Life-->
         <scene sceneID="oU1-RT-ZAA">
             <objects>
                 <tableViewController id="7dg-xJ-rxk" customClass="HomeLifeViewController" sceneMemberID="viewController">
@@ -813,7 +883,7 @@
                             <outlet property="delegate" destination="7dg-xJ-rxk" id="lIq-1L-fyN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="HaJ-4H-Kod"/>
+                    <navigationItem key="navigationItem" title="Home Life" id="HaJ-4H-Kod"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrM-if-kIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -827,24 +897,11 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="xCV-Np-xMb">
+                        <toolbar key="tableHeaderView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="CDF-Am-tzJ">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Update List" id="uaN-lj-UcQ">
-                                    <barButtonItem key="leftBarButtonItem" title="Back" id="Yjx-aR-XtR">
-                                        <connections>
-                                            <action selector="backButtonPressed:" destination="Qdh-VO-0oY" id="dy0-ge-i7O"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="8Y8-Ro-GeZ">
-                                        <connections>
-                                            <action selector="addButtonPressed:" destination="Qdh-VO-0oY" id="eEA-Bl-CYy"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
+                            <items/>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="Aay-qg-rmN" style="IBUITableViewCellStyleDefault" id="xgk-eD-CJ7">
                                 <rect key="frame" x="0.0" y="80" width="320" height="46"/>
@@ -878,7 +935,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="toolBar" destination="CDF-Am-tzJ" id="T1E-8t-Qep"/>
                         <segue destination="ldz-ob-2v1" kind="modal" identifier="GoToUpdate" id="bWv-h6-zIC"/>
+                        <segue destination="ZP9-Dd-sxO" kind="modal" identifier="ViewUpdate" id="rfX-l1-3z6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Odk-fT-4Ah" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1327,148 +1386,236 @@
             </objects>
             <point key="canvasLocation" x="135" y="-262"/>
         </scene>
+        <!--Academic View Controller - Academic-->
+        <scene sceneID="e6Z-Z5-j7c">
+            <objects>
+                <tableViewController id="z1V-K6-geo" customClass="AcademicViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="z15-MW-O9u">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="hvG-7Y-XS8">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Academic" id="JLy-s0-ENL">
+                                    <barButtonItem key="leftBarButtonItem" title="Done" id="ufZ-bs-ofJ">
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="z1V-K6-geo" id="ljS-tW-6EK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="kgT-rh-yCM" detailTextLabel="FbS-Mh-UxY" style="IBUITableViewCellStyleValue1" id="bt1-kd-5SN">
+                                <rect key="frame" x="0.0" y="80" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kgT-rh-yCM">
+                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FbS-Mh-UxY">
+                                            <rect key="frame" x="246" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="z1V-K6-geo" id="imu-cR-liT"/>
+                            <outlet property="delegate" destination="z1V-K6-geo" id="AFG-Ue-p68"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Academic" id="cTu-iQ-FjB"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p6H-RE-1Ni" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4476" y="-422"/>
+        </scene>
+        <!--Health View Controller - Health-->
+        <scene sceneID="IbG-iB-Iyg">
+            <objects>
+                <tableViewController id="gKH-gj-iuk" customClass="HealthViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="FM0-Fe-O0h">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="5D4-Ec-eXe">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Health" id="avp-Hk-BWa">
+                                    <barButtonItem key="leftBarButtonItem" title="Done" id="PzX-se-er7">
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="gKH-gj-iuk" id="sO3-3g-RFU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="uga-IG-XJj" detailTextLabel="jzE-Je-CtE" style="IBUITableViewCellStyleValue1" id="AfB-Kv-tgf">
+                                <rect key="frame" x="0.0" y="80" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uga-IG-XJj">
+                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jzE-Je-CtE">
+                                            <rect key="frame" x="246" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="gKH-gj-iuk" id="nwU-Sj-W75"/>
+                            <outlet property="delegate" destination="gKH-gj-iuk" id="iqq-UT-06G"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Health" id="0Lo-0J-7mP"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqi-MY-bDn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4476" y="184"/>
+        </scene>
+        <!--Spiritual View Controller - Spiritual-->
+        <scene sceneID="v1z-hf-jiT">
+            <objects>
+                <tableViewController id="mBj-Rr-w3C" customClass="SpiritualViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="qmp-1S-FPT">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="4eH-8Z-tW2">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Spiritual" id="fiI-rt-qAy">
+                                    <barButtonItem key="leftBarButtonItem" title="Done" id="3Ch-dD-uUg">
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="mBj-Rr-w3C" id="f9w-1J-ROi"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="OuV-fa-rhh" detailTextLabel="rXt-47-bUy" style="IBUITableViewCellStyleValue1" id="bT8-yn-LtE">
+                                <rect key="frame" x="0.0" y="80" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OuV-fa-rhh">
+                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rXt-47-bUy">
+                                            <rect key="frame" x="246" y="11" width="44" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mBj-Rr-w3C" id="GZ2-4V-LyI"/>
+                            <outlet property="delegate" destination="mBj-Rr-w3C" id="hYH-hQ-v98"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Spiritual" id="Siq-Ui-Plf"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VoP-sv-q3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4476" y="802"/>
+        </scene>
+        <!--Home Life View Controller - Home Life-->
+        <scene sceneID="2CW-x1-A5T">
+            <objects>
+                <tableViewController id="imx-HS-dlQ" customClass="HomeLifeViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="gSj-Rc-eZc">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="aM6-6g-WOB">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Home Life" id="Z0f-gq-KHS">
+                                    <barButtonItem key="leftBarButtonItem" title="Done" id="Nnu-ez-ZEr">
+                                        <connections>
+                                            <action selector="doneButtonPressed:" destination="imx-HS-dlQ" id="7Px-Tc-RZd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="0xg-u9-YPw" style="IBUITableViewCellStyleDefault" id="mgX-xG-W54">
+                                <rect key="frame" x="0.0" y="80" width="320" height="46"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0xg-u9-YPw">
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="imx-HS-dlQ" id="LE2-wV-JTD"/>
+                            <outlet property="delegate" destination="imx-HS-dlQ" id="06s-lJ-Ogd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Home Life" id="PuX-2I-oeF"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6H-hD-Mhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4476" y="1408"/>
+        </scene>
     </scenes>
-    <classes>
-        <class className="AcademicViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AcademicViewController.h"/>
-        </class>
-        <class className="AdvancedSearchViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AdvancedSearchViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="AllChildrenViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AllChildrenViewController.h"/>
-        </class>
-        <class className="Cell" superclassName="UICollectionViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Cell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CustomSearchCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomSearchCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cityCountry" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fullName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="project" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GuardianViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GuardianViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="HealthViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HealthViewController.h"/>
-        </class>
-        <class className="HomeLifeViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeLifeViewController.h"/>
-        </class>
-        <class className="HomeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logoutButtonPressed:"/>
-                <relationship kind="outlet" name="menuCollection" candidateClass="UICollectionView"/>
-                <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="InputDataViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/InputDataViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="LoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="loginButtonWasPressed:"/>
-                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="loginTable" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="PersonalViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PersonalViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RegisterChildViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterChildViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="registerButtonPressed:"/>
-                <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="RegisterGuardianViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterGuardianViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="doneButtonPressed:"/>
-            </relationships>
-        </class>
-        <class className="RegisterHealthViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterHealthViewController.h"/>
-        </class>
-        <class className="SearchTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="SpiritualViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpiritualViewController.h"/>
-        </class>
-        <class className="UICollectionReusableView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
-        </class>
-        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
-        </class>
-        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UpdateAcademicViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateAcademicViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="doneButtonPressed:"/>
-            </relationships>
-        </class>
-        <class className="UpdateHomeLifeViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateHomeLifeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="doneButtonPressed:"/>
-            </relationships>
-        </class>
-        <class className="UpdateListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addButtonPressed:"/>
-                <relationship kind="action" name="backButtonPressed:"/>
-            </relationships>
-        </class>
-        <class className="UpdateOptionsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateOptionsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="UpdateSpiritualViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateSpiritualViewController.h"/>
-        </class>
-        <class className="UpdateViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

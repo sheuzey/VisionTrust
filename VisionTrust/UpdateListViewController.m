@@ -8,8 +8,9 @@
 
 #import "UpdateListViewController.h"
 #import "UpdateViewController.h"
+#import "ViewUpdateViewController.h"
 
-@interface UpdateListViewController () <ExitUpdateProtocol>
+@interface UpdateListViewController () <ExitUpdateProtocol, ExitViewUpateProtocol>
 @property (nonatomic, assign) NSInteger selectedInteractionIndex;
 @property (nonatomic, strong) NSArray *interactions;
 @end
@@ -20,7 +21,29 @@
 {
     [super viewDidLoad];
     
-    self.title = [NSString stringWithFormat:@"%@ %@", self.child.firstName, self.child.lastName];
+    //Back Button..
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(backButtonPressed)];
+    backButton.title = @"Back";
+    
+    //Title Label..
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 30)];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    [titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    [titleLabel setText:[NSString stringWithFormat:@"%@ %@", self.child.firstName, self.child.lastName]];
+    UIBarButtonItem *titleButton = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
+    
+    //Add Button..
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed)];
+    addButton.style = UIBarButtonItemStyleBordered;
+    
+    //Add to array, then add to toolbar..
+    [barItems addObject:backButton];
+    [barItems addObject:titleButton];
+    [barItems addObject:addButton];
+    [self.toolBar setItems:barItems animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -31,7 +54,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //Since registration will have no updates, add one for registration interaction..
     return [self.interactions count];
 }
 
@@ -82,7 +104,13 @@
         uvc.delegate = self;
     }
     if ([segue.identifier isEqualToString:@"ViewUpdate"]) {
+        ViewUpdateViewController *vuvc = (ViewUpdateViewController *)segue.destinationViewController;
+        vuvc.child = self.child;
         
+        //Get date of interaction
+        Interactions *selectedInteraction = [self.interactions objectAtIndex:self.selectedInteractionIndex];
+        vuvc.date = selectedInteraction.interactionDate;
+        vuvc.delegate = self;
     }
 }
 
@@ -91,11 +119,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)addButtonPressed:(id)sender {
+- (void)exitViewUpdate
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)addButtonPressed
+{
     [self performSegueWithIdentifier:@"GoToUpdate" sender:self];
 }
 
-- (IBAction)backButtonPressed:(id)sender {
+- (void)backButtonPressed
+{
     [self.delegate exitUpdateList];
 }
 

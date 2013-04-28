@@ -17,5 +17,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) Child *child;
 @property (nonatomic, strong) NSArray *guardians;
+@property (nonatomic, assign) NSInteger selectedGuardianIndex;
 
 @end

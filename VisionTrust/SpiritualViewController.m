@@ -9,7 +9,6 @@
 #import "SpiritualViewController.h"
 
 @interface SpiritualViewController ()
-@property (nonatomic, strong) Interactions *latestInteraction;
 @property (nonatomic, strong) NSMutableArray *spiritualActivities;
 @end
 
@@ -25,18 +24,10 @@
 {
     [super viewDidLoad];
     
-    //Get latest interaction..
-    NSArray *interactions = [self.child.interactions allObjects];
-    for (Interactions *i in interactions) {
-        if (([self.latestInteraction.interactionDate compare:i.interactionDate] == NSOrderedAscending) || !self.latestInteraction) {
-            self.latestInteraction = i;
-        }
-    }
-    
     //Get spiritual update (only if interactions is not null)..
     Update *spiritual;
-    if (self.latestInteraction) {
-        for (Update *update in [self.latestInteraction.updates allObjects]) {
+    if (self.interaction) {
+        for (Update *update in [self.interaction.updates allObjects]) {
             if ([update.updateDescription isEqualToString:SPIRITUAL_OPTION])
                 spiritual = update;
         }
@@ -97,22 +88,22 @@
             switch ([indexPath row]) {
                 case 0:
                     cell.textLabel.text = @"Baptismal Status";
-                    if (self.latestInteraction.isBaptized)
-                        cell.detailTextLabel.text = self.latestInteraction.isBaptized;
+                    if (self.interaction.isBaptized)
+                        cell.detailTextLabel.text = self.interaction.isBaptized;
                     else
                         cell.detailTextLabel.text = @"No record";
                     break;
                 case 1:
                     cell.textLabel.text = @"Salvation Status";
-                    if (self.latestInteraction.isSaved)
-                        cell.detailTextLabel.text = self.latestInteraction.isSaved;
+                    if (self.interaction.isSaved)
+                        cell.detailTextLabel.text = self.interaction.isSaved;
                     else
                         cell.detailTextLabel.text = @"No record";
                     break;
                 case 2:
                     cell.textLabel.text = @"Spiritual Progress";
-                    if (self.latestInteraction.spiritualProgress)
-                        cell.detailTextLabel.text = self.latestInteraction.spiritualProgress;
+                    if (self.interaction.spiritualProgress)
+                        cell.detailTextLabel.text = self.interaction.spiritualProgress;
                     else
                         cell.detailTextLabel.text = @"No record";
                     break;
@@ -129,6 +120,11 @@
             break;
     }
     return cell;
+}
+
+//Only for exiting to ViewUpdate controller..
+- (IBAction)doneButtonPressed:(id)sender {
+    [self.delegate exitCategory];
 }
 
 @end
