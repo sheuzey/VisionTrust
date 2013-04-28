@@ -66,7 +66,7 @@
 {
     if (section == 0)
         return 2;
-    else if (self.favoriteSubjects)
+    else if ([self.favoriteSubjects count] > 0)
         return [self.favoriteSubjects count];
     else
         return 1;
@@ -92,17 +92,25 @@
             switch ([indexPath row]) {
                 case 0:
                     cell.textLabel.text = @"Current Grade";
-                    cell.detailTextLabel.text = self.latestInteraction.schoolGrade;
+                    if (self.latestInteraction.schoolGrade)
+                        cell.detailTextLabel.text = self.latestInteraction.schoolGrade;
+                    else
+                        cell.detailTextLabel.text = @"No record";
                     break;
                 case 1:
                     cell.textLabel.text = @"Performance";
-                    cell.detailTextLabel.text = self.latestInteraction.developmentLevel;
+                    if (self.latestInteraction.developmentLevel)
+                        cell.detailTextLabel.text = self.latestInteraction.developmentLevel;
+                    else
+                        cell.detailTextLabel.text = @"No record";
                     break;
             }
             break;
         case 1:
-            if (self.favoriteSubjects)
+            if ([self.favoriteSubjects count] > 0) {
                 cell.textLabel.text = [self.favoriteSubjects objectAtIndex:[indexPath row]];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
             else
                 cell.textLabel.text = @"No favorite subjects listed";
             cell.detailTextLabel.text = nil;

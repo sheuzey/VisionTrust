@@ -173,31 +173,45 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     // Configure the cell..
-    //If each respective array contains objects, set cell title to object. Else, set cell title to 'None'..
+    // If each respective array contains objects, set cell title to object and add checkmark.
+    // Else, set cell title to 'None' and remove checkmark..
     switch ([indexPath section]) {
         case 0:
             if ([self.comments length] > 0)
                 cell.textLabel.text = self.comments;
             else
                 cell.textLabel.text = @"No Comments";
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         case 1:
-            if ([self.favoriteActivities count] > 0)
+            if ([self.favoriteActivities count] > 0) {
                 cell.textLabel.text = [self.favoriteActivities objectAtIndex:[indexPath row]];
-            else
-                cell.textLabel.text = @"None";
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            else {
+                cell.textLabel.text = @"No activities listed";
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
             break;
         case 2:
-            if ([self.homeChores count] > 0)
+            if ([self.homeChores count] > 0) {
                 cell.textLabel.text = [self.homeChores objectAtIndex:[indexPath row]];
-            else
-                cell.textLabel.text = @"None";
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            else {
+                cell.textLabel.text = @"No chores listed";
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
             break;
         case 3:
-            if ([self.personalityTraits count] > 0)
+            if ([self.personalityTraits count] > 0) {
                 cell.textLabel.text = [self.personalityTraits objectAtIndex:[indexPath row]];
-            else
-                cell.textLabel.text = @"None";
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
+            else {
+                cell.textLabel.text = @"No traits listed";
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
             break;
     }
     

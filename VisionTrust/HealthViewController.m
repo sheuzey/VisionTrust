@@ -50,12 +50,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     // Configure the cell...
+    //If a health category is null, output 'No record'..
     switch ([indexPath section]) {
         case 0:
             switch ([indexPath row]) {
                 case 0:
                     cell.textLabel.text = @"Health";
-                    cell.detailTextLabel.text = self.latestInteraction.healthCondition;
+                    if (self.latestInteraction.healthCondition)
+                        cell.detailTextLabel.text = self.latestInteraction.healthCondition;
+                    else
+                        cell.detailTextLabel.text = @"No record";
                     break;
                 case 1:
                     cell.textLabel.text = @"Medical Treatment";
@@ -64,7 +68,7 @@
                     else if (self.latestInteraction.currentlyReceivingTreatment == [NSNumber numberWithInt:1])
                         cell.detailTextLabel.text = @"Yes";
                     else
-                        cell.detailTextLabel.text = nil;
+                        cell.detailTextLabel.text = @"No record";
                     break;
             }
             break;
@@ -72,11 +76,17 @@
             switch ([indexPath row]) {
                 case 0:
                     cell.textLabel.text = @"Illness";
-                    cell.detailTextLabel.text = self.latestInteraction.chronicIllness;
+                    if (self.latestInteraction.chronicIllness)
+                        cell.detailTextLabel.text = self.latestInteraction.chronicIllness;
+                    else
+                        cell.detailTextLabel.text = @"No record";
                     break;
                 case 1:
                     cell.textLabel.text = @"Other Comments";
-                    cell.detailTextLabel.text = self.latestInteraction.healthComments;
+                    if (self.latestInteraction.healthComments)
+                        cell.detailTextLabel.text = self.latestInteraction.healthComments;
+                    else
+                        cell.detailTextLabel.text = @"No record";
                     break;
             }
             break;

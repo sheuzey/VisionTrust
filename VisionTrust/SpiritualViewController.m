@@ -70,7 +70,7 @@
 {
     if (section == 0)
         return 3;
-    else if (self.spiritualActivities)
+    else if ([self.spiritualActivities count] > 0)
         return [self.spiritualActivities count];
     else
         return 1;
@@ -91,29 +91,41 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     // Configure the cell...
+    //If a spiritual category is null, output 'No record'..
     switch ([indexPath section]) {
         case 0:
             switch ([indexPath row]) {
                 case 0:
                     cell.textLabel.text = @"Baptismal Status";
-                    cell.detailTextLabel.text = self.latestInteraction.isBaptized;
+                    if (self.latestInteraction.isBaptized)
+                        cell.detailTextLabel.text = self.latestInteraction.isBaptized;
+                    else
+                        cell.detailTextLabel.text = @"No record";
                     break;
                 case 1:
                     cell.textLabel.text = @"Salvation Status";
-                    cell.detailTextLabel.text = self.latestInteraction.isSaved;
+                    if (self.latestInteraction.isSaved)
+                        cell.detailTextLabel.text = self.latestInteraction.isSaved;
+                    else
+                        cell.detailTextLabel.text = @"No record";
                     break;
                 case 2:
                     cell.textLabel.text = @"Spiritual Progress";
-                    cell.detailTextLabel.text = self.latestInteraction.spiritualProgress;
+                    if (self.latestInteraction.spiritualProgress)
+                        cell.detailTextLabel.text = self.latestInteraction.spiritualProgress;
+                    else
+                        cell.detailTextLabel.text = @"No record";
                     break;
             }
             break;
         case 1:
-            if (self.spiritualActivities)
+            if ([self.spiritualActivities count] > 0) {
                 cell.textLabel.text = [self.spiritualActivities objectAtIndex:[indexPath row]];
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            }
             else
                 cell.textLabel.text = @"No spiritual activities listed";
-                cell.detailTextLabel.text = nil;
+            cell.detailTextLabel.text = nil;
             break;
     }
     return cell;
