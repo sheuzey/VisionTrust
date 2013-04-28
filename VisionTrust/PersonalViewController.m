@@ -8,6 +8,8 @@
 
 #import "PersonalViewController.h"
 #import "GuardianViewController.h"
+#import "HealthViewController.h"
+#import "SpiritualViewController.h"
 #import "AcademicViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
@@ -177,9 +179,11 @@
         AcademicViewController *avc = (AcademicViewController *)segue.destinationViewController;
         avc.child = self.child;
     } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
-        
+        HealthViewController *hvc = (HealthViewController *)segue.destinationViewController;
+        hvc.child = self.child;
     } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
-        
+        SpiritualViewController *svc = (SpiritualViewController *)segue.destinationViewController;
+        svc.child = self.child;
     } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
         
     } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {

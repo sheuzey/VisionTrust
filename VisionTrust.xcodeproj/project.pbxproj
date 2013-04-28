@@ -29,6 +29,9 @@
 		DC6534E7171B8DAC00785378 /* CustomSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534E6171B8DAB00785378 /* CustomSearchCell.m */; };
 		DC6534EA171CC57D00785378 /* AdvancedSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC6534E9171CC57D00785378 /* AdvancedSearchViewController.m */; };
 		DC6534EC171CCB1A00785378 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6534EB171CCB1900785378 /* QuartzCore.framework */; };
+		DC8BF777172CA75700F31B94 /* HealthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF776172CA75700F31B94 /* HealthViewController.m */; };
+		DC8BF77A172CB04000F31B94 /* SpiritualViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF779172CB03F00F31B94 /* SpiritualViewController.m */; };
+		DC8BF780172CBAFA00F31B94 /* Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF77F172CBAFA00F31B94 /* Interactions.m */; };
 		DC9205CB172037B70087B1C3 /* VisionTrustDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */; };
 		DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C017231E3400C3137D /* GuardianViewController.m */; };
 		DC9EA8CA1723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C91723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m */; };
@@ -64,7 +67,6 @@
 		DCF49E00172A04AA0076830E /* UpdateSpiritualViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49DFF172A04A90076830E /* UpdateSpiritualViewController.m */; };
 		DCF49E03172A17F20076830E /* UpdateHomeLifeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E02172A17F20076830E /* UpdateHomeLifeViewController.m */; };
 		DCF49E06172A1BAA0076830E /* UpdateOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E05172A1BAA0076830E /* UpdateOptionsViewController.m */; };
-		DCF49E0C172B4D400076830E /* Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E0B172B4D3F0076830E /* Interactions.m */; };
 		DCF49E15172B6CE40076830E /* AcademicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF49E14172B6CE30076830E /* AcademicViewController.m */; };
 		DCFB73D817276CFB009DDCA8 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA152F1727465B00470392 /* SearchTableViewController.m */; };
 		DCFB73D917276D04009DDCA8 /* Guardian+SetupGuardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DCAA15311727468500470392 /* Guardian+SetupGuardian.m */; };
@@ -108,6 +110,12 @@
 		DC6534E8171CC57D00785378 /* AdvancedSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearchViewController.h; sourceTree = "<group>"; };
 		DC6534E9171CC57D00785378 /* AdvancedSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearchViewController.m; sourceTree = "<group>"; };
 		DC6534EB171CCB1900785378 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DC8BF775172CA75700F31B94 /* HealthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HealthViewController.h; sourceTree = "<group>"; };
+		DC8BF776172CA75700F31B94 /* HealthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HealthViewController.m; sourceTree = "<group>"; };
+		DC8BF778172CB03F00F31B94 /* SpiritualViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpiritualViewController.h; sourceTree = "<group>"; };
+		DC8BF779172CB03F00F31B94 /* SpiritualViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpiritualViewController.m; sourceTree = "<group>"; };
+		DC8BF77E172CBAFA00F31B94 /* Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interactions.h; sourceTree = "<group>"; };
+		DC8BF77F172CBAFA00F31B94 /* Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interactions.m; sourceTree = "<group>"; };
 		DC9205C9172037B70087B1C3 /* VisionTrustDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisionTrustDatabase.h; sourceTree = "<group>"; };
 		DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionTrustDatabase.m; sourceTree = "<group>"; };
 		DC9EA8BF17231E3400C3137D /* GuardianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianViewController.h; sourceTree = "<group>"; };
@@ -175,8 +183,6 @@
 		DCF49E02172A17F20076830E /* UpdateHomeLifeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateHomeLifeViewController.m; sourceTree = "<group>"; };
 		DCF49E04172A1BAA0076830E /* UpdateOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateOptionsViewController.h; sourceTree = "<group>"; };
 		DCF49E05172A1BAA0076830E /* UpdateOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateOptionsViewController.m; sourceTree = "<group>"; };
-		DCF49E0A172B4D3E0076830E /* Interactions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Interactions.h; sourceTree = "<group>"; };
-		DCF49E0B172B4D3F0076830E /* Interactions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Interactions.m; sourceTree = "<group>"; };
 		DCF49E13172B6CE30076830E /* AcademicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcademicViewController.h; sourceTree = "<group>"; };
 		DCF49E14172B6CE30076830E /* AcademicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcademicViewController.m; sourceTree = "<group>"; };
 		DCFC84041721A3F5003862D5 /* Project+SetupProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+SetupProject.h"; sourceTree = "<group>"; };
@@ -229,8 +235,8 @@
 				D50FF916171E69E400EFE78F /* GuardianStatus.m */,
 				DC9EA8C81723222900C3137D /* GuardianStatus+SetuptGuardianStatus.h */,
 				DC9EA8C91723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m */,
-				DCF49E0A172B4D3E0076830E /* Interactions.h */,
-				DCF49E0B172B4D3F0076830E /* Interactions.m */,
+				DC8BF77E172CBAFA00F31B94 /* Interactions.h */,
+				DC8BF77F172CBAFA00F31B94 /* Interactions.m */,
 				DCCB62511728B5AE00395C59 /* Interactions+SetupInteraction.h */,
 				DCCB62521728B5AE00395C59 /* Interactions+SetupInteraction.m */,
 				DCF49DF21729CC7D0076830E /* OptionCategories.h */,
@@ -276,6 +282,8 @@
 				DC9EA8D817233B7100C3137D /* AllChildrenViewController.m */,
 				DC9EA8BF17231E3400C3137D /* GuardianViewController.h */,
 				DC9EA8C017231E3400C3137D /* GuardianViewController.m */,
+				DC8BF775172CA75700F31B94 /* HealthViewController.h */,
+				DC8BF776172CA75700F31B94 /* HealthViewController.m */,
 				DC6534B71719D2CA00785378 /* HomeViewController.h */,
 				DC6534B81719D2CA00785378 /* HomeViewController.m */,
 				DC9EA8DE1723507800C3137D /* InputDataViewController.h */,
@@ -292,6 +300,8 @@
 				DC9EA8DC17234D8900C3137D /* RegisterGuardianViewController.m */,
 				DCAA152E1727465B00470392 /* SearchTableViewController.h */,
 				DCAA152F1727465B00470392 /* SearchTableViewController.m */,
+				DC8BF778172CB03F00F31B94 /* SpiritualViewController.h */,
+				DC8BF779172CB03F00F31B94 /* SpiritualViewController.m */,
 				DC9EA8E41724BA2100C3137D /* UpdateAcademicViewController.h */,
 				DC9EA8E51724BA2100C3137D /* UpdateAcademicViewController.m */,
 				DCF49E01172A17F20076830E /* UpdateHomeLifeViewController.h */,
@@ -502,8 +512,10 @@
 				DCF49E00172A04AA0076830E /* UpdateSpiritualViewController.m in Sources */,
 				DCF49E03172A17F20076830E /* UpdateHomeLifeViewController.m in Sources */,
 				DCF49E06172A1BAA0076830E /* UpdateOptionsViewController.m in Sources */,
-				DCF49E0C172B4D400076830E /* Interactions.m in Sources */,
 				DCF49E15172B6CE40076830E /* AcademicViewController.m in Sources */,
+				DC8BF777172CA75700F31B94 /* HealthViewController.m in Sources */,
+				DC8BF77A172CB04000F31B94 /* SpiritualViewController.m in Sources */,
+				DC8BF780172CBAFA00F31B94 /* Interactions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

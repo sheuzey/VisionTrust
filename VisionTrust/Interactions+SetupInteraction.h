@@ -24,6 +24,9 @@
                                      isHandicapped:(NSNumber *)handicapped
                                        schoolGrade:(NSString *)grade
                                      usSchoolGrade:(NSString *)usGrade
+                                        isBaptized:(NSString *)baptized
+                                           isSaved:(NSString *)saved
+                                 spiritualProgress:(NSString *)progress
                                           forChild:(Child *)child
                                            byStaff:(User *)staff
                                          inContext:(NSManagedObjectContext *)context;

@@ -38,10 +38,13 @@
         <attribute name="ifNotAttending" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="interactionDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isAttending" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isBaptized" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isHandicapped" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isSaved" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pictureTaken" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="registeredBy" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolGrade" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="spiritualProgress" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="usSchoolGrade" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="child" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Child" inverseName="interactions" inverseEntity="Child" syncable="YES"/>
         <relationship name="staff" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="interactions" inverseEntity="User" syncable="YES"/>
@@ -85,7 +88,7 @@
         <element name="Child" positionX="99" positionY="63" width="128" height="253"/>
         <element name="Guardian" positionX="306" positionY="72" width="128" height="118"/>
         <element name="GuardianStatus" positionX="502" positionY="51" width="128" height="75"/>
-        <element name="Interactions" positionX="-27" positionY="389" width="198" height="313"/>
+        <element name="Interactions" positionX="-27" positionY="389" width="198" height="358"/>
         <element name="OccupationType" positionX="502" positionY="261" width="128" height="75"/>
         <element name="OptionCategories" positionX="306" positionY="722" width="128" height="73"/>
         <element name="Project" positionX="-108" positionY="-9" width="128" height="88"/>

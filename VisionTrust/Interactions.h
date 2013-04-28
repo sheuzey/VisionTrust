@@ -2,7 +2,7 @@
 //  Interactions.h
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/26/13.
+//  Created by Stephen Heuzey on 4/27/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
@@ -28,6 +28,9 @@
 @property (nonatomic, retain) NSString * registeredBy;
 @property (nonatomic, retain) NSString * schoolGrade;
 @property (nonatomic, retain) NSString * usSchoolGrade;
+@property (nonatomic, retain) NSString * isBaptized;
+@property (nonatomic, retain) NSString * isSaved;
+@property (nonatomic, retain) NSString * spiritualProgress;
 @property (nonatomic, retain) Child *child;
 @property (nonatomic, retain) User *staff;
 @property (nonatomic, retain) Update *update;

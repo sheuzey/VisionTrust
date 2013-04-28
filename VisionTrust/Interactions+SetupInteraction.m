@@ -24,9 +24,12 @@
                                      isHandicapped:(NSNumber *)handicapped
                                        schoolGrade:(NSString *)grade
                                      usSchoolGrade:(NSString *)usGrade
+                                        isBaptized:(NSString *)baptized
+                                           isSaved:(NSString *)saved
+                                 spiritualProgress:(NSString *)progress
                                           forChild:(Child *)child
                                            byStaff:(User *)staff
-                                         inContext:(NSManagedObjectContext *)context
+                                         inContext:(NSManagedObjectContext *)context;
 {
     Interactions *interaction = [NSEntityDescription insertNewObjectForEntityForName:@"Interactions"
                                               inManagedObjectContext:context];
@@ -44,6 +47,9 @@
     interaction.isHandicapped = handicapped;
     interaction.schoolGrade = grade;
     interaction.usSchoolGrade = usGrade;
+    interaction.isBaptized = baptized;
+    interaction.isSaved = saved;
+    interaction.spiritualProgress = progress;
     interaction.child = child;
     interaction.staff = staff;
     interaction.interactionDate = [NSDate date];

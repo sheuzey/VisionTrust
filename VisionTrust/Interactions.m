@@ -2,7 +2,7 @@
 //  Interactions.m
 //  VisionTrust
 //
-//  Created by Stephen Heuzey on 4/26/13.
+//  Created by Stephen Heuzey on 4/27/13.
 //  Copyright (c) 2013 Stephen Heuzey. All rights reserved.
 //
 
@@ -29,6 +29,9 @@
 @dynamic registeredBy;
 @dynamic schoolGrade;
 @dynamic usSchoolGrade;
+@dynamic isBaptized;
+@dynamic isSaved;
+@dynamic spiritualProgress;
 @dynamic child;
 @dynamic staff;
 @dynamic update;

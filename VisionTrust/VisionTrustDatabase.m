@@ -241,6 +241,9 @@
                                          isHandicapped:nil
                                            schoolGrade:nil
                                          usSchoolGrade:nil
+                                            isBaptized:nil
+                                               isSaved:nil
+                                     spiritualProgress:nil
                                               forChild:c1
                                                byStaff:nil
                                              inContext:self.database.managedObjectContext];
@@ -259,6 +262,9 @@
                                          isHandicapped:nil
                                            schoolGrade:nil
                                          usSchoolGrade:nil
+                                            isBaptized:nil
+                                               isSaved:nil
+                                     spiritualProgress:nil
                                               forChild:c2
                                                byStaff:nil
                                              inContext:self.database.managedObjectContext];
@@ -277,6 +283,9 @@
                                          isHandicapped:nil
                                            schoolGrade:nil
                                          usSchoolGrade:nil
+                                            isBaptized:nil
+                                               isSaved:nil
+                                     spiritualProgress:nil
                                               forChild:c3
                                                byStaff:nil
                                              inContext:self.database.managedObjectContext];
@@ -295,6 +304,9 @@
                                          isHandicapped:nil
                                            schoolGrade:nil
                                          usSchoolGrade:nil
+                                            isBaptized:nil
+                                               isSaved:nil
+                                     spiritualProgress:nil
                                               forChild:c4
                                                byStaff:nil
                                              inContext:self.database.managedObjectContext];
@@ -313,6 +325,9 @@
                                          isHandicapped:nil
                                            schoolGrade:nil
                                          usSchoolGrade:nil
+                                            isBaptized:nil
+                                               isSaved:nil
+                                     spiritualProgress:nil
                                               forChild:c5
                                                byStaff:nil
                                              inContext:self.database.managedObjectContext];
@@ -331,6 +346,9 @@
                                          isHandicapped:nil
                                            schoolGrade:nil
                                          usSchoolGrade:nil
+                                            isBaptized:nil
+                                               isSaved:nil
+                                     spiritualProgress:nil
                                               forChild:c6
                                                byStaff:nil
                                              inContext:self.database.managedObjectContext];
@@ -349,6 +367,9 @@
                                          isHandicapped:nil
                                            schoolGrade:nil
                                          usSchoolGrade:nil
+                                            isBaptized:nil
+                                               isSaved:nil
+                                     spiritualProgress:nil
                                               forChild:c7
                                                byStaff:nil
                                              inContext:self.database.managedObjectContext];
@@ -517,6 +538,9 @@
                                          isHandicapped:nil
                                            schoolGrade:nil
                                          usSchoolGrade:nil
+                                            isBaptized:nil
+                                               isSaved:nil
+                                     spiritualProgress:nil
                                               forChild:child
                                                byStaff:nil
                                              inContext:self.database.managedObjectContext];
@@ -547,8 +571,6 @@
         else
             taken = [[NSNumber alloc] initWithInt:0];
         
-        
-        
         Interactions *interaction = [Interactions interactionWithDepartureComments:nil
                                                                departureReasonCode:nil
                                                                        isattending:[NSNumber numberWithInt:1]
@@ -563,6 +585,9 @@
                                                                      isHandicapped:nil
                                                                        schoolGrade:[academicData valueForKey:GRADE]
                                                                      usSchoolGrade:[academicData valueForKey:GRADE]
+                                                                        isBaptized:[spiritualData valueForKey:BAPTISM]
+                                                                           isSaved:[spiritualData valueForKey:SALVATION]
+                                                                 spiritualProgress:[spiritualData valueForKey:PROGRESS]
                                                                           forChild:child
                                                                            byStaff:nil
                                                                          inContext:self.database.managedObjectContext];
@@ -590,7 +615,7 @@
                                                            inUpdate:update
                                                           inContext:self.database.managedObjectContext];
             //Create OptionCategories for spiritualData..
-            //Add Baptism data if exists..
+            /*//Add Baptism data if exists..
             if ([spiritualData valueForKey:BAPTISM])
                 [OptionCategories categoryWithDescription:[spiritualData valueForKey:BAPTISM]
                                                  inOption:spiritualOptions inContext:self.database.managedObjectContext];
@@ -603,7 +628,7 @@
             //Add spiritual progress data if exsits..
             if ([spiritualData valueForKey:PROGRESS])
                 [OptionCategories categoryWithDescription:[spiritualData valueForKey:PROGRESS]
-                                                 inOption:spiritualOptions inContext:self.database.managedObjectContext];
+                                                 inOption:spiritualOptions inContext:self.database.managedObjectContext];*/
             //Add all spiritual activities..
             for (NSString *activity in [spiritualData valueForKey:SPIRITUAL_ACTIVITIES]) {
                 if ([activity length] > 0)
