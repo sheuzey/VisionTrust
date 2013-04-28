@@ -547,7 +547,56 @@
     }];
 }
 
+- (void)removeGuardian:(Guardian *)guardian
+             fromChild:(Child *)child
+{
+    [self.database.managedObjectContext performBlock:^{
+        [child removeHasGuardiansObject:guardian];
+    }];
+}
+
+- (OccupationType *)getOccupationTypeWithStatus:(NSString *)status
+{
+    __block OccupationType *type;
+    [self.database.managedObjectContext performBlock:^{
+        type = [OccupationType typeWithDescription:status inContext:self.database.managedObjectContext];
+    }];
+    return type;
+}
+
+- (GuardianStatus *)getGuardianStatusWithStatus:(NSString *)status
+{
+    __block GuardianStatus *gStatus;
+    [self.database.managedObjectContext performBlock:^{
+        gStatus = [GuardianStatus statusWithDescription:status inContext:self.database.managedObjectContext];
+    }];
+    
+    return gStatus;
+}
+
+- (Guardian *)returnGuardianWithInfo:(NSMutableDictionary *)info
+{
+    __block Guardian *g;
+    [self.database.managedObjectContext performBlock:^{
+        
+        //Create guardian occupation..
+        OccupationType *occupation = [OccupationType typeWithDescription:[info valueForKey:OCCUPATION] inContext:self.database.managedObjectContext];
+        
+        //And status..
+        GuardianStatus *status = [GuardianStatus statusWithDescription:[info valueForKey:STATUS] inContext:self.database.managedObjectContext];
+        
+        g = [Guardian guardianWithFirstName:[info valueForKey:FIRST_NAME]
+                                   lastName:[info valueForKey:LAST_NAME]
+                             occupationType:occupation
+                             guardianStatus:status
+                                  inContext:self.database.managedObjectContext];
+    }];
+    return g;
+}
+
 - (void)updateChild:(Child *)child
+      withGuardians:(NSMutableArray *)guardians
+withUpdatdedProject:(NSString *)projectName
    WithAcademicData:(NSMutableDictionary *)academicData
          healthData:(NSMutableDictionary *)healthData
       spiritualData:(NSMutableDictionary *)spiritualData
@@ -570,6 +619,15 @@
             taken = [[NSNumber alloc] initWithInt:1];
         else
             taken = [[NSNumber alloc] initWithInt:0];
+        
+        //If project is updated, add to child..
+        if ([projectName length] > 0) {
+            NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Project"];
+            request.predicate = [NSPredicate predicateWithFormat:@"name = %@", projectName];
+            NSError *error = nil;
+            Project *project = [[self.database.managedObjectContext executeFetchRequest:request error:&error] lastObject];
+            child.isPartOfProject = project;
+        }
         
         Interactions *interaction = [Interactions interactionWithDepartureComments:nil
                                                                departureReasonCode:nil

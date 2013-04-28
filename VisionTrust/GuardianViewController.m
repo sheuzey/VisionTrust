@@ -9,7 +9,7 @@
 #import "GuardianViewController.h"
 #import "AllChildrenViewController.h"
 
-@interface GuardianViewController ()
+@interface GuardianViewController () <ExitAllChildrenProtocol>
 
 @end
 
@@ -19,6 +19,25 @@
 {
     [super viewDidLoad];
     self.title = @"Guardian";
+    
+    //(For use in viewing update)
+    //Done Button..
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
+    
+    //Title Label..
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 30)];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    [titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    [titleLabel setText:@"Guardian"];
+    UIBarButtonItem *titleButton = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
+    
+    //Add to array, then add to toolbar..
+    [barItems addObject:doneButton];
+    [barItems addObject:titleButton];
+    [self.navBar setItems:barItems animated:YES];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -99,7 +118,19 @@
     if ([[segue identifier] isEqualToString:@"GoToOtherChildren"]) {
         AllChildrenViewController *ocvc = (AllChildrenViewController *)segue.destinationViewController;
         ocvc.guardian = self.guardian;
+        ocvc.delegate = self;
     }
+}
+
+- (void)exitAllChildren
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+//Only for exiting to ViewUpdate controller..
+- (void)doneButtonPressed
+{
+    [self.delegate exitCategory];
 }
 
 @end

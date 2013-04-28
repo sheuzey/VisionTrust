@@ -470,17 +470,14 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.childData setValue:data forKey:FIRST_NAME];
     } else if ([self.selectedCellTitle isEqualToString:@"Last Name"]) {
         [self.childData setValue:data forKey:LAST_NAME];
-    } else if ([self.selectedCellTitle isEqualToString:@"Date of Birth"]) {
-        [self.childData setValue:data forKey:DOB];
     } else if ([self.selectedCellTitle isEqualToString:@"Address"]) {
         [self.childData setValue:data forKey:ADDRESS];
     } else if ([self.selectedCellTitle isEqualToString:@"City"]) {
         [self.childData setValue:data forKey:CITY];
     } else if ([self.selectedCellTitle isEqualToString:@"Country"]) {
         [self.childData setValue:data forKey:COUNTRY];
-    } else if ([self.selectedCellTitle isEqualToString:@"Project"]) {
-        [self.childData setValue:data forKey:PROJECT];
     }
+    
     [[self tableView] reloadData];
 }
 

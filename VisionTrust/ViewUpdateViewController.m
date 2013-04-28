@@ -47,8 +47,6 @@
         if ([i.interactionDate compare:self.date] == NSOrderedSame)
             self.selectedInteraction = i;
     }
-    
-    self.child = [super child];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -94,6 +92,10 @@
         HomeLifeViewController *hlvc = (HomeLifeViewController *)segue.destinationViewController;
         hlvc.interaction = self.selectedInteraction;
         hlvc.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
+        GuardianViewController *gvc = (GuardianViewController *)segue.destinationViewController;
+        gvc.guardian = [self.guardians objectAtIndex:self.selectedGuardianIndex];
+        gvc.delegate = self;
     }
 }
 

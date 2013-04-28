@@ -198,7 +198,6 @@
     } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
         GuardianViewController *gvc = (GuardianViewController *)segue.destinationViewController;
         gvc.guardian = [self.guardians objectAtIndex:self.selectedGuardianIndex];
-        gvc.child = self.child;
     }
 }
 

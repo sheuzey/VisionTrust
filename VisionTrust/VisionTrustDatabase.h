@@ -29,7 +29,16 @@
 - (void)registerChildWithGeneralInfo:(NSMutableDictionary *)general
                           healthInfo:(NSMutableDictionary *)health
                         andGuardians:(NSSet *)guardians;
+
+- (OccupationType *)getOccupationTypeWithStatus:(NSString *)status;
+
+- (GuardianStatus *)getGuardianStatusWithStatus:(NSString *)status;
+
+- (Guardian *)returnGuardianWithInfo:(NSMutableDictionary *)info;
+
 - (void)updateChild:(Child *)child
+      withGuardians:(NSMutableArray *)guardians
+withUpdatdedProject:(NSString *)projectName
    WithAcademicData:(NSMutableDictionary *)academicData
          healthData:(NSMutableDictionary *)healthData
       spiritualData:(NSMutableDictionary *)spiritualData

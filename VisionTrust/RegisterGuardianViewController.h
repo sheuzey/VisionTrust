@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "GuardianViewController.h"
-
-@class RegisterChildViewController;
+#import "VisionTrustDatabase.h"
 
 @protocol GuardianRegistrationProtocol
 
 - (void)guardianInfo:(NSMutableDictionary *)info;
+
+@optional
+- (void)giveBackUpdatedGuardian:(Guardian *)guardian;
 
 @end
 
@@ -21,6 +23,7 @@
 @interface RegisterGuardianViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableDictionary *guardianData;
+@property (nonatomic, strong) Guardian *guardian;
 @property (nonatomic, weak) id<GuardianRegistrationProtocol>delegate;
 
 @end

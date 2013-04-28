@@ -10,8 +10,16 @@
 #import "Guardian.h"
 #import "Child.h"
 
+@protocol ExitAllChildrenProtocol
+
+- (void)exitAllChildren;
+
+@end
+
 @interface AllChildrenViewController : UITableViewController
 
 @property (nonatomic, strong) Guardian *guardian;
+@property (nonatomic, weak) id<ExitAllChildrenProtocol>delegate;
+@property (strong, nonatomic) IBOutlet UIToolbar *navBar;
 
 @end

@@ -19,6 +19,25 @@
 {
     [super viewDidLoad];
     self.title = [NSString stringWithFormat:@"%@ %@", self.guardian.firstName, self.guardian.lastName];
+    
+    //(For use in viewing update)
+    //Done Button..
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonPressed)];
+    
+    //Title Label..
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 180, 30)];
+    [titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [titleLabel setTextColor:[UIColor whiteColor]];
+    [titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+    [titleLabel setBackgroundColor:[UIColor clearColor]];
+    [titleLabel setText:[NSString stringWithFormat:@"%@ %@", self.guardian.firstName, self.guardian.lastName]];
+    UIBarButtonItem *titleButton = [[UIBarButtonItem alloc] initWithCustomView:titleLabel];
+    
+    //Add to array, then add to toolbar..
+    [barItems addObject:doneButton];
+    [barItems addObject:titleButton];
+    [self.navBar setItems:barItems animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,6 +87,12 @@
         PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
         pvc.child = self.selectedChild;
     }
+}
+
+//Only for exiting to ViewUpdate controller..
+- (void)doneButtonPressed
+{
+    [self.delegate exitAllChildren];
 }
 
 @end

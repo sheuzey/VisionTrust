@@ -11,11 +11,13 @@
 #import "Guardian.h"
 #import "OccupationType.h"
 #import "GuardianStatus.h"
+#import "ViewUpdateViewController.h"
 
 @interface GuardianViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) Child *child;
 @property (nonatomic, strong) Guardian *guardian;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) id<ExitCategory>delegate;
+@property (strong, nonatomic) IBOutlet UIToolbar *navBar;
 
 @end
