@@ -469,6 +469,20 @@
     }];
 }
 
+- (void)removeGuardiansWithNoChildren
+{
+    [self.database.managedObjectContext performBlock:^{
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Guardian"];
+        NSError *error = nil;
+        NSArray *allGuardians = [[NSArray alloc] initWithArray:[self.database.managedObjectContext executeFetchRequest:request error:&error]];
+        for (Guardian *g in allGuardians) {
+            if ([[g.guardianOf allObjects] count] == 0) {
+                [self.database.managedObjectContext deleteObject:g];
+            }
+        }
+    }];
+}
+
 - (void)registerChildWithGeneralInfo:(NSMutableDictionary *)general
                           healthInfo:(NSMutableDictionary *)health
                         andGuardians:(NSSet *)guardians
@@ -547,53 +561,6 @@
     }];
 }
 
-- (OccupationType *)getOccupationTypeWithStatus:(NSString *)status
-{
-    __block OccupationType *type;
-    [self.database.managedObjectContext performBlock:^{
-        type = [OccupationType typeWithDescription:status inContext:self.database.managedObjectContext];
-    }];
-    return type;
-}
-
-- (GuardianStatus *)getGuardianStatusWithStatus:(NSString *)status
-{
-    __block GuardianStatus *gStatus;
-    [self.database.managedObjectContext performBlock:^{
-        gStatus = [GuardianStatus statusWithDescription:status inContext:self.database.managedObjectContext];
-    }];
-    
-    return gStatus;
-}
-
-- (void)removeGuardian:(Guardian *)guardian
-             fromChild:(Child *)child
-{
-    [self.database.managedObjectContext performBlock:^{
-        [child removeHasGuardiansObject:guardian];
-    }];
-}
-
-- (void)addGuardianFromInfo:(NSMutableDictionary *)info
-                   forChild:(Child *)child
-{
-    [self.database.managedObjectContext performBlock:^{
-        
-        //Create guardian occupation..
-        OccupationType *occupation = [OccupationType typeWithDescription:[info valueForKey:OCCUPATION] inContext:self.database.managedObjectContext];
-        
-        //And status..
-        GuardianStatus *status = [GuardianStatus statusWithDescription:[info valueForKey:STATUS] inContext:self.database.managedObjectContext];
-        
-        Guardian *g = [Guardian guardianWithFirstName:[info valueForKey:FIRST_NAME]
-                                             lastName:[info valueForKey:LAST_NAME]
-                                       occupationType:occupation
-                                       guardianStatus:status
-                                            inContext:self.database.managedObjectContext];
-        [child addHasGuardiansObject:g];
-    }];
-}
-
 - (void)updateChild:(Child *)child
       withGuardians:(NSMutableArray *)guardians
 withUpdatdedProject:(NSString *)projectName
@@ -631,9 +598,28 @@ withUpdatdedProject:(NSString *)projectName
         
         //Delete childs old list of guardians, and add new list..
         [child removeHasGuardians:child.hasGuardians];
-        for (Guardian *g in guardians) {
-            [child addHasGuardiansObject:g];
+        
+        //For each guardian dictionary in guardian set, create/get and add to final array. Create NSSet from final array..
+        NSMutableArray *gArray = [[NSMutableArray alloc] init];
+        for (NSMutableDictionary *dict in guardians) {
+            
+            //Create guardian occupation..
+            OccupationType *occupation = [OccupationType typeWithDescription:[dict valueForKey:OCCUPATION]
+                                                                   inContext:self.database.managedObjectContext];
+            
+            //And status..
+            GuardianStatus *status = [GuardianStatus statusWithDescription:[dict valueForKey:STATUS]
+                                                                 inContext:self.database.managedObjectContext];
+            
+            Guardian *temp = [Guardian guardianWithFirstName:[dict valueForKey:FIRST_NAME]
+                                                    lastName:[dict valueForKey:LAST_NAME]
+                                              occupationType:occupation
+                                              guardianStatus:status
+                                                   inContext:self.database.managedObjectContext];
+            [gArray addObject:temp];
         }
+        
+        child.hasGuardians = [[NSSet alloc] initWithArray:gArray];
         
         Interactions *interaction = [Interactions interactionWithDepartureComments:nil
                                                                departureReasonCode:nil
@@ -736,6 +722,9 @@ withUpdatdedProject:(NSString *)projectName
             }
         }
     }];
+    
+    //If any guardians have no assigned children, then remove from db..
+    [self removeGuardiansWithNoChildren];
 }
 
 + (VisionTrustDatabase *)vtDatabase

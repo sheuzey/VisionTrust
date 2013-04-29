@@ -12,9 +12,7 @@
 
 @protocol GuardianRegistrationProtocol
 
-@optional
 - (void)guardianInfo:(NSMutableDictionary *)info;
-- (void)giveBackGuardian:(Guardian *)guardian;
 
 @end
 
@@ -22,7 +20,6 @@
 @interface RegisterGuardianViewController : UITableViewController
 
 @property (nonatomic, strong) NSMutableDictionary *guardianData;
-@property (nonatomic, strong) Guardian *guardian;
 @property BOOL giveBackGuardianFromData;
 @property (nonatomic, weak) id<GuardianRegistrationProtocol>delegate;
 

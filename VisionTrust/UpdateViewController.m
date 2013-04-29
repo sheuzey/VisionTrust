@@ -40,7 +40,11 @@
 @implementation UpdateViewController
 
 //For updating guardians..
-#define FIRST_NAME @"firstName"
+#define FNAME @"firstName"
+#define LNAME @"lastName"
+#define OCCUPATION @"occupation"
+#define STATUS @"status"
+
 #define FAVORITE_SUBJECTS @"favoriteSubjects"
 #define SPIRITUAL_ACTIVITIES @"spiritualActivities"
 
@@ -87,8 +91,14 @@
     self.datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 40, 0, 0)];
     self.datePicker.datePickerMode = UIDatePickerModeDate;
     
-    //Create array of original guardians..
-    self.guardians = [[NSMutableArray alloc] initWithArray:[self.child.hasGuardians allObjects]];
+    //Convert all guardian data into dictionaries and add to array..
+    self.guardians = [[NSMutableArray alloc] init];
+    for (Guardian *g in [self.child.hasGuardians allObjects]) {
+        [self.guardians addObject:[[NSMutableDictionary alloc] initWithObjectsAndKeys:g.firstName, FNAME,
+                                  g.lastName, LNAME,
+                                  g.hasOccupationType.occupationTypeDescription, OCCUPATION,
+                                  g.hasGuardianStatus.guardianStatusDescription, STATUS, nil]];
+    }
 }
 
 - (void)cancelButtonPressed
@@ -301,7 +311,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.database removeGuardian:[self.guardians objectAtIndex:[indexPath row]] fromChild:self.child];
         [self.guardians removeObjectAtIndex:[indexPath row]];
     }
     [self.tableView deleteRowsAtIndexPaths:[[NSArray alloc] initWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationRight];
@@ -391,8 +400,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
             
             //If row is less then number of guardians, set cell row text to guardian first/last name
             if ([indexPath row] < [self.guardians count]) {
-                Guardian *guardian = [self.guardians objectAtIndex:[indexPath row]];
-                cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", guardian.firstName, guardian.lastName];
+                NSMutableDictionary *d = [self.guardians objectAtIndex:[indexPath row]];
+                cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", [d valueForKey:FNAME], [d valueForKey:LNAME]];
             } else {
                 cell.textLabel.text = @"Add Guardian";
             }
@@ -500,10 +509,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         rgvc.delegate = self;
         if ([self.selectedCellTitle isEqualToString:@"NewGuardian"]) {
             rgvc.guardianData = [[NSMutableDictionary alloc] init];
-            rgvc.giveBackGuardianFromData = YES;
         } else {
-            rgvc.guardian = [self.guardians objectAtIndex:self.selectedGuardianIndex];
-            rgvc.giveBackGuardianFromData = NO;
+            rgvc.guardianData = [[NSMutableDictionary alloc] initWithDictionary:[self.guardians objectAtIndex:self.selectedGuardianIndex]];
         }
     }
 }
@@ -529,6 +536,19 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)homeInfo:(NSMutableDictionary *)info
 {
     self.homeData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)guardianInfo:(NSMutableDictionary *)info
+{
+    //If new guardian, add to guardians array. Else update..
+    if ([self.selectedCellTitle isEqualToString:@"NewGuardian"]) {
+        if ([info valueForKey:FNAME])
+            [self.guardians addObject:info];
+    } else {
+        [self.guardians replaceObjectAtIndex:self.selectedGuardianIndex withObject:info];
+    }
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -592,30 +612,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
     
     [[self tableView] reloadData];
-}
-
-- (void)giveBackGuardian:(Guardian *)guardian
-{
-    [self.guardians replaceObjectAtIndex:self.selectedGuardianIndex withObject:guardian];
-    
-    [self.tableView reloadData];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)guardianInfo:(NSMutableDictionary *)info
-{
-    if ([info valueForKey:FIRST_NAME]) {
-        dispatch_group_t group = dispatch_group_create();
-        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [self.database addGuardianFromInfo:info forChild:self.child];
-        });
-        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
-            self.guardians = [[NSMutableArray alloc] initWithArray:[self.child.hasGuardians allObjects]];
-            [self.tableView reloadData];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        });
-    } else
-        [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

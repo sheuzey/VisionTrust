@@ -30,16 +30,6 @@
                           healthInfo:(NSMutableDictionary *)health
                         andGuardians:(NSSet *)guardians;
 
-- (OccupationType *)getOccupationTypeWithStatus:(NSString *)status;
-
-- (GuardianStatus *)getGuardianStatusWithStatus:(NSString *)status;
-
-- (void)removeGuardian:(Guardian *)guardian
-             fromChild:(Child *)child;
-
-- (void)addGuardianFromInfo:(NSMutableDictionary *)info
-                         forChild:(Child *)child;
-
 - (void)updateChild:(Child *)child
       withGuardians:(NSMutableArray *)guardians
 withUpdatdedProject:(NSString *)projectName
