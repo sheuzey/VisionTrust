@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSString *selectedCellTitle;
 @property (nonatomic, strong) NSString *dataString;
 @property (nonatomic, strong) NSString *updatedProjectName;
+@property BOOL giveBackGuardianFromData;
 @end
 
 @implementation UpdateViewController
@@ -300,6 +301,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.database removeGuardian:[self.guardians objectAtIndex:[indexPath row]] fromChild:self.child];
         [self.guardians removeObjectAtIndex:[indexPath row]];
     }
     [self.tableView deleteRowsAtIndexPaths:[[NSArray alloc] initWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationRight];
@@ -498,8 +500,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         rgvc.delegate = self;
         if ([self.selectedCellTitle isEqualToString:@"NewGuardian"]) {
             rgvc.guardianData = [[NSMutableDictionary alloc] init];
+            rgvc.giveBackGuardianFromData = YES;
         } else {
             rgvc.guardian = [self.guardians objectAtIndex:self.selectedGuardianIndex];
+            rgvc.giveBackGuardianFromData = NO;
         }
     }
 }
@@ -590,21 +594,28 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [[self tableView] reloadData];
 }
 
-- (void)guardianInfo:(NSMutableDictionary *)info
+- (void)giveBackGuardian:(Guardian *)guardian
 {
-    //Create guardian and add to guardians array..
-    if ([info valueForKey:FIRST_NAME])
-        [self.guardians addObject:[self.database returnGuardianWithInfo:info]];
-        
+    [self.guardians replaceObjectAtIndex:self.selectedGuardianIndex withObject:guardian];
+    
     [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)giveBackUpdatedGuardian:(Guardian *)guardian
+- (void)guardianInfo:(NSMutableDictionary *)info
 {
-    [self.guardians replaceObjectAtIndex:self.selectedGuardianIndex withObject:guardian];
-    [self.tableView reloadData];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([info valueForKey:FIRST_NAME]) {
+        dispatch_group_t group = dispatch_group_create();
+        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            [self.database addGuardianFromInfo:info forChild:self.child];
+        });
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            self.guardians = [[NSMutableArray alloc] initWithArray:[self.child.hasGuardians allObjects]];
+            [self.tableView reloadData];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
+    } else
+        [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

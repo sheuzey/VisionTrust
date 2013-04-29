@@ -12,10 +12,9 @@
 
 @protocol GuardianRegistrationProtocol
 
-- (void)guardianInfo:(NSMutableDictionary *)info;
-
 @optional
-- (void)giveBackUpdatedGuardian:(Guardian *)guardian;
+- (void)guardianInfo:(NSMutableDictionary *)info;
+- (void)giveBackGuardian:(Guardian *)guardian;
 
 @end
 
@@ -24,6 +23,7 @@
 
 @property (nonatomic, strong) NSMutableDictionary *guardianData;
 @property (nonatomic, strong) Guardian *guardian;
+@property BOOL giveBackGuardianFromData;
 @property (nonatomic, weak) id<GuardianRegistrationProtocol>delegate;
 
 @end

@@ -34,7 +34,11 @@
 
 - (GuardianStatus *)getGuardianStatusWithStatus:(NSString *)status;
 
-- (Guardian *)returnGuardianWithInfo:(NSMutableDictionary *)info;
+- (void)removeGuardian:(Guardian *)guardian
+             fromChild:(Child *)child;
+
+- (void)addGuardianFromInfo:(NSMutableDictionary *)info
+                         forChild:(Child *)child;
 
 - (void)updateChild:(Child *)child
       withGuardians:(NSMutableArray *)guardians

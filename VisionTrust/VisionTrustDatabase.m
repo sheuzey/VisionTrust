@@ -547,14 +547,6 @@
     }];
 }
 
-- (void)removeGuardian:(Guardian *)guardian
-             fromChild:(Child *)child
-{
-    [self.database.managedObjectContext performBlock:^{
-        [child removeHasGuardiansObject:guardian];
-    }];
-}
-
 - (OccupationType *)getOccupationTypeWithStatus:(NSString *)status
 {
     __block OccupationType *type;
@@ -574,9 +566,17 @@
     return gStatus;
 }
 
-- (Guardian *)returnGuardianWithInfo:(NSMutableDictionary *)info
+- (void)removeGuardian:(Guardian *)guardian
+             fromChild:(Child *)child
 {
-    __block Guardian *g;
+    [self.database.managedObjectContext performBlock:^{
+        [child removeHasGuardiansObject:guardian];
+    }];
+}
+
+- (void)addGuardianFromInfo:(NSMutableDictionary *)info
+                   forChild:(Child *)child
+{
     [self.database.managedObjectContext performBlock:^{
         
         //Create guardian occupation..
@@ -585,13 +585,13 @@
         //And status..
         GuardianStatus *status = [GuardianStatus statusWithDescription:[info valueForKey:STATUS] inContext:self.database.managedObjectContext];
         
-        g = [Guardian guardianWithFirstName:[info valueForKey:FIRST_NAME]
-                                   lastName:[info valueForKey:LAST_NAME]
-                             occupationType:occupation
-                             guardianStatus:status
-                                  inContext:self.database.managedObjectContext];
+        Guardian *g = [Guardian guardianWithFirstName:[info valueForKey:FIRST_NAME]
+                                             lastName:[info valueForKey:LAST_NAME]
+                                       occupationType:occupation
+                                       guardianStatus:status
+                                            inContext:self.database.managedObjectContext];
+        [child addHasGuardiansObject:g];
     }];
-    return g;
 }
 
 - (void)updateChild:(Child *)child
@@ -627,6 +627,12 @@ withUpdatdedProject:(NSString *)projectName
             NSError *error = nil;
             Project *project = [[self.database.managedObjectContext executeFetchRequest:request error:&error] lastObject];
             child.isPartOfProject = project;
+        }
+        
+        //Delete childs old list of guardians, and add new list..
+        [child removeHasGuardians:child.hasGuardians];
+        for (Guardian *g in guardians) {
+            [child addHasGuardiansObject:g];
         }
         
         Interactions *interaction = [Interactions interactionWithDepartureComments:nil

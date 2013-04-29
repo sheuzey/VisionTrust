@@ -26,6 +26,7 @@
 {
     [super viewDidLoad];
     self.title = @"Guardian";
+    self.database = [VisionTrustDatabase vtDatabase];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -181,10 +182,15 @@
 
 
 - (IBAction)doneButtonPressed:(id)sender {
+    
     if (self.guardian)
-        [self.delegate giveBackUpdatedGuardian:self.guardian];
+        [self.delegate giveBackGuardian:self.guardian];
+    else if (self.giveBackGuardianFromData) {
+        [self.delegate guardianInfo:self.guardianData];
+    }
     else
         [self.delegate guardianInfo:self.guardianData];
+    
 }
 
 @end
