@@ -39,21 +39,14 @@
     [self.view sendSubviewToBack:tv];
     
     //Setup tableView..
-    if (!self.tableView)
+    if (!self.tableView) {
         self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 170, 320, 278) style:UITableViewStyleGrouped];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.backgroundView = nil;
-    self.tableView.directionalLockEnabled = YES;
-    
-    //Set struts..
-    self.tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
-                                       UIViewAutoresizingFlexibleLeftMargin |
-                                       UIViewAutoresizingFlexibleRightMargin |
-                                       UIViewAutoresizingFlexibleHeight |
-                                       UIViewAutoresizingFlexibleTopMargin |
-                                       UIViewAutoresizingFlexibleBottomMargin);
-    [self.view addSubview:self.tableView];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        self.tableView.backgroundView = nil;
+        self.tableView.directionalLockEnabled = YES;
+        [self.view addSubview:self.tableView];
+    }
     
     //Setup imageView..
     if (!self.childImageView)
@@ -177,23 +170,39 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //If controller is a child, perform parent segue. Else, perform own segue..
     if ([indexPath section] > 0) {
         switch ([indexPath section]) {
             case 1:
-                [self performSegueWithIdentifier:@"GoToAcademic" sender:self];
+                if ([self parentViewController])
+                    [[self parentViewController] performSegueWithIdentifier:@"GoToAcademic" sender:self];
+                else
+                    [self performSegueWithIdentifier:@"GoToAcademic" sender:self];
                 break;
             case 2:
-                [self performSegueWithIdentifier:@"GoToHealth" sender:self];
+                if ([self parentViewController])
+                    [[self parentViewController] performSegueWithIdentifier:@"GoToHealth" sender:self];
+                else
+                    [self performSegueWithIdentifier:@"GoToHealth" sender:self];
                 break;
             case 3:
-                [self performSegueWithIdentifier:@"GoToSpiritual" sender:self];
+                if ([self parentViewController])
+                    [[self parentViewController] performSegueWithIdentifier:@"GoToSpiritual" sender:self];
+                else
+                    [self performSegueWithIdentifier:@"GoToSpiritual" sender:self];
                 break;
             case 4:
-                [self performSegueWithIdentifier:@"GoToHomeLife" sender:self];
+                if ([self parentViewController])
+                    [[self parentViewController] performSegueWithIdentifier:@"GoToHomeLife" sender:self];
+                else
+                    [self performSegueWithIdentifier:@"GoToHomeLife" sender:self];
                 break;
             case 5:
                 self.selectedGuardianIndex = [indexPath row];
-                [self performSegueWithIdentifier:@"GoToGuardian" sender:self];
+                if ([self parentViewController])
+                    [[self parentViewController] performSegueWithIdentifier:@"GoToGuardian" sender:self];
+                else
+                    [self performSegueWithIdentifier:@"GoToGuardian" sender:self];
                 break;
         }
     }

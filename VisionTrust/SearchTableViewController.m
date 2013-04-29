@@ -128,7 +128,7 @@
         //PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
         //pvc.child = self.selectedChild;
         PageRootViewController *prvc = (PageRootViewController *)segue.destinationViewController;
-        prvc.selectedChildIndex = self.selectedIndex;
+        prvc.currentController = self.selectedIndex;
         prvc.childList = [[NSArray alloc] initWithArray:self.searchData];
     } else if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
         UpdateListViewController *ulvc = (UpdateListViewController *)segue.destinationViewController;

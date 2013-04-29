@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "PersonalViewController.h"
+#import "Child.h"
+#import "Guardian.h"
+#import "Project.h"
 
 @interface PageRootViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSArray *childList;
-@property NSInteger selectedChildIndex;
+@property NSUInteger currentController;
 
 @end

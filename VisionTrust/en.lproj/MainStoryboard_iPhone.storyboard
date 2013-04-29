@@ -962,7 +962,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="ls8-Ei-zia" style="IBUITableViewCellStyleDefault" id="asu-zt-Khq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="ls8-Ei-zia" detailTextLabel="ITk-Fq-wjP" style="IBUITableViewCellStyleValue1" id="asu-zt-Khq">
                                         <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -970,10 +970,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ls8-Ei-zia">
-                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
+                                                    <rect key="frame" x="10" y="11" width="35" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ITk-Fq-wjP">
+                                                    <rect key="frame" x="226" y="11" width="44" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
@@ -1022,6 +1029,7 @@
                         <segue destination="fGJ-WN-tW7" kind="modal" identifier="GoToHealth" modalTransitionStyle="crossDissolve" id="vE5-hZ-Db5"/>
                         <segue destination="rYk-P1-bLm" kind="modal" identifier="GoToSpiritual" modalTransitionStyle="crossDissolve" id="63f-gs-yNA"/>
                         <segue destination="CHr-aQ-M5j" kind="modal" identifier="GoToHomeLife" modalTransitionStyle="crossDissolve" id="bSV-l4-2bi"/>
+                        <segue destination="cp8-vZ-ouR" kind="modal" identifier="InputData" modalTransitionStyle="partialCurl" id="7P5-2n-N5f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0K-Xy-a9A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1075,7 +1083,7 @@
         <!--Page Root View Controller-->
         <scene sceneID="iEh-DK-rZf">
             <objects>
-                <viewController id="S9y-Yf-aRM" customClass="PageRootViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="" id="S9y-Yf-aRM" customClass="PageRootViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jyh-QR-XoL">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1690,6 +1698,154 @@
             <point key="canvasLocation" x="5370" y="481"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AcademicViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AcademicViewController.h"/>
+        </class>
+        <class className="AdvancedSearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AdvancedSearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="AllChildrenViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AllChildrenViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navBar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="Cell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Cell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CustomSearchCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomSearchCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cityCountry" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fullName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="image" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="project" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="GuardianViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GuardianViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="HealthViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HealthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonPressed:"/>
+            </relationships>
+        </class>
+        <class className="HomeLifeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeLifeViewController.h"/>
+        </class>
+        <class className="HomeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="menuCollection" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="welcomeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="InputDataViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/InputDataViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="LoginViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="loginButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="loginTable" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="PageRootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PageRootViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="PersonalViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PersonalViewController.h"/>
+        </class>
+        <class className="RegisterChildViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterChildViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="RegisterGuardianViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterGuardianViewController.h"/>
+        </class>
+        <class className="RegisterHealthViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RegisterHealthViewController.h"/>
+        </class>
+        <class className="SearchTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SearchTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="SpiritualViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SpiritualViewController.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UpdateAcademicViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateAcademicViewController.h"/>
+        </class>
+        <class className="UpdateHomeLifeViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateHomeLifeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonPressed:"/>
+            </relationships>
+        </class>
+        <class className="UpdateListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="UpdateOptionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateOptionsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="UpdateSpiritualViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateSpiritualViewController.h"/>
+        </class>
+        <class className="UpdateViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ViewUpdateViewController" superclassName="PersonalViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewUpdateViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="childImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="navBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -1697,6 +1853,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="eR7-SG-vHY"/>
-        <segue reference="s52-5D-Egm"/>
+        <segue reference="7P5-2n-N5f"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,12 +7,15 @@
 //
 
 #import "PageRootViewController.h"
-#import "Child.h"
+#import "GuardianViewController.h"
+#import "HealthViewController.h"
+#import "SpiritualViewController.h"
+#import "AcademicViewController.h"
+#import "HomeLifeViewController.h"
 
 @interface PageRootViewController ()
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *viewControllers;
-@property NSUInteger currentController;
 @end
 
 @implementation PageRootViewController
@@ -44,9 +47,14 @@
     // load the visible page
     // load the page on either side to avoid flashes when the user starts scrolling
     
-    for (int i = 0; i < self.selectedChildIndex + 1; i++) {
+    for (int i = 0; i < self.currentController + 1; i++) {
         [self loadScrollViewFromIndex:i];
     }
+    
+    CGRect frame = self.scrollView.frame;
+    frame.origin.x = CGRectGetWidth(frame) * self.currentController;
+    frame.origin.y = 0;
+    [self.scrollView scrollRectToVisible:frame animated:YES];
 }
 
 - (void)loadScrollViewFromIndex:(NSUInteger)index
@@ -73,7 +81,6 @@
         [self addChildViewController:controller];
         [self.scrollView addSubview:controller.view];
         [controller didMoveToParentViewController:self];
-        [self.scrollView scrollRectToVisible:frame animated:YES];
     }
 }
 
@@ -91,6 +98,37 @@
     [self loadScrollViewFromIndex:index + 1];
     
     // a possible optimization would be to unload the views+controllers which are no longer visible
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    PersonalViewController *pvc = (PersonalViewController *)[[self childViewControllers] objectAtIndex:self.currentController];
+    
+    //Get latest interaction data to send..
+    Interactions *latest;
+    for (Interactions *i in [pvc.child.interactions allObjects]) {
+        if (([latest.interactionDate compare:i.interactionDate] == NSOrderedAscending) || !latest) {
+            latest = i;
+        }
+    }
+    
+    if ([segue.identifier isEqualToString:@"GoToAcademic"]) {
+        AcademicViewController *avc = (AcademicViewController *)segue.destinationViewController;
+        avc.interaction = latest;
+    } else if ([segue.identifier isEqualToString:@"GoToHealth"]) {
+        HealthViewController *hvc = (HealthViewController *)segue.destinationViewController;
+        hvc.interaction = latest;
+    } else if ([segue.identifier isEqualToString:@"GoToSpiritual"]) {
+        SpiritualViewController *svc = (SpiritualViewController *)segue.destinationViewController;
+        svc.interaction = latest;
+    } else if ([segue.identifier isEqualToString:@"GoToHomeLife"]) {
+        HomeLifeViewController *hlvc = (HomeLifeViewController *)segue.destinationViewController;
+        hlvc.interaction = latest;
+    } else if ([segue.identifier isEqualToString:@"GoToGuardian"]) {
+        GuardianViewController *gvc = (GuardianViewController *)segue.destinationViewController;
+        gvc.guardian = [pvc.guardians objectAtIndex:pvc.selectedGuardianIndex];
+    }
+    
 }
 
 @end
