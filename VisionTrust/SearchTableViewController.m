@@ -12,10 +12,12 @@
 #import "CustomSearchCell.h"
 #import "AdvancedSearchViewController.h"
 #import "PersonalViewController.h"
+#import "PageRootViewController.h"
 #import "UpdateListViewController.h"
 
 @interface SearchTableViewController () <QuitAdvancedSearchProtocol, ExitListProtocol>
 @property (nonatomic, strong) Child *selectedChild;
+@property NSInteger selectedIndex;
 @end
 
 @implementation SearchTableViewController
@@ -110,7 +112,7 @@
     cell.image.layer.borderColor = [[UIColor blackColor] CGColor];
     
     cell.fullName.text = [NSString stringWithFormat:@"%@ %@", child.firstName, child.lastName];
-    cell.cityCountry.text = [NSString stringWithFormat:@"%@, %@", child.city, child.country];
+    cell.cityCountry.text = [NSString stringWithFormat:@"%@ %@", child.city, child.country];
     cell.project.text = child.isPartOfProject.name;
     [cell.contentView setBackgroundColor:[UIColor colorWithRed:205.0/255.0 green:201.0/255.0 blue:201.0/255.0 alpha:1]];
     
@@ -123,8 +125,11 @@
         AdvancedSearchViewController *asvc = (AdvancedSearchViewController *)segue.destinationViewController;
         asvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToPersonal"]) {
-        PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
-        pvc.child = self.selectedChild;
+        //PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
+        //pvc.child = self.selectedChild;
+        PageRootViewController *prvc = (PageRootViewController *)segue.destinationViewController;
+        prvc.selectedChildIndex = self.selectedIndex;
+        prvc.childList = [[NSArray alloc] initWithArray:self.searchData];
     } else if ([segue.identifier isEqualToString:@"GoToUpdate"]) {
         UpdateListViewController *ulvc = (UpdateListViewController *)segue.destinationViewController;
         ulvc.child = self.selectedChild;
@@ -152,6 +157,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedChild = [self.searchData objectAtIndex:indexPath.row];
+    self.selectedIndex = [indexPath row];
     
     if (self.goToUpdate)
         [self performSegueWithIdentifier:@"GoToUpdate" sender:self];

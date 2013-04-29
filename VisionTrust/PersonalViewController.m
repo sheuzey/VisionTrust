@@ -19,9 +19,18 @@
 
 @implementation PersonalViewController
 
+- (id)initWithChild:(Child *)child
+{
+    self.child = child;
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //Set title..
+    self.title = [NSString stringWithFormat:@"%@ %@", self.child.firstName, self.child.lastName];
     
     //Set background color..
     self.view.backgroundColor = [UIColor clearColor];
@@ -29,8 +38,26 @@
     [self.view addSubview:tv];
     [self.view sendSubviewToBack:tv];
     
-    //Setup title and picture..
-    self.title = [NSString stringWithFormat:@"%@ %@", self.child.firstName, self.child.lastName];
+    //Setup tableView..
+    if (!self.tableView)
+        self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 170, 320, 278) style:UITableViewStyleGrouped];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.backgroundView = nil;
+    self.tableView.directionalLockEnabled = YES;
+    
+    //Set struts..
+    self.tableView.autoresizingMask = (UIViewAutoresizingFlexibleWidth |
+                                       UIViewAutoresizingFlexibleLeftMargin |
+                                       UIViewAutoresizingFlexibleRightMargin |
+                                       UIViewAutoresizingFlexibleHeight |
+                                       UIViewAutoresizingFlexibleTopMargin |
+                                       UIViewAutoresizingFlexibleBottomMargin);
+    [self.view addSubview:self.tableView];
+    
+    //Setup imageView..
+    if (!self.childImageView)
+        self.childImageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 40, 110, 110)];
     
     //If image data exists, use data. Else use url..
     if (self.child.pictureData)
@@ -40,7 +67,7 @@
     
     self.childImageView.layer.masksToBounds = YES;
     self.childImageView.layer.cornerRadius = 5.0;
-    self.tableView.backgroundView = nil;
+    [self.view addSubview:self.childImageView];
     
     //Load guardians to array (for faster enumerations..
     self.guardians = [[NSArray alloc] initWithArray:[self.child.hasGuardians allObjects]];
@@ -65,9 +92,9 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+    if (cell == nil)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    
     switch ([indexPath section]) {
         case 0:
             switch ([indexPath row]) {

@@ -71,7 +71,16 @@
     self.childImageView.layer.cornerRadius = 10.0;
     self.childImageView.layer.borderWidth = 2.5;
 
-    self.childData = [[NSMutableDictionary alloc] init];
+    //Initialize childData with blank values (to prevent outputting 'null')..
+    self.childData = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"", FIRST_NAME,
+                      @"", LAST_NAME,
+                      @"", GENDER,
+                      @"", DOB,
+                      @"", ADDRESS,
+                      @"", CITY,
+                      @"", COUNTRY,
+                      @"", PROJECT, nil];
+    
     self.tableView.backgroundView = nil;
     self.title = @"Child Registration";
     

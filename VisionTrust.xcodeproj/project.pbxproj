@@ -35,6 +35,7 @@
 		DC8BF789172CBF3F00F31B94 /* Interactions.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF788172CBF3F00F31B94 /* Interactions.m */; };
 		DC8BF78C172CC03800F31B94 /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF78B172CC03800F31B94 /* Update.m */; };
 		DC8BF78F172D7C6800F31B94 /* ViewUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF78E172D7C6700F31B94 /* ViewUpdateViewController.m */; };
+		DC8BF792172EE5AC00F31B94 /* PageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF791172EE5AA00F31B94 /* PageRootViewController.m */; };
 		DC9205CB172037B70087B1C3 /* VisionTrustDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */; };
 		DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C017231E3400C3137D /* GuardianViewController.m */; };
 		DC9EA8CA1723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C91723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m */; };
@@ -55,7 +56,6 @@
 		DCE80B7A171784E700A0FE35 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B79171784E700A0FE35 /* Default@2x.png */; };
 		DCE80B7C171784E700A0FE35 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B7B171784E700A0FE35 /* Default-568h@2x.png */; };
 		DCE80B7F171784E700A0FE35 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B7D171784E700A0FE35 /* MainStoryboard_iPhone.storyboard */; };
-		DCE80B82171784E700A0FE35 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE80B80171784E700A0FE35 /* MainStoryboard_iPad.storyboard */; };
 		DCF1F97217298CDB0094E25D /* Child.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97117298CDB0094E25D /* Child.m */; };
 		DCF1F97517298E410094E25D /* Guardian.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97417298E410094E25D /* Guardian.m */; };
 		DCF1F97817298EEF0094E25D /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = DCF1F97717298EEF0094E25D /* Project.m */; };
@@ -124,6 +124,8 @@
 		DC8BF78B172CC03800F31B94 /* Update.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Update.m; sourceTree = "<group>"; };
 		DC8BF78D172D7C6700F31B94 /* ViewUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewUpdateViewController.h; sourceTree = "<group>"; };
 		DC8BF78E172D7C6700F31B94 /* ViewUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUpdateViewController.m; sourceTree = "<group>"; };
+		DC8BF790172EE5A800F31B94 /* PageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageRootViewController.h; sourceTree = "<group>"; };
+		DC8BF791172EE5AA00F31B94 /* PageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageRootViewController.m; sourceTree = "<group>"; };
 		DC9205C9172037B70087B1C3 /* VisionTrustDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisionTrustDatabase.h; sourceTree = "<group>"; };
 		DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionTrustDatabase.m; sourceTree = "<group>"; };
 		DC9EA8BF17231E3400C3137D /* GuardianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianViewController.h; sourceTree = "<group>"; };
@@ -162,7 +164,6 @@
 		DCE80B79171784E700A0FE35 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		DCE80B7B171784E700A0FE35 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DCE80B7E171784E700A0FE35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		DCE80B81171784E700A0FE35 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		DCF1F97017298CDB0094E25D /* Child.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Child.h; sourceTree = "<group>"; };
 		DCF1F97117298CDB0094E25D /* Child.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Child.m; sourceTree = "<group>"; };
 		DCF1F97317298E410094E25D /* Guardian.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Guardian.h; sourceTree = "<group>"; };
@@ -220,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				DCE80B7D171784E700A0FE35 /* MainStoryboard_iPhone.storyboard */,
-				DCE80B80171784E700A0FE35 /* MainStoryboard_iPad.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -298,6 +298,8 @@
 				DC9EA8DF1723507800C3137D /* InputDataViewController.m */,
 				DC65349617179CF900785378 /* LoginViewController.h */,
 				DC65349717179CF900785378 /* LoginViewController.m */,
+				DC8BF790172EE5A800F31B94 /* PageRootViewController.h */,
+				DC8BF791172EE5AA00F31B94 /* PageRootViewController.m */,
 				DCFC840D17220CC3003862D5 /* PersonalViewController.h */,
 				DCFC840E17220CC3003862D5 /* PersonalViewController.m */,
 				DCFC8410172225BE003862D5 /* RegisterChildViewController.h */,
@@ -461,7 +463,6 @@
 				DCE80B7A171784E700A0FE35 /* Default@2x.png in Resources */,
 				DCE80B7C171784E700A0FE35 /* Default-568h@2x.png in Resources */,
 				DCE80B7F171784E700A0FE35 /* MainStoryboard_iPhone.storyboard in Resources */,
-				DCE80B82171784E700A0FE35 /* MainStoryboard_iPad.storyboard in Resources */,
 				DC65348C17178F0400785378 /* VisionTrustLogo.jpg in Resources */,
 				DC6534C4171A6ACD00785378 /* signup.jpeg in Resources */,
 				DC6534C9171B08E900785378 /* profile.jpeg in Resources */,
@@ -528,6 +529,7 @@
 				DC8BF789172CBF3F00F31B94 /* Interactions.m in Sources */,
 				DC8BF78C172CC03800F31B94 /* Update.m in Sources */,
 				DC8BF78F172D7C6800F31B94 /* ViewUpdateViewController.m in Sources */,
+				DC8BF792172EE5AC00F31B94 /* PageRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,14 +550,6 @@
 				DCE80B7E171784E700A0FE35 /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		DCE80B80171784E700A0FE35 /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DCE80B81171784E700A0FE35 /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
