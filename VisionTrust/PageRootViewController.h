@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PersonalViewController.h"
 
-@interface PageRootViewController : UIViewController
+@interface PageRootViewController : UIViewController <UIScrollViewDelegate>
+
+@property (nonatomic, strong) NSArray *childList;
+@property NSInteger selectedChildIndex;
 
 @end
