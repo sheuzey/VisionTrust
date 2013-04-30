@@ -37,7 +37,7 @@
     
     // a page is the width of the scroll view
     self.scrollView.contentSize =
-    CGSizeMake(CGRectGetWidth(self.scrollView.frame) * numberPages, self.scrollView.frame.size.height - 50);
+    CGSizeMake(CGRectGetWidth(self.scrollView.frame) * numberPages, self.scrollView.frame.size.height - 45);
     
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.scrollsToTop = NO;

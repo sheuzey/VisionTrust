@@ -75,20 +75,6 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.selectedChild = [[self.guardian.guardianOf allObjects] objectAtIndex:[indexPath row]];
-    [self performSegueWithIdentifier:@"GoToPersonal" sender:self];
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([[segue identifier] isEqualToString:@"GoToPersonal"]) {
-        PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
-        pvc.child = self.selectedChild;
-    }
-}
-
 //Only for exiting to ViewUpdate controller..
 - (void)doneButtonPressed
 {

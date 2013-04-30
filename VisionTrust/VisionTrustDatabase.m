@@ -529,7 +529,7 @@
                                             city:[general valueForKey:CITY]
                                          picture:nil
                                      pictureData:[general valueForKey:PICTURE_DATA]
-                                          status:[general valueForKey:STATUS]
+                                          status:ACTIVE
                                        guardians:allGuardians
                                          project:[Project projectWithAddress:[general valueForKey:ADDRESS]
                                                                         name:[general valueForKey:PROJECT]
