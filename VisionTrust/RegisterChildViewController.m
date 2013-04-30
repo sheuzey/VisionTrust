@@ -40,6 +40,9 @@
 #define PROJECT @"project"
 #define PICTURE_DATA @"pictureData"
 
+#define OCCUPATION @"occupation"
+#define STATUS @"status"
+
 #define GENDER_TAG 100
 #define DOB_TAG 200
 #define PROJECT_TAG 300
@@ -464,7 +467,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         RegisterGuardianViewController *rgvc = (RegisterGuardianViewController *)segue.destinationViewController;
         rgvc.delegate = self;
         if ([self.selectedCellTitle isEqualToString:@"NewGuardian"]) {
-            rgvc.guardianData = [[NSMutableDictionary alloc] init];
+            rgvc.guardianData = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"", FIRST_NAME,
+                                 @"", LAST_NAME,
+                                 @"", OCCUPATION,
+                                 @"", STATUS, nil];
         } else {
             rgvc.guardianData = [[NSMutableDictionary alloc] initWithDictionary:[self.guardians objectAtIndex:self.selectedIndex]];
         }

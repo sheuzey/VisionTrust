@@ -36,7 +36,9 @@
     
     self.database = [VisionTrustDatabase vtDatabase];
     
+    //Set default parameter (Active)..
     self.parameters = [[NSMutableDictionary alloc] init];
+    [self.parameters setValue:@"Active" forKey:@"status"];
     
     self.searchTable.dataSource = self;
     self.searchTable.delegate = self;
