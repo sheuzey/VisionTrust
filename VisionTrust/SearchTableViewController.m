@@ -7,15 +7,16 @@
 //
 
 #import "SearchTableViewController.h"
-#import <QuartzCore/QuartzCore.h>
+#import "DepartureViewController.h"
 #import "Child.h"
 #import "CustomSearchCell.h"
 #import "AdvancedSearchViewController.h"
 #import "PersonalViewController.h"
 #import "PageRootViewController.h"
 #import "UpdateListViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface SearchTableViewController () <QuitAdvancedSearchProtocol, ExitListProtocol>
+@interface SearchTableViewController () <QuitAdvancedSearchProtocol, ExitListProtocol, ExitDepartureProtocol>
 @property (nonatomic, strong) Child *selectedChild;
 @property NSInteger selectedIndex;
 @end
@@ -125,8 +126,6 @@
         AdvancedSearchViewController *asvc = (AdvancedSearchViewController *)segue.destinationViewController;
         asvc.delegate = self;
     } else if ([segue.identifier isEqualToString:@"GoToPersonal"]) {
-        //PersonalViewController *pvc = (PersonalViewController *)segue.destinationViewController;
-        //pvc.child = self.selectedChild;
         PageRootViewController *prvc = (PageRootViewController *)segue.destinationViewController;
         prvc.currentController = self.selectedIndex;
         prvc.childList = [[NSArray alloc] initWithArray:self.searchData];
@@ -134,6 +133,10 @@
         UpdateListViewController *ulvc = (UpdateListViewController *)segue.destinationViewController;
         ulvc.child = self.selectedChild;
         ulvc.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"GoToDeparture"]) {
+        DepartureViewController *dvc = (DepartureViewController *)segue.destinationViewController;
+        dvc.child = self.selectedChild;
+        dvc.delegate = self;
     }
     [self.database saveDatabase];
 }
@@ -154,6 +157,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)exitDeparture
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedChild = [self.searchData objectAtIndex:indexPath.row];
@@ -161,6 +169,8 @@
     
     if (self.goToUpdate)
         [self performSegueWithIdentifier:@"GoToUpdate" sender:self];
+    else if (self.goToDeparture)
+        [self performSegueWithIdentifier:@"GoToDeparture" sender:self];
     else
         [self performSegueWithIdentifier:@"GoToPersonal" sender:self];
     

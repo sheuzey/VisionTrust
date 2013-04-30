@@ -38,6 +38,9 @@ withUpdatdedProject:(NSString *)projectName
       spiritualData:(NSMutableDictionary *)spiritualData
         andHomeData:(NSMutableDictionary *)homeData;
 
+- (void)departChild:(Child *)child
+  withDepartureData:(NSMutableDictionary *)departureData;
+
 //Create singletone instance..
 + (VisionTrustDatabase *)vtDatabase;
 @end

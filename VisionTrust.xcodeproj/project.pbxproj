@@ -36,6 +36,7 @@
 		DC8BF78C172CC03800F31B94 /* Update.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF78B172CC03800F31B94 /* Update.m */; };
 		DC8BF78F172D7C6800F31B94 /* ViewUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF78E172D7C6700F31B94 /* ViewUpdateViewController.m */; };
 		DC8BF792172EE5AC00F31B94 /* PageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF791172EE5AA00F31B94 /* PageRootViewController.m */; };
+		DC8BF795172F3C4F00F31B94 /* DepartureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF794172F3C4C00F31B94 /* DepartureViewController.m */; };
 		DC9205CB172037B70087B1C3 /* VisionTrustDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */; };
 		DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C017231E3400C3137D /* GuardianViewController.m */; };
 		DC9EA8CA1723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C91723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m */; };
@@ -126,6 +127,8 @@
 		DC8BF78E172D7C6700F31B94 /* ViewUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewUpdateViewController.m; sourceTree = "<group>"; };
 		DC8BF790172EE5A800F31B94 /* PageRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageRootViewController.h; sourceTree = "<group>"; };
 		DC8BF791172EE5AA00F31B94 /* PageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageRootViewController.m; sourceTree = "<group>"; };
+		DC8BF793172F3C4A00F31B94 /* DepartureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureViewController.h; sourceTree = "<group>"; };
+		DC8BF794172F3C4C00F31B94 /* DepartureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureViewController.m; sourceTree = "<group>"; };
 		DC9205C9172037B70087B1C3 /* VisionTrustDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisionTrustDatabase.h; sourceTree = "<group>"; };
 		DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionTrustDatabase.m; sourceTree = "<group>"; };
 		DC9EA8BF17231E3400C3137D /* GuardianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianViewController.h; sourceTree = "<group>"; };
@@ -286,6 +289,8 @@
 				DC6534E9171CC57D00785378 /* AdvancedSearchViewController.m */,
 				DC9EA8D717233B7100C3137D /* AllChildrenViewController.h */,
 				DC9EA8D817233B7100C3137D /* AllChildrenViewController.m */,
+				DC8BF793172F3C4A00F31B94 /* DepartureViewController.h */,
+				DC8BF794172F3C4C00F31B94 /* DepartureViewController.m */,
 				DC9EA8BF17231E3400C3137D /* GuardianViewController.h */,
 				DC9EA8C017231E3400C3137D /* GuardianViewController.m */,
 				DC8BF775172CA75700F31B94 /* HealthViewController.h */,
@@ -530,6 +535,7 @@
 				DC8BF78C172CC03800F31B94 /* Update.m in Sources */,
 				DC8BF78F172D7C6800F31B94 /* ViewUpdateViewController.m in Sources */,
 				DC8BF792172EE5AC00F31B94 /* PageRootViewController.m in Sources */,
+				DC8BF795172F3C4F00F31B94 /* DepartureViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

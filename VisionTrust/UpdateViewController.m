@@ -51,6 +51,7 @@
 #define GENDER_TAG 100
 #define DOB_TAG 200
 #define PROJECT_TAG 300
+#define STATUS_TAG 400
 
 - (void)viewDidLoad
 {
@@ -110,23 +111,23 @@
 {
     UIBarButtonItem *item = [self.pickerToolBar.items lastObject];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    NSString *string;
     switch (item.tag) {
         case DOB_TAG:
             [df setDateFormat:@"MM/dd/yyyy"];
-            string = [df stringFromDate:self.datePicker.date];
-            self.child.dob = string;
+            self.child.dob = [df stringFromDate:self.datePicker.date];
             break;
         case PROJECT_TAG:
-            string = [self.pickerData objectAtIndex:self.selectedPickerIndex];
-            self.updatedProjectName = string;
+            self.updatedProjectName = [self.pickerData objectAtIndex:self.selectedPickerIndex];
             break;
         case GENDER_TAG:
-            string = [self.pickerData objectAtIndex:self.selectedPickerIndex];
-            self.child.gender = string;
+            self.child.gender = [self.pickerData objectAtIndex:self.selectedPickerIndex];
+            break;
+        case STATUS_TAG:
+            self.child.status = [self.pickerData objectAtIndex:self.selectedPickerIndex];
             break;
     }
     [self.tableView reloadData];
+    self.selectedPickerIndex = 0;
     [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
 }
 
@@ -203,6 +204,13 @@
         
         //Add buttons to toolbar..
         [self addToolBarWithButtonsAndTitle:@"Gender" andTag:GENDER_TAG];
+    } else if ([self.selectedCellTitle isEqualToString:@"Status"]) {
+
+        //Setup status array..
+        self.pickerData = [[NSMutableArray alloc] initWithObjects:@"Active", @"Inactive", nil];
+        
+        //Add buttons to toolbar..
+        [self addToolBarWithButtonsAndTitle:@"Status" andTag:STATUS_TAG];
     }
     
     //Add picker and toolbar to actionSheet and show..
@@ -287,7 +295,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 7;
+        return 9;
     } else if (section == 5) {
         return [self.guardians count] + 1;
     }
@@ -378,6 +386,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                     else
                         cell.detailTextLabel.text = self.child.isPartOfProject.name;
                     break;
+                case 8:
+                    cell.textLabel.text = @"Status";
+                    cell.detailTextLabel.text = self.child.status;
+                    break;
             }
             break;
         case 1:
@@ -452,6 +464,10 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                     break;
                 case 7:
                     self.selectedCellTitle = @"Project";
+                    [self showPicker];
+                    break;
+                case 8:
+                    self.selectedCellTitle = @"Status";
                     [self showPicker];
                     break;
             }

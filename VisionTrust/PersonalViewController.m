@@ -69,7 +69,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 7;
+        return 8;
     } else if (section == 5) {
         return [self.guardians count];
     }
@@ -118,6 +118,10 @@
                 case 6:
                     cell.textLabel.text = @"Project";
                     cell.detailTextLabel.text = self.child.isPartOfProject.name;
+                    break;
+                case 7:
+                    cell.textLabel.text = @"Status";
+                    cell.detailTextLabel.text = self.child.status;
                     break;
             }
             cell.accessoryType = UITableViewCellAccessoryNone;

@@ -23,6 +23,8 @@
 #define COUNTRY @"country"
 #define PROJECT @"project"
 #define PICTURE_DATA @"pictureData"
+#define ACTIVE @"Active"
+#define INACTIVE @"Inactive"
 
 #define OCCUPATION @"occupation"
 #define STATUS @"status"
@@ -48,6 +50,9 @@
 #define SALVATION @"salvation"
 #define SPIRITUAL_ACTIVITIES @"spiritualActivities"
 #define PROGRESS @"progress"
+
+#define DEPARTURE_REASON @"departureReason"
+#define DEPARTURE_COMMENTS @"departureComments"
 
 - (void)insertSampleData
 {
@@ -137,7 +142,7 @@
                                          city:@"Mexico City"
                                       picture:@"child.jpeg"
                                   pictureData:nil
-                                       status:@"Active"
+                                       status:ACTIVE
                                     guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
                                       project:p1
                                     inContext:self.database.managedObjectContext];
@@ -151,7 +156,7 @@
                                          city:@"Major City"
                                       picture:@"child.jpeg"
                                   pictureData:nil
-                                       status:@"Active"
+                                       status:ACTIVE
                                     guardians:[[NSSet alloc] initWithObjects:g1, g2, nil]
                                       project:p2
                                     inContext:self.database.managedObjectContext];
@@ -165,7 +170,7 @@
                                          city:@"PyongYang"
                                       picture:@"child.jpeg"
                                   pictureData:nil
-                                       status:@"Active"
+                                       status:ACTIVE
                                     guardians:[[NSSet alloc] initWithObjects:g3, g5, nil]
                                       project:p3
                                     inContext:self.database.managedObjectContext];
@@ -179,7 +184,7 @@
                                          city:@"Berlin"
                                       picture:@"child.jpeg"
                                   pictureData:nil
-                                       status:@"Inactive"
+                                       status:INACTIVE
                                     guardians:[[NSSet alloc] initWithObjects:g4, g5, nil]
                                       project:p1
                                     inContext:self.database.managedObjectContext];
@@ -193,7 +198,7 @@
                                          city:@"St. Petersburg"
                                       picture:@"child.jpeg"
                                   pictureData:nil
-                                       status:@"Inactive"
+                                       status:INACTIVE
                                     guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
                                       project:p2
                                     inContext:self.database.managedObjectContext];
@@ -207,7 +212,7 @@
                                          city:@"Orlando, Florida"
                                       picture:@"child.jpeg"
                                   pictureData:nil
-                                       status:@"Active"
+                                       status:ACTIVE
                                     guardians:[[NSSet alloc] initWithObjects:g1, g5, nil]
                                       project:p3
                                     inContext:self.database.managedObjectContext];
@@ -221,7 +226,7 @@
                                          city:@"New York City"
                                       picture:@"child.jpeg"
                                   pictureData:nil
-                                       status:@"Active"
+                                       status:ACTIVE
                                     guardians:[[NSSet alloc] initWithObjects:g2, g4, nil]
                                       project:p4
                                     inContext:self.database.managedObjectContext];
@@ -725,6 +730,47 @@ withUpdatdedProject:(NSString *)projectName
     
     //If any guardians have no assigned children, then remove from db..
     [self removeGuardiansWithNoChildren];
+}
+
+- (void)departChild:(Child *)child
+  withDepartureData:(NSMutableDictionary *)departureData
+{
+    [self.database.managedObjectContext performBlock:^{
+        
+        //Get latest interaction data to send..
+        Interactions *latest;
+        for (Interactions *i in [child.interactions allObjects]) {
+            if (([latest.interactionDate compare:i.interactionDate] == NSOrderedAscending) || !latest) {
+                latest = i;
+            }
+        }
+        
+        //Set child status to 'Inactive'..
+        child.status = INACTIVE;
+        
+        //Update child as being inactive, along with the update information from the last update..
+        [Interactions interactionWithDepartureComments:[departureData valueForKey:DEPARTURE_COMMENTS]
+                                   departureReasonCode:[departureData valueForKey:DEPARTURE_REASON]
+                                           isattending:[NSNumber numberWithInt:0]
+                                          pictureTaken:latest.pictureTaken
+                                          registeredBy:latest.registeredBy
+                                        chronicIllness:latest.chronicIllness
+                                        healthComments:latest.healthComments
+                                    receivingTreatment:latest.currentlyReceivingTreatment
+                                      developmentLevel:latest.developmentLevel
+                                       healthCondition:latest.healthCondition
+                                        ifNotAttending:latest.ifNotAttending
+                                         isHandicapped:latest.isHandicapped
+                                           schoolGrade:latest.schoolGrade
+                                         usSchoolGrade:latest.usSchoolGrade
+                                            isBaptized:latest.isBaptized
+                                               isSaved:latest.isSaved
+                                     spiritualProgress:latest.spiritualProgress
+                                              forChild:child
+                                               byStaff:latest.staff
+                                             inContext:self.database.managedObjectContext];
+        
+    }];
 }
 
 + (VisionTrustDatabase *)vtDatabase

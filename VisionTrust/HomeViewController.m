@@ -14,6 +14,7 @@
 
 @interface HomeViewController ()
 @property BOOL goToUpdate;
+@property BOOL goToDeparture;
 @end
 
 @implementation HomeViewController
@@ -41,6 +42,12 @@
     
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.hidesBackButton = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //Reset bools..
+    self.goToUpdate = self.goToDeparture = NO;
 }
 
 
@@ -82,7 +89,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] == 0) {
-        self.goToUpdate = NO;
         [self performSegueWithIdentifier:@"Search" sender:self];
     } else if([indexPath row] == 1) {
         [self performSegueWithIdentifier:@"Register" sender:self];
@@ -90,7 +96,8 @@
         self.goToUpdate = YES;
         [self performSegueWithIdentifier:@"Search" sender:self];
     } else if ([indexPath row] == 3) {
-        [self performSegueWithIdentifier:@"SearchThenEnrollment" sender:self];
+        self.goToDeparture = YES;
+        [self performSegueWithIdentifier:@"Search" sender:self];
     }
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
 }
@@ -100,6 +107,7 @@
     if ([segue.identifier isEqualToString:@"Search"]) {
         SearchTableViewController *stvc = (SearchTableViewController *)segue.destinationViewController;
         stvc.goToUpdate = self.goToUpdate;
+        stvc.goToDeparture = self.goToDeparture;
     }
 }
 
