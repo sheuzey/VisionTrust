@@ -18,7 +18,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if ([self.titleString isEqualToString:@"Favorite Activities"]) {
+    if ([self.titleString isEqualToString:@"Home Chores"]) {
         self.allOptions = [[NSArray alloc] initWithObjects:@"Animal Care",
                            @"Carry Water",
                            @"Child Care",
@@ -30,8 +30,8 @@
                            @"Running Errands",
                            @"Sewing",
                            @"Other", nil];
-    } else if ([self.titleString isEqualToString:@"Home Chores"]) {
-        self.allOptions = [[NSArray alloc] initWithObjects:@"Baseballe",
+    } else if ([self.titleString isEqualToString:@"Favorite Activities"]) {
+        self.allOptions = [[NSArray alloc] initWithObjects:@"Baseball",
                            @"Cars",
                            @"Dolls",
                            @"Drawing",
