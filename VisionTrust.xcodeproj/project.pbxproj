@@ -37,6 +37,7 @@
 		DC8BF78F172D7C6800F31B94 /* ViewUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF78E172D7C6700F31B94 /* ViewUpdateViewController.m */; };
 		DC8BF792172EE5AC00F31B94 /* PageRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF791172EE5AA00F31B94 /* PageRootViewController.m */; };
 		DC8BF795172F3C4F00F31B94 /* DepartureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8BF794172F3C4C00F31B94 /* DepartureViewController.m */; };
+		DC8BF79D172F69E100F31B94 /* VisionTrustIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = DC8BF79C172F69E000F31B94 /* VisionTrustIcon.png */; };
 		DC9205CB172037B70087B1C3 /* VisionTrustDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */; };
 		DC9EA8C117231E3400C3137D /* GuardianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C017231E3400C3137D /* GuardianViewController.m */; };
 		DC9EA8CA1723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9EA8C91723222900C3137D /* GuardianStatus+SetuptGuardianStatus.m */; };
@@ -129,6 +130,7 @@
 		DC8BF791172EE5AA00F31B94 /* PageRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageRootViewController.m; sourceTree = "<group>"; };
 		DC8BF793172F3C4A00F31B94 /* DepartureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureViewController.h; sourceTree = "<group>"; };
 		DC8BF794172F3C4C00F31B94 /* DepartureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureViewController.m; sourceTree = "<group>"; };
+		DC8BF79C172F69E000F31B94 /* VisionTrustIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VisionTrustIcon.png; sourceTree = SOURCE_ROOT; };
 		DC9205C9172037B70087B1C3 /* VisionTrustDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisionTrustDatabase.h; sourceTree = "<group>"; };
 		DC9205CA172037B70087B1C3 /* VisionTrustDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionTrustDatabase.m; sourceTree = "<group>"; };
 		DC9EA8BF17231E3400C3137D /* GuardianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuardianViewController.h; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				DCE80B74171784E700A0FE35 /* AppDelegate.h */,
 				DCE80B75171784E700A0FE35 /* AppDelegate.m */,
 				DC65348B17178F0400785378 /* VisionTrustLogo.jpg */,
+				DC8BF79C172F69E000F31B94 /* VisionTrustIcon.png */,
 				DCE80B6D171784E700A0FE35 /* VisionTrust-Info.plist */,
 				DCE80B6E171784E700A0FE35 /* InfoPlist.strings */,
 				DCE80B71171784E700A0FE35 /* main.m */,
@@ -474,6 +477,7 @@
 				DC6534CB171B0C5B00785378 /* update.jpeg in Resources */,
 				DC6534CD171B0D5300785378 /* departure.jpeg in Resources */,
 				DC6534E1171B68B500785378 /* child.jpeg in Resources */,
+				DC8BF79D172F69E100F31B94 /* VisionTrustIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

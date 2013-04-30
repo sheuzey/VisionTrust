@@ -391,22 +391,31 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                     cell.detailTextLabel.text = self.child.status;
                     break;
             }
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
         case 1:
             cell.textLabel.text = @"Academic";
             cell.detailTextLabel.text = nil;
+            if (self.academicData)
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             break;
         case 2:
             cell.textLabel.text = @"Health";
             cell.detailTextLabel.text = nil;
+            if (self.healthData)
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             break;
         case 3:
             cell.textLabel.text = @"Spiritual";
             cell.detailTextLabel.text = nil;
+            if (self.spiritualData)
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             break;
         case 4:
             cell.textLabel.text = @"Home Life";
             cell.detailTextLabel.text = nil;
+            if (self.homeData)
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             break;
         case 5:
             
@@ -418,6 +427,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                 cell.textLabel.text = @"Add Guardian";
             }
             cell.detailTextLabel.text = nil;
+            cell.accessoryType = UITableViewCellAccessoryNone;
             break;
     }
     
@@ -534,24 +544,28 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 - (void)academicInfo:(NSMutableDictionary *)info
 {
     self.academicData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)healthInfo:(NSMutableDictionary *)info
 {
     self.healthData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)spiritualInfo:(NSMutableDictionary *)info
 {
     self.spiritualData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)homeInfo:(NSMutableDictionary *)info
 {
     self.homeData = [[NSMutableDictionary alloc] initWithDictionary:info];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

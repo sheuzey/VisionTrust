@@ -154,11 +154,13 @@
     //Update children list..
     self.children = [[NSArray alloc] initWithArray:[self.database getAllChildren]];
     self.searchData = [[NSMutableArray alloc] initWithArray:self.children];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)exitDeparture
 {
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
