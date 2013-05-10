@@ -12,7 +12,7 @@
 
 @interface UpdateListViewController () <ExitUpdateProtocol, ExitViewUpateProtocol>
 @property (nonatomic, assign) NSInteger selectedInteractionIndex;
-@property (nonatomic, strong) NSArray *interactions;
+@property (nonatomic, strong) NSMutableArray *interactions;
 @end
 
 @implementation UpdateListViewController
@@ -48,7 +48,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.interactions = [[NSArray alloc] initWithArray:[self.child.interactions allObjects]];
+    //Sort interactions by date..
+    self.interactions = [[NSMutableArray alloc] initWithArray:[self.child.interactions allObjects]];
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"interactionDate" ascending:YES];
+    [self.interactions sortUsingDescriptors:[NSArray arrayWithObject:descriptor]];
     [self.tableView reloadData];
 }
 
