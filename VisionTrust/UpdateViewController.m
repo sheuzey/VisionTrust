@@ -282,7 +282,6 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.childImageView setContentMode:UIViewContentModeScaleAspectFit];
         [self.childImageView setImage:image];
     }
-    //self.child.pictureData = UIImagePNGRepresentation(self.childImageView.image);
     
     //Remove label..
     for (UIView *view in self.childImageView.subviews) {
