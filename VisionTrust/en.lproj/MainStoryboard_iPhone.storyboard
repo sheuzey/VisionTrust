@@ -1883,6 +1883,9 @@
         </class>
         <class className="HealthViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HealthViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonPressed:"/>
+            </relationships>
         </class>
         <class className="HomeLifeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeLifeViewController.h"/>
@@ -1952,6 +1955,9 @@
         </class>
         <class className="UpdateHomeLifeViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateHomeLifeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="doneButtonPressed:"/>
+            </relationships>
         </class>
         <class className="UpdateListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UpdateListViewController.h"/>

@@ -282,7 +282,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
         [self.childImageView setContentMode:UIViewContentModeScaleAspectFit];
         [self.childImageView setImage:image];
     }
-    self.child.pictureData = UIImagePNGRepresentation(self.childImageView.image);
+    //self.child.pictureData = UIImagePNGRepresentation(self.childImageView.image);
     
     //Remove label..
     for (UIView *view in self.childImageView.subviews) {
@@ -597,7 +597,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [spinner startAnimating];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
     
-    //Asynchronously update child..
+    //Asynchronously update child (first update image)..
+    self.child.pictureData = UIImagePNGRepresentation(self.childImageView.image);
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
